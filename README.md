@@ -28,6 +28,16 @@ Source verification (live fetches; nothing is marked verified from memory):
 .venv/bin/python scripts/build_sources.py         # -> research/sources.json (47 sources)
 ```
 
+## Deploying (GitHub Pages)
+
+The site is a single static page with **relative** asset paths (`base: "./"`), so it works unchanged from a project subpath (`https://<user>.github.io/<repo>/`). A ready workflow lives at `.github/workflows/deploy.yml`:
+
+1. Create a GitHub repository and push this project (branch `main`).
+2. In the repo: Settings -> Pages -> Build and deployment -> Source: **GitHub Actions**.
+3. Push to `main` (or run the workflow manually) — it installs, runs tests, builds `dist/` and publishes it. The footer build stamp then shows the deployed commit.
+
+`public/.nojekyll` is copied into the build so GitHub Pages serves everything verbatim (no Jekyll processing). `dist/` stays out of git — CI rebuilds it on every deploy.
+
 ## Layout
 
 ```
