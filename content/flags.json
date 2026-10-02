@@ -1,0 +1,125 @@
+{
+  "intro": {
+    "pl": "Poniższe sygnały pomagają zdecydować, jak szybko działać. To nie jest triage medyczny — przy nagłym pogorszeniu dzwoń po pomoc. Progi wagowe odnoszą się do siatek z-score (spadek ≥1 z, prędkość < −2 z) i progów NICE dla słabego przyrastania.",
+    "en": "These signals help decide how fast to act. This is not medical triage — in an acute deterioration, call for help. Weight thresholds reflect z-score criteria (drop ≥1 z, velocity < −2 z) and NICE faltering thresholds."
+  },
+  "levels": {
+    "now": { "pl": "Pilne — dziś / teraz", "en": "Urgent — today / now" },
+    "week": { "pl": "Wizyta w ciągu tygodnia", "en": "Appointment within a week" },
+    "visit": { "pl": "Omów na najbliższej kontroli", "en": "Discuss at the next visit" }
+  },
+  "items": [
+    {
+      "level": "now",
+      "text": { "pl": "Dziecko odmawia picia i jedzenia, ma suche usta, nie oddaje moczu (zwłaszcza ≥6–8 h) lub jest nietypowo senne/apatyczne — pilnie do pomocy medycznej.",
+               "en": "The child refuses all fluids and food, has dry mouth, no urine (especially ≥6–8 h), or is unusually drowsy/floppy — seek medical help urgently." },
+      "sources": ["refeeding_children_2025", "nice_ng75"],
+      "grade": "D",
+      "wspecific": false
+    },
+    {
+      "level": "now",
+      "text": { "pl": "Krztuszenie, zachłystywanie, sinienie lub bezdech podczas karmienia — przerwij karmienie doustne i pilnie skontaktuj się z pomocą; do czasu oceny połykania zmiany konsystencji tylko wg zalecenia zespołu.",
+               "en": "Coughing, choking, cyanosis or apnoea during feeding — stop oral feeding and seek urgent help; until a swallow assessment, change textures only per the care team." },
+      "sources": ["feeding_intol_2017", "romano2017", "iddsi"],
+      "grade": "B",
+      "wspecific": false
+    },
+    {
+      "level": "now",
+      "text": { "pl": "Uporczywe wymioty o zielonym lub krwawym zabarwieniu albo ostry spadek masy ciała — pilnie (czerwona flaga kliniczna, niezależna od rozpoznania).",
+               "en": "Persistent vomiting that is green or blood-tinged, or an acute weight drop — urgent (a clinical red flag regardless of diagnosis)." },
+      "sources": ["romano2017"],
+      "grade": "A",
+      "wspecific": false
+    },
+    {
+      "level": "now",
+      "text": { "pl": "Po rozpoczęciu „dokarmiania” po niedożywieniu pojawia się splątanie, osłabienie, kołatanie serca lub obrzęki (mogące wskazywać zespół ponownego odżywienia) — pilnie. Narzędzie pokazuje banner ryzyka, gdy masa/długość < −3 SD (próg przesiewowy wg definicji ciężkiego wyniszczenia WHO/UNICEF dla 6.–60. mies.; u młodszych dzieci decyduje ocena kliniczna, a o rozpoznaniu stan kliniczny i elektrolity).",
+               "en": "After starting feeding in severe undernutrition: confusion, weakness, palpitations or oedema (possible refeeding syndrome) — urgent. The tool shows a risk banner when weight-for-length < −3 SD (screening threshold from the WHO/UNICEF severe-wasting definition for 6-60 months; in younger infants clinical assessment decides, and clinical state with electrolytes decides overall)." },
+      "sources": ["da_silva2020", "refeeding_children_2025", "who_sam_2009"],
+      "grade": "A",
+      "wspecific": false
+    },
+    {
+      "level": "week",
+      "text": { "pl": "Spełnione kryterium słabego przyrastania: masa/długość < −1,65 z, prędkość masy < −2 z (poniżej 2 lat) albo spadek o ≥1 z — wizyta w ciągu tygodnia wg ścieżki wytycznych.",
+               "en": "Faltering-growth criteria met: weight-for-length < −1.65 z, weight velocity < −2 z (under 2 y), or a drop of ≥1 z — appointment within a week per the guideline pathway." },
+      "sources": ["faltering_2026", "nice_ng75"],
+      "grade": "A",
+      "wspecific": false
+    },
+    {
+      "level": "week",
+      "text": { "pl": "Na siatce WHS masa przecięła kanały centylowe w dół (nie pojedynczy punkt, a trend przez ≥2 pomiary) — nie czekaj do rutynowej kontroli.",
+               "en": "On the WHS chart, weight has crossed centile channels downward (a trend over ≥2 measurements, not one point) — don't wait for the routine visit." },
+      "sources": ["antonius2008", "faltering_2026"],
+      "grade": "C",
+      "wspecific": true
+    },
+    {
+      "level": "week",
+      "text": { "pl": "Posiłki trwają dłużej niż ~30 min, dziecko odmawia, krztusi się przy jedzeniu lub je mniej niż wcześniej — ocena neurologopedy (i gastroenterologa, jeśli współistnieje refluks).",
+               "en": "Meals lasting longer than ~30 min, the child refuses, coughs when eating, or eats less than before — feeding-therapist assessment (and gastroenterology if reflux coexists)." },
+      "sources": ["romano2017", "feeding_intol_2017"],
+      "grade": "B",
+      "wspecific": false
+    },
+    {
+      "level": "week",
+      "text": { "pl": "Ciche aspiracje (bez kaszlu): nawracające infekcje oddechowe, chrypka lub „mokry\" głos po jedzeniu mogą sugerować aspirację — poproś o ocenę połykania (VFSS/FEES).",
+               "en": "Silent aspiration (no coughing): recurrent chest infections, hoarseness or a 'wet' voice after meals may suggest aspiration — ask for a swallow assessment (VFSS/FEES)." },
+      "sources": ["romano2017", "iddsi"],
+      "grade": "B",
+      "wspecific": false
+    },
+    {
+      "level": "week",
+      "text": { "pl": "Utrzymująca się biegunka, stolce tłuszczowe, wzdęcia lub wymioty kilka razy dziennie — diagnostyka pod gastroenterologiem (standardowa praktyka kliniczna; nie jest to twierdzenie z przewodnika neurologicznego romano2017).",
+               "en": "Persistent diarrhoea, fatty stools, bloating or several vomits a day — gastroenterology work-up (standard clinical practice; not a statement from the romano2017 neurological-impairment guideline)." },
+      "sources": ["faltering_2026"],
+      "grade": "D",
+      "wspecific": false
+    },
+    {
+      "level": "week",
+      "text": { "pl": "Brak przyrostu masy mimo prawidłowej podaży energii przez 3–4 tygodnie (typowy okres obserwacji — praktyka) — przeklasyfikuj przyczyny z listy „dlaczego” i zaplanuj wizytę.",
+               "en": "No weight gain over 3–4 weeks despite adequate energy intake (typical observation window — practice) — re-check the 'why' checklist and book a visit." },
+      "sources": ["faltering_2026", "nice_ng75"],
+      "grade": "A",
+      "wspecific": false
+    },
+    {
+      "level": "visit",
+      "text": { "pl": "Badania mikroskładników: ferrytyna/morfologia i 25(OH)D — omów z pediatrą/dietetykiem terminy (wg norm polskich).",
+               "en": "Micronutrient tests: ferritin/blood count and 25(OH)D — agree timing with the paediatrician/dietitian (per Polish norms)." },
+      "sources": ["pzh2024", "pludowski2023"],
+      "grade": "A",
+      "wspecific": false
+    },
+    {
+      "level": "visit",
+      "text": { "pl": "Przegląd leków pod kątem senności (leki przeciwpadaczkowe bywają sedujące) i wpływu na karmienie — z neurologiem; nigdy nie zmieniaj dawek samodzielnie.",
+               "en": "Medication review for drowsiness (anti-seizure drugs can be sedating) and feeding impact — with the neurologist; never change doses on your own." },
+      "sources": ["whs_epilepsy_2025"],
+      "grade": "C",
+      "wspecific": true
+    },
+    {
+      "level": "visit",
+      "text": { "pl": "Bardzo wolne wzrastanie mimo dobrej podaży energii — omów ścieżkę endokrynologiczną (IGF-1, tarczyca) z zespołem.",
+               "en": "Very slow growth despite good energy intake — discuss the endocrine pathway (IGF-1, thyroid) with the team." },
+      "sources": ["whs_gh_2026"],
+      "grade": "C",
+      "wspecific": true
+    },
+    {
+      "level": "visit",
+      "text": { "pl": "Rutynowo: ta sama waga, poranek, przed karmieniem, bez ubrania; wykreślaj na siatce WHS; przeglądaj plan żywienia z dietetykiem co 3–4 tygodnie.",
+               "en": "Routine: same scale, morning, before feeding, no clothes; plot on the WHS chart; review the feeding plan with the dietitian every 3–4 weeks." },
+      "sources": ["nice_ng75", "faltering_2026"],
+      "grade": "D",
+      "wspecific": false
+    }
+  ]
+}

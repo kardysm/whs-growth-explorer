@@ -1,0 +1,19 @@
+# deps & tooling
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# build artifacts
+dist/
+
+# snapshots (tarballs; kept on disk, not in git)
+snapshots/
+
+# USDA bulk extracts (zips kept; extracted trees excluded)
+research/raw/fdc/foundation/
+research/raw/fdc/sr_legacy/
+
+# misc
+.DS_Store
+*.log

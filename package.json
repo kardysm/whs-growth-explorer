@@ -1,0 +1,24 @@
+{
+  "name": "whs-growth-explorer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "WHS Feeding & Growth Explorer - bilingual calculator and evidence site (work in progress)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "echarts": "^6.1.0",
+    "fuse.js": "^7.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "axe-core": "^4.13.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  }
+}

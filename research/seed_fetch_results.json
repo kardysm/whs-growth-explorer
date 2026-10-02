@@ -1,0 +1,1093 @@
+{
+ "accessed": "2026-10-02",
+ "results": [
+  {
+   "id": "antonius2008",
+   "kind": "doi",
+   "query": "10.1007/s00431-007-0595-8",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_antonius2008.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "17874131",
+    "pmcid": "PMC2413080",
+    "doi": "10.1007/s00431-007-0595-8",
+    "title": "Growth charts for Wolf-Hirschhorn syndrome (0-4 years of age).",
+    "authors": "Antonius T, Draaisma J, Levtchenko E, Knoers N, Renier W, van Ravenswaaij C.",
+    "journal": "European journal of pediatrics",
+    "year": 2008,
+    "volume": "167",
+    "issue": "7",
+    "pages": "807-810",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "17874131",
+     "title": "Growth charts for Wolf-Hirschhorn syndrome (0-4 years of age).",
+     "pmid": "17874131",
+     "doi": "10.1007/s00431-007-0595-8",
+     "year": 2008
+    }
+   ],
+   "fulltext_http": 200,
+   "fulltext_file": "research/raw/fulltext_antonius2008.xml",
+   "figures": [
+    "431_2007_595_Fig1_HTML.jpg",
+    "431_2007_595_Fig2_HTML.jpg",
+    "431_2007_595_Fig3_HTML.jpg",
+    "431_2007_595_Fig4_HTML.jpg",
+    "431_2007_595_Fig5_HTML.jpg",
+    "431_2007_595_Fig6_HTML.jpg"
+   ]
+  },
+  {
+   "id": "growth2025",
+   "kind": "doi",
+   "query": "10.1002/ajmg.a.64075",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_growth2025.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "40156374",
+    "pmcid": null,
+    "doi": "10.1002/ajmg.a.64075",
+    "title": "Extended Growth Curves for the Wolf-Hirschhorn Syndrome (4p-).",
+    "authors": "Calhoun ARUL, Lortz A, Casper TC, Carey JC.",
+    "journal": "American journal of medical genetics. Part A",
+    "year": 2025,
+    "volume": "197",
+    "issue": "8",
+    "pages": "e64075",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "40156374",
+     "title": "Extended Growth Curves for the Wolf-Hirschhorn Syndrome (4p-).",
+     "pmid": "40156374",
+     "doi": "10.1002/ajmg.a.64075",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "id": "shimojima2012",
+   "kind": "doi",
+   "query": "10.3233/PGE-2012-007",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_shimojima2012.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "27625799",
+    "pmcid": "PMC5020917",
+    "doi": "10.3233/pge-2012-007",
+    "title": "Growth profiles of 34 patients with Wolf-Hirschhorn syndrome.",
+    "authors": "Shimojima K, Yamamoto T.",
+    "journal": "Journal of pediatric genetics",
+    "year": 2012,
+    "volume": "1",
+    "issue": "1",
+    "pages": "33-37",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "27625799",
+     "title": "Growth profiles of 34 patients with Wolf-Hirschhorn syndrome.",
+     "pmid": "27625799",
+     "doi": "10.3233/pge-2012-007",
+     "year": 2012
+    }
+   ]
+  },
+  {
+   "id": "battaglia2008",
+   "kind": "title",
+   "query": "Update on clinical features and natural history of Wolf-Hirschhorn syndrome 87 patients",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_battaglia2008.json",
+   "hitCount": 54,
+   "top": {
+    "pmid": "40725476",
+    "pmcid": "PMC12294571",
+    "doi": "10.3390/genes16070820",
+    "title": "Clinician-Based Functional Scoring and Genomic Insights for Prognostic Stratification in Wolf-Hirschhorn Syndrome.",
+    "authors": "Nevado J, Blanco-Lago R, Bel-Fenell\u00f3s C, Hern\u00e1ndez A, Mori-\u00c1lvarez MA, Biencinto-L\u00f3pez C, M\u00e1laga I, Pachajoa H, Mansilla E, Garc\u00eda-Santiago FA, Barr\u00faz P, Tenorio-Casta\u00f1o JA, Mu\u00f1oz-G\u00aaPorrero Y, Vallcorba I, Lapunzina P.",
+    "journal": "Genes",
+    "year": 2025,
+    "volume": "16",
+    "issue": "7",
+    "pages": "820",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "40725476",
+     "title": "Clinician-Based Functional Scoring and Genomic Insights for Prognostic Stratification in Wolf-Hirschhorn Syndrome.",
+     "pmid": "40725476",
+     "doi": "10.3390/genes16070820",
+     "year": 2025
+    },
+    {
+     "id": "38854651",
+     "title": "Adult syndromology: challenges, opportunities and perspectives: <i>Illustrated by the description of four adults with Costello syndrome</i>.",
+     "pmid": "38854651",
+     "doi": "10.1515/medgen-2024-2023",
+     "year": 2024
+    },
+    {
+     "id": "40824895",
+     "title": "Clinical experience of genome-wide non-invasive prenatal testing as a first-tier screening test in a cohort of 59,771 pregnancies.",
+     "pmid": "40824895",
+     "doi": "10.1371/journal.pone.0329463",
+     "year": 2025
+    },
+    {
+     "id": "42163330",
+     "title": "Bauru International Craniofacial Symposium: Comprehensive Care, Policy and Advocacy Proceedings.",
+     "pmid": "42163330",
+     "doi": "10.1186/s12919-026-00374-4",
+     "year": 2026
+    },
+    {
+     "id": "39866113",
+     "title": "2025 Heart Disease and Stroke Statistics: A Report of US and Global Data From the American Heart Association.",
+     "pmid": "39866113",
+     "doi": "10.1161/cir.0000000000001303",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "id": "battaglia2015",
+   "kind": "title",
+   "query": "Wolf-Hirschhorn syndrome a review and update Battaglia Carey South",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_battaglia2015.json",
+   "hitCount": 6,
+   "top": {
+    "pmid": "26239400",
+    "pmcid": null,
+    "doi": "10.1002/ajmg.c.31449",
+    "title": "Wolf-Hirschhorn syndrome: A review and update.",
+    "authors": "Battaglia A, Carey JC, South ST.",
+    "journal": "American journal of medical genetics. Part C, Seminars in medical genetics",
+    "year": 2015,
+    "volume": "169",
+    "issue": "3",
+    "pages": "216-223",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "26239400",
+     "title": "Wolf-Hirschhorn syndrome: A review and update.",
+     "pmid": "26239400",
+     "doi": "10.1002/ajmg.c.31449",
+     "year": 2015
+    },
+    {
+     "id": "PMC10198255",
+     "title": "Abstracts from the 55th European Society of Human Genetics (ESHG) Conference: Hybrid Posters",
+     "pmid": null,
+     "doi": null,
+     "year": 2023
+    },
+    {
+     "id": "PMC6778823",
+     "title": "Abstracts from the 51st European Society of Human Genetics Conference: Posters",
+     "pmid": null,
+     "doi": null,
+     "year": 2019
+    },
+    {
+     "id": "PMC1915517",
+     "title": null,
+     "pmid": null,
+     "doi": null,
+     "year": 1996
+    },
+    {
+     "id": "11644831",
+     "title": "Coverage of new genetic technologies: what matters to insurers?",
+     "pmid": "11644831",
+     "doi": null,
+     "year": 1996
+    }
+   ]
+  },
+  {
+   "id": "hanley1998",
+   "kind": "title",
+   "query": "antibody deficiency in Wolf-Hirschhorn syndrome",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_hanley1998.json",
+   "hitCount": 249,
+   "top": {
+    "pmid": "42505068",
+    "pmcid": "PMC13403718",
+    "doi": "10.1002/advs.76695",
+    "title": "NSD2 Coordinates the Neurogenic-to-Gliogenic Transition via H3K36me2-Dependent Activation of the EGFR-ERK Pathway.",
+    "authors": "Chen H, Li M, Hou L, Yin B, Qiang B, Gao R, Shu P, Peng X.",
+    "journal": "Advanced science (Weinheim, Baden-Wurttemberg, Germany)",
+    "year": 2026,
+    "volume": null,
+    "issue": null,
+    "pages": "e76695",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "42505068",
+     "title": "NSD2 Coordinates the Neurogenic-to-Gliogenic Transition via H3K36me2-Dependent Activation of the EGFR-ERK Pathway.",
+     "pmid": "42505068",
+     "doi": "10.1002/advs.76695",
+     "year": 2026
+    },
+    {
+     "id": "41972176",
+     "title": "Clinical immunology in chromatinopathies: a scoping review.",
+     "pmid": "41972176",
+     "doi": "10.3389/fimmu.2026.1773284",
+     "year": 2026
+    },
+    {
+     "id": "PMC12544203",
+     "title": "SAT-223 Endocrinopathies Associated with Wolf-Hirschhorn Syndrome",
+     "pmid": null,
+     "doi": null,
+     "year": 2025
+    },
+    {
+     "id": "42216445",
+     "title": "Identification and Functional Analysis of a Novel NSD2 Missense Variant in a Patient With Rauch-Steindl Syndrome.",
+     "pmid": "42216445",
+     "doi": "10.1002/mgg3.70238",
+     "year": 2026
+    },
+    {
+     "id": "9672528",
+     "title": "Antibody deficiency in Wolf-Hirschhorn syndrome.",
+     "pmid": "9672528",
+     "doi": "10.1016/s0022-3476(98)70194-5",
+     "year": 1998
+    }
+   ]
+  },
+  {
+   "id": "zollino2008",
+   "kind": "title",
+   "query": "Genotype-phenotype correlations and clinical diagnostic criteria in Wolf-Hirschhorn syndrome",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_zollino2008.json",
+   "hitCount": 135,
+   "top": {
+    "pmid": "42221011",
+    "pmcid": "PMC13220774",
+    "doi": "10.3389/fped.2026.1776647",
+    "title": "Case Report: A &lt;i&gt;de novo NSD2&lt;/i&gt; multiple exon deletion variant in a child with Rauch-Steindl syndrome.",
+    "authors": "Li C, Xie M, Peng Q, Lu X, Zhong B.",
+    "journal": "Frontiers in pediatrics",
+    "year": 2026,
+    "volume": "14",
+    "issue": null,
+    "pages": "1776647",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "42221011",
+     "title": "Case Report: A &lt;i&gt;de novo NSD2&lt;/i&gt; multiple exon deletion variant in a child with Rauch-Steindl syndrome.",
+     "pmid": "42221011",
+     "doi": "10.3389/fped.2026.1776647",
+     "year": 2026
+    },
+    {
+     "id": "42807679",
+     "title": "Clinical and genomic characterization of corpus callosum abnormalities (CCA) in 107 Tunisian patients using a stepwise diagnostic approach.",
+     "pmid": "42807679",
+     "doi": "10.3389/fgene.2026.1815268",
+     "year": 2026
+    },
+    {
+     "id": "42681615",
+     "title": "Prenatal characteristics and clinical outcomes in 82 cases with agenesis of corpus callosum: single tertiary center experience.",
+     "pmid": "42681615",
+     "doi": "10.1186/s12884-026-09799-3",
+     "year": 2026
+    },
+    {
+     "id": "42216445",
+     "title": "Identification and Functional Analysis of a Novel NSD2 Missense Variant in a Patient With Rauch-Steindl Syndrome.",
+     "pmid": "42216445",
+     "doi": "10.1002/mgg3.70238",
+     "year": 2026
+    },
+    {
+     "id": "41303083",
+     "title": "Epilepsy in Wolf-Hirschhorn Syndrome: Clinical Insights from a Pediatric Cohort and a Review of the Literature.",
+     "pmid": "41303083",
+     "doi": "10.3390/jcm14228044",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "id": "gene_reviews",
+   "kind": "url",
+   "query": "https://www.ncbi.nlm.nih.gov/books/NBK1183/",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": "20449",
+   "file": "research/raw/url_gene_reviews"
+  },
+  {
+   "id": "orphanet280",
+   "kind": "url",
+   "query": "https://www.orpha.net/en/disease/detail/280",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": "5352",
+   "file": "research/raw/url_orphanet280"
+  },
+  {
+   "id": "romano2017",
+   "kind": "doi",
+   "query": "10.1097/MPG.0000000000001740",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_romano2017.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "28968291",
+    "pmcid": "PMC5704675",
+    "doi": "10.1097/mpg.0000000000001740",
+    "title": "Protein Digestion and Quality of Goat and Cow Milk Infant Formula and Human Milk Under Simulated Infant Conditions.",
+    "authors": "Maathuis A, Havenaar R, He T, Bellmann S.",
+    "journal": "Journal of pediatric gastroenterology and nutrition",
+    "year": 2017,
+    "volume": "65",
+    "issue": "6",
+    "pages": "661-666",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "28968291",
+     "title": "Protein Digestion and Quality of Goat and Cow Milk Infant Formula and Human Milk Under Simulated Infant Conditions.",
+     "pmid": "28968291",
+     "doi": "10.1097/mpg.0000000000001740",
+     "year": 2017
+    }
+   ],
+   "fulltext_http": 200,
+   "fulltext_file": "research/raw/fulltext_romano2017.xml",
+   "figures": [
+    "jpga-65-661-g001.jpg",
+    "jpga-65-661-g002.jpg",
+    "jpga-65-661-g003.jpg",
+    "jpga-65-661-g004.jpg",
+    "jpga-65-661-g005.jpg"
+   ]
+  },
+  {
+   "id": "nice_ng75",
+   "kind": "url",
+   "query": "https://www.nice.org.uk/guidance/ng75",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": "20116",
+   "file": "research/raw/url_nice_ng75"
+  },
+  {
+   "id": "krick1992",
+   "kind": "pmid",
+   "query": "1612207",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_krick1992.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "1612207",
+    "pmcid": null,
+    "doi": "10.1111/j.1469-8749.1992.tb11468.x",
+    "title": "A proposed formula for calculating energy needs of children with cerebral palsy.",
+    "authors": "Krick J, Murphy PE, Markham JF, Shapiro BK.",
+    "journal": "Developmental medicine and child neurology",
+    "year": 1992,
+    "volume": "34",
+    "issue": "6",
+    "pages": "481-487",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "1612207",
+     "title": "A proposed formula for calculating energy needs of children with cerebral palsy.",
+     "pmid": "1612207",
+     "doi": "10.1111/j.1469-8749.1992.tb11468.x",
+     "year": 1992
+    }
+   ]
+  },
+  {
+   "id": "culley1969",
+   "kind": "title",
+   "query": "Culley caloric requirements cerebral palsy children height",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_culley1969.json",
+   "hitCount": 5,
+   "top": {
+    "pmid": "41012667",
+    "pmcid": "PMC12474039",
+    "doi": "10.3390/v17091239",
+    "title": "Long-Term Nutritional Deficits and Growth Patterns in Children with Congenital Zika Virus Syndrome: Evidence from a Brazilian Cohort.",
+    "authors": "Tavares CSS, Marques RS, Ferreira JS, de Oliveira MBB, Reis MCDS, Martins-Filho PR.",
+    "journal": "Viruses",
+    "year": 2025,
+    "volume": "17",
+    "issue": "9",
+    "pages": "1239",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "41012667",
+     "title": "Long-Term Nutritional Deficits and Growth Patterns in Children with Congenital Zika Virus Syndrome: Evidence from a Brazilian Cohort.",
+     "pmid": "41012667",
+     "doi": "10.3390/v17091239",
+     "year": 2025
+    },
+    {
+     "id": "34371923",
+     "title": "Assessment of Swallowing Disorders, Nutritional and Hydration Status, and Oral Hygiene in Students with Severe Neurological Disabilities Including Cerebral Palsy.",
+     "pmid": "34371923",
+     "doi": "10.3390/nu13072413",
+     "year": 2021
+    },
+    {
+     "id": "33154081",
+     "title": "The Impact of Malnutrition on Hospitalized Children With Cerebral Palsy.",
+     "pmid": "33154081",
+     "doi": "10.1542/hpeds.2020-0177",
+     "year": 2020
+    },
+    {
+     "id": "PMC6840740",
+     "title": "Program Abstracts from the GSA 2019 Annual Scientific Meeting \u201cStrength in Age\u2014Harnessing the Power of Networks\u201d",
+     "pmid": null,
+     "doi": null,
+     "year": 2019
+    },
+    {
+     "id": "PMC4070603",
+     "title": "UEG Week 2013 Poster Presentations",
+     "pmid": null,
+     "doi": null,
+     "year": 2013
+    }
+   ]
+  },
+  {
+   "id": "borsani2023",
+   "kind": "doi",
+   "query": "10.3389/fped.2023.1097152",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_borsani2023.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "37681200",
+    "pmcid": "PMC10481865",
+    "doi": "10.3389/fped.2023.1097152",
+    "title": "Resting energy expenditure in children and adolescents with cerebral palsy: accuracy of available prediction formulas and development of population-specific methods.",
+    "authors": "Borsani B, Biganzoli G, Penagini F, Bosetti A, Pendezza E, Perico V, Biganzoli E, Verduci E, Zuccotti GV.",
+    "journal": "Frontiers in pediatrics",
+    "year": 2023,
+    "volume": "11",
+    "issue": null,
+    "pages": "1097152",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "37681200",
+     "title": "Resting energy expenditure in children and adolescents with cerebral palsy: accuracy of available prediction formulas and development of population-specific methods.",
+     "pmid": "37681200",
+     "doi": "10.3389/fped.2023.1097152",
+     "year": 2023
+    }
+   ],
+   "fulltext_http": 200,
+   "fulltext_file": "research/raw/fulltext_borsani2023.xml",
+   "figures": [
+    "fped-11-1097152-g001.jpg",
+    "fped-11-1097152-g002.jpg",
+    "fped-11-1097152-g003.jpg",
+    "fped-11-1097152-g004.jpg",
+    "fped-11-1097152-g005.jpg",
+    "fped-11-1097152-g006.jpg",
+    "fped-11-1097152-g007.jpg"
+   ]
+  },
+  {
+   "id": "schofield1985",
+   "kind": "title",
+   "query": "Predicting basal metabolic rate new standards and review of previous work Schofield",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_schofield1985.json",
+   "hitCount": 137,
+   "top": {
+    "pmid": "41553788",
+    "pmcid": "PMC13144660",
+    "doi": "10.1177/02601060251404993",
+    "title": "Energy expenditure and dietary intake in research: A visualization analysis.",
+    "authors": "Craven SA, Suter GA, Giles ED, Purcell SA.",
+    "journal": "Nutrition and health",
+    "year": 2026,
+    "volume": "32",
+    "issue": "3",
+    "pages": "777-786",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "41553788",
+     "title": "Energy expenditure and dietary intake in research: A visualization analysis.",
+     "pmid": "41553788",
+     "doi": "10.1177/02601060251404993",
+     "year": 2026
+    },
+    {
+     "id": "41599957",
+     "title": "Prediction Equations to Estimate Resting Metabolic Rate in Healthy, Community-Dwelling Chinese Older Adults.",
+     "pmid": "41599957",
+     "doi": "10.3390/nu18020344",
+     "year": 2026
+    },
+    {
+     "id": "35346323",
+     "title": "L-alanine supplementation in Pompe disease (IOPD): a potential therapeutic implementation for patients on ERT? A case report.",
+     "pmid": "35346323",
+     "doi": "10.1186/s13052-022-01249-y",
+     "year": 2022
+    },
+    {
+     "id": "PMC13439031",
+     "title": "Special Collection: Abstracts from IUNS-ICN Paris 2025",
+     "pmid": null,
+     "doi": null,
+     "year": 0
+    },
+    {
+     "id": "PMC13290681",
+     "title": "Abstract",
+     "pmid": null,
+     "doi": null,
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "id": "who_standards",
+   "kind": "url",
+   "query": "https://www.who.int/tools/child-growth-standards/standards/weight-for-age",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": "100135",
+   "file": "research/raw/url_who_standards"
+  },
+  {
+   "id": "who2007ref",
+   "kind": "url",
+   "query": "https://www.who.int/tools/growth-reference-data-for-5to19-years",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": "83352",
+   "file": "research/raw/url_who2007ref"
+  },
+  {
+   "id": "efsa_energy",
+   "kind": "url",
+   "query": "https://www.efsa.europa.eu/en/efsajournal/pub/3005",
+   "accessed": "2026-10-02",
+   "http": 403,
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": "5673",
+   "file": "research/raw/url_efsa_energy"
+  },
+  {
+   "id": "nasem2023",
+   "kind": "url",
+   "query": "https://nap.nationalacademies.org/catalog/26840/dietary-reference-intakes-for-energy",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": "1499575",
+   "file": "research/raw/url_nasem2023"
+  },
+  {
+   "id": "fao2004",
+   "kind": "url",
+   "query": "https://www.fao.org/3/y5686e/y5686e00.htm",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html",
+   "bytes": "10047",
+   "file": "research/raw/url_fao2004"
+  },
+  {
+   "id": "pzh_normy",
+   "kind": "url",
+   "query": "https://www.pzh.gov.pl/normy-zywienia-2024/",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=UTF-8",
+   "bytes": "835506",
+   "file": "research/raw/url_pzh_normy"
+  },
+  {
+   "id": "pzh_normy_pdf",
+   "kind": "url",
+   "query": "https://www.pzh.gov.pl/wp-content/uploads/2025/01/normy-02.01.pdf",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "application/pdf",
+   "bytes": "3022287",
+   "file": "research/raw/url_pzh_normy_pdf.pdf"
+  },
+  {
+   "id": "who_protein2007",
+   "kind": "url",
+   "query": "https://www.who.int/publications/i/item/9241209356",
+   "accessed": "2026-10-02",
+   "http": 404,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": "72505",
+   "file": "research/raw/url_who_protein2007"
+  },
+  {
+   "id": "holliday1957",
+   "kind": "title",
+   "query": "The maintenance need for water in parenteral fluid therapy Holliday Segar",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_holliday1957.json",
+   "hitCount": 39,
+   "top": {
+    "pmid": "42774420",
+    "pmcid": "PMC13593843",
+    "doi": "10.3389/fcvm.2026.1877673",
+    "title": "Physiology-guided volume optimization in patients with acute exacerbations of heart failure complicated by various comorbidities: two case reports.",
+    "authors": "Bai H, Bing D, Wang S, Li J, Liu P, Ren Z, Liu X.",
+    "journal": "Frontiers in cardiovascular medicine",
+    "year": 2026,
+    "volume": "13",
+    "issue": null,
+    "pages": "1877673",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "42774420",
+     "title": "Physiology-guided volume optimization in patients with acute exacerbations of heart failure complicated by various comorbidities: two case reports.",
+     "pmid": "42774420",
+     "doi": "10.3389/fcvm.2026.1877673",
+     "year": 2026
+    },
+    {
+     "id": "42038246",
+     "title": "Cumulative intravenous fluid volume in the first 24 hours and risk of respiratory deterioration in children hospitalized with community acquired pneumonia.",
+     "pmid": "42038246",
+     "doi": "10.3389/fped.2026.1780766",
+     "year": 2026
+    },
+    {
+     "id": "39144385",
+     "title": "Management of Pediatric Parenteral Fluids.",
+     "pmid": "39144385",
+     "doi": "10.5863/1551-6776-29.4.346",
+     "year": 2024
+    },
+    {
+     "id": "40823584",
+     "title": "Perioperative fluid therapy in adults and children: a narrative review.",
+     "pmid": "40823584",
+     "doi": "10.3389/fmed.2025.1607670",
+     "year": 2025
+    },
+    {
+     "id": "40077059",
+     "title": "Nutrition Support Therapy for Hospitalized Children with Malnutrition: A Narrative Review.",
+     "pmid": "40077059",
+     "doi": "10.3390/healthcare13050497",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "id": "ashworth1969",
+   "kind": "title",
+   "query": "Growth rates in children recovering from protein-calorie malnutrition",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_ashworth1969.json",
+   "hitCount": 259,
+   "top": {
+    "pmid": "42075104",
+    "pmcid": "PMC13118444",
+    "doi": "10.3390/nu18081291",
+    "title": "Feeding Recovery in Post-PICU Patients: A Case Series in an Intensive Feeding Program.",
+    "authors": "Almanaseer T, Hayhurst E, Doorn JB, Bonebrake A, Dudick B, Rosner EA, Bandstra NF, Leimanis-Laurens ML.",
+    "journal": "Nutrients",
+    "year": 2026,
+    "volume": "18",
+    "issue": "8",
+    "pages": "1291",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "42075104",
+     "title": "Feeding Recovery in Post-PICU Patients: A Case Series in an Intensive Feeding Program.",
+     "pmid": "42075104",
+     "doi": "10.3390/nu18081291",
+     "year": 2026
+    },
+    {
+     "id": "42196967",
+     "title": "Assessment of Dietary Intake of Schoolchildren Living in Urban Settings: A Case Study of Karaganda City.",
+     "pmid": "42196967",
+     "doi": "10.3390/nu18101507",
+     "year": 2026
+    },
+    {
+     "id": "42588086",
+     "title": "Nutritional Management for Infants with Cystic Fibrosis Born with Meconium Ileus: A 15-Year Review.",
+     "pmid": "42588086",
+     "doi": "10.3390/nu18152463",
+     "year": 2026
+    },
+    {
+     "id": "42075617",
+     "title": "Enteral Feeds: Benefits and Drawbacks Associated with Blenderized Feeds and Commercial Formulas-A Narrative Review.",
+     "pmid": "42075617",
+     "doi": "10.3390/medicina62040745",
+     "year": 2026
+    },
+    {
+     "id": "PMC13439031",
+     "title": "Special Collection: Abstracts from IUNS-ICN Paris 2025",
+     "pmid": null,
+     "doi": null,
+     "year": 0
+    }
+   ]
+  },
+  {
+   "id": "catchup_energy",
+   "kind": "title",
+   "query": "energy cost of catch-up growth in malnourished children",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_catchup_energy.json",
+   "hitCount": 423,
+   "top": {
+    "pmid": "42603994",
+    "pmcid": "PMC13476492",
+    "doi": "10.1016/j.cdnut.2026.109437",
+    "title": "Local High-Protein, Plant-Based Ready-to-Use Therapeutic Food Enhances Recovery from Malnutrition in Rats.",
+    "authors": "Bechoff A, Akomo P, Utume L, Muleya M, Schneider A, Khalaf M, Tsaousis AD, Nikolaou CK, Reifen R, Westby A, Monsonego-Ornan E.",
+    "journal": "Current developments in nutrition",
+    "year": 2026,
+    "volume": "10",
+    "issue": "8",
+    "pages": "109437",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "42603994",
+     "title": "Local High-Protein, Plant-Based Ready-to-Use Therapeutic Food Enhances Recovery from Malnutrition in Rats.",
+     "pmid": "42603994",
+     "doi": "10.1016/j.cdnut.2026.109437",
+     "year": 2026
+    },
+    {
+     "id": "PPR1148434",
+     "title": "Optimising recovery from childhood moderate acute malnutrition: a randomized controlled trial",
+     "pmid": null,
+     "doi": "10.21203/rs.3.rs-8585503/v1",
+     "year": null
+    },
+    {
+     "id": "41572191",
+     "title": "The interplay between malnutrition, persistent diarrhea, lactose intolerance, and food associated gut dysbiosis in children; a comprehensive review.",
+     "pmid": "41572191",
+     "doi": "10.1186/s12887-026-06529-8",
+     "year": 2026
+    },
+    {
+     "id": "42254439",
+     "title": "Nutraceutical Interventions in Stunting: Advances, Challenges, and Prospects.",
+     "pmid": "42254439",
+     "doi": "10.1002/fsn3.71910",
+     "year": 2026
+    },
+    {
+     "id": "41379154",
+     "title": "Nutritional outcomes in pediatric liver transplantation: a longitudinal analysis of anthropometric measures.",
+     "pmid": "41379154",
+     "doi": "10.1590/1984-0462/2025/43/2024273",
+     "year": 2025
+    }
+   ]
+  },
+  {
+   "id": "da_silva2020",
+   "kind": "doi",
+   "query": "10.1002/ncp.10474",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_da_silva2020.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "32115791",
+    "pmcid": null,
+    "doi": "10.1002/ncp.10474",
+    "title": "ASPEN Consensus Recommendations for Refeeding Syndrome.",
+    "authors": "da Silva JSV, Seres DS, Sabino K, Adams SC, Berdahl GJ, Citty SW, Cober MP, Evans DC, Greaves JR, Gura KM, Michalski A, Plogsted S, Sacks GS, Tucker AM, Worthington P, Walker RN, Ayers P, Parenteral Nutrition Safety and Clinical Practice Committees, American Society for Parenteral and Enteral Nutrition.",
+    "journal": "Nutrition in clinical practice : official publication of the American Society for Parenteral and Enteral Nutrition",
+    "year": 2020,
+    "volume": "35",
+    "issue": "2",
+    "pages": "178-195",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "32115791",
+     "title": "ASPEN Consensus Recommendations for Refeeding Syndrome.",
+     "pmid": "32115791",
+     "doi": "10.1002/ncp.10474",
+     "year": 2020
+    }
+   ]
+  },
+  {
+   "id": "fewtrell2017",
+   "kind": "doi",
+   "query": "10.1097/MPG.0000000000001454",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_fewtrell2017.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "28027215",
+    "pmcid": null,
+    "doi": "10.1097/mpg.0000000000001454",
+    "title": "Complementary Feeding: A Position Paper by the European Society for Paediatric Gastroenterology, Hepatology, and Nutrition (ESPGHAN) Committee on Nutrition.",
+    "authors": "Fewtrell M, Bronsky J, Campoy C, Domell\u00f6f M, Embleton N, Fidler Mis N, Hojsak I, Hulst JM, Indrio F, Lapillonne A, Molgaard C.",
+    "journal": "Journal of pediatric gastroenterology and nutrition",
+    "year": 2017,
+    "volume": "64",
+    "issue": "1",
+    "pages": "119-132",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "28027215",
+     "title": "Complementary Feeding: A Position Paper by the European Society for Paediatric Gastroenterology, Hepatology, and Nutrition (ESPGHAN) Committee on Nutrition.",
+     "pmid": "28027215",
+     "doi": "10.1097/mpg.0000000000001454",
+     "year": 2017
+    }
+   ]
+  },
+  {
+   "id": "pludowski2023",
+   "kind": "doi",
+   "query": "10.3390/nu15030695",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_pludowski2023.json",
+   "hitCount": 1,
+   "top": {
+    "pmid": "36771403",
+    "pmcid": "PMC9920487",
+    "doi": "10.3390/nu15030695",
+    "title": "Guidelines for Preventing and Treating Vitamin D Deficiency: A 2023 Update in Poland.",
+    "authors": "P\u0142udowski P, Kos-Kud\u0142a B, Walczak M, Fal A, Zozuli\u0144ska-Zi\u00f3\u0142kiewicz D, Sieroszewski P, Peregud-Pogorzelski J, Lauterbach R, Targowski T, Lewi\u0144ski A, Spaczy\u0144ski R, Wielgo\u015b M, Pinkas J, Jackowska T, Helwich E, Mazur A, Rucha\u0142a M, Zygmunt A, Szalecki M, Bossowski A, Czech-Kowalska J, W\u00f3jcik M, Pyr\u017cak B, \u017bmijewski MA, Abramowicz P, Konstantynowicz J, Marcinowska-Suchowierska E, Bleizgys A, Karras SN, Grant WB, Carlberg C, Pilz S, Holick MF, Misiorowski W.",
+    "journal": "Nutrients",
+    "year": 2023,
+    "volume": "15",
+    "issue": "3",
+    "pages": "695",
+    "openAccess": "Y"
+   },
+   "top5": [
+    {
+     "id": "36771403",
+     "title": "Guidelines for Preventing and Treating Vitamin D Deficiency: A 2023 Update in Poland.",
+     "pmid": "36771403",
+     "doi": "10.3390/nu15030695",
+     "year": 2023
+    }
+   ]
+  },
+  {
+   "id": "iddsi",
+   "kind": "url",
+   "query": "https://www.iddsi.org/standards",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": "281800",
+   "file": "research/raw/url_iddsi"
+  },
+  {
+   "id": "espen_pn_energy",
+   "kind": "title",
+   "query": "ESPGHAN ESPEN ESPR CSPEN guidelines on pediatric parenteral nutrition energy",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_espen_pn_energy.json",
+   "hitCount": 36,
+   "top": {
+    "pmid": "30078715",
+    "pmcid": null,
+    "doi": "10.1016/j.clnu.2018.06.944",
+    "title": "ESPGHAN/ESPEN/ESPR/CSPEN guidelines on pediatric parenteral nutrition: Energy.",
+    "authors": "Joosten K, Embleton N, Yan W, Senterre T, ESPGHAN/ESPEN/ESPR/CSPEN working group on pediatric parenteral nutrition.",
+    "journal": "Clinical nutrition (Edinburgh, Scotland)",
+    "year": 2018,
+    "volume": "37",
+    "issue": "6 Pt B",
+    "pages": "2309-2314",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "30078715",
+     "title": "ESPGHAN/ESPEN/ESPR/CSPEN guidelines on pediatric parenteral nutrition: Energy.",
+     "pmid": "30078715",
+     "doi": "10.1016/j.clnu.2018.06.944",
+     "year": 2018
+    },
+    {
+     "id": "42738973",
+     "title": "Timing of Parenteral Nutrition in Neonates, Infants, and Children: Current Evidence, Circadian Considerations, and Emerging Directions.",
+     "pmid": "42738973",
+     "doi": "10.3390/nu18172800",
+     "year": 2026
+    },
+    {
+     "id": "41994674",
+     "title": "Standardized, Individualized, or AI-Based Approach to Parenteral Nutrition in Neonatal Intensive Care Units: A Narrative Review.",
+     "pmid": "41994674",
+     "doi": "10.7759/cureus.105328",
+     "year": 2026
+    },
+    {
+     "id": "41080053",
+     "title": "A single-center experience of home parenteral nutrition for pediatric intestinal failure.",
+     "pmid": "41080053",
+     "doi": "10.3389/fped.2025.1658512",
+     "year": 2025
+    },
+    {
+     "id": "42075097",
+     "title": "Nutrition Management in Critically Ill Children: A Scoping Review of Current Practices and Outcome Measures in the Pediatric Intensive Care Unit.",
+     "pmid": "42075097",
+     "doi": "10.3390/nu18081284",
+     "year": 2026
+    }
+   ]
+  },
+  {
+   "id": "espen_pn_energy_pdf",
+   "kind": "url",
+   "query": "https://espen.org/documents/A174-02PaedPNGuidel_ESPGHANESPENPNGuidelines2Energy.pdf",
+   "accessed": "2026-10-02",
+   "http": 200,
+   "content_type": "application/pdf",
+   "bytes": "76390",
+   "file": "research/raw/url_espen_pn_energy_pdf.pdf"
+  },
+  {
+   "id": "cp_preschool_energy",
+   "kind": "title",
+   "query": "Energy requirements in preschool-age children with cerebral palsy",
+   "accessed": "2026-10-02",
+   "epmc_http": 200,
+   "epmc_file": "research/raw/epmc_cp_preschool_energy.json",
+   "hitCount": 475,
+   "top": {
+    "pmid": "23134886",
+    "pmcid": null,
+    "doi": "10.3945/ajcn.112.043430",
+    "title": "Energy requirements in preschool-age children with cerebral palsy.",
+    "authors": "Walker JL, Bell KL, Boyd RN, Davies PS.",
+    "journal": "The American journal of clinical nutrition",
+    "year": 2012,
+    "volume": "96",
+    "issue": "6",
+    "pages": "1309-1315",
+    "openAccess": "N"
+   },
+   "top5": [
+    {
+     "id": "23134886",
+     "title": "Energy requirements in preschool-age children with cerebral palsy.",
+     "pmid": "23134886",
+     "doi": "10.3945/ajcn.112.043430",
+     "year": 2012
+    },
+    {
+     "id": "42285221",
+     "title": "Nutritional intake in children with cerebral palsy and typically developing peers: A comprehensive study using a novel smartphone application.",
+     "pmid": "42285221",
+     "doi": "10.1016/j.clnesp.2026.103401",
+     "year": 2026
+    },
+    {
+     "id": "42633899",
+     "title": "The Right to Food for Children With Cerebral Palsy in South Africa: Examining Nutritional Access and Structural Barriers.",
+     "pmid": "42633899",
+     "doi": "10.1111/cch.70323",
+     "year": 2026
+    },
+    {
+     "id": "41953177",
+     "title": "The potential hematological features of children with spastic cerebral palsy in China: a retrospective multidimensional data analysis based on routine hematological indicators.",
+     "pmid": "41953177",
+     "doi": "10.3389/fped.2026.1765309",
+     "year": 2026
+    },
+    {
+     "id": "42404403",
+     "title": "Motor and cognitive outcomes in pediatric intestinal failure: A longitudinal cohort study.",
+     "pmid": "42404403",
+     "doi": "10.1016/j.intf.2026.100383",
+     "year": 2026
+    }
+   ]
+  }
+ ]
+}

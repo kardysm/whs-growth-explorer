@@ -1,0 +1,118 @@
+{
+  "note": {
+    "pl": "Skład produktów specjalistycznych wg stron producentów (dane ze stron firmowych, odczyt 2026-10-02). Produkty FSMP stosować wyłącznie pod kontrolą lekarza/dietetyka. Dostępność w Polsce może się zmieniać — sprawdź etykietę.",
+    "en": "Specialist product composition from manufacturer pages (read 2026-10-02). FSMP products only under physician/dietitian supervision. Polish availability may change — check the label."
+  },
+  "items": [
+    {
+      "id": "fsmp-infatrini",
+      "category": "fsmp-infant",
+      "name": { "pl": "Infatrini (płyn, 1 kcal/ml)", "en": "Infatrini (liquid, 1 kcal/ml)" },
+      "form": { "pl": "produkt gotowy do picia / sondy, 0–18 mies.", "en": "ready-to-drink / tube feed, 0–18 mo" },
+      "basis": "ml",
+      "per100": { "kcal": 100, "protein": 2.6, "fat": 5.3, "carbs": 10.2, "fibre": 0.57, "calcium_mg": 100, "iron_mg": 1.2, "zinc_mg": 0.8, "sodium_mg": 37, "potassium_mg": 111, "vita_ug": 88, "vitd_ug": 2.4 },
+      "measures": [ { "label": { "pl": "butelka 125 ml", "en": "125 ml bottle" }, "kcal": 125 } ],
+      "tags": ["high-energy", "vitD", "Fe", "Zn", "Ca", "oral-ok", "tube-ok", "infant", "dairy"],
+      "source": { "label": { "pl": "Nutricia (Akademia Nutricia) — tabela wartości odżywczej producenta", "en": "Nutricia (Akademia Nutricia) — manufacturer nutrition table" }, "url": "https://akademianutricia.pl/produkty-i-sprzet/1" }
+    },
+    {
+      "id": "fsmp-infatrini-powder",
+      "category": "fsmp-infant",
+      "name": { "pl": "Infatrini Powder (proszek, 1 kcal/ml po przygotowaniu)", "en": "Infatrini Powder (1 kcal/ml prepared)" },
+      "form": { "pl": "proszek 400 g, 0–18 mies.", "en": "400 g powder, 0–18 mo" },
+      "basis": "ml",
+      "per100": { "kcal": 100, "protein": 2.6, "fat": 5.4, "carbs": 10.0, "fibre": 0.56, "calcium_mg": 99.7, "iron_mg": 1.2, "zinc_mg": 0.8, "sodium_mg": 37, "potassium_mg": 100, "vita_ug": 88, "vitd_ug": 2.4 },
+      "measures": [ { "label": { "pl": "100 ml przygotowanego", "en": "100 ml prepared" }, "kcal": 100 } ],
+      "tags": ["high-energy", "vitD", "Fe", "Zn", "Ca", "oral-ok", "tube-ok", "infant", "dairy"],
+      "source": { "label": { "pl": "Nutricia (Akademia Nutricia)", "en": "Nutricia (Akademia Nutricia)" }, "url": "https://akademianutricia.pl/produkty-i-sprzet/3" }
+    },
+    {
+      "id": "fsmp-nutrini",
+      "category": "fsmp-child",
+      "name": { "pl": "Nutrini (płyn, 1 kcal/ml)", "en": "Nutrini (liquid, 1 kcal/ml)" },
+      "form": { "pl": "1–6 lat", "en": "1–6 y" },
+      "basis": "ml",
+      "per100": { "kcal": 100, "protein": 2.5, "fat": 4.4, "carbs": 12.5, "fibre": 0, "calcium_mg": 60, "iron_mg": 1.0, "zinc_mg": 1.0, "sodium_mg": 60, "potassium_mg": 110, "vita_ug": 41, "vitd_ug": 1.0 },
+      "measures": [],
+      "tags": ["vitD", "Fe", "Zn", "oral-ok", "tube-ok", "child", "dairy"],
+      "source": { "label": { "pl": "Nutricia (Akademia Nutricia)", "en": "Nutricia (Akademia Nutricia)" }, "url": "https://akademianutricia.pl/produkty-i-sprzet/4" }
+    },
+    {
+      "id": "fsmp-nutrini-energy-mf",
+      "category": "fsmp-child",
+      "name": { "pl": "Nutrini Energy Multi Fibre (płyn, 1,5 kcal/ml)", "en": "Nutrini Energy Multi Fibre (liquid, 1.5 kcal/ml)" },
+      "form": { "pl": "1–6 lat", "en": "1–6 y" },
+      "basis": "ml",
+      "per100": { "kcal": 151, "protein": 4.0, "fat": 6.7, "carbs": 18.5, "fibre": 0.8, "calcium_mg": 90, "iron_mg": 1.5, "zinc_mg": 1.5, "sodium_mg": 90, "potassium_mg": 165, "vita_ug": 61, "vitd_ug": 1.5 },
+      "measures": [],
+      "tags": ["high-energy", "vitD", "Fe", "Zn", "fibre", "oral-ok", "tube-ok", "child", "dairy"],
+      "source": { "label": { "pl": "Nutricia (Akademia Nutricia)", "en": "Nutricia (Akademia Nutricia)" }, "url": "https://akademianutricia.pl/produkty-i-sprzet/5" }
+    },
+    {
+      "id": "fsmp-nutrini-mf",
+      "category": "fsmp-child",
+      "name": { "pl": "Nutrini Multi Fibre (płyn, ~1 kcal/ml)", "en": "Nutrini Multi Fibre (liquid, ~1 kcal/ml)" },
+      "form": { "pl": "1–6 lat", "en": "1–6 y" },
+      "basis": "ml",
+      "per100": { "kcal": 101, "protein": 2.5, "fat": 4.4, "carbs": 12.5, "fibre": 0.8, "calcium_mg": 60, "iron_mg": 1.0, "zinc_mg": 1.0, "sodium_mg": 60, "potassium_mg": 110, "vita_ug": 41, "vitd_ug": 1.0 },
+      "measures": [],
+      "tags": ["vitD", "Fe", "Zn", "fibre", "oral-ok", "tube-ok", "child", "dairy"],
+      "source": { "label": { "pl": "Nutricia (Akademia Nutricia)", "en": "Nutricia (Akademia Nutricia)" }, "url": "https://akademianutricia.pl/produkty-i-sprzet/6" }
+    },
+    {
+      "id": "fsmp-nutridrink-dzieci",
+      "category": "fsmp-child",
+      "name": { "pl": "Nutridrink dla dzieci (płyn, 2,4 kcal/ml)", "en": "Nutridrink for children (liquid, 2.4 kcal/ml)" },
+      "form": { "pl": "dzieci; smaki: czekoladowo-karmelowy, neutralny, truskawkowy", "en": "children; flavours: chocolate-caramel, neutral, strawberry" },
+      "basis": "ml",
+      "per100": { "kcal": 240, "protein": 5.7, "fat": 10.9, "carbs": 28.5, "fibre": 2.4, "calcium_mg": 167, "iron_mg": 2.4, "zinc_mg": 2.4, "sodium_mg": 89, "potassium_mg": 221, "vita_ug": 105, "vitd_ug": 3.1 },
+      "measures": [],
+      "tags": ["high-energy", "vitD", "Fe", "Zn", "fibre", "oral-ok", "child", "dairy"],
+      "source": { "label": { "pl": "Nutricia (Akademia Nutricia)", "en": "Nutricia (Akademia Nutricia)" }, "url": "https://akademianutricia.pl/produkty-i-sprzet/1191" }
+    },
+    {
+      "id": "fsmp-fantomalt",
+      "category": "module",
+      "name": { "pl": "Fantomalt (maltodekstryna, moduł energii)", "en": "Fantomalt (maltodextrin energy module)" },
+      "form": { "pl": "proszek 400 g, neutralny", "en": "400 g powder, neutral" },
+      "basis": "g",
+      "per100": { "kcal": 384, "protein": 0, "fat": 0, "carbs": 96.0, "fibre": 0, "calcium_mg": null, "iron_mg": null, "zinc_mg": null, "sodium_mg": 2, "potassium_mg": null, "vita_ug": null, "vitd_ug": null },
+      "measures": [ { "label": { "pl": "1 płaska miarka (5 g)", "en": "1 level scoop (5 g)" }, "kcal": 19 } ],
+      "tags": ["high-energy", "module", "lactose-free", "gluten-free", "oral-ok", "tube-ok"],
+      "source": { "label": { "pl": "Nutricia PL — Katalog produktów 2023", "en": "Nutricia PL — 2023 product catalogue" }, "url": "https://akademianutricia.pl/e-learning-files/Katalog-Nutricia-2023.pdf" }
+    },
+    {
+      "id": "fsmp-protifar",
+      "category": "module",
+      "name": { "pl": "Protifar (koncentrat białka)", "en": "Protifar (protein concentrate)" },
+      "form": { "pl": "proszek 225 g — UWAGA: nie stosować u dzieci <3 r.ż.", "en": "225 g powder — NOTE: not for children under 3 y" },
+      "basis": "g",
+      "per100": { "kcal": 368, "protein": 87.2, "fat": 1.6, "carbs": 1.5, "fibre": 0, "calcium_mg": 1350, "iron_mg": null, "zinc_mg": null, "sodium_mg": 100, "potassium_mg": 140, "vita_ug": null, "vitd_ug": null },
+      "measures": [ { "label": { "pl": "1 płaska miarka (2,5 g)", "en": "1 level scoop (2.5 g)" }, "kcal": 9.2, "note": { "pl": "= 2,2 g białka", "en": "= 2.2 g protein" } } ],
+      "tags": ["high-protein", "module", "lactose-free", "gluten-free", "oral-ok", "tube-ok", "age-3plus", "dairy"],
+      "source": { "label": { "pl": "Nutricia PL — Katalog produktów 2023", "en": "Nutricia PL — 2023 product catalogue" }, "url": "https://akademianutricia.pl/e-learning-files/Katalog-Nutricia-2023.pdf" }
+    },
+    {
+      "id": "fsmp-resource-junior-liquid",
+      "category": "fsmp-child",
+      "name": { "pl": "Resource Junior (napój, 152 kcal/100 ml)", "en": "Resource Junior (liquid, 152 kcal/100 ml)" },
+      "form": { "pl": "1+ rok życia", "en": "1+ years" },
+      "basis": "ml",
+      "per100": { "kcal": 152, "protein": 3.0, "fat": 6.2, "carbs": 21.0, "fibre": null, "calcium_mg": 125, "iron_mg": 1.3, "zinc_mg": 1.3, "sodium_mg": 75, "potassium_mg": 200, "vita_ug": 135, "vitd_ug": 1.5 },
+      "measures": [],
+      "tags": ["high-energy", "vitD", "Fe", "Zn", "Ca", "oral-ok", "child", "dairy"],
+      "source": { "label": { "pl": "Nestlé Health Science PL", "en": "Nestlé Health Science Poland" }, "url": "https://www.nestlehealthscience.pl/produkty/resource-junior/resource-junior-plyn" }
+    },
+    {
+      "id": "fsmp-resource-junior-powder",
+      "category": "fsmp-child",
+      "name": { "pl": "Resource Junior (proszek)", "en": "Resource Junior (powder)" },
+      "form": { "pl": "1+ rok życia; przygotowanie 1,0 lub 1,5 kcal/ml wg tabeli dawkowania", "en": "1+ years; prepared at 1.0 or 1.5 kcal/ml per dosing table" },
+      "basis": "g",
+      "per100": { "kcal": 468, "protein": 13.9, "fat": 18.3, "carbs": 60.7, "fibre": 2.5, "calcium_mg": 380, "iron_mg": 4.8, "zinc_mg": 3.3, "sodium_mg": 225, "potassium_mg": 560, "vita_ug": 386, "vitd_ug": 4.8 },
+      "measures": [ { "label": { "pl": "55 g → 250 ml (1,0 kcal/ml)", "en": "55 g → 250 ml (1.0 kcal/ml)" }, "kcal": 250 }, { "label": { "pl": "80 g → 250 ml (1,5 kcal/ml)", "en": "80 g → 250 ml (1.5 kcal/ml)" }, "kcal": 375 } ],
+      "tags": ["high-energy", "vitD", "Fe", "Zn", "Ca", "fibre", "oral-ok", "tube-ok", "child", "dairy"],
+      "source": { "label": { "pl": "Nestlé Health Science PL", "en": "Nestlé Health Science Poland" }, "url": "https://www.nestlehealthscience.pl/produkty/resource-junior/resource-junior-400g" }
+    }
+  ]
+}

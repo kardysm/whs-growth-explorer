@@ -1,0 +1,236 @@
+{
+  "intro": {
+    "pl": "Gdy dziecko je 'normalnie', a waga stoi, trzeba sprawdzić po kolei: czy naprawdę je tyle, ile się wydaje; czy pokarm się nie 'traci' (refluks, biegunki); czy potrzeby nie są podniesione (napady, infekcje, wysiłek); czy nie porównujemy go do niewłaściwej siatki; i czy pomiar/leki/gruczoły nie tłumaczą obrazu. Poniżej lista mechanizmów z tym, JAK to sprawdzić i u KOGO.",
+    "en": "When a child eats 'normally' but weight is flat, work through: is intake really what it appears to be; are nutrients being lost (reflux, diarrhoea); are requirements elevated (seizures, infections, effort); is the child being compared against the wrong chart; and whether measurement/medications/glands explain the picture. Below: mechanisms with HOW to check and WHOM to consult."
+  },
+  "consultLabels": {
+    "gastro": { "pl": "gastroenterolog dziecięcy", "en": "paediatric gastroenterologist" },
+    "diet": { "pl": "dietetyk kliniczny", "en": "clinical dietitian" },
+    "neuroslp": { "pl": "neurologopeda", "en": "speech-and-language therapist (feeding)" },
+    "neuro": { "pl": "neurolog dziecięcy", "en": "paediatric neurologist" },
+    "cardio": { "pl": "kardiolog dziecięcy", "en": "paediatric cardiologist" },
+    "nephro": { "pl": "nefrolog dziecięcy", "en": "paediatric nephrologist" },
+    "immuno": { "pl": "immunolog", "en": "immunologist" },
+    "endo": { "pl": "endokrynolog dziecięcy", "en": "paediatric endocrinologist" }
+  },
+  "groups": [
+    {
+      "id": "intake",
+      "title": { "pl": "1. Przyjmuje mniej, niż się wydaje", "en": "1. Intake lower than it appears" },
+      "items": [
+        {
+          "text": { "pl": "Karmienie dziecka z hipotonią jest męczące: pod koniec posiłku ssanie/żucie słabnie, pokarm spływa po brodzie, część porcji się wylewa. Drobne straty powtarzane codziennie sumują się do istotnej różnicy energetycznej, choć „dziecko je”.",
+                   "en": "Feeding a hypotonic child is tiring: sucking/chewing weakens at the end of meals, milk runs down the chin, part of the portion is spilled. Small daily losses add up to a meaningful energy gap even though the child 'does eat'." },
+          "check": { "pl": "Zważ porcje przed/po posiłku (butelka), zapisuj czas posiłku i męczenie się; oceń sprawność oralno-motoryczną u neurologopedy.",
+                     "en": "Weigh portions before/after feeds (bottle), record meal length and fatigue; have oral-motor skills assessed by a feeding therapist." },
+          "consult": ["neuroslp", "diet", "gastro"],
+          "grade": "B",
+          "sources": ["romano2017", "feeding_intol_2017", "whs_oral_2020"],
+          "wspecific": false
+        },
+        {
+          "text": { "pl": "Awersja i przedłużające się posiłki (np. dłużej niż ~30 min) zwykle sygnalizują trudność, a nie „niejadkowatość”. Presja pogarsza sytuację; potrzebna jest ocena i strategie karmienia.",
+                   "en": "Food aversion and long meals (e.g. longer than ~30 min) usually signal a difficulty, not 'picky eating'. Pressure makes it worse; assessment and feeding strategies are needed." },
+          "check": { "pl": "Dzienniczek 3–7 dni (długość — praktyka): co, ile (miary domowe), jak długo, reakcje; notuj krztuszenie, wycofywanie, płacz.",
+                     "en": "3–7 day diary (length — practice): what, how much (household measures), how long, reactions; note coughing, arching, withdrawal, crying." },
+          "consult": ["neuroslp", "gastro", "diet"],
+          "grade": "B",
+          "sources": ["romano2017", "feeding_intol_2017"],
+          "wspecific": false
+        },
+        {
+          "text": { "pl": "Dzienniki żywieniowe prowadzone 'na oko' zwykle przeceniają podaż energii — bez ważenia porcji doustne niedojadanie jest często niewidoczne.",
+                   "en": "Diaries kept 'by eye' usually overestimate energy intake — without weighing portions, oral under-eating is often invisible." },
+          "check": { "pl": "Dzienniczek z ważeniem/pomiarami domowymi; zdjęcia porcji; porównaj policzone kcal z szacunkiem kalkulatora (sekcja F).",
+                     "en": "Diary with weighing/household measures; photos of portions; compare counted kcal with the calculator estimate (section F)." },
+          "consult": ["diet"],
+          "grade": "A",
+          "sources": ["nice_ng75", "faltering_2026", "romano2017"],
+          "wspecific": false
+        }
+      ]
+    },
+    {
+      "id": "losses",
+      "title": { "pl": "2. Straty: to, co się „nie wchłonęło”", "en": "2. Losses: what did not get absorbed" },
+      "items": [
+        {
+          "text": { "pl": "Ulewanie i wymioty to nie tylko stracone mililitry — to też ból przy karmieniu i unikanie jedzenia. U dzieci z niepełnosprawnością neurologiczną refluks jest częsty i wymaga leczenia (nie tylko zagęszczania pokarmu).",
+                   "en": "Spitting and vomiting are not only lost millilitres — they mean pain around feeding and food avoidance. In children with neurological impairment reflux is common and needs treatment (not just thicker feeds)." },
+          "check": { "pl": "Dziennik epizodów (kiedy, po czym, ile), próba leczenia próbnego wg wytycznych; rozważ pH-metrię/endoskopię z gastroenterologiem.",
+                     "en": "Episode diary (when, after what, how much), a guideline-based treatment trial; consider pH study/endoscopy with the gastroenterologist." },
+          "consult": ["gastro"],
+          "grade": "A",
+          "sources": ["romano2017"],
+          "wspecific": false
+        },
+        {
+          "text": { "pl": "Przewlekła biegunka, stolce tłuszczowe, wzdęcia i gazy sugerują zaburzenia trawienia/wchłaniania — to osobna ścieżka diagnostyczna, niezależna od „ile dziecko je” (standardowa praktyka kliniczna; nie jest to twierdzenie z przewodnika neurologicznego romano2017).",
+                   "en": "Chronic diarrhoea, fatty stools, bloating and gas suggest digestion/absorption problems — a separate diagnostic path, independent of 'how much the child eats' (standard clinical practice; not a statement from the romano2017 neurological-impairment guideline)." },
+          "check": { "pl": "Kalprotektyna, morfologia, żelazo/ferrytyna, badania wchłaniania wg gastroenterologa; wykluczenie chorób współistniejących.",
+                     "en": "Faecal calprotectin, blood count, iron/ferritin, absorption work-up per gastroenterologist; exclude comorbid conditions." },
+          "consult": ["gastro"],
+          "grade": "D",
+          "sources": ["faltering_2026"],
+          "wspecific": false
+        }
+      ]
+    },
+    {
+      "id": "requirements",
+      "title": { "pl": "3. Zwiększone potrzeby", "en": "3. Increased requirements" },
+      "items": [
+        {
+          "text": { "pl": "Napady padaczkowe (częste w WHS) nakładają się na karmienie: mgła po napadzie, senność, leki. Notuj napady i koreluj je z masą i apetytem.",
+                   "en": "Seizures (common in WHS) overlap with feeding: post-ictal drowsiness, sedation, medications. Log seizures and correlate them with weight and appetite." },
+          "check": { "pl": "Zapis napadów + korelacja z masą i apetytem; kontakt z neurologiem przy każdej zmianie.",
+                     "en": "Seizure log correlated with weight and appetite; contact the neurologist at every change." },
+          "consult": ["neuro", "diet"],
+          "grade": "C",
+          "sources": ["whs_epilepsy_2025"],
+          "wspecific": true
+        },
+        {
+          "text": { "pl": "Ekstrapolacja: przyjmuje się, że napady i stres mogą podnosić wydatek energetyczny (dane z innych populacji neurologicznych; brak danych WHS).",
+                   "en": "Extrapolation: seizures and stress are assumed to raise energy expenditure (data from other neurological populations; no WHS data)." },
+          "check": { "pl": "Nie zwiększaj podaży tylko z tego powodu — decyduj na podstawie trendu masy; omów z neurologiem i dietetykiem.",
+                     "en": "Do not increase intake for this reason alone — decide from the weight trend; discuss with the neurologist and dietitian." },
+          "consult": ["neuro", "diet"],
+          "grade": "D",
+          "sources": ["ni2009_sullivan"],
+          "wspecific": false
+        },
+        {
+          "text": { "pl": "WHS wiąże się z niedoborami odporności humoralnej i częstszymi infekcjami; każde zakażenie to zwiększone zapotrzebowanie i straty. Nawracające infekcje → ocena immunologiczna.",
+                   "en": "WHS is associated with antibody deficiency and more frequent infections; each infection raises needs and causes losses. Recurrent infections → immunological assessment." },
+          "check": { "pl": "Częstość infekcji (dziennik), morfologia, immunoglobuliny (IgG/IgA/IgM) — skierowanie do immunologa.",
+                     "en": "Infection frequency (log), blood count, immunoglobulins (IgG/IgA/IgM) — referral to immunology." },
+          "consult": ["immuno"],
+          "grade": "C",
+          "sources": ["hanley1998"],
+          "wspecific": true
+        },
+        {
+          "text": { "pl": "Wady serca są typowe dla WHS — kontrola kardiologiczna wg planu; obserwuj męczenie i poty przy karmieniu.",
+                   "en": "Congenital heart defects are typical in WHS — cardiology follow-up as scheduled; watch for feeding fatigue and sweating." },
+          "check": { "pl": "Ocena kardiologiczna wg planu; ocena oddechu/połykania przy posiłkach; neurologopeda + kardiolog wg potrzeb.",
+                     "en": "Cardiology follow-up as scheduled; assess breathing/swallowing around meals; feeding therapist + cardiologist as needed." },
+          "consult": ["cardio", "neuroslp"],
+          "grade": "C",
+          "sources": ["battaglia2015"],
+          "wspecific": true
+        },
+        {
+          "text": { "pl": "Ekstrapolacja: zwiększona praca oddechowa (aspiracja, obturacja, chrapanie) może podnosić potrzeby energetyczne (dane z innych populacji; brak danych WHS).",
+                   "en": "Extrapolation: increased breathing effort (aspiration, obstruction, snoring) may raise energy needs (data from other populations; no WHS data)." },
+          "check": { "pl": "Zwróć uwagę na męczenie przy karmieniu; omów z kardiologiem i neurologopedą.",
+                     "en": "Watch for feeding fatigue; discuss with the cardiologist and feeding therapist." },
+          "consult": ["cardio", "neuroslp"],
+          "grade": "D",
+          "sources": ["feeding_intol_2017"],
+          "wspecific": false
+        }
+      ]
+    },
+    {
+      "id": "reference",
+      "title": { "pl": "4. WHS rośnie po swojemu (siatka, nie centyl WHO)", "en": "4. WHS grows on its own curve (charts, not the WHO centile)" },
+      "items": [
+        {
+          "text": { "pl": "Dziecko z WHS może być zdrowym 'na swoim' kanale siatki WHS, a mimo to wypadać bardzo nisko na siatce WHO. Porównywanie z siatką zdrowej populacji zaniża oczekiwania i może prowadzić do niepotrzebnej presji na karmienie — oraz odwrotnie, maskować prawdziwe pogorszenie.",
+                   "en": "A child with WHS may be doing well on the WHS chart while plotting very low on WHO. Comparing against the healthy-population chart can create unnecessary feeding pressure — and, conversely, can mask a real deterioration." },
+          "check": { "pl": "Wykreślaj masę na siatce WHS (narzędzie: Wykresy) ORAZ śledź własny trend dziecka; szukaj zmiany tempa, nie pojedynczego punktu.",
+                     "en": "Plot weight on the WHS chart (Charts section) AND track the child's own trend; look for a change of slope, not a single point." },
+          "consult": ["diet", "gastro"],
+          "grade": "C",
+          "sources": ["antonius2008", "growth2025", "shimojima2012"],
+          "wspecific": true
+        },
+        {
+          "text": { "pl": "Definicje słabego przyrastania (np. spadek o ≥1 kanał centylowy, kryteria z-score) trzeba stosować na siatce, która należy do populacji dziecka — w WHS to siatka WHS. Kalkulator pokazuje pozycję dziecka na siatce WHS obok wartości odniesienia ze siatki WHO (dwie różne odpowiedzi na dwa różne pytania).",
+                   "en": "Faltering definitions (e.g. crossing ≥1 centile channel, z-score criteria) must be applied on the child's own reference — for WHS that is the WHS chart. The calculator shows the child's position on the WHS chart next to the WHO reference values (two different questions, two different answers)." },
+          "check": { "pl": "Porównaj spadek na siatce WHS ze spadkiem na WHO — kalkulator podaje pozycję WHS (SD) i % odniesienia zdrowego; omów z dietetykiem.",
+                     "en": "Compare the drop on the WHS chart with that on WHO — the calculator reports the WHS position (SD) and the % of the healthy reference; discuss with the dietitian." },
+          "consult": ["diet"],
+          "grade": "A",
+          "sources": ["faltering_2026", "nice_ng75", "antonius2008"],
+          "wspecific": true
+        }
+      ]
+    },
+    {
+      "id": "measurement",
+      "title": { "pl": "5. Błąd pomiaru", "en": "5. Measurement error" },
+      "items": [
+        {
+          "text": { "pl": "Jeden pomiar na innej wadze, w ubraniu lub po obfitym posiłku potrafi stworzyć fałszywy 'spadek wagi'. Przy powolnych przyrostach (rzędu gramów) technika ważenia ma znaczenie.",
+                   "en": "One measurement on a different scale, with clothes on or after a big feed can create a false 'weight drop'. When gains are slow (grams), weighing technique matters." },
+          "check": { "pl": "Ta sama waga, poranek, przed karmieniem, bez ubrania; dwa pomiary; zapisuj datę/warunki; NICE podkreśla dokładny pomiar i systematyczne wykreślanie.",
+                     "en": "Same scale, morning, before feeding, without clothes; take two readings; record date/conditions; NICE emphasises accurate measurement and serial plotting." },
+          "consult": ["diet"],
+          "grade": "D",
+          "sources": ["nice_ng75", "faltering_2026"],
+          "wspecific": false
+        }
+      ]
+    },
+    {
+      "id": "meds",
+      "title": { "pl": "6. Leki", "en": "6. Medications" },
+      "items": [
+        {
+          "text": { "pl": "Niektóre leki przeciwpadaczkowe mogą zmniejszać apetyt lub nasilać senność wokół posiłków. Jeśli po zmianie leku przyrost słabnie — omów to z neurologiem. Nigdy nie odstawiaj leków samodzielnie.",
+                   "en": "Some anti-seizure medications can reduce appetite or add drowsiness around meals. If growth slows after a medication change, raise it with the neurologist. Never stop medications on your own." },
+          "check": { "pl": "Zestaw daty zmian leków z trendem masy; przegląd recept przy każdej wizycie.",
+                     "en": "Line up medication-change dates with the weight trend; review prescriptions at each visit." },
+          "consult": ["neuro", "diet"],
+          "grade": "C",
+          "sources": ["whs_epilepsy_2025"],
+          "wspecific": true
+        }
+      ]
+    },
+    {
+      "id": "micros",
+      "title": { "pl": "7. Mikroskładniki", "en": "7. Micronutrients" },
+      "items": [
+        {
+          "text": { "pl": "Niedobory żelaza, cynku i witaminy D współwystępują z gorszym łaknieniem, słabszym przyrostem i infekcjami. W Polsce sprawdź ferrytynę/morfologię i 25(OH)D; suplementuj według norm.",
+                   "en": "Iron, zinc and vitamin D deficiencies go together with poor appetite, weaker growth and infections. In Poland check ferritin/blood count and 25(OH)D; supplement according to the norms." },
+          "check": { "pl": "Badania krwi: morfologia, ferrytyna, 25(OH)D; dawki żelaza/cynku wg normy (EAR/RDA), witamina D wg wytycznych polskich (400–600 j.m. w 1. roku życia, 600 j.m. od 1. do 3. roku życia).",
+                     "en": "Blood tests: count, ferritin, 25(OH)D; iron/zinc doses per the norms (EAR/RDA), vitamin D per Polish guidance (400–600 IU in the first year; 600 IU age 1–3)." },
+          "consult": ["diet", "gastro"],
+          "grade": "A",
+          "sources": ["pzh2024", "pludowski2023"],
+          "wspecific": false
+        }
+      ]
+    },
+    {
+      "id": "endocrine",
+      "title": { "pl": "8. Endokrynologia i inne przyczyny", "en": "8. Endocrine and other causes" },
+      "items": [
+        {
+          "text": { "pl": "W WHS opisywano niedobór hormonu wzrostu (i próby leczenia rhGH). U dziecka z ciężkim opóźnieniem wzrastania mimo prawidłowej podaży energii — ścieżka endokrynologiczna (IGF-1, testy GH, tarczyca).",
+                   "en": "Growth-hormone deficiency has been described in WHS (with rhGH treatment attempts). In a child with severe growth failure despite adequate energy — endocrine work-up (IGF-1, GH testing, thyroid)." },
+          "check": { "pl": "Skierowanie do endokrynologa; pomiary wzrostu/długości dokładne; dokumentacja tempa wzrastania.",
+                     "en": "Referral to paediatric endocrinology; accurate length/height; growth-velocity documentation." },
+          "consult": ["endo"],
+          "grade": "C",
+          "sources": ["whs_gh_2026"],
+          "wspecific": true
+        },
+        {
+          "text": { "pl": "Nie wolno zakładać jednej przyczyny: 'nie tyje mimo jedzenia' może mieć 2–3 nakładające się mechanizmy (np. refluks + napady + błędny pomiar). Uporządkowana lista kontrolna oszczędza czas.",
+                   "en": "No single cause should be assumed: 'not gaining despite eating' often has 2–3 overlapping mechanisms (e.g. reflux + seizures + a measurement issue). A structured checklist saves time." },
+          "check": { "pl": "Przejdź tę listę z zespołem prowadzącym i odhaczaj pozycje na podstawie danych, nie wrażeń.",
+                     "en": "Work through this list with the care team; check items off with data, not impressions." },
+          "consult": ["gastro", "diet"],
+          "grade": "D",
+          "sources": ["romano2017", "nice_ng75"],
+          "wspecific": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,577 @@
+===== Summary of Average Requirement (AR) for energy for infants =====
+Summary of Average Requirement (AR) for energy for infants 
+Age AR  
+(MJ/day) 
+AR  
+(MJ/kg body mass per day) 
+ Boys Girls Boys Girls 
+  7 months 2.7 2.4 0.32 0.32 
+  8 months 2.8 2.5 0.32 0.32 
+  9 months 2.9 2.6 0.32 0.32 
+10 months 3.0 2.7 0.33 0.32 
+11 months 3.1 2.8 0.33 0.32 
+Table 14:  Summary of Average Requirement (AR) for energy for children and adolescents 
+Age 
+(years) 
+REE (a) 
+(MJ/day) 
+AR (b) at 
+PAL (c) =1.4 
+(MJ/day) 
+AR (b) at  
+PAL=1.6 
+(MJ/day) 
+AR (b) at  
+PAL=1.8 
+(MJ/day) 
+AR (b) at  
+PAL=2.0 
+(MJ/day) 
+Boys      
+  1 2.3 3.3    
+  2 3.0 4.3    
+  3 3.5 4.9    
+  4 3.7 5.3   6.0   6.8  
+  5 3.9 5.6   6.4   7.2  
+  6 4.2 5.9   6.7   7.6  
+  7 4.4 6.3   7.2   8.1  
+  8 4.7 6.7   7.6   8.6  
+  9 5.0 7.0   8.1   9.1  
+10 5.0    8.1   9.1 10.1 
+11 5.3    8.5   9.6 10.7 
+12 5.6    9.1 10.2 11.4 
+13 6.0    9.8 11.0 12.2 
+14 6.5  10.5 11.8 13.1 
+15 7.0  11.3 12.7 14.1 
+16 7.4  11.9 13.4 14.9 
+17 7.6  12.3 13.8 15.4 
+Girls      
+  1 2.1 3.0    
+  2 2.8 4.0    
+  3 3.2 4.6    
+  4 3.5 4.9 5.6   6.3  
+  5 3.7 5.2 5.9   6.7  
+  6 3.9 5.5 6.3   7.1  
+  7 4.1 5.8 6.7   7.5  
+  8 4.4 6.2 7.1   7.9  
+  9 4.6 6.6 7.5   8.4  
+10 4.7  7.6   8.6   9.5 
+11 4.9  8.0   9.0 10.0 
+12 5.2  8.4   9.4 10.5 
+13 5.4  8.8   9.9 11.0 
+14 5.6  9.1 10.2 11.4 
+15 5.8  9.3 10.5 11.7 
+16 5.9  9.5 10.6 11.8 
+17 5.9  9.5 10.7 11.9 
+(a): REE, resting energy expenditure computed with the predictive equations of Henry (2005) using median heights and body 
+masses from the WHO Growth Standards (WHO Multicentre Growth Reference Study Group, 2006 ) (for children aged 1-
+2 years) or from harmonised growth curves of children in the E U (van Buuren et al., 2012) (for children aged 3-17 years) . 
+Because these have overlapping age bands (0-3, 3-10, 10-18 years), the choice of equation is ambiguous at the age 
+boundaries. The REE equation for 3-10 year-olds is used for the 3 year-olds and the equation for 10-18 year-olds is used for 
+those aged 10 years. 
+(b): Taking into account a coefficient of 1.01 for growth. 
+(c): PAL, physical activity level. 
+Dietary Reference Values for energy 
+ 
+ 
+EFSA Journal 2013;11(1):3005 48 
+Table 15:  Summary of Average Requirement (AR) for energy for pregnant and lactating women (in 
+addition to the AR for non-pregnant women) 
+ AR  
+(MJ/day) 
+Pregnant women  
+1st trimester   + 0.29 
+2nd trimester + 1.1 
+3rd trimester + 2.1 
+Lactating women  
+0-6 months post partum + 2.1 
+ 
+RECOMMENDATIONS FOR RESEARCH 
+The Panel proposes that the impact of differences in body composition (i.e. FM and FFM) on REE in 
+relation to age, ethnic ity and possible other fac
+
+===== Summary of Average Requirement (AR) for energy for infants =====
+Summary of Average Requirement (AR) for energy for infants 
+Age AR  
+(kcal/day) 
+AR  
+(kcal/kg body mass per day) 
+ Boys Girls Boys Girls 
+  7 months 636 573 76 76 
+  8 months 661 599 77 76 
+  9 months 688 625 77 76 
+10 months 725 656 79 77 
+11 months 742 673 79 77 
+ 
+Dietary Reference Values for energy 
+ 
+ 
+EFSA Journal 2013;11(1):3005 109 
+Summary of Average Requirement (AR) for energy for children and adolescents 
+Age 
+(years) 
+REE(1) 
+(kcal/day) 
+AR(2) at 
+PAL(3)=1.4 
+(kcal/day) 
+AR(2) at 
+PAL=1.6 
+(kcal/day) 
+AR(2) at 
+PAL=1.8 
+(kcal/day) 
+AR(2) at 
+PAL=2.0 
+(kcal/day) 
+Boys      
+  1   550    777    
+  2   727 1,028    
+  3   830 1,174    
+  4   888 1,256 1,436 1,615  
+  5   942 1,332 1,522 1,712  
+  6   996 1,409 1,610 1,811  
+  7 1,059 1,497 1,711 1,925  
+  8 1,126 1,592 1,819 2,046  
+  9 1,191 1,684 1,925 2,165  
+10 1,196  1,933 2,174 2,416 
+11 1,264  2,043 2,298 2,554 
+12 1,345  2,174 2,445 2,717 
+13 1,444  2,333 2,625 2,916 
+14 1,555  2,513 2,828 3,142 
+15 1,670  2,699 3,036 3,374 
+16 1,761  2,845 3,201 3,556 
+17 1,819  2,940 3,307 3,675 
+Girls      
+  1   503    712    
+  2   669    946    
+  3   775 1,096    
+  4   826 1,168 1,335 1,502  
+  5   877 1,239 1,417 1,594  
+  6   928 1,312 1,500 1,687  
+  7   984 1,392 1,591 1,790  
+  8 1,045 1,477 1,688 1,899  
+  9 1,107 1,566 1,790 2,013  
+10 1,125  1,818 2,046 2,273 
+11 1,181  1,908 2,146 2,385 
+12 1,240  2,004 2,255 2,505 
+13 1,299  2,099 2,361 2,624 
+14 1,346  2,175 2,447 2,719 
+15 1,379  2,228 2,507 2,786 
+16 1,398  2,259 2,542 2,824 
+17 1,409  2,277 2,562 2,846 
+(1) REE, resting energy expenditure computed with the predictive equations of Henry. Because the equations of Henry have 
+overlapping age bands (0-3, 3-10, 10-18 years), the choice of equation is ambiguous at the age boundaries. The REE equation 
+for 3-10 year-olds is used for the 3 year-olds and the equation for 10-18 year-olds is used for those aged 10 years. 
+(2) Taking into account a coefficient of 1.01 for growth. 
+(3) PAL, physical activity level 
+Summary of Average Requirement (AR) for energy for pregnant and lactating women (in 
+addition to the AR for non-pregnant women) 
+ AR 
+(kcal/day) 
+Pregnant women  
+1st trimester  +70 
+2nd trimester +260 
+3rd trimester +500 
+Lactating women 
+0-6 months post partum 
++500 
+Dietary Reference Values for energy 
+ 
+ 
+EFSA Journal 2013;11(1):3005 110 
+GLOSSARY AND ABBREVIATIONS 
+AESAN Agencia Española de Seguridad Alimentaria y Nutrición 
+AFSSA Agence Française de Sécurité Sanitaire des Aliments 
+AR Average requirement 
+ATP Adenosin-triphosphate 
+BEE Basal energy expenditure 
+BM Body mass 
+BM
+
+===== Summary of Average Requirement (AR) for energy for children =====
+Summary of Average Requirement (AR) for energy for children and adolescents 
+Age 
+(years) 
+REE (a) 
+(MJ/day) 
+AR (b) at 
+PAL (c) =1.4 
+(MJ/day) 
+AR (b) at  
+PAL=1.6 
+(MJ/day) 
+AR (b) at  
+PAL=1.8 
+(MJ/day) 
+AR (b) at  
+PAL=2.0 
+(MJ/day) 
+Boys      
+  1 2.3 3.3    
+  2 3.0 4.3    
+  3 3.5 4.9    
+  4 3.7 5.3   6.0   6.8  
+  5 3.9 5.6   6.4   7.2  
+  6 4.2 5.9   6.7   7.6  
+  7 4.4 6.3   7.2   8.1  
+  8 4.7 6.7   7.6   8.6  
+  9 5.0 7.0   8.1   9.1  
+10 5.0    8.1   9.1 10.1 
+11 5.3    8.5   9.6 10.7 
+12 5.6    9.1 10.2 11.4 
+13 6.0    9.8 11.0 12.2 
+14 6.5  10.5 11.8 13.1 
+15 7.0  11.3 12.7 14.1 
+16 7.4  11.9 13.4 14.9 
+17 7.6  12.3 13.8 15.4 
+Girls      
+  1 2.1 3.0    
+  2 2.8 4.0    
+  3 3.2 4.6    
+  4 3.5 4.9 5.6   6.3  
+  5 3.7 5.2 5.9   6.7  
+  6 3.9 5.5 6.3   7.1  
+  7 4.1 5.8 6.7   7.5  
+  8 4.4 6.2 7.1   7.9  
+  9 4.6 6.6 7.5   8.4  
+10 4.7  7.6   8.6   9.5 
+11 4.9  8.0   9.0 10.0 
+12 5.2  8.4   9.4 10.5 
+13 5.4  8.8   9.9 11.0 
+14 5.6  9.1 10.2 11.4 
+15 5.8  9.3 10.5 11.7 
+16 5.9  9.5 10.6 11.8 
+17 5.9  9.5 10.7 11.9 
+(a): REE, resting energy expenditure computed with the predictive equations of Henry (2005) using median heights and body 
+masses from the WHO Growth Standards (WHO Multicentre Growth Reference Study Group, 2006 ) (for children aged 1-
+2 years) or from harmonised growth curves of children in the E U (van Buuren et al., 2012) (for children aged 3-17 years) . 
+Because these have overlapping age bands (0-3, 3-10, 10-18 years), the choice of equation is ambiguous at the age 
+boundaries. The REE equation for 3-10 year-olds is used for the 3 year-olds and the equation for 10-18 year-olds is used for 
+those aged 10 years. 
+(b): Taking into account a coefficient of 1.01 for growth. 
+(c): PAL, physical activity level. 
+Dietary Reference Values for energy 
+ 
+ 
+EFSA Journal 2013;11(1):3005 48 
+Table 15:  Summary of Average Requirement (AR) for energy for pregnant and lactating women (in 
+addition to the AR for non-pregnant women) 
+ AR  
+(MJ/day) 
+Pregnant women  
+1st trimester   + 0.29 
+2nd trimester + 1.1 
+3rd trimester + 2.1 
+Lactating women  
+0-6 months post partum + 2.1 
+ 
+RECOMMENDATIONS FOR RESEARCH 
+The Panel proposes that the impact of differences in body composition (i.e. FM and FFM) on REE in 
+relation to age, ethnic ity and possible other factors should be explored further so that predictive 
+equations for REE could be adjusted to take this into account. In the future, imaging techniques (such 
+as whole body magnetic resonance imaging and echocardiography methods) and specific metabolic 
+rates of major tissues and organs may allow
+
+===== Summary of Average Requirement (AR) for energy for children =====
+Summary of Average Requirement (AR) for energy for children and adolescents 
+Age 
+(years) 
+REE(1) 
+(kcal/day) 
+AR(2) at 
+PAL(3)=1.4 
+(kcal/day) 
+AR(2) at 
+PAL=1.6 
+(kcal/day) 
+AR(2) at 
+PAL=1.8 
+(kcal/day) 
+AR(2) at 
+PAL=2.0 
+(kcal/day) 
+Boys      
+  1   550    777    
+  2   727 1,028    
+  3   830 1,174    
+  4   888 1,256 1,436 1,615  
+  5   942 1,332 1,522 1,712  
+  6   996 1,409 1,610 1,811  
+  7 1,059 1,497 1,711 1,925  
+  8 1,126 1,592 1,819 2,046  
+  9 1,191 1,684 1,925 2,165  
+10 1,196  1,933 2,174 2,416 
+11 1,264  2,043 2,298 2,554 
+12 1,345  2,174 2,445 2,717 
+13 1,444  2,333 2,625 2,916 
+14 1,555  2,513 2,828 3,142 
+15 1,670  2,699 3,036 3,374 
+16 1,761  2,845 3,201 3,556 
+17 1,819  2,940 3,307 3,675 
+Girls      
+  1   503    712    
+  2   669    946    
+  3   775 1,096    
+  4   826 1,168 1,335 1,502  
+  5   877 1,239 1,417 1,594  
+  6   928 1,312 1,500 1,687  
+  7   984 1,392 1,591 1,790  
+  8 1,045 1,477 1,688 1,899  
+  9 1,107 1,566 1,790 2,013  
+10 1,125  1,818 2,046 2,273 
+11 1,181  1,908 2,146 2,385 
+12 1,240  2,004 2,255 2,505 
+13 1,299  2,099 2,361 2,624 
+14 1,346  2,175 2,447 2,719 
+15 1,379  2,228 2,507 2,786 
+16 1,398  2,259 2,542 2,824 
+17 1,409  2,277 2,562 2,846 
+(1) REE, resting energy expenditure computed with the predictive equations of Henry. Because the equations of Henry have 
+overlapping age bands (0-3, 3-10, 10-18 years), the choice of equation is ambiguous at the age boundaries. The REE equation 
+for 3-10 year-olds is used for the 3 year-olds and the equation for 10-18 year-olds is used for those aged 10 years. 
+(2) Taking into account a coefficient of 1.01 for growth. 
+(3) PAL, physical activity level 
+Summary of Average Requirement (AR) for energy for pregnant and lactating women (in 
+addition to the AR for non-pregnant women) 
+ AR 
+(kcal/day) 
+Pregnant women  
+1st trimester  +70 
+2nd trimester +260 
+3rd trimester +500 
+Lactating women 
+0-6 months post partum 
++500 
+Dietary Reference Values for energy 
+ 
+ 
+EFSA Journal 2013;11(1):3005 110 
+GLOSSARY AND ABBREVIATIONS 
+AESAN Agencia Española de Seguridad Alimentaria y Nutrición 
+AFSSA Agence Française de Sécurité Sanitaire des Aliments 
+AR Average requirement 
+ATP Adenosin-triphosphate 
+BEE Basal energy expenditure 
+BM Body mass 
+BMI Body mass index 
+cal Calorie 
+CINDI Countrywide Integrated Noncommunicable Diseases Intervention 
+COMA Committee on Medical Aspects of Food Policy 
+CV Coefficient of variation 
+d Day 
+D-A-CH Deutschland-Austria-Confoederatio Helvetica 
+DLW Doubly-labelled water 
+DoH Department of Health 
+DRI Dietary reference intake 
+DRV Dietary reference v
+
+===== Summary of Average Requirement (AR) for energy for adults =====
+Summary of Average Requirement (AR) for energy for adults 
+Age  
+(years) 
+REE (a) 
+(MJ/day) 
+AR at  
+PAL=1.4 
+(MJ/day) 
+AR at  
+PAL=1.6 
+(MJ/day) 
+AR at  
+PAL=1.8 
+(MJ/day) 
+AR at  
+PAL=2.0 
+(MJ/day) 
+Men      
+18 - 29 7.0 9.8 11.2 12.6 14.0 
+30 - 39 6.8 9.5 10.8 12.2 13.5 
+40 - 49 6.7 9.3 10.7 12.0 13.4 
+50 - 59 6.6 9.2 10.5 11.9 13.2 
+60 - 69 6.0 8.4   9.6 10.9 12.1 
+70 - 79 5.9 8.3   9.5 10.7 11.9 
+Women      
+18 - 29 5.6 7.9   9.0 10.1 11.2 
+30 - 39 5.4 7.6   8.7   9.8 10.8 
+40 - 49 5.4 7.5   8.6   9.7 10.7 
+50 - 59 5.3 7.5   8.5   9.6 10.7 
+60 - 69 4.9 6.8   7.8   8.8   9.7 
+70 - 79 4.8 6.8   7.7   8.7   9.6 
+(a): REE, resting energy expenditure predicted with the equations of Henry (2005) using body mass and height. Because 
+these have overlapping age bands (18-30 years, 30-60 years, ≥60 years) (see Appendix 2), the choice of equation is 
+ambiguous at the age boundaries. The REE equations for 18-30 year-olds are used for adults aged 18-29  years, the equations 
+for 30-60 year-olds are used for adults aged 30-39, 40-49 and 50-59 years, and the equations for ≥60 year-olds are used for 
+adults aged 60-69 and 70-79 years. 
+Dietary Reference Values for energy 
+ 
+ 
+EFSA Journal 2013;11(1):3005 47 
+Table 13:  Summary of Average Requirement (AR) for energy for infants 
+Age AR  
+(MJ/day) 
+AR  
+(MJ/kg body mass per day) 
+ Boys Girls Boys Girls 
+  7 months 2.7 2.4 0.32 0.32 
+  8 months 2.8 2.5 0.32 0.32 
+  9 months 2.9 2.6 0.32 0.32 
+10 months 3.0 2.7 0.33 0.32 
+11 months 3.1 2.8 0.33 0.32 
+Table 14:  Summary of Average Requirement (AR) for energy for children and adolescents 
+Age 
+(years) 
+REE (a) 
+(MJ/day) 
+AR (b) at 
+PAL (c) =1.4 
+(MJ/day) 
+AR (b) at  
+PAL=1.6 
+(MJ/day) 
+AR (b) at  
+PAL=1.8 
+(MJ/day) 
+AR (b) at  
+PAL=2.0 
+(MJ/day) 
+Boys      
+  1 2.3 3.3    
+  2 3.0 4.3    
+  3 3.5 4.9    
+  4 3.7 5.3   6.0   6.8  
+  5 3.9 5.6   6.4   7.2  
+  6 4.2 5.9   6.7   7.6  
+  7 4.4 6.3   7.2   8.1  
+  8 4.7 6.7   7.6   8.6  
+  9 5.0 7.0   8.1   9.1  
+10 5.0    8.1   9.1 10.1 
+11 5.3    8.5   9.6 10.7 
+12 5.6    9.1 10.2 11.4 
+13 6.0    9.8 11.0 12.2 
+14 6.5  10.5 11.8 13.1 
+15 7.0  11.3 12.7 14.1 
+16 7.4  11.9 13.4 14.9 
+17 7.6  12.3 13.8 15.4 
+Girls      
+  1 2.1 3.0    
+  2 2.8 4.0    
+  3 3.2 4.6    
+  4 3.5 4.9 5.6   6.3  
+  5 3.7 5.2 5.9   6.7  
+  6 3.9 5.5 6.3   7.1  
+  7 4.1 5.8 6.7   7.5  
+  8 4.4 6.2 7.1   7.9  
+  9 4.6 6.6 7.5   8.4  
+10 4.7  7.6   8.6   9.5 
+11 4.9  8.0   9.0 10.0 
+12 5.2  8.4   9.4 10.5 
+13 5.4  8.8   9.9 11.0 
+14 5.6  9.1 10.2 11.4 
+15 5.8  9.3 10.5 11.7 
+16 5.9  9.5 10.6 11.8 
+17 5.9  9.5 10.7 11.9 
+(a): REE, resting energy expenditu
+
+===== Summary of Average Requirement (AR) for energy for adults =====
+Summary of Average Requirement (AR) for energy for adults 
+Age 
+(years) 
+REE(1) 
+(kcal/day) 
+AR at 
+PAL=1.4 
+(kcal/day) 
+AR at 
+PAL=1.6 
+(kcal/day) 
+AR at 
+PAL=1.8 
+(kcal/day) 
+AR at 
+PAL=2.0 
+(kcal/day) 
+Men      
+18 - 29 1,674 2,338 2,672 3,006 3,340 
+30 - 39 1,621 2,264 2,588 2,911 3,235 
+40 - 49 1,599 2,234 2,553 2,873 3,192 
+50 - 59 1,578 2,204 2,519 2,834 3,149 
+60 - 69 1,440 2,017 2,305 2,593 2,882 
+70 - 79 1,416 1,984 2,267 2,550 2,834 
+Women      
+18 - 29 1,346 1,878 2,147 2,415 2,683 
+30 - 39 1,296 1,813 2,072 2,331 2,590 
+40 - 49 1,285 1,798 2,055 2,312 2,569 
+50 - 59 1,274 1,783 2,037 2,292 2,547 
+60 - 69 1,164 1,628 1,861 2,093 2,326 
+70 - 79 1,154 1,614 1,844 2,075 2,305 
+(1) REE, resting energy expenditure predicted with the equations of Henry (2005) using body mass and height. Because these 
+have overlapping age bands (18-30 years, 30-60 years, ≥60 years) (see Appendix 2), the choice of equation is ambiguous at 
+the age boundaries. The REE equations for 18-30 year-olds are used for adults aged 18-29 years, the equations for 30-
+60 year-olds are used for adults aged 30-39, 40-49 and 50-59 years, and the equations for ≥60 year-olds are used for adults 
+aged 60-69 and 70-79 years.  
+ 
+Summary of Average Requirement (AR) for energy for infants 
+Age AR  
+(kcal/day) 
+AR  
+(kcal/kg body mass per day) 
+ Boys Girls Boys Girls 
+  7 months 636 573 76 76 
+  8 months 661 599 77 76 
+  9 months 688 625 77 76 
+10 months 725 656 79 77 
+11 months 742 673 79 77 
+ 
+Dietary Reference Values for energy 
+ 
+ 
+EFSA Journal 2013;11(1):3005 109 
+Summary of Average Requirement (AR) for energy for children and adolescents 
+Age 
+(years) 
+REE(1) 
+(kcal/day) 
+AR(2) at 
+PAL(3)=1.4 
+(kcal/day) 
+AR(2) at 
+PAL=1.6 
+(kcal/day) 
+AR(2) at 
+PAL=1.8 
+(kcal/day) 
+AR(2) at 
+PAL=2.0 
+(kcal/day) 
+Boys      
+  1   550    777    
+  2   727 1,028    
+  3   830 1,174    
+  4   888 1,256 1,436 1,615  
+  5   942 1,332 1,522 1,712  
+  6   996 1,409 1,610 1,811  
+  7 1,059 1,497 1,711 1,925  
+  8 1,126 1,592 1,819 2,046  
+  9 1,191 1,684 1,925 2,165  
+10 1,196  1,933 2,174 2,416 
+11 1,264  2,043 2,298 2,554 
+12 1,345  2,174 2,445 2,717 
+13 1,444  2,333 2,625 2,916 
+14 1,555  2,513 2,828 3,142 
+15 1,670  2,699 3,036 3,374 
+16 1,761  2,845 3,201 3,556 
+17 1,819  2,940 3,307 3,675 
+Girls      
+  1   503    712    
+  2   669    946    
+  3   775 1,096    
+  4   826 1,168 1,335 1,502  
+  5   877 1,239 1,417 1,594  
+  6   928 1,312 1,500 1,687  
+  7   984 1,392 1,591 1,790  
+  8 1,045 1,477 1,688 1,899  
+  9 1,107 1,566 1,790 2,013  
+10 1,125  1,818 2,046 2,273 
+11 1,181  1,908 2,146 2,385 
+12 1,
