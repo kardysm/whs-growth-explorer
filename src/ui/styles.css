@@ -168,6 +168,9 @@ main a, footer a { color: var(--accent2); }
 :root[data-theme="dark"] .badge.gradeC { border-color: #ffb74d; color: #ffb74d; }
 :root[data-theme="dark"] .badge.gradeD { border-color: #ce93d8; color: #ce93d8; }
 :root[data-theme="dark"] .lang-toggle button[aria-pressed="true"], :root[data-theme="dark"] button.primary { color: #14151a; }
+
+/* method subtitles (naming refresh, kanban card 1) */
+.card .sub { color: var(--muted); margin: 0.05rem 0 0.45rem; }
 /* .hdr-btn in dark: keep readable text on hover state */
 .hdr-btn:hover { filter: brightness(1.08); }
 

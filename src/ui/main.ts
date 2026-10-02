@@ -285,8 +285,9 @@ function recalc(): void {
     if (z !== null && z <= -3) refeeding = `<p class="banner crit">${t("calc.refeeding_banner")}</p>`;
   }
 
-  const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean } = {}) => `
-    <div class="card"><h3>${title} ${opts.grade ? `<span class="badge grade${opts.grade}">${opts.grade}</span>` : ""}</h3>
+  const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean; sub?: string; tip?: string } = {}) => `
+    <div class="card"><h3${opts.tip ? ` title="${opts.tip}"` : ""}>${title} ${opts.grade ? `<span class="badge grade${opts.grade}">${opts.grade}</span>` : ""}</h3>
+      ${opts.sub ? `<p class="small sub">${opts.sub}</p>` : ""}
       <p><strong>${bandStr(b)}</strong></p>
       ${opts.extrap ? `<p class="small">${t("calc.extrapolation_note")}</p>` : ""}
       ${(opts.alerts ?? []).map((a) => `<p class="banner warn">${B(a)}</p>`).join("")}
@@ -301,17 +302,18 @@ function recalc(): void {
   const cCarry = (r.C.alerts ?? []).filter(() => r.C.kcalPerDay.central !== null);
   res.innerHTML = `
     ${refeeding}
-    ${card(t("calc.method_a_t"), r.A.kcalPerDay, r.A.notes, r.A.sourceIds, { grade: "A" })}
-    ${card(t("calc.method_b_t").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A" })}
+    ${card(t("calc.method_a_t"), r.A.kcalPerDay, r.A.notes, r.A.sourceIds, { grade: "A", sub: t("calc.method_a_sub"), tip: t("calc.method_a_tip") })}
+    ${card(t("calc.method_b_t"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A", sub: t("calc.method_b_sub").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), tip: t("calc.method_b_tip") })}
     ${card(t("calc.method_c_t"), r.C.kcalPerDay, [
       ...(r.C.notes ?? []),
       { pl: `% A: ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}%, % B: ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%`, en: `% A: ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}%, % B: ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%` },
       ...((r.heightBased.kcalPerDay !== null && !(r.C.alerts && r.C.alerts.length)) ? [{ pl: `kcal/cm: ${lang === "pl" ? String(r.heightBased.kcalPerCmPerDay).replace(".", ",") : r.heightBased.kcalPerCmPerDay} → ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h`, en: `kcal/cm: ${r.heightBased.kcalPerCmPerDay} -> ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h` }] : []),
       r.heightBased.note,
       ...(r.whsZ.weight !== null ? [{ pl: `Pozycja masy na siatce WHS: ≈ ${r.whsZ.weight.toFixed(1).replace(".", ",")} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`, en: `Weight position on the WHS chart: ≈ ${r.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)` }] : []),
-    ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts })}
-    ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}
-    <div class="card"><h3>${t("calc.method_d2_t")} <span class="badge gradeD">D</span></h3>
+    ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts, sub: t("calc.method_c_sub"), tip: t("calc.method_c_tip") })}
+    ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, sub: t("calc.method_d_sub"), tip: t("calc.method_d_tip"), alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}
+    <div class="card"><h3 title="${t("calc.method_d2_tip")}">${t("calc.method_d2_t")} <span class="badge gradeD">D</span></h3>
+      <p class="small sub">${t("calc.method_d2_sub")}</p>
       <p class="small">${t("calc.extrapolation_note")}</p>
       ${r.D.method2.notes && r.D.method2.notes.length ? `<p class="small">${B(r.D.method2.notes[0])}</p>` : ""}
       ${(r.D.guardrails ?? []).filter((g) => g.pl.includes("D-2") || g.en.includes("D-2")).map((g) => `<p class="banner warn">${B(g)}</p>`).join("")}
@@ -320,6 +322,7 @@ function recalc(): void {
       ${r.D.method2.kcalPerDay.central !== null && r.D.proteinGPerDay !== null ? `<p class="small">${t("calc.protein_label")}: ${(lang === "pl" ? r.D.proteinGPerDay.toFixed(1).replace(".", ",") : r.D.proteinGPerDay.toFixed(1))} g/24h (${(lang === "pl" ? r.D.proteinGPerKgPerDay!.toFixed(2).replace(".", ",") : r.D.proteinGPerKgPerDay!.toFixed(2))} g/kg/24h)</p>` : ""}
     </div>
     <div class="card"><h3>${t("calc.method_e_t")}</h3>
+      <p class="small sub">${t("calc.method_e_sub")}</p>
       ${cCarry.length ? `<p class="banner warn">${B(cCarry[0])}</p>` : ""}
       ${input.age < 12 ? `<p class="banner warn">${t("calc.infant_density_caution")}</p>` : (input.density > 1.0 ? `<p class="banner warn">${t("calc.density_caution")}</p>` : "")}
       <table><thead><tr><th>${t("calc.density_col")}</th><th>C (ml/24h)</th><th>D (ml/24h)</th></tr></thead>
@@ -329,6 +332,7 @@ function recalc(): void {
       ${r.E.volumeFlags.map((f) => `<p class="banner warn">${B(f)}</p>`).join("")}
     </div>
     ${r.F ? `<div class="card"><h3>${t("calc.method_f_t")}</h3>
+      <p class="small sub">${t("calc.method_f_sub")}</p>
       <p>${r.F.percentOfC!.toFixed(0)}% C${r.F.percentOfD !== null ? ` · ${r.F.percentOfD.toFixed(0)}% D` : ""}</p>
       <p class="small">${B(r.F.note)}</p></div>` : ""}
     <p class="small">${t("calc.note_estimate")}</p>`;
@@ -518,7 +522,7 @@ function renderChartFallbacks(ws: number[], rs: ReturnType<typeof computeAll>[])
   const open = `<details><summary class="small">${t("a11y.fallback")}</summary><div style="max-height:280px;overflow:auto">`;
   const close = `</div></details>`;
 
-  put("fallback1", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
+  put("fallback1", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>${t("table.col_a")}</th><th>${t("table.col_b")}</th><th>${t("table.col_c")}</th><th>${t("table.col_d")}</th></tr></thead><tbody>
     ${ws.filter((_, i) => i % 4 === 0).map((w, j) => {
       const r = rs[j * 4]!;
       return `<tr><td>${w}</td><td>${num(r.A.kcalPerDay.central)}</td><td>${num(r.B.kcalPerDay.central)}</td><td>${num(r.C.kcalPerDay.central)}</td><td>${num(r.D.kcalPerDay.central)}</td></tr>`;
