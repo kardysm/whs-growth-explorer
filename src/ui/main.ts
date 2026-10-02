@@ -117,7 +117,9 @@ function renderShell(): void {
     <section id="sources"><h2>${t("sources.title")}</h2><div id="sources-body"></div></section>
     <section id="method"><h2>${t("method.title")}</h2><div id="method-body"></div></section>
   </main>
-  <footer>${t("footer")}</footer>
+  <footer>${t("footer")}
+    <p class="small" id="build-stamp">${t("meta.stamp").replace("{v}", __BUILD_VERSION__).replace("{date}", __BUILD_DATE__).replace("{commit}", __BUILD_COMMIT__)}</p>
+  </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${t("search.open")}">
     <div class="search-panel card">
       <div class="search-row">

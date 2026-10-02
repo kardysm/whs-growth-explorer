@@ -1,5 +1,5 @@
 {
-  "meta": { "default": "pl" },
+  "meta": { "default": "pl", "stamp": { "pl": "Wersja {v} • zbudowano {date} • commit {commit}", "en": "Version {v} • built {date} • commit {commit}" } },
   "meta_desc": { "pl": "WHS: żywienie i wzrastanie — kalkulator zapotrzebowania, siatki WHS/WHO, sygnały alarmowe, zasady diety i lista produktów.", "en": "WHS feeding & growth — needs calculator, WHS/WHO growth charts, red flags, diet rules and a product list." },
   "disclaimer_short": {
     "pl": "Serwis edukacyjny. Nie zastępuje porady lekarskiej ani diety klinicznej. Wyniki kalkulatora to punkt startowy do omówienia z lekarzem prowadzącym i dietetykiem klinicznym — dawki i sposób żywienia zawsze ustala zespół terapeutyczny.",
