@@ -53,3 +53,52 @@ export function buildWhsIndex(rows: WhsDigitizedRow[]): WhsIndex {
     },
   };
 }
+
+/**
+ * Approximate z-position of a weight on the digitized WHS weight chart at the given age.
+ * SD is estimated from the same-side ±1SD line gap (positive above the mean, negative below).
+ * Beyond the drawn ±2SD lines this is a linear SD-model extrapolation (documented assumption).
+ */
+export function whsWeightZ(whs: WhsIndex, sex: Sex, month: number, weightKg: number): number | null {
+  const mean = whs.get(sex, "weight", "mean", month);
+  const p1 = whs.get(sex, "weight", "+1SD", month);
+  const m1 = whs.get(sex, "weight", "-1SD", month);
+  if (mean === null) return null;
+  const gap =
+    weightKg >= mean
+      ? p1 !== null && p1 > mean
+        ? p1 - mean
+        : m1 !== null && mean > m1
+          ? mean - m1
+          : null
+      : m1 !== null && mean > m1
+        ? mean - m1
+        : p1 !== null && p1 > mean
+          ? p1 - mean
+          : null;
+  if (gap === null || gap <= 0) return null;
+  return (weightKg - mean) / gap;
+}
+
+/**
+ * Age (months, within the digitized range) at which the WHS mean LENGTH equals lengthCm.
+ * Used for the weight-for-length screen on the WHS charts; null when outside the range.
+ */
+export function whsAgeForLength(whs: WhsIndex, sex: Sex, lengthCm: number): number | null {
+  const rng = whs.range(sex, "length");
+  if (!rng) return null;
+  let prevM = rng[0];
+  let prevV = whs.get(sex, "length", "mean", prevM);
+  if (prevV === null) return null;
+  for (let m = rng[0] + 1; m <= rng[1]; m++) {
+    const v = whs.get(sex, "length", "mean", m);
+    if (v === null) continue;
+    if ((prevV <= lengthCm && lengthCm <= v) || (prevV >= lengthCm && lengthCm >= v)) {
+      if (v === prevV) return prevM;
+      return prevM + ((lengthCm - prevV) / (v - prevV)) * (m - prevM);
+    }
+    prevM = m;
+    prevV = v;
+  }
+  return null;
+}

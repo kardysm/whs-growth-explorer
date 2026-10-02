@@ -169,9 +169,9 @@
  },
 
  "refeeding": {
-  "source_ids": ["da_silva2020", "refeeding_children_2025", "faltering_2026", "who_sam_2009"],
+  "source_ids": ["da_silva2020", "refeeding_children_2025", "faltering_2026", "who_sam_2009", "antonius2008"],
   "aspn_diagnostic_criteria": "decrease in any of serum phosphorus, potassium, magnesium by 10-20% (mild) / 20-30% (moderate) / >30% and/or organ dysfunction or thiamin deficiency (severe), within 5 days of reintroducing calories.",
-  "risk_flag": "weight-for-length/height z <= -3 (severe wasting definition, WHO/UNICEF 2009, which covers children 6-60 months; applied cautiously outside that band - in younger infants clinical assessment decides; the population at high risk in refeeding_children_2025) -> show refeeding-syndrome risk banner. When length is missing the screen falls back to weight-for-age z (same -3 threshold).",
+  "risk_flag": "WHS-chart-relative screen (user direction 2026-10-02): flag when the child's weight is approximately < -3 SD below the digitized WHS chart (Antonius 2008) using the same-side SD model; weight-for-length via the length-matched age on the WHS mean-length curve; fallback weight-for-age on the same chart when length is missing. The WHO/UNICEF SAM definition (who_sam_2009, 6-60 months) is retained as background for refeeding-risk populations but is NOT used for the screen - WHS children are constitutionally small and the WHO threshold over-flagged them.",
   "faltering_weight_definition": "AAP/NASPGHAN 2026: weight-for-length or BMI-for-age < -1.65 z; or weight-gain velocity < -2 z (<2y); or decline >= 1 z."
  },
 

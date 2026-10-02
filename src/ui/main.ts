@@ -17,7 +17,7 @@ import productsContent from "../../content/products.json";
 import foodsData from "../data/products_foods.json";
 import { computeAll } from "../calc/methods.js";
 import { loadContext } from "../calc/load.js";
-import { weightForAgeZ, weightForLengthZ, whoTable } from "../calc/who.js";
+import { whsAgeForLength, whsWeightZ } from "../calc/whs.js";
 import type { CalcInput } from "../calc/types.js";
 
 type Lang = "pl" | "en";
@@ -269,16 +269,17 @@ function recalc(): void {
   const res = document.getElementById("results")!;
   res.setAttribute("aria-live", "polite");
 
-  // refeeding banner (round-2 audit R2-6: weight-for-age fallback screen when length is not entered)
+  // Refeeding-risk screen — WHS-chart-relative (user direction, DECISIONS D-023): compares the child
+  // against the digitized WHS charts, not WHO (WHS children are constitutionally smaller; the WHO
+  // threshold over-flagged them). ≈ < −3 SD via the chart's same-side SD model.
   let refeeding = "";
   {
     let z: number | null = null;
     if (input.length !== null && Number.isFinite(input.length)) {
-      const tbl = input.age < 24 ? whoTable(ctx.who, `wfl_${input.sex}`) : whoTable(ctx.who, `wfh_${input.sex}`);
-      z = weightForLengthZ(tbl, input.length, input.weight);
-    } else {
-      z = weightForAgeZ(whoTable(ctx.who, `wfa_${input.sex}`), input.age, input.weight);
+      const aStar = whsAgeForLength(ctx.whs, input.sex, input.length);
+      if (aStar !== null) z = whsWeightZ(ctx.whs, input.sex, aStar, input.weight);
     }
+    if (z === null) z = whsWeightZ(ctx.whs, input.sex, input.age, input.weight);
     if (z !== null && z <= -3) refeeding = `<p class="banner crit">${t("calc.refeeding_banner")}</p>`;
   }
 
