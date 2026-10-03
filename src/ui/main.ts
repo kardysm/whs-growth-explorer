@@ -14,6 +14,7 @@ import reasons from "../../content/reasons.json";
 import flags from "../../content/flags.json";
 import rules from "../../content/rules.json";
 import productsContent from "../../content/products.json";
+import nutrientsContent from "../../content/nutrients.json";
 import foodsData from "../data/products_foods.json";
 import { computeAll } from "../calc/methods.js";
 import { loadContext } from "../calc/load.js";
@@ -236,6 +237,7 @@ function renderCalcForm(): void {
     <div>
       <div class="card small">${t("calc.hint")}</div>
       <div id="results"></div>
+      <div id="milk-card"></div>
     </div>
   </div>`;
 
@@ -260,6 +262,7 @@ function renderCalcForm(): void {
     document.getElementById(id)!.addEventListener("change", read);
   }
   document.getElementById("btn-recalc")!.addEventListener("click", read);
+  updateMilkCard();
 }
 
 function recalc(): void {
@@ -280,6 +283,7 @@ function recalc(): void {
     actualIntakeMlPerDay: null,
   };
   const r = computeAll(calcInput, ctx);
+  lastR = r;
   const res = document.getElementById("results")!;
   res.setAttribute("aria-live", "polite");
 
@@ -357,6 +361,8 @@ function recalc(): void {
     drawCharts();
     renderTable();
   }
+  renderNutrients();
+  updateMilkCard();
 }
 
 // ---------- charts ----------
@@ -746,7 +752,217 @@ function renderRules(): void {
       .join("");
     html.push(`<div class="card"><h3>${B(bl.title)}</h3>${items}</div>`);
   }
+  html.push(`<div class="card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`);
   document.getElementById("rules-body")!.innerHTML = html.join("");
+  renderNutrients();
+}
+
+// ---------- nutrients: macro & micronutrient requirements (user request 2026-10-03) ----------
+
+let nutrientView: "age" | "child" = "child";
+let lastR: ReturnType<typeof computeAll> | null = null;
+
+interface NutCell { lo?: number; hi?: number; num?: number; ai?: boolean; approx?: BiText; }
+interface NutRow { id: string; label: BiText; kind: "perkg" | "percent" | "daily"; unit?: string; src: string[]; b1?: NutCell; b2?: NutCell; b3?: NutCell; }
+interface NutData { intro: BiText; bands: { id: string; label: BiText }[]; rows: NutRow[]; }
+
+function nutrientBandForAge(age: number): "b1" | "b2" | "b3" | null {
+  if (age < 6) return null;
+  if (age < 12) return "b1";
+  if (age < 36) return "b2";
+  return "b3";
+}
+
+function renderNutrients(): void {
+  const host = document.getElementById("nutrients");
+  if (!host) return;
+  const N = nutrientsContent as unknown as NutData;
+  const band = nutrientBandForAge(input.age);
+  const w = input.weight;
+  const cKcal = lastR?.C.kcalPerDay.central ?? null;
+  const nf = (v: number, dec = 2): string => {
+    const s = v.toFixed(dec).replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
+    return lang === "pl" ? s.replace(".", ",") : s;
+  };
+  const cellOf = (r: NutRow, id: string): NutCell | undefined => (r as unknown as Record<string, NutCell | undefined>)[id];
+  const pct = (c: NutCell | undefined): string => (c && c.lo !== undefined && c.hi !== undefined ? `${nf(c.lo, 0)}–${nf(c.hi, 0)}% E` : "—");
+  const perkg = (c: NutCell | undefined): string => (c && c.lo !== undefined && c.hi !== undefined ? `${nf(c.lo)}${c.lo !== c.hi ? "–" + nf(c.hi) : ""} g/kg` : "—");
+  const daily = (c: NutCell | undefined, unit: string): string => (c && c.num !== undefined ? `${nf(c.num, c.num < 10 ? 1 : 0)} ${unit}${c.ai ? " (AI)" : ""}` : "—");
+
+  const toggle = `
+    <div class="nut-toggle" role="group" aria-label="${t("nutrients.title")}">
+      <button type="button" data-nview="age" aria-pressed="${nutrientView === "age"}">${t("nutrients.view_age")}</button>
+      <button type="button" data-nview="child" aria-pressed="${nutrientView === "child"}">${t("nutrients.view_child").replace("{w}", nf(w, 1))}</button>
+    </div>`;
+
+  let table = "";
+  const notes: string[] = [];
+  if (nutrientView === "age") {
+    const head = N.bands.map((b) => `<th scope="col" class="${b.id === band ? "nut-hl" : ""}">${B(b.label)}</th>`).join("");
+    const rows = N.rows
+      .map((r) => {
+        const cells = N.bands
+          .map((b) => {
+            const c = cellOf(r, b.id);
+            const txt = r.kind === "perkg" ? perkg(c) : r.kind === "percent" ? pct(c) : daily(c, r.unit ?? "");
+            const extra = r.kind === "perkg" && c?.approx ? ` <span class="small">(${B(c.approx)})</span>` : "";
+            return `<td class="${b.id === band ? "nut-hl" : ""}">${txt}${extra}</td>`;
+          })
+          .join("");
+        return `<tr><th scope="row">${B(r.label)}</th>${cells}</tr>`;
+      })
+      .join("");
+    table = `<table class="nut"><thead><tr><th scope="col">${t("nutrients.col_nutrient")}</th>${head}</tr></thead><tbody>${rows}</tbody></table>`;
+    notes.push(t("nutrients.ai_note"));
+    if (band === "b3" && input.age < 48) notes.push(t("nutrients.note34"));
+  } else {
+    const rows = N.rows
+      .map((r) => {
+        const c = band ? cellOf(r, band) : undefined;
+        let val = "—";
+        let how = "";
+        if (c && band && r.kind === "perkg" && c.lo !== undefined && c.hi !== undefined) {
+          val = `≈ ${nf(c.lo * w, 1)}${c.lo !== c.hi ? "–" + nf(c.hi * w, 1) : ""} g/d`;
+          how = `${nf(c.lo)}${c.lo !== c.hi ? "–" + nf(c.hi) : ""} g/kg × ${nf(w, 1)} kg`;
+        } else if (c && band && r.kind === "percent" && c.lo !== undefined && c.hi !== undefined && cKcal !== null) {
+          val = `≈ ${nf((c.lo / 100) * cKcal / 9, 0)}–${nf((c.hi / 100) * cKcal / 9, 0)} g/d`;
+          how = `${nf(c.lo, 0)}–${nf(c.hi, 0)}% E × C = ${nf(cKcal, 0)} kcal ÷ 9`;
+        } else if (c && band && r.kind === "percent" && c.lo !== undefined && c.hi !== undefined) {
+          val = `${nf(c.lo, 0)}–${nf(c.hi, 0)}% E`;
+          how = lang === "pl" ? "C niedostępne — patrz karta C" : "C unavailable — see card C";
+        } else if (c && band && r.kind === "daily" && c.num !== undefined) {
+          val = `${nf(c.num, c.num < 10 ? 1 : 0)} ${r.unit}${c.ai ? " (AI)" : ""}`;
+          how = lang === "pl" ? `dawka dobowa dla wieku (niezależna od masy); ≈ ${nf(c.num / w, 2)} ${r.unit}/kg` : `daily amount for age (weight-independent); ≈ ${nf(c.num / w, 2)} ${r.unit}/kg`;
+        }
+        return `<tr><th scope="row">${B(r.label)}</th><td>${val}</td><td class="small">${how}</td></tr>`;
+      })
+      .join("");
+    table = `<table class="nut"><thead><tr><th scope="col">${t("nutrients.col_nutrient")}</th><th scope="col">${t("nutrients.view_child").replace("{w}", nf(w, 1))}</th><th scope="col">${t("nutrients.col_how")}</th></tr></thead><tbody>${rows}</tbody></table>`;
+    notes.push(t("nutrients.child_note"));
+  }
+  if (band === null) notes.push(t("nutrients.note06"));
+
+  const srcs = Array.from(new Set(N.rows.flatMap((r) => r.src)));
+  host.innerHTML = `
+    <p class="small">${B(N.intro)}</p>
+    ${toggle}
+    ${table}
+    ${notes.map((n) => `<p class="small">${n}</p>`).join("")}
+    <p class="small">${t("calc.sources_label")}: ${srcLinks(srcs)}</p>`;
+
+  host.querySelectorAll<HTMLButtonElement>("[data-nview]").forEach((b) => {
+    b.addEventListener("click", () => {
+      nutrientView = b.dataset.nview === "age" ? "age" : "child";
+      renderNutrients();
+    });
+  });
+}
+
+// ---------- milk-only balance (user request 2026-10-03) ----------
+
+let milkProductId = "fsmp-infatrini";
+let milkMl = 500;
+
+function nutRowById(id: string): NutRow | undefined {
+  return (nutrientsContent as unknown as NutData).rows.find((r) => r.id === id);
+}
+function nutCellFor(id: string, band: string): NutCell | undefined {
+  const r = nutRowById(id);
+  return r ? (r as unknown as Record<string, NutCell | undefined>)[band] : undefined;
+}
+
+function updateMilkCard(): void {
+  const host = document.getElementById("milk-card");
+  if (!host) return;
+  const items = (productsContent as unknown as { items: { id: string; name: BiText; per100: Record<string, number | null | undefined> }[] }).items;
+  const milks = items.filter((x) => x.id !== "fsmp-fantomalt" && x.id !== "fsmp-protifar");
+  if (!milks.some((m) => m.id === milkProductId)) milkProductId = milks[0]?.id ?? "";
+  const sel = milks.find((m) => m.id === milkProductId);
+  const band = nutrientBandForAge(input.age);
+  const w = input.weight;
+  const ml = milkMl;
+  const fmtN = (v: number, dec = 1): string => {
+    const s = v.toFixed(dec).replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
+    return lang === "pl" ? s.replace(".", ",") : s;
+  };
+  const per = (k: string): number | null => {
+    const v = sel?.per100?.[k];
+    return typeof v === "number" ? v : null;
+  };
+  const from = (k: string): number | null => (per(k) !== null ? (per(k)! * ml) / 100 : null);
+  const milkKcal = from("kcal");
+  const milkProt = from("protein");
+  const cKcal = lastR?.C.kcalPerDay.central ?? null;
+  const dKcal = lastR?.D.kcalPerDay.central ?? null;
+  const protC = band ? nutCellFor("protein", band) : undefined;
+  const protNeed: [number, number] | null = protC && protC.lo !== undefined && protC.hi !== undefined ? [protC.lo * w, protC.hi * w] : null;
+  const microNeed = (id: string): number | null => {
+    const c = band ? nutCellFor(id, band) : undefined;
+    return c?.num !== undefined ? c.num : null;
+  };
+  const gap = (need: number | null, got: number | null): number | null => (need === null ? null : Math.max(0, need - (got ?? 0)));
+  const num = (v: number | null, unit: string, dec = 1): string => (v === null ? t("milk.na") : `${fmtN(v, dec)} ${unit}`);
+  const range = (lo: number | null, hi: number | null, unit: string): string => {
+    if (lo === null || hi === null) return t("milk.na");
+    return lo === hi ? `${fmtN(lo, 1)} ${unit}` : `${fmtN(lo, 1)}–${fmtN(hi, 1)} ${unit}`;
+  };
+
+  const rows: string[] = [];
+  {
+    const got = milkKcal;
+    const need = cKcal;
+    const pct = got !== null && need !== null && need > 0 ? Math.round((got / need) * 100) : null;
+    const g = gap(need, got);
+    rows.push(`<tr><th scope="row">${t("milk.row_energy_c")}</th><td>${num(got, "kcal", 0)}</td><td>${num(need, "kcal", 0)}</td><td>${g === null ? t("milk.na") : `${fmtN(g, 0)} kcal${pct !== null ? ` <span class="small">(${t("milk.pct_covered").replace("{p}", String(pct))})</span>` : ""}`}</td></tr>`);
+  }
+  if (dKcal !== null && cKcal !== null && dKcal > cKcal + 1) {
+    const got = milkKcal;
+    const g = gap(dKcal, got);
+    rows.push(`<tr><th scope="row">${t("milk.row_energy_d")}</th><td>${num(got, "kcal", 0)}</td><td>${num(dKcal, "kcal", 0)}</td><td>${g === null ? t("milk.na") : `${fmtN(g, 0)} kcal`}</td></tr>`);
+  }
+  rows.push(`<tr><th scope="row">${t("milk.row_protein")}</th><td>${num(milkProt, "g")}</td><td>${protNeed ? range(protNeed[0], protNeed[1], "g") : t("milk.na")}</td><td>${protNeed ? range(gap(protNeed[0], milkProt), gap(protNeed[1], milkProt), "g") : t("milk.na")}</td></tr>`);
+  const micros: [string, string, string, number][] = [
+    ["calcium", "calcium_mg", "mg", 0],
+    ["iron", "iron_mg", "mg", 1],
+    ["zinc", "zinc_mg", "mg", 1],
+    ["vitd", "vitd_ug", "µg", 1],
+  ];
+  for (const [nid, pk, unit, dec] of micros) {
+    const got = from(pk);
+    const need = microNeed(nid);
+    const g = gap(need, got);
+    const lbl = nutRowById(nid);
+    rows.push(`<tr><th scope="row">${lbl ? B(lbl.label) : nid}</th><td>${num(got, unit, dec)}</td><td>${num(need, unit, dec)}</td><td>${g === null ? t("milk.na") : num(g, unit, dec)}</td></tr>`);
+  }
+
+  const opts = milks
+    .map((m) => {
+      const k = m.per100["kcal"];
+      return `<option value="${m.id}" ${m.id === milkProductId ? "selected" : ""}>${B(m.name)}${typeof k === "number" ? ` — ${fmtN(k, 0)} kcal/100 ml` : ""}</option>`;
+    })
+    .join("");
+  host.innerHTML = `
+    <div class="card"><h3>${t("milk.title")}</h3>
+      <p class="small sub">${t("milk.sub")}</p>
+      <div class="milk-inputs">
+        <label for="milk-prod">${t("milk.product_label")}</label>
+        <select id="milk-prod">${opts}</select>
+        <label for="milk-ml">${t("milk.ml_label")}</label>
+        <input id="milk-ml" type="number" min="0" max="2000" step="10" value="${ml}" />
+      </div>
+      <table><thead><tr><th>${t("milk.col_component")}</th><th>${t("milk.col_from_milk").replace("{ml}", String(ml))}</th><th>${t("milk.col_need")}</th><th>${t("milk.col_gap")}</th></tr></thead><tbody>${rows.join("")}</tbody></table>
+      ${band === null ? `<p class="small">${t("nutrients.note06")}</p>` : ""}
+      <p class="small">${t("milk.note")}</p>
+      <p class="small">${t("calc.sources_label")}: ${srcLinks(["pzh2024"])} · ${lang === "pl" ? "skład produktu: dane producenta" : "product composition: manufacturer data"}</p>
+    </div>`;
+  document.getElementById("milk-prod")?.addEventListener("change", (e) => {
+    milkProductId = (e.target as HTMLSelectElement).value;
+    updateMilkCard();
+  });
+  document.getElementById("milk-ml")?.addEventListener("change", (e) => {
+    milkMl = Math.max(0, Math.min(2000, Number((e.target as HTMLInputElement).value) || 0));
+    updateMilkCard();
+  });
 }
 
 // ---------- products (§8) ----------

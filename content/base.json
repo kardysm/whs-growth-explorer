@@ -743,5 +743,105 @@
   "footer": {
     "pl": "WHS Feeding & Growth Explorer — wersja robocza (draft). Projekt badawczy; patrz Źródła i Metodologia.",
     "en": "WHS Feeding & Growth Explorer — working draft. Research project; see Sources and Methods."
+  },
+  "nutrients": {
+    "title": {
+      "pl": "Zapotrzebowanie na makro- i mikroelementy",
+      "en": "Macro- and micronutrient requirements"
+    },
+    "view_age": {
+      "pl": "Normy wg wieku",
+      "en": "Norms by age"
+    },
+    "view_child": {
+      "pl": "Dla mojego dziecka ({w} kg)",
+      "en": "For my child ({w} kg)"
+    },
+    "col_nutrient": {
+      "pl": "Składnik",
+      "en": "Nutrient"
+    },
+    "col_how": {
+      "pl": "Jak policzono",
+      "en": "How it's computed"
+    },
+    "ai_note": {
+      "pl": "AI = wystarczające spożycie (gdy nie ma RDA); pozostałe wartości to zalecane spożycie (RDA).",
+      "en": "AI = adequate intake (where no RDA exists); other values are recommended dietary allowance (RDA)."
+    },
+    "child_note": {
+      "pl": "Przeliczenia z proporcji: białko g/kg × masa; tłuszcz i węglowodany % energii × C (utrzymanie z kalkulatora). Mikroelementy: dawki dobowe nie zależą od masy — wartość „na kg” jest tylko orientacyjna.",
+      "en": "Computed from the proportions: protein g/kg × weight; fat and carbohydrates % energy × C (maintenance from the calculator). Micronutrients: daily amounts do not depend on weight — the per-kg value is informational only."
+    },
+    "note06": {
+      "pl": "0–6 miesięcy: zapotrzebowanie pokrywa mleko matki lub formuła; tabele norm PZH zaczynają się od 6. miesiąca. O suplementacji witaminy D decyduje zespół prowadzący.",
+      "en": "0-6 months: requirements are covered by breast milk or formula; the PZH norm tables start at 6 months. Vitamin D supplementation is decided by the care team."
+    },
+    "note34": {
+      "pl": "Wiek 3–4 lata leży między pasmami norm — pokazano pasmo 4–6 lat (normy rosną z wiekiem).",
+      "en": "Ages 3-4 y fall between the norm bands — the 4-6 y band is shown (norms increase with age)."
+    },
+    "band_na": {
+      "pl": "—",
+      "en": "—"
+    }
+  },
+  "milk": {
+    "title": {
+      "pl": "Bilans: samo mleko — czego brakuje z jedzenia",
+      "en": "Balance: milk only — what food must cover"
+    },
+    "sub": {
+      "pl": "Wybierz mleko i dzienną objętość. Kalkulacja pokazuje, ile energii, białka i wybranych mikroelementów musi jeszcze wnieść jedzenie (poza mlekiem).",
+      "en": "Pick the milk and daily volume. The calculation shows how much energy, protein and selected micronutrients food must still provide (beyond milk)."
+    },
+    "product_label": {
+      "pl": "Mleko / produkt",
+      "en": "Milk / product"
+    },
+    "ml_label": {
+      "pl": "Objętość na dobę (ml)",
+      "en": "Daily volume (ml)"
+    },
+    "col_component": {
+      "pl": "Składnik",
+      "en": "Component"
+    },
+    "col_from_milk": {
+      "pl": "Z mleka ({ml} ml)",
+      "en": "From milk ({ml} ml)"
+    },
+    "col_need": {
+      "pl": "Potrzeba (wiek/masa)",
+      "en": "Need (age/weight)"
+    },
+    "col_gap": {
+      "pl": "Do pokrycia z jedzenia",
+      "en": "To cover with food"
+    },
+    "row_energy_c": {
+      "pl": "Energia — utrzymanie (C)",
+      "en": "Energy — maintenance (C)"
+    },
+    "row_energy_d": {
+      "pl": "Energia — doganianie (D)",
+      "en": "Energy — catch-up (D)"
+    },
+    "row_protein": {
+      "pl": "Białko",
+      "en": "Protein"
+    },
+    "pct_covered": {
+      "pl": "{p}% pokryte",
+      "en": "{p}% covered"
+    },
+    "note": {
+      "pl": "„Do pokrycia z jedzenia” = potrzeba − to, co wnosi mleko. Mleka nie zagęszczaj samodzielnie; zmiany (w tym moduły energii/białka) ustala zespół prowadzący.",
+      "en": "“To cover with food” = need − what the milk provides. Do not concentrate milk on your own; changes (including energy/protein modules) are set by the care team."
+    },
+    "na": {
+      "pl": "—",
+      "en": "—"
+    }
   }
 }
