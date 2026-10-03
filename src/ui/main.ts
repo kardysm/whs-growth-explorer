@@ -933,7 +933,9 @@ function updateMilkCard(): void {
   const host = document.getElementById("milk-card");
   if (!host) return;
   const items = (productsContent as unknown as { items: { id: string; name: BiText; per100: Record<string, number | null | undefined> }[] }).items;
-  const milks = items.filter((x) => x.id !== "fsmp-fantomalt" && x.id !== "fsmp-protifar");
+  const milks = items
+    .filter((x) => x.id !== "fsmp-fantomalt" && x.id !== "fsmp-protifar")
+    .sort((a, b) => (Number(a.per100["kcal"]) || 0) - (Number(b.per100["kcal"]) || 0));
   if (!milks.some((m) => m.id === milkProductId)) milkProductId = milks[0]?.id ?? "";
   const sel = milks.find((m) => m.id === milkProductId);
   const band = nutrientBandForAge(input.age);
@@ -1128,8 +1130,8 @@ function renderProducts(): void {
     document.getElementById("p-list")!.innerHTML = `<div class="grid2">` + list.map((x) => {
       const n = x.per100;
       const basis = x.basis === "g" ? "100 g" : "100 ml";
-      const meas = x.measures.length
-        ? `<p class="small">${t("products.household")}: ${x.measures.slice(0, 3).map((m) => `${B(m.label)}${m.kcal !== null && m.kcal !== undefined ? " = " + pn(m.kcal) + " kcal" : ""}${m.note ? " (" + B(m.note) + ")" : ""}`).join(" · ")}</p>`
+      const meas = (x.measures ?? []).length
+        ? `<p class="small">${t("products.household")}: ${(x.measures ?? []).slice(0, 3).map((m) => `${B(m.label)}${m.kcal !== null && m.kcal !== undefined ? " = " + pn(m.kcal) + " kcal" : ""}${m.note ? " (" + B(m.note) + ")" : ""}`).join(" · ")}</p>`
         : "";
       return `<div class="card" id="prod-${x.id}">
         <p><b>${x.name[lang]}</b></p>

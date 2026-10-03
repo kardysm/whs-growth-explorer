@@ -614,7 +614,8 @@
         "sweets": "słodycze",
         "fsmp-infant": "FSMP niemowlęcy",
         "fsmp-child": "FSMP dla dzieci",
-        "module": "moduły"
+        "module": "moduły",
+        "formula": "mleko standardowe"
       },
       "en": {
         "fats": "fats",
@@ -626,7 +627,8 @@
         "sweets": "sweets",
         "fsmp-infant": "infant FSMP",
         "fsmp-child": "child FSMP",
-        "module": "modules"
+        "module": "modules",
+        "formula": "standard formula"
       }
     },
     "taglabels": {
@@ -824,8 +826,8 @@
       "en": "Balance: milk only — what food must cover"
     },
     "sub": {
-      "pl": "Wybierz mleko i dzienną objętość. Kalkulacja pokazuje, ile energii, białka i wybranych mikroelementów musi jeszcze wnieść jedzenie (poza mlekiem).",
-      "en": "Pick the milk and daily volume. The calculation shows how much energy, protein and selected micronutrients food must still provide (beyond milk)."
+      "pl": "Wybierz mleko i dzienną objętość. Kalkulacja pokazuje, ile energii, białka i wybranych mikroelementów musi jeszcze wnieść jedzenie (poza mlekiem). Mleko standardowe ma ok. 0,66–0,67 kcal/ml; od 1 kcal/ml wzwyż to mleka wysokoenergetyczne (FSMP).",
+      "en": "Pick the milk and daily volume. The calculation shows how much energy, protein and selected micronutrients food must still provide (beyond milk). Standard formula is about 0.66-0.67 kcal/ml; 1 kcal/ml and above are energy-enriched milks (FSMP)."
     },
     "product_label": {
       "pl": "Mleko / produkt",
