@@ -58,6 +58,10 @@
     "aria": {
       "pl": "sekcje",
       "en": "sections"
+    },
+    "menu": {
+      "pl": "Menu",
+      "en": "Menu"
     }
   },
   "start": {
@@ -384,6 +388,14 @@
     "band_e": {
       "pl": "Dolna–górna: skrajne kombinacje pasm C i D. Środkowa: C+D przy wartościach środkowych.",
       "en": "Low–high: extreme combinations of the C and D bands. Central: C+D at central values."
+    },
+    "remember": {
+      "pl": "Zapamiętaj wartości na tym urządzeniu",
+      "en": "Remember these values on this device"
+    },
+    "remember_hint": {
+      "pl": "Dane zostają tylko w Twojej przeglądarce (localStorage; bez serwera). Odznacz, aby usunąć zapis.",
+      "en": "Stored only in your browser (localStorage; no server). Uncheck to delete."
     }
   },
   "charts": {

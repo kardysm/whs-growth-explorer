@@ -51,3 +51,11 @@ to the rest of the UI, all ≥4.5:1). Fixes applied during this hardening pass:
 - grade badges get lighter dark-mode shades (≥6:1 on the dark card; light-mode colours unchanged);
 - primary buttons / active language button in dark mode use dark text (≈7:1);
 - search results list simplified to plain list + aria-live (removed listbox/option misuse).
+
+
+## Re-audit 2026-10-03 (post UX batch: modern look, typography, hamburger, nutrients, milk card)
+
+axe-core (4.x, injected from node_modules) on the rebuilt site: **0 violations** in light, dark and
+search-dialog states. Spot checks: text capped at 78ch (754 px at 1280 px viewport); cards 14 px radius;
+h2 accent bar; hamburger hidden >=641 px, nav normal at 800 px; no horizontal overflow at 360 px;
+persistence/hamburger interactions verified in-browser (aria-expanded, Esc close, link close).

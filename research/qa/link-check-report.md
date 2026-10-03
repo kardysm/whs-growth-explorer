@@ -1,6 +1,6 @@
 # Link check report (research/sources.json)
 
-Checked 47 entries; one canonical target per source.
+Checked 48 entries; one canonical target per source.
 Note: publisher bot-walls (403/429) are common for DOI landing pages when fetched by tools;
 sources whose content was originally retrieved via Wayback are marked accordingly.
 
@@ -20,7 +20,7 @@ sources whose content was originally retrieved via Wayback are marked accordingl
 | borsani2023 | https://doi.org/10.3389/fped.2023.1097152 | 200 | ok |
 | schofield1985 | https://europepmc.org/article/MED/4044297 | 403 | blocked-informational (publisher bot-wall/paywall) |
 | holliday1957 | https://doi.org/10.1542/peds.19.5.823 | 403 | blocked-informational (publisher bot-wall/paywall) |
-| ashworth1969 | https://doi.org/10.1079/bjn19690094 | 503 | INVESTIGATE (503) |
+| ashworth1969 | https://doi.org/10.1079/bjn19690094 | 200 | ok |
 | spady1976 | https://doi.org/10.1093/ajcn/29.10.1073 | 200 | ok |
 | energy_deposition1981 | https://doi.org/10.1093/ajcn/34.5.892 | 200 | ok |
 | da_silva2020 | https://doi.org/10.1002/ncp.10474 | 403 | blocked-informational (publisher bot-wall/paywall) |
@@ -53,5 +53,6 @@ sources whose content was originally retrieved via Wayback are marked accordingl
 | who_pif2007 | https://www.who.int/publications/i/item/9789241595414 | 200 | ok |
 | aap_botulism | https://www.healthychildren.org/English/health-issues/conditions/infections/Pages/Botulism.aspx | 200 | ok |
 | who_sam_2009 | https://www.who.int/publications/i/item/9789241598163 | 200 | ok |
+| espghan_espn_pn_energy | https://espen.org/documents/A174-02PaedPNGuidel_ESPGHANESPENPNGuidelines2Energy.pdf | 200 | ok |
 
-Total: 47; investigate: 1
+Total: 48; investigate: 0

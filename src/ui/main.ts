@@ -58,6 +58,17 @@ let input: Inputs = {
   intake: null,
 };
 
+// Opt-in persistence (GOAL privacy rule: localStorage only on explicit opt-in).
+const STORE_KEY = "whs-calc-inputs-v1";
+let rememberMe = false;
+try {
+  const raw = localStorage.getItem(STORE_KEY);
+  if (raw) {
+    input = { ...input, ...(JSON.parse(raw) as Partial<typeof input>) };
+    rememberMe = true;
+  }
+} catch { /* ignore */ }
+
 const app = document.getElementById("app")!;
 
 function t(path: string): string {
@@ -99,12 +110,15 @@ function bandStr(b: { low: number | null; central: number | null; high: number |
 
 // ---------- shell ----------
 
+let navEscBound = false;
+
 function renderShell(): void {
   app.innerHTML = `
   <a class="skip-link" href="#main">${t("a11y.skip")}</a>
   <header class="top">
     <h1>WHS Feeding &amp; Growth Explorer</h1>
-    <nav class="main" aria-label="${t("nav.aria")}">
+    <button type="button" class="hdr-btn nav-toggle" id="nav-toggle-btn" aria-expanded="false" aria-controls="main-nav" aria-label="${t("nav.menu")}">☰ <span class="small">${t("nav.menu")}</span></button>
+    <nav class="main" id="main-nav" aria-label="${t("nav.aria")}">
       ${( ["start","calc","charts","table","why","flags","rules","products","sources","method"] as const)
         .map((k) => `<a href="#${k}">${t(`nav.${k}`)}</a>`).join("")}
     </nav>
@@ -168,6 +182,37 @@ function renderShell(): void {
     (ev.currentTarget as HTMLElement).setAttribute("aria-pressed", String(next === "dark"));
     drawCharts();
   });
+  // mobile hamburger menu (kanban card, 2026-10-03)
+  const navToggleBtn = document.getElementById("nav-toggle-btn");
+  const navEl = document.getElementById("main-nav");
+  if (navToggleBtn && navEl) {
+    const closeNav = (): void => {
+      navEl.classList.remove("open");
+      navToggleBtn.setAttribute("aria-expanded", "false");
+      updateScrollPad();
+    };
+    navToggleBtn.addEventListener("click", () => {
+      const open = navEl.classList.toggle("open");
+      navToggleBtn.setAttribute("aria-expanded", String(open));
+      updateScrollPad();
+    });
+    navEl.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) closeNav();
+    });
+    if (!navEscBound) {
+      navEscBound = true;
+      document.addEventListener("keydown", (e) => {
+        const n = document.getElementById("main-nav");
+        const b = document.getElementById("nav-toggle-btn");
+        if (e.key === "Escape" && n?.classList.contains("open")) {
+          n.classList.remove("open");
+          b?.setAttribute("aria-expanded", "false");
+          (b as HTMLElement | null)?.focus();
+          updateScrollPad();
+        }
+      });
+    }
+  }
 }
 
 function renderStart(): void {
@@ -232,6 +277,8 @@ function renderCalcForm(): void {
       <input id="in-mlfeed" type="number" min="10" max="400" step="5" value="${input.mlPerFeed ?? ""}" />
       <label for="in-intake">${t("calc.intake")}</label>
       <input id="in-intake" type="number" min="0" max="3000" step="10" value="${input.intake ?? ""}" />
+      <label class="remember"><input type="checkbox" id="in-remember" ${rememberMe ? "checked" : ""}/> ${t("calc.remember")}</label>
+      <p class="small">${t("calc.remember_hint")}</p>
       <button class="primary" type="button" id="btn-recalc">${t("calc.compute")}</button>
     </form>
     <div>
@@ -256,12 +303,23 @@ function renderCalcForm(): void {
       mlPerFeed: (document.getElementById("in-mlfeed") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-mlfeed") as HTMLInputElement).value),
       intake: (document.getElementById("in-intake") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-intake") as HTMLInputElement).value),
     };
+    try {
+      if (rememberMe) localStorage.setItem(STORE_KEY, JSON.stringify(input));
+      else localStorage.removeItem(STORE_KEY);
+    } catch { /* ignore */ }
     recalc();
   };
   for (const id of ["in-sex", "in-age", "in-weight", "in-length", "in-tone", "in-mobility", "in-target", "in-horizon", "in-density", "in-feeds", "in-mlfeed", "in-intake"]) {
     document.getElementById(id)!.addEventListener("change", read);
   }
   document.getElementById("btn-recalc")!.addEventListener("click", read);
+  document.getElementById("in-remember")?.addEventListener("change", (e) => {
+    rememberMe = (e.target as HTMLInputElement).checked;
+    try {
+      if (rememberMe) localStorage.setItem(STORE_KEY, JSON.stringify(input));
+      else localStorage.removeItem(STORE_KEY);
+    } catch { /* ignore */ }
+  });
   updateMilkCard();
 }
 
