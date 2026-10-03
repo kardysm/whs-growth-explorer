@@ -396,6 +396,26 @@
     "remember_hint": {
       "pl": "Dane zostają tylko w Twojej przeglądarce (localStorage; bez serwera). Odznacz, aby usunąć zapis.",
       "en": "Stored only in your browser (localStorage; no server). Uncheck to delete."
+    },
+    "grades_hint": {
+      "pl": "Litery A–D przy kartach to klasy dowodów (nie nazwy metod): A — wytyczne / przeglądy systematyczne; B — badania kohortowe / RCT; C — serie przypadków WHS; D — ekstrapolacja z innej populacji / opinia ekspercka. Pełny opis w sekcji Źródła.",
+      "en": "The A–D letters on the cards are evidence grades (not method names): A — guidelines / systematic reviews; B — cohort studies / RCTs; C — WHS case series; D — extrapolation from another population / expert opinion. Full legend in the Sources section."
+    },
+    "grade_a": {
+      "pl": "Klasa A — wytyczne / przeglądy systematyczne",
+      "en": "Grade A — guidelines / systematic reviews"
+    },
+    "grade_b": {
+      "pl": "Klasa B — badania kohortowe lub RCT (populacja z niepełnosprawnością)",
+      "en": "Grade B — cohort studies or RCTs (disability populations)"
+    },
+    "grade_c": {
+      "pl": "Klasa C — serie przypadków WHS",
+      "en": "Grade C — WHS case series"
+    },
+    "grade_d": {
+      "pl": "Klasa D — ekstrapolacja z innej populacji / opinia ekspercka",
+      "en": "Grade D — extrapolation from another population / expert opinion"
     }
   },
   "charts": {

@@ -282,7 +282,7 @@ function renderCalcForm(): void {
       <button class="primary" type="button" id="btn-recalc">${t("calc.compute")}</button>
     </form>
     <div>
-      <div class="card small">${t("calc.hint")}</div>
+      <div class="card small">${t("calc.hint")}<br>${t("calc.grades_hint")}</div>
       <div id="results"></div>
       <div id="milk-card"></div>
     </div>
@@ -360,7 +360,7 @@ function recalc(): void {
   }
 
   const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean; sub?: string; tip?: string; band?: string } = {}) => `
-    <div class="card"><h3${opts.tip ? ` title="${opts.tip}"` : ""}>${title} ${opts.grade ? `<span class="badge grade${opts.grade}">${opts.grade}</span>` : ""}</h3>
+    <div class="card"><h3${opts.tip ? ` title="${opts.tip}"` : ""}>${title} ${opts.grade ? `<span class="badge grade${opts.grade}" title="${t(`calc.grade_${opts.grade.toLowerCase()}`)}">${opts.grade}</span>` : ""}</h3>
       ${opts.sub ? `<p class="small sub">${opts.sub}</p>` : ""}
       <p><strong>${bandStr(b)}</strong></p>
       ${opts.band ? `<p class="small band-note">${opts.band}</p>` : ""}
@@ -387,7 +387,7 @@ function recalc(): void {
       ...(r.whsZ.weight !== null ? [{ pl: `Pozycja masy na siatce WHS: ≈ ${r.whsZ.weight.toFixed(1).replace(".", ",")} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`, en: `Weight position on the WHS chart: ≈ ${r.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)` }] : []),
     ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts, sub: t("calc.method_c_sub"), tip: t("calc.method_c_tip"), band: t("calc.band_c") })}
     ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, sub: t("calc.method_d_sub"), tip: t("calc.method_d_tip"), band: t("calc.band_d"), alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}
-    <div class="card"><h3 title="${t("calc.method_d2_tip")}">${t("calc.method_d2_t")} <span class="badge gradeD">D</span></h3>
+    <div class="card"><h3 title="${t("calc.method_d2_tip")}">${t("calc.method_d2_t")} <span class="badge gradeD" title="${t("calc.grade_d")}">D</span></h3>
       <p class="small sub">${t("calc.method_d2_sub")}</p>
       <p class="small">${t("calc.extrapolation_note")}</p>
       ${r.D.method2.notes && r.D.method2.notes.length ? `<p class="small">${B(r.D.method2.notes[0])}</p>` : ""}
@@ -733,7 +733,7 @@ function renderSources(): void {
       if (s.doi) links.push(`<a href="https://doi.org/${s.doi}" rel="noopener">doi:${s.doi}</a>`);
       if (s.pmid) links.push(`<a href="https://pubmed.ncbi.nlm.nih.gov/${s.pmid}/" rel="noopener">PMID ${s.pmid}</a>`);
       if (s.url && !s.doi) links.push(`<a href="${s.url}" rel="noopener">link</a>`);
-      return `<li><span class="badge grade${g}">${g}</span> ${s.citation ?? s.title} ${links.join(" · ")}
+      return `<li>${gradeBadge(g)} ${s.citation ?? s.title} ${links.join(" · ")}
         <span class="small">[${s.verified ? t("sources.verified") : "UNVERIFIED"} · ${t("sources.accessed")}: ${s.accessed}]</span>
         ${s.notes ? `<div class="small" lang="en" title="nota źródłowa (j. angielski)">${s.notes}</div>` : ""}</li>`;
     }).join("")}
@@ -752,7 +752,7 @@ function srcLinks(ids: string[]): string {
 function gradeBadge(g: string): string {
   const letter = (g || "D").trim()[0]?.toUpperCase() ?? "D";
   const known = ["A", "B", "C", "D"].includes(letter) ? letter : "D";
-  return `<span class="badge grade${known}">${g}</span>`;
+  return `<span class="badge grade${known}" title="${t(`calc.grade_${known.toLowerCase()}`)}">${g}</span>`;
 }
 
 function renderWhy(): void {
