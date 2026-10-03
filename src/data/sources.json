@@ -1,6 +1,6 @@
 {
  "accessed": "2026-10-02",
- "count": 47,
+ "count": 48,
  "sources": [
   {
    "id": "antonius2008",
@@ -867,6 +867,18 @@
    "accessed": "2026-10-02",
    "fetched_file": "research/raw/who_sam_2009.pdf",
    "notes": "Box 1: severe wasting = weight-for-height < -3 SD (WHO standards). Basis for the refeeding-risk banner threshold (< -3 SD screening trigger)."
+  },
+  {
+   "id": "espghan_espn_pn_energy",
+   "category": "guideline",
+   "evidence_class": "A",
+   "citation": "ESPGHAN/ESPEN. Guidelines on Paediatric Parenteral Nutrition: 2. Energy (A174-02). ESPGHAN/ESPEN, 2005.",
+   "title": "Guidelines on Paediatric Parenteral Nutrition — Chapter 2: Energy",
+   "url": "https://espen.org/documents/A174-02PaedPNGuidel_ESPGHANESPENPNGuidelines2Energy.pdf",
+   "verified": true,
+   "accessed": "2026-10-03",
+   "fetched_file": "research/raw/espghan_espn_pn_energy.pdf",
+   "notes": "Tables 2.1-2.2: REE/BMR equations (WHO, Schofield (W), Schofield (WH), Harris-Benedict) for 0-3y and 3-10y. The Schofield weight-only (W) forms for 0-3y are used by the calculator's C (flat-chart fix 2026-10-03)."
   }
  ]
 }

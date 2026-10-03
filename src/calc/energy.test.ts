@@ -48,14 +48,18 @@ describe("FAO/WHO/UNU 2004 lookups", () => {
   it("girls 11-12 mo bin -> 712 (audit F5 fix)", () => expect(faoEnergy("girls", 11)).toBe(712));
 });
 
-describe("Schofield 1985 (weight+height, EFSA Appendix 13)", () => {
-  it("boys 24 mo, 9.65 kg, 75.7 cm", () => {
-    // 0.167*9.65 + 1517.4*0.757 - 617.6
+describe("Schofield BMR (ESPGHAN/ESPEN tables; weight-only 0-3y, weight+height 3-10y)", () => {
+  it("boys 24 mo, 9.65 kg: weight-only (W) form", () => {
+    // 59.48*9.65 - 30.33
     const v = schofieldBmrBand("boys", 24, 9.65, 75.7);
-    expect(v).toBeCloseTo(0.167 * 9.65 + 1517.4 * 0.757 - 617.6, 3);
+    expect(v).toBeCloseTo(59.48 * 9.65 - 30.33, 3);
   });
-  it("girls 24 mo, 9.0 kg, 74.0 cm", () => {
+  it("girls 24 mo, 9.0 kg: weight-only (W) form", () => {
     const v = schofieldBmrBand("girls", 24, 9.0, 74.0);
-    expect(v).toBeCloseTo(16.25 * 9.0 + 1023.2 * 0.74 - 413.5, 3);
+    expect(v).toBeCloseTo(58.29 * 9.0 - 31.05, 3);
+  });
+  it("boys 48 mo, 12.0 kg, 90 cm: weight+height (WH) form", () => {
+    const v = schofieldBmrBand("boys", 48, 12.0, 90);
+    expect(v).toBeCloseTo(19.6 * 12.0 + 130.3 * 0.9 + 414.9, 3);
   });
 });

@@ -35,8 +35,8 @@ describe("full pipeline (representative case)", () => {
   });
 
   it("C equals Schofield x tone x activity", () => {
-    // boys 24mo, w=9.0, h=80cm: 0.167*9 + 1517.4*0.8 - 617.6
-    const bmr = 0.167 * 9.0 + 1517.4 * 0.8 - 617.6;
+    // boys 24mo, w=9.0: weight-only (W) form (0-3y): 59.48*9 - 30.33
+    const bmr = 59.48 * 9.0 - 30.33;
     expect(r.C.kcalPerDay.central!).toBeCloseTo(bmr * 0.9 * 1.15, 3);
   });
 
@@ -80,24 +80,25 @@ describe("full pipeline (representative case)", () => {
     expect(r6.D.guardrails.some((g) => g.en.includes("D-2"))).toBe(true);
   });
 
-  it("default length follows the WHS chart (audit F1)", () => {
-    const r7 = computeAll({ ...base, lengthCm: null }, ctx);
+  it("default length follows the WHS chart (audit F1; WH form at >=3y)", () => {
+    const r7 = computeAll({ ...base, ageMonths: 40, weightKg: 10, lengthCm: null }, ctx);
     const whsLen = r7.whsRef.length["mean"]!;
-    const bmr = 0.167 * 9.0 + 1517.4 * (whsLen / 100) - 617.6;
+    const bmr = 19.6 * 10 + 130.3 * (whsLen / 100) + 414.9;
     expect(r7.C.kcalPerDay.central!).toBeCloseTo(bmr * 0.9 * 1.15, 3);
     expect(r7.whsZ.weight).not.toBeNull();
   });
 
-  it("month 0-2 boys: C is positive but flagged as below a plausible range (audit R2-1)", () => {
+  it("month 0-2: weight-only form gives plausible C, no alerts (flatness fix 2026-10-03)", () => {
     const r8 = computeAll({ ...base, ageMonths: 0, weightKg: 3, lengthCm: null }, ctx);
-    expect(r8.C.kcalPerDay.central).not.toBeNull();
-    expect(r8.C.alerts && r8.C.alerts.length).toBeGreaterThan(0);
+    expect(r8.C.kcalPerDay.central!).toBeCloseTo((59.48 * 3 - 30.33) * 0.9 * 1.15, 1);
+    expect(!r8.C.alerts || r8.C.alerts.length === 0).toBe(true);
     const r9 = computeAll({ ...base, ageMonths: 2, weightKg: 4.5, lengthCm: null }, ctx);
-    expect(r9.C.alerts && r9.C.alerts.length).toBeGreaterThan(0);
+    expect(r9.C.kcalPerDay.central!).toBeCloseTo((59.48 * 4.5 - 30.33) * 0.9 * 1.15, 1);
+    expect(!r9.C.alerts || r9.C.alerts.length === 0).toBe(true);
   });
 
-  it("negative-BMR inputs suppress C and D with a visible alert (audit R2-1)", () => {
-    const r10 = computeAll({ ...base, ageMonths: 18, weightKg: 8, lengthCm: 30 }, ctx);
+  it("BMR <= 0 safety path suppresses C and D with a visible alert (girls 0 mo / 0.5 kg)", () => {
+    const r10 = computeAll({ ...base, sex: "girls", ageMonths: 0, weightKg: 0.5, lengthCm: null }, ctx);
     expect(r10.C.kcalPerDay.central).toBeNull();
     expect(r10.C.alerts && r10.C.alerts.length).toBeGreaterThan(0);
     expect(r10.D.kcalPerDay.central).toBeNull();
@@ -105,7 +106,7 @@ describe("full pipeline (representative case)", () => {
   });
 
   it("D-1 per-kg ceiling banner fires above the TRS 935 range (audit R2-6)", () => {
-    const r11 = computeAll({ ...base, ageMonths: 18, weightKg: 4, lengthCm: 80 }, ctx);
+    const r11 = computeAll({ ...base, ageMonths: 18, weightKg: 2, lengthCm: 80 }, ctx);
     expect(r11.D.guardrails.map((g) => g.en).join(" ")).toContain("D-1");
   });
 
@@ -114,10 +115,15 @@ describe("full pipeline (representative case)", () => {
     expect(r12.whsZ.weight!).toBeCloseTo(1.66, 1);
   });
 
-  it("girls 18 mo / 8 kg / 30 cm: implausible-range C alert, age-agnostic (audit R3-1)", () => {
+  it("girls 18 mo / 8 kg / 30 cm: weight-only C is sane, no alert (length no longer affects C <3y; fix 2026-10-03)", () => {
     const r13 = computeAll({ ...base, sex: "girls", ageMonths: 18, weightKg: 8, lengthCm: 30 }, ctx);
-    expect(r13.C.kcalPerDay.central).not.toBeNull();
-    expect(r13.C.alerts && r13.C.alerts.length).toBeGreaterThan(0);
+    expect(r13.C.kcalPerDay.central!).toBeCloseTo((58.29 * 8 - 31.05) * 0.9 * 1.15, 1);
+    expect(!r13.C.alerts || r13.C.alerts.length === 0).toBe(true);
+  });
+
+  it("implausibly low C per kg is flagged (safety net)", () => {
+    const r15 = computeAll({ ...base, ageMonths: 0, weightKg: 0.8, lengthCm: null }, ctx);
+    expect(r15.C.alerts && r15.C.alerts.length).toBeGreaterThan(0);
   });
 
   it("implausible high C per kg is flagged (audit R3-5)", () => {

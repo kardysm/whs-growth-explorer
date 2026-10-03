@@ -1,191 +1,685 @@
 {
- "version": "1.0.0",
- "generated": "2026-10-02",
- "note": "Every value below was read in this session from sources listed in research/sources.json (fetched copies under research/raw/). Anything not verifiable is marked 'pending' and must not be shown as a claim. Units: kcal/day unless stated.",
- "scope": {"grid": {"age_months": [0, 48], "weight_kg": [2, 20], "age_step_months": 1, "weight_step_kg": 0.25}},
-
- "energy_healthy": {
-  "nasem2023_eer": {
-   "source_ids": ["nasem2023"],
-   "units": "kcal/day; age = years; height = cm; weight = kg",
-   "equations_by_age": {
-    "0-2.99mo": {
-     "male": "EER = -716.45 - (1.00 x age) + (17.82 x height) + (15.06 x weight) + 200",
-     "female": "EER = -69.15 + (80.0 x age) + (2.65 x height) + (54.15 x weight) + 180"
-    },
-    "3-5.99mo": {
-     "male": "EER = -716.45 - (1.00 x age) + (17.82 x height) + (15.06 x weight) + 50",
-     "female": "EER = -69.15 + (80.0 x age) + (2.65 x height) + (54.15 x weight) + 60"
-    },
-    "6mo-2.99y": {
-     "male": "EER = -716.45 - (1.00 x age) + (17.82 x height) + (15.06 x weight) + 20",
-     "female": "EER = -69.15 + (80.0 x age) + (2.65 x height) + (54.15 x weight) + growth_energy (20 kcal/d for 6-11.99mo; 15 kcal/d for 12-35.99mo)"
-    },
-    "3-13.99y_activity_categories": {
-     "male": {
-      "inactive": "EER = -447.51 + (3.68 x age) + (13.01 x height) + (13.15 x weight) + growth_energy",
-      "low_active": "EER = 19.12 + (3.68 x age) + (8.62 x height) + (20.28 x weight) + growth_energy",
-      "active": "EER = -388.19 + (3.68 x age) + (12.66 x height) + (20.46 x weight) + growth_energy",
-      "very_active": "EER = -671.75 + (3.68 x age) + (15.38 x height) + (23.25 x weight) + growth_energy"
-     },
-     "female": {
-      "inactive": "EER = 55.59 - (22.25 x age) + (8.43 x height) + (17.07 x weight) + growth_energy",
-      "low_active": "EER = -297.54 - (22.25 x age) + (12.77 x height) + (14.73 x weight) + growth_energy",
-      "active": "EER = -189.55 - (22.25 x age) + (11.74 x height) + (18.34 x weight) + growth_energy",
-      "very_active": "EER = -709.59 - (22.25 x age) + (18.22 x height) + (14.25 x weight) + growth_energy"
-     },
-     "growth_energy_kcal_per_day": {"boys": {"3y": 20, "4-8y": 15, "9-13y": 25}, "girls": {"3y": 15, "4-8y": 15, "9-13y": 30}}
+  "version": "1.0.0",
+  "generated": "2026-10-02",
+  "note": "Every value below was read in this session from sources listed in research/sources.json (fetched copies under research/raw/). Anything not verifiable is marked 'pending' and must not be shown as a claim. Units: kcal/day unless stated.",
+  "scope": {
+    "grid": {
+      "age_months": [
+        0,
+        48
+      ],
+      "weight_kg": [
+        2,
+        20
+      ],
+      "age_step_months": 1,
+      "weight_step_kg": 0.25
     }
-   },
-   "note": "Table S-2 (Summary Table of EER Equations by Age, Sex, Physical Activity, and Energy Cost of Growth). The energy cost of growth is already included through the addend term."
   },
-
-  "efsa2013_ar": {
-   "source_ids": ["efsa_energy", "pzh2024"],
-   "infants_7_11mo": {
-    "month_6_pzh": {"male": 597, "female": 549},
-    "kcal_per_day": {"male": [636, 661, 688, 725, 742], "female": [573, 599, 625, 656, 673]},
-    "kcal_per_kg_per_day": {"male": [76, 77, 77, 79, 79], "female": [76, 76, 76, 77, 77]},
-    "months": [7, 8, 9, 10, 11]
-   },
-   "children_AR_MJ_per_day": {
-    "boys": {"1": [3.3], "2": [4.3], "3": [4.9], "4": [5.3, 6.0, 6.8], "5": [5.6, 6.4, 7.2], "6": [5.9, 6.7, 7.6], "7": [6.3, 7.2, 8.1], "8": [6.7, 7.6, 8.6], "9": [7.0, 8.1, 9.1], "10": [8.1, 9.1, 10.1], "11": [8.5, 9.6, 10.7], "12": [9.1, 10.2, 11.4], "13": [9.8, 11.0, 12.2], "14": [10.5, 11.8, 13.1], "15": [11.3, 12.7, 14.1], "16": [11.9, 13.4, 14.9], "17": [12.3, 13.8, 15.4]},
-    "girls": {"1": [3.0], "2": [4.0], "3": [4.6], "4": [4.9, 5.6, 6.3], "5": [5.2, 5.9, 6.7], "6": [5.5, 6.3, 7.1], "7": [5.8, 6.7, 7.5], "8": [6.2, 7.1, 7.9], "9": [6.6, 7.5, 8.4], "10": [7.6, 8.6, 9.5], "11": [8.0, 9.0, 10.0], "12": [8.4, 9.4, 10.5], "13": [8.8, 9.9, 11.0], "14": [9.1, 10.2, 11.4], "15": [9.3, 10.5, 11.7], "16": [9.5, 10.6, 11.8], "17": [9.5, 10.7, 11.9]},
-    "pal_columns": ["PAL low: 1.4 (<=9y) / 1.6 (10+y)", "PAL mid: 1.6 (<=9y) / 1.8 (10+y)", "PAL high: 1.8 (<=9y) / 2.0 (10+y) - relabelled in round-1 audit"]
-   },
-   "note": "EFSA sets no AR below month 7 (assumes breastfeeding); the calculator uses PZH 2024 month-6 values (597/549) and anchors month 12 to the children year-1 AR; fractional months are interpolated (round-1 audit F2/F4). REE via Henry (2005); growth adjustment x1.01 for children."
+  "energy_healthy": {
+    "nasem2023_eer": {
+      "source_ids": [
+        "nasem2023"
+      ],
+      "units": "kcal/day; age = years; height = cm; weight = kg",
+      "equations_by_age": {
+        "0-2.99mo": {
+          "male": "EER = -716.45 - (1.00 x age) + (17.82 x height) + (15.06 x weight) + 200",
+          "female": "EER = -69.15 + (80.0 x age) + (2.65 x height) + (54.15 x weight) + 180"
+        },
+        "3-5.99mo": {
+          "male": "EER = -716.45 - (1.00 x age) + (17.82 x height) + (15.06 x weight) + 50",
+          "female": "EER = -69.15 + (80.0 x age) + (2.65 x height) + (54.15 x weight) + 60"
+        },
+        "6mo-2.99y": {
+          "male": "EER = -716.45 - (1.00 x age) + (17.82 x height) + (15.06 x weight) + 20",
+          "female": "EER = -69.15 + (80.0 x age) + (2.65 x height) + (54.15 x weight) + growth_energy (20 kcal/d for 6-11.99mo; 15 kcal/d for 12-35.99mo)"
+        },
+        "3-13.99y_activity_categories": {
+          "male": {
+            "inactive": "EER = -447.51 + (3.68 x age) + (13.01 x height) + (13.15 x weight) + growth_energy",
+            "low_active": "EER = 19.12 + (3.68 x age) + (8.62 x height) + (20.28 x weight) + growth_energy",
+            "active": "EER = -388.19 + (3.68 x age) + (12.66 x height) + (20.46 x weight) + growth_energy",
+            "very_active": "EER = -671.75 + (3.68 x age) + (15.38 x height) + (23.25 x weight) + growth_energy"
+          },
+          "female": {
+            "inactive": "EER = 55.59 - (22.25 x age) + (8.43 x height) + (17.07 x weight) + growth_energy",
+            "low_active": "EER = -297.54 - (22.25 x age) + (12.77 x height) + (14.73 x weight) + growth_energy",
+            "active": "EER = -189.55 - (22.25 x age) + (11.74 x height) + (18.34 x weight) + growth_energy",
+            "very_active": "EER = -709.59 - (22.25 x age) + (18.22 x height) + (14.25 x weight) + growth_energy"
+          },
+          "growth_energy_kcal_per_day": {
+            "boys": {
+              "3y": 20,
+              "4-8y": 15,
+              "9-13y": 25
+            },
+            "girls": {
+              "3y": 15,
+              "4-8y": 15,
+              "9-13y": 30
+            }
+          }
+        }
+      },
+      "note": "Table S-2 (Summary Table of EER Equations by Age, Sex, Physical Activity, and Energy Cost of Growth). The energy cost of growth is already included through the addend term."
+    },
+    "efsa2013_ar": {
+      "source_ids": [
+        "efsa_energy",
+        "pzh2024"
+      ],
+      "infants_7_11mo": {
+        "month_6_pzh": {
+          "male": 597,
+          "female": 549
+        },
+        "kcal_per_day": {
+          "male": [
+            636,
+            661,
+            688,
+            725,
+            742
+          ],
+          "female": [
+            573,
+            599,
+            625,
+            656,
+            673
+          ]
+        },
+        "kcal_per_kg_per_day": {
+          "male": [
+            76,
+            77,
+            77,
+            79,
+            79
+          ],
+          "female": [
+            76,
+            76,
+            76,
+            77,
+            77
+          ]
+        },
+        "months": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "children_AR_MJ_per_day": {
+        "boys": {
+          "1": [
+            3.3
+          ],
+          "2": [
+            4.3
+          ],
+          "3": [
+            4.9
+          ],
+          "4": [
+            5.3,
+            6.0,
+            6.8
+          ],
+          "5": [
+            5.6,
+            6.4,
+            7.2
+          ],
+          "6": [
+            5.9,
+            6.7,
+            7.6
+          ],
+          "7": [
+            6.3,
+            7.2,
+            8.1
+          ],
+          "8": [
+            6.7,
+            7.6,
+            8.6
+          ],
+          "9": [
+            7.0,
+            8.1,
+            9.1
+          ],
+          "10": [
+            8.1,
+            9.1,
+            10.1
+          ],
+          "11": [
+            8.5,
+            9.6,
+            10.7
+          ],
+          "12": [
+            9.1,
+            10.2,
+            11.4
+          ],
+          "13": [
+            9.8,
+            11.0,
+            12.2
+          ],
+          "14": [
+            10.5,
+            11.8,
+            13.1
+          ],
+          "15": [
+            11.3,
+            12.7,
+            14.1
+          ],
+          "16": [
+            11.9,
+            13.4,
+            14.9
+          ],
+          "17": [
+            12.3,
+            13.8,
+            15.4
+          ]
+        },
+        "girls": {
+          "1": [
+            3.0
+          ],
+          "2": [
+            4.0
+          ],
+          "3": [
+            4.6
+          ],
+          "4": [
+            4.9,
+            5.6,
+            6.3
+          ],
+          "5": [
+            5.2,
+            5.9,
+            6.7
+          ],
+          "6": [
+            5.5,
+            6.3,
+            7.1
+          ],
+          "7": [
+            5.8,
+            6.7,
+            7.5
+          ],
+          "8": [
+            6.2,
+            7.1,
+            7.9
+          ],
+          "9": [
+            6.6,
+            7.5,
+            8.4
+          ],
+          "10": [
+            7.6,
+            8.6,
+            9.5
+          ],
+          "11": [
+            8.0,
+            9.0,
+            10.0
+          ],
+          "12": [
+            8.4,
+            9.4,
+            10.5
+          ],
+          "13": [
+            8.8,
+            9.9,
+            11.0
+          ],
+          "14": [
+            9.1,
+            10.2,
+            11.4
+          ],
+          "15": [
+            9.3,
+            10.5,
+            11.7
+          ],
+          "16": [
+            9.5,
+            10.6,
+            11.8
+          ],
+          "17": [
+            9.5,
+            10.7,
+            11.9
+          ]
+        },
+        "pal_columns": [
+          "PAL low: 1.4 (<=9y) / 1.6 (10+y)",
+          "PAL mid: 1.6 (<=9y) / 1.8 (10+y)",
+          "PAL high: 1.8 (<=9y) / 2.0 (10+y) - relabelled in round-1 audit"
+        ]
+      },
+      "note": "EFSA sets no AR below month 7 (assumes breastfeeding); the calculator uses PZH 2024 month-6 values (597/549) and anchors month 12 to the children year-1 AR; fractional months are interpolated (round-1 audit F2/F4). REE via Henry (2005); growth adjustment x1.01 for children."
+    },
+    "fao2004": {
+      "source_ids": [
+        "fao2004"
+      ],
+      "infants_monthly_kcal_per_day": {
+        "months_bins": [
+          "0-1",
+          "1-2",
+          "2-3",
+          "3-4",
+          "4-5",
+          "5-6",
+          "6-7",
+          "7-8",
+          "8-9",
+          "9-10",
+          "10-11",
+          "11-12"
+        ],
+        "boys": [
+          518,
+          570,
+          596,
+          569,
+          608,
+          639,
+          653,
+          680,
+          702,
+          731,
+          752,
+          775
+        ],
+        "girls": [
+          464,
+          517,
+          550,
+          537,
+          571,
+          599,
+          604,
+          629,
+          652,
+          676,
+          694,
+          712
+        ],
+        "note": "girls 11-12mo = 712 filled in round-1 audit (value located in the fetched copy)."
+      },
+      "children_1_4y_kcal_per_day": {
+        "boys": {
+          "1-2y": 948,
+          "2-3y": 1129,
+          "3-4y": 1252,
+          "4-5y": 1360
+        },
+        "girls": {
+          "1-2y": 865,
+          "2-3y": 1047,
+          "3-4y": 1156,
+          "4-5y": 1241
+        }
+      },
+      "tee_equations": {
+        "boys_children_MJ_per_day": "TEE = 1.298 + 0.265 x weight(kg) - 0.0011 x weight^2",
+        "girls_children_MJ_per_day": "TEE = 1.102 + 0.273 x weight(kg) - 0.0019 x weight^2 (present in the fetched fao_y5686e06.htm; calculator reads the girls table values directly)",
+        "all_infants_TEE_MJ_per_kg": "TEE = (-0.416 + 0.371 x weight)/weight",
+        "infants_butte_breastfed_kcal_per_day": "TEE = -152.0 + 92.8 x weight(kg)"
+      },
+      "catchup_energy_cost": "21 kJ (5 kcal) per gram of tissue to be laid down (Fomon 1971; Ashworth 1969; Kerr 1973; Whitehead 1973; Spady 1976; Krieger & Whitten 1976), ch. 4.",
+      "note": "Children's tables: quadratic regression on weight + energy deposition (Eg) allowance."
+    },
+    "pzh2024": {
+      "source_ids": [
+        "pzh2024"
+      ],
+      "infants_6_11mo_kcal_per_day": {
+        "months": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "male": [
+          597,
+          636,
+          661,
+          688,
+          725,
+          742
+        ],
+        "female": [
+          549,
+          573,
+          599,
+          625,
+          656,
+          673
+        ]
+      },
+      "children_kcal_per_day_PAL1.4": {
+        "boys": {
+          "1": 778,
+          "2": 1028,
+          "3": 1163,
+          "4": 1237,
+          "5": 1335,
+          "6": 1417,
+          "7": 1504,
+          "8": 1599,
+          "9": 1693,
+          "10": 1965,
+          "11": 2074,
+          "12": 2217
+        },
+        "girls": {
+          "1": 712,
+          "2": 947,
+          "3": 1088,
+          "4": 1160,
+          "5": 1241,
+          "6": 1312,
+          "7": 1386
+        }
+      },
+      "pal_children": "1-3y: PAL 1.4; 4-9y: PAL 1.4/1.6/1.8; 10-18y: PAL 1.6/1.8/2.0",
+      "note": "Polish 2024 norms; infants table equals EFSA ARs. Children tables give kcal at PAL columns."
+    }
   },
-
-  "fao2004": {
-   "source_ids": ["fao2004"],
-   "infants_monthly_kcal_per_day": {
-    "months_bins": ["0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9", "9-10", "10-11", "11-12"],
-    "boys": [518, 570, 596, 569, 608, 639, 653, 680, 702, 731, 752, 775],
-    "girls": [464, 517, 550, 537, 571, 599, 604, 629, 652, 676, 694, 712],
-    "note": "girls 11-12mo = 712 filled in round-1 audit (value located in the fetched copy)."
-   },
-   "children_1_4y_kcal_per_day": {"boys": {"1-2y": 948, "2-3y": 1129, "3-4y": 1252, "4-5y": 1360}, "girls": {"1-2y": 865, "2-3y": 1047, "3-4y": 1156, "4-5y": 1241}},
-   "tee_equations": {
-    "boys_children_MJ_per_day": "TEE = 1.298 + 0.265 x weight(kg) - 0.0011 x weight^2",
-    "girls_children_MJ_per_day": "TEE = 1.102 + 0.273 x weight(kg) - 0.0019 x weight^2 (present in the fetched fao_y5686e06.htm; calculator reads the girls table values directly)",
-    "all_infants_TEE_MJ_per_kg": "TEE = (-0.416 + 0.371 x weight)/weight",
-    "infants_butte_breastfed_kcal_per_day": "TEE = -152.0 + 92.8 x weight(kg)"
-   },
-   "catchup_energy_cost": "21 kJ (5 kcal) per gram of tissue to be laid down (Fomon 1971; Ashworth 1969; Kerr 1973; Whitehead 1973; Spady 1976; Krieger & Whitten 1976), ch. 4.",
-   "note": "Children's tables: quadratic regression on weight + energy deposition (Eg) allowance."
+  "bmr_ree": {
+    "schofield_1985_weight_height": {
+      "source_ids": [
+        "schofield1985",
+        "efsa_energy"
+      ],
+      "note": "As published in EFSA 2013 Appendix 13 (Schofield 1985), kcal/day; BM = body mass kg; H = height m. Krick's original method used BSA-based BMR; using these equations is a documented deviation. NOTE (2026-10-03): the 0-3y rows are retained for reference only; the calculator now uses the weight-only forms for that band.",
+      "equations_kcal_per_day": {
+        "boys_0_3y": "REE = 0.167 x BM + 1517.4 x H - 617.6",
+        "girls_0_3y": "REE = 16.25 x BM + 1023.2 x H - 413.5",
+        "boys_3_10y": "REE = 19.6 x BM + 130.3 x H + 414.9",
+        "girls_3_10y": "REE = 16.97 x BM + 161.8 x H + 371.2",
+        "boys_10_18y": "REE = 16.25 x BM + 137.2 x H + 515.5",
+        "girls_10_18y": "REE = 8.365 x BM + 465 x H + 200"
+      }
+    },
+    "henry_2005_weight_height": {
+      "source_ids": [
+        "efsa_energy"
+      ],
+      "note": "EFSA Appendix 13 (Henry 2005), kcal/day; used by EFSA for children's ARs.",
+      "equations_kcal_per_day": {
+        "boys_0_3y": "REE = 28.2 x BM + 859 x H - 371",
+        "girls_0_3y": "REE = 30.4 x BM + 703 x H - 287",
+        "boys_3_10y": "REE = 15.1 x BM + 74.2 x H + 306 (source flags possible kcal typo; MJ form safer)",
+        "girls_3_10y": "REE = 15.9 x BM + 210 x H + 349",
+        "boys_10_18y": "REE = 15.6 x BM + 266 x H + 299",
+        "girls_10_18y": "REE = 9.40 x BM + 249 x H + 462"
+      }
+    },
+    "schofield_1985_weight_only": {
+      "source_ids": [
+        "schofield1985",
+        "espghan_espn_pn_energy"
+      ],
+      "note": "Schofield weight-only (W) forms for 0-3y, as tabulated in the ESPGHAN/ESPEN paediatric PN energy guideline (Table 2.1). Used by the calculator for C at 0-3y since 2026-10-03 (the weight+height form is nearly weight-independent in this band - flat chart; user-reported).",
+      "equations_kcal_per_day": {
+        "boys_0_3y": "BMR = 59.48 x W - 30.33",
+        "girls_0_3y": "BMR = 58.29 x W - 31.05"
+      }
+    }
   },
-
-  "pzh2024": {
-   "source_ids": ["pzh2024"],
-   "infants_6_11mo_kcal_per_day": {"months": [6, 7, 8, 9, 10, 11], "male": [597, 636, 661, 688, 725, 742], "female": [549, 573, 599, 625, 656, 673]},
-   "children_kcal_per_day_PAL1.4": {
-    "boys": {"1": 778, "2": 1028, "3": 1163, "4": 1237, "5": 1335, "6": 1417, "7": 1504, "8": 1599, "9": 1693, "10": 1965, "11": 2074, "12": 2217},
-    "girls": {"1": 712, "2": 947, "3": 1088, "4": 1160, "5": 1241, "6": 1312, "7": 1386}
-   },
-   "pal_children": "1-3y: PAL 1.4; 4-9y: PAL 1.4/1.6/1.8; 10-18y: PAL 1.6/1.8/2.0",
-   "note": "Polish 2024 norms; infants table equals EFSA ARs. Children tables give kcal at PAL columns."
-  }
- },
-
- "bmr_ree": {
-  "schofield_1985_weight_height": {
-   "source_ids": ["schofield1985", "efsa_energy"],
-   "note": "As published in EFSA 2013 Appendix 13 (Schofield 1985), kcal/day; BM = body mass kg; H = height m. Krick's original method used BSA-based BMR; using these equations is a documented deviation.",
-   "equations_kcal_per_day": {
-    "boys_0_3y": "REE = 0.167 x BM + 1517.4 x H - 617.6",
-    "girls_0_3y": "REE = 16.25 x BM + 1023.2 x H - 413.5",
-    "boys_3_10y": "REE = 19.6 x BM + 130.3 x H + 414.9",
-    "girls_3_10y": "REE = 16.97 x BM + 161.8 x H + 371.2",
-    "boys_10_18y": "REE = 16.25 x BM + 137.2 x H + 515.5",
-    "girls_10_18y": "REE = 8.365 x BM + 465 x H + 200"
-   }
+  "krick_method": {
+    "source_ids": [
+      "ni2009_sullivan",
+      "krick1992"
+    ],
+    "formula": "kcal/day = (BMR x muscle_tone_factor x activity_factor) + growth_factor",
+    "tone_factor": {
+      "decreased": 0.9,
+      "normal": 1.0,
+      "increased": 1.1
+    },
+    "activity_factor": {
+      "bedridden": 1.15,
+      "dependent": 1.2,
+      "crawling": 1.25,
+      "ambulatory": 1.3
+    },
+    "growth_factor_kcal_per_g": 5,
+    "note": "Factors as tabulated in Sullivan 2009 Table 1 (citing Krick et al. 1992). Original Krick BMR = BSA(m2) x standard metabolic rate (kcal/m2/h) x 24h; our calculator substitutes Schofield BMR (weight-only 0-3y; weight+height 3-10y - documented deviation)."
   },
-  "henry_2005_weight_height": {
-   "source_ids": ["efsa_energy"],
-   "note": "EFSA Appendix 13 (Henry 2005), kcal/day; used by EFSA for children's ARs.",
-   "equations_kcal_per_day": {
-    "boys_0_3y": "REE = 28.2 x BM + 859 x H - 371",
-    "girls_0_3y": "REE = 30.4 x BM + 703 x H - 287",
-    "boys_3_10y": "REE = 15.1 x BM + 74.2 x H + 306 (source flags possible kcal typo; MJ form safer)",
-    "girls_3_10y": "REE = 15.9 x BM + 210 x H + 349",
-    "boys_10_18y": "REE = 15.6 x BM + 266 x H + 299",
-    "girls_10_18y": "REE = 9.40 x BM + 249 x H + 462"
-   }
-  }
- },
-
- "krick_method": {
-  "source_ids": ["ni2009_sullivan", "krick1992"],
-  "formula": "kcal/day = (BMR x muscle_tone_factor x activity_factor) + growth_factor",
-  "tone_factor": {"decreased": 0.9, "normal": 1.0, "increased": 1.1},
-  "activity_factor": {"bedridden": 1.15, "dependent": 1.2, "crawling": 1.25, "ambulatory": 1.3},
-  "growth_factor_kcal_per_g": 5,
-  "note": "Factors as tabulated in Sullivan 2009 Table 1 (citing Krick et al. 1992). Original Krick BMR = BSA(m2) x standard metabolic rate (kcal/m2/h) x 24h; our calculator substitutes Schofield weight+height BMR (documented deviation)."
- },
-
- "height_based_kcal_per_cm": {
-  "source_ids": ["ni2009_sullivan", "culley1969", "feeding_intol_2017"],
-  "culley_values_kcal_per_cm_per_day": {"no_motor_dysfunction": 14.7, "ambulatory_with_motor_dysfunction": 13.9, "nonambulatory": 11.1},
-  "hauer_ranges_kcal_per_cm_per_day": {"ambulatory": [12, 15], "nonambulatory": [10, 11], "low_need_subgroup": [6, 9]},
-  "gate": "expose only for age >= 12 months; derivation in infants unclear. Mapping of motor categories to Culley values is assumption-grade: primary text not retrieved; values read via Sullivan 2009 Table 1 / Hauer 2017 (labelled in the UI)."
- },
-
- "fluids": {
-  "source_ids": ["holliday1957"],
-  "holliday_segar_ml_per_kg_per_day": {"first_10kg": 100, "next_10kg": 50, "beyond_20kg": 20},
-  "note": "Maintenance water for parenteral/enteral fluid planning."
- },
-
- "catchup": {
-  "source_ids": ["fao2004", "who_protein2007", "spady1976", "ashworth1969"],
-  "energy_cost_kcal_per_g": {"default": 5.0, "gross_range_typical_to_high_fat": [4.1, 6.0], "measured_individual_range": [1.2, 5.7]},
-  "protein_energy_needs_table38": {
-   "comment": "WHO/FAO/UNU 2007 TRS 935 Table 38: protein and energy needs for catch-up growth at different rates of weight gain (typical composition 73:27 lean:fat / high-fat 50:50).",
-   "rows": [
-    {"gain_g_per_kg_per_day": 1, "protein_g_per_kg_per_day": 1.02, "energy_kcal_per_kg_per_day": 89, "protein_energy_pct": 4.6},
-    {"gain_g_per_kg_per_day": 2, "protein_g_per_kg_per_day": 1.22, "energy_kcal_per_kg_per_day": 93, "protein_energy_pct": 5.2},
-    {"gain_g_per_kg_per_day": 5, "protein_g_per_kg_per_day": 1.82, "energy_kcal_per_kg_per_day": 105, "protein_energy_pct": 6.9},
-    {"gain_g_per_kg_per_day": 10, "protein_g_per_kg_per_day": 2.82, "energy_kcal_per_kg_per_day": 126, "protein_energy_pct": 8.9},
-    {"gain_g_per_kg_per_day": 20, "protein_g_per_kg_per_day": 4.82, "energy_kcal_per_kg_per_day": 167, "protein_energy_pct": 11.5}
-   ]
+  "height_based_kcal_per_cm": {
+    "source_ids": [
+      "ni2009_sullivan",
+      "culley1969",
+      "feeding_intol_2017"
+    ],
+    "culley_values_kcal_per_cm_per_day": {
+      "no_motor_dysfunction": 14.7,
+      "ambulatory_with_motor_dysfunction": 13.9,
+      "nonambulatory": 11.1
+    },
+    "hauer_ranges_kcal_per_cm_per_day": {
+      "ambulatory": [
+        12,
+        15
+      ],
+      "nonambulatory": [
+        10,
+        11
+      ],
+      "low_need_subgroup": [
+        6,
+        9
+      ]
+    },
+    "gate": "expose only for age >= 12 months; derivation in infants unclear. Mapping of motor categories to Culley values is assumption-grade: primary text not retrieved; values read via Sullivan 2009 Table 1 / Hauer 2017 (labelled in the UI)."
   },
-  "rate_limits": "up to ~20x normal gain under optimal clinical conditions; realistically 2-3x normal at community level (FAO 2004 ch.4)."
- },
-
- "protein": {
-  "source_ids": ["who_protein2007", "cp_protein_2026"],
-  "safe_level_g_per_kg_per_day": {"0.5y": 1.31, "1y": 1.14, "1.5y": 1.03, "2y": 0.97, "3y": 0.90, "4-6y": 0.87},
-  "safe_level_g_per_day_boys": {"0.5y": 10.2, "1y": 11.6, "1.5y": 11.8, "2y": 11.9, "3y": 13.1, "4-6y": 17.1},
-  "safe_level_g_per_day_girls": {"0.5y": 9.4, "1y": 10.8, "1.5y": 11.1, "2y": 11.4, "3y": 12.7, "4-6y": 16.2},
-  "note": "TRS 935 Table 47 (safe levels; based on WHO reference weights). Catch-up protein: see catchup.protein_energy_needs_table38."
- },
-
- "micronutrients_poland": {
-  "source_ids": ["pzh2024", "pludowski2023"],
-  "iron_mg_ear_rda": {"infants_6_11mo": [7, 11], "children_1_3y": [3, 7], "children_4_6y": [4, 10]},
-  "zinc_mg_ear_rda": {"infants_6_11mo": [2.5, 3], "children_1_3y": [2.5, 3], "children_4_6y": [4, 5]},
-  "vitamin_d_ai_ug_per_day": {"infants_6_11mo": 10, "children_1_3y": 15, "children_4_6y": 15},
-  "vitamin_d_supplementation_iU_per_day": {"0-6mo": "400 IU", "6-12mo": "400-600 IU", "1-3y": "600 IU (all year)", "4-10y": "600-1000 IU if sun exposure insufficient"}
- },
-
- "refeeding": {
-  "source_ids": ["da_silva2020", "refeeding_children_2025", "faltering_2026", "who_sam_2009", "antonius2008"],
-  "aspn_diagnostic_criteria": "decrease in any of serum phosphorus, potassium, magnesium by 10-20% (mild) / 20-30% (moderate) / >30% and/or organ dysfunction or thiamin deficiency (severe), within 5 days of reintroducing calories.",
-  "risk_flag": "WHS-chart-relative screen (user direction 2026-10-02): flag when the child's weight is approximately < -3 SD below the digitized WHS chart (Antonius 2008) using the same-side SD model; weight-for-length via the length-matched age on the WHS mean-length curve; fallback weight-for-age on the same chart when length is missing. The WHO/UNICEF SAM definition (who_sam_2009, 6-60 months) is retained as background for refeeding-risk populations but is NOT used for the screen - WHS children are constitutionally small and the WHO threshold over-flagged them.",
-  "faltering_weight_definition": "AAP/NASPGHAN 2026: weight-for-length or BMI-for-age < -1.65 z; or weight-gain velocity < -2 z (<2y); or decline >= 1 z."
- },
-
- "safety_thresholds": {
-  "source_ids": ["nice_ng75", "faltering_2026"],
-  "nice_ng75_centile_spaces": ["fall across 1+ weight centile space if birthweight < 9th centile", "fall across 2+ centile spaces if birthweight 9th-91st", "fall across 3+ centile spaces if birthweight > 91st", "current weight below 2nd centile for age (any birthweight)"],
-  "note": "centile space = space between adjacent centile lines (UK-WHO charts)",
-  "d2_guardrail_kcal_per_kg": {"value": 167, "note": "TRS 935 Table 38 upper value for the 73:27 lean:fat column; used for the D-1/D-2 per-kg banners (50:50-fat column reaches 205)."}
- },
-
- "pending": [
-  "PZH children energy tables beyond 7y (girls) / 12y (boys): values present in the fetched raw copy; not used by the 0-48mo scope - revisit if the age range grows.",
-  "FAO girls child TEE equation: PRESENT in the fetched copy (fao_y5686e06.htm); not extracted into code because girls 1-4y values are read directly from Table 4.3; recorded under fao2004.tee_equations.",
-  "schofield1985 primary text not accessible (content read via EFSA Appendix 13) - accepted; coefficients cross-read in round-1 audit.",
-  "culley1969 primary text not accessible; values read via Sullivan 2009 Table 1 and Hauer 2017 - assumption-grade, labelled in the UI."
- ]
+  "fluids": {
+    "source_ids": [
+      "holliday1957"
+    ],
+    "holliday_segar_ml_per_kg_per_day": {
+      "first_10kg": 100,
+      "next_10kg": 50,
+      "beyond_20kg": 20
+    },
+    "note": "Maintenance water for parenteral/enteral fluid planning."
+  },
+  "catchup": {
+    "source_ids": [
+      "fao2004",
+      "who_protein2007",
+      "spady1976",
+      "ashworth1969"
+    ],
+    "energy_cost_kcal_per_g": {
+      "default": 5.0,
+      "gross_range_typical_to_high_fat": [
+        4.1,
+        6.0
+      ],
+      "measured_individual_range": [
+        1.2,
+        5.7
+      ]
+    },
+    "protein_energy_needs_table38": {
+      "comment": "WHO/FAO/UNU 2007 TRS 935 Table 38: protein and energy needs for catch-up growth at different rates of weight gain (typical composition 73:27 lean:fat / high-fat 50:50).",
+      "rows": [
+        {
+          "gain_g_per_kg_per_day": 1,
+          "protein_g_per_kg_per_day": 1.02,
+          "energy_kcal_per_kg_per_day": 89,
+          "protein_energy_pct": 4.6
+        },
+        {
+          "gain_g_per_kg_per_day": 2,
+          "protein_g_per_kg_per_day": 1.22,
+          "energy_kcal_per_kg_per_day": 93,
+          "protein_energy_pct": 5.2
+        },
+        {
+          "gain_g_per_kg_per_day": 5,
+          "protein_g_per_kg_per_day": 1.82,
+          "energy_kcal_per_kg_per_day": 105,
+          "protein_energy_pct": 6.9
+        },
+        {
+          "gain_g_per_kg_per_day": 10,
+          "protein_g_per_kg_per_day": 2.82,
+          "energy_kcal_per_kg_per_day": 126,
+          "protein_energy_pct": 8.9
+        },
+        {
+          "gain_g_per_kg_per_day": 20,
+          "protein_g_per_kg_per_day": 4.82,
+          "energy_kcal_per_kg_per_day": 167,
+          "protein_energy_pct": 11.5
+        }
+      ]
+    },
+    "rate_limits": "up to ~20x normal gain under optimal clinical conditions; realistically 2-3x normal at community level (FAO 2004 ch.4)."
+  },
+  "protein": {
+    "source_ids": [
+      "who_protein2007",
+      "cp_protein_2026"
+    ],
+    "safe_level_g_per_kg_per_day": {
+      "0.5y": 1.31,
+      "1y": 1.14,
+      "1.5y": 1.03,
+      "2y": 0.97,
+      "3y": 0.9,
+      "4-6y": 0.87
+    },
+    "safe_level_g_per_day_boys": {
+      "0.5y": 10.2,
+      "1y": 11.6,
+      "1.5y": 11.8,
+      "2y": 11.9,
+      "3y": 13.1,
+      "4-6y": 17.1
+    },
+    "safe_level_g_per_day_girls": {
+      "0.5y": 9.4,
+      "1y": 10.8,
+      "1.5y": 11.1,
+      "2y": 11.4,
+      "3y": 12.7,
+      "4-6y": 16.2
+    },
+    "note": "TRS 935 Table 47 (safe levels; based on WHO reference weights). Catch-up protein: see catchup.protein_energy_needs_table38."
+  },
+  "micronutrients_poland": {
+    "source_ids": [
+      "pzh2024",
+      "pludowski2023"
+    ],
+    "iron_mg_ear_rda": {
+      "infants_6_11mo": [
+        7,
+        11
+      ],
+      "children_1_3y": [
+        3,
+        7
+      ],
+      "children_4_6y": [
+        4,
+        10
+      ]
+    },
+    "zinc_mg_ear_rda": {
+      "infants_6_11mo": [
+        2.5,
+        3
+      ],
+      "children_1_3y": [
+        2.5,
+        3
+      ],
+      "children_4_6y": [
+        4,
+        5
+      ]
+    },
+    "vitamin_d_ai_ug_per_day": {
+      "infants_6_11mo": 10,
+      "children_1_3y": 15,
+      "children_4_6y": 15
+    },
+    "vitamin_d_supplementation_iU_per_day": {
+      "0-6mo": "400 IU",
+      "6-12mo": "400-600 IU",
+      "1-3y": "600 IU (all year)",
+      "4-10y": "600-1000 IU if sun exposure insufficient"
+    }
+  },
+  "refeeding": {
+    "source_ids": [
+      "da_silva2020",
+      "refeeding_children_2025",
+      "faltering_2026",
+      "who_sam_2009",
+      "antonius2008"
+    ],
+    "aspn_diagnostic_criteria": "decrease in any of serum phosphorus, potassium, magnesium by 10-20% (mild) / 20-30% (moderate) / >30% and/or organ dysfunction or thiamin deficiency (severe), within 5 days of reintroducing calories.",
+    "risk_flag": "WHS-chart-relative screen (user direction 2026-10-02): flag when the child's weight is approximately < -3 SD below the digitized WHS chart (Antonius 2008) using the same-side SD model; weight-for-length via the length-matched age on the WHS mean-length curve; fallback weight-for-age on the same chart when length is missing. The WHO/UNICEF SAM definition (who_sam_2009, 6-60 months) is retained as background for refeeding-risk populations but is NOT used for the screen - WHS children are constitutionally small and the WHO threshold over-flagged them.",
+    "faltering_weight_definition": "AAP/NASPGHAN 2026: weight-for-length or BMI-for-age < -1.65 z; or weight-gain velocity < -2 z (<2y); or decline >= 1 z."
+  },
+  "safety_thresholds": {
+    "source_ids": [
+      "nice_ng75",
+      "faltering_2026"
+    ],
+    "nice_ng75_centile_spaces": [
+      "fall across 1+ weight centile space if birthweight < 9th centile",
+      "fall across 2+ centile spaces if birthweight 9th-91st",
+      "fall across 3+ centile spaces if birthweight > 91st",
+      "current weight below 2nd centile for age (any birthweight)"
+    ],
+    "note": "centile space = space between adjacent centile lines (UK-WHO charts)",
+    "d2_guardrail_kcal_per_kg": {
+      "value": 167,
+      "note": "TRS 935 Table 38 upper value for the 73:27 lean:fat column; used for the D-1/D-2 per-kg banners (50:50-fat column reaches 205)."
+    }
+  },
+  "pending": [
+    "PZH children energy tables beyond 7y (girls) / 12y (boys): values present in the fetched raw copy; not used by the 0-48mo scope - revisit if the age range grows.",
+    "FAO girls child TEE equation: PRESENT in the fetched copy (fao_y5686e06.htm); not extracted into code because girls 1-4y values are read directly from Table 4.3; recorded under fao2004.tee_equations.",
+    "schofield1985 primary text not accessible (content read via EFSA Appendix 13) - accepted; coefficients cross-read in round-1 audit.",
+    "culley1969 primary text not accessible; values read via Sullivan 2009 Table 1 and Hauer 2017 - assumption-grade, labelled in the UI."
+  ]
 }

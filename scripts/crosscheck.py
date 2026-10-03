@@ -154,7 +154,8 @@ def nasem(sex, m, h, w):
 def schofield(sex, m, w, h_cm):
     H = h_cm / 100
     if m < 36:
-        return (0.167 * w + 1517.4 * H - 617.6) if sex == "boys" else (16.25 * w + 1023.2 * H - 413.5)
+        # Schofield weight-only (W) forms (ESPGHAN/ESPEN PN energy guideline; flat-chart fix 2026-10-03)
+        return (59.48 * w - 30.33) if sex == "boys" else (58.29 * w - 31.05)
     if m < 120:
         return (19.6 * w + 130.3 * H + 414.9) if sex == "boys" else (16.97 * w + 161.8 * H + 371.2)
     return (16.25 * w + 137.2 * H + 515.5) if sex == "boys" else (8.365 * w + 465.0 * H + 200.0)

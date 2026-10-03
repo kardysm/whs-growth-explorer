@@ -152,9 +152,10 @@ export function hollidaySegar(weightKg: number): number {
 export function schofieldBmrBand(sex: Sex, ageMonths: number, weightKg: number, heightCm: number): number {
   const H = heightCm / 100;
   if (ageMonths < 36) {
-    return sex === "boys"
-      ? 0.167 * weightKg + 1517.4 * H - 617.6
-      : 16.25 * weightKg + 1023.2 * H - 413.5;
+    // Schofield WEIGHT-ONLY (W) forms, as tabulated in the ESPGHAN/ESPEN paediatric PN energy
+    // guideline (Table 2.1). Switched 2026-10-03 (user report): the weight+height form is nearly
+    // weight-independent here (flat C line on the chart). Height intentionally unused in this band.
+    return sex === "boys" ? 59.48 * weightKg - 30.33 : 58.29 * weightKg - 31.05;
   }
   if (ageMonths < 120) {
     return sex === "boys"

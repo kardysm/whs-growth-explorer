@@ -133,9 +133,10 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
   const cHigh = cValid ? bmr * 1.1 * act : null;
   if (!cValid) {
     cAlerts.push(N("Model poza zakresem dla podanych danych (BMR ≤ 0) — nie podajemy wartości; sprawdź długość i masę ciała i oprzyj się na A/B oraz ocenie klinicznej.", "Model out of range for these inputs (BMR <= 0) — values withheld; check length and weight and rely on A/B plus clinical assessment."));
-  } else if (cCentral !== null && (cCentral < 0.5 * (A.kcalPerDay.central ?? Number.POSITIVE_INFINITY) || cCentral / weightKg < 40 || cCentral / weightKg > 250)) {
-    // Round-3 audit R3-1/R3-5: age-agnostic two-sided plausibility guard (generic wording — not boys-specific).
-    cAlerts.push(N(`Wartość C (${Math.round(cCentral)} kcal/24h ≈ ${Math.round(cCentral / weightKg)} kcal/kg) leży poza wiarygodnym zakresem dla tych danych — sprawdź długość i masę ciała. NIE używaj C jako celu żywienia bez konsultacji; oprzyj się na A/B i ocenie klinicznej.`, `C (${Math.round(cCentral)} kcal/day ≈ ${Math.round(cCentral / weightKg)} kcal/kg) is outside a plausible range for these inputs — check length and weight. Do NOT use C as a feeding target without consultation; rely on A/B and clinical assessment.`));
+  } else if (cCentral !== null && (cCentral / weightKg < 30 || cCentral / weightKg > 250)) {
+    // Plausibility guard (R2-1/R3-1 lineage; retuned 2026-10-03 after the weight-only Schofield switch):
+    // per-kg bounds only — the old 0.5xA term over-fired for WHS-typical small-for-age weights.
+    cAlerts.push(N(`Wartość C (${Math.round(cCentral)} kcal/24h ≈ ${Math.round(cCentral / weightKg)} kcal/kg) poza zakresem fizjologicznym (~30–250 kcal/kg) — sprawdź masę ciała i wiek. NIE używaj C jako celu żywienia bez konsultacji; oprzyj się na A/B i ocenie klinicznej.`, `C (${Math.round(cCentral)} kcal/day ≈ ${Math.round(cCentral / weightKg)} kcal/kg) is outside a physiological range (~30-250 kcal/kg) — check weight and age. Do NOT use C as a feeding target without consultation; rely on A/B and clinical assessment.`));
   }
   const C: MethodResult = {
     id: "C",
@@ -144,7 +145,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     sourceIds: ["ni2009_sullivan", "krick1992", "schofield1985", "efsa_energy"],
     alerts: cAlerts.length ? cAlerts : undefined,
     notes: [
-      N("Typ Krick: BMR (Schofield wg masy i wzrostu) × napięcie mięśniowe × aktywność; pierwotny BMR Kricka opierał się na BSA (udokumentowane odstępstwo).", "Krick-type: BMR (Schofield weight+height) x tone x activity; Krick's original BMR was BSA-based (documented deviation)."),
+      N("Typ Krick: BMR (Schofield — forma wagowa dla 0–3 lat, masa+wzrost od 3 lat) × napięcie mięśniowe × aktywność; pierwotny BMR Kricka opierał się na BSA (udokumentowane odstępstwo).", "Krick-type: BMR (Schofield — weight-only form for 0-3 y, weight+height from 3 y) x tone x activity; Krick's original BMR was BSA-based (documented deviation)."),
       N(`czynnik napięcia: ${String(tone).replace(".", ",")}; czynnik aktywności: ${String(act).replace(".", ",")}`, `tone factor ${tone}; activity factor ${act}`),
       ...(heightSubstituted
         ? [dLen.source === "whs"
@@ -152,9 +153,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
             : N("Nie podano długości — przyjęto medianę długości WHO dla wieku (siatka WHS niedostępna dla tego wieku).", "Length not provided — WHO median length for age used (WHS chart unavailable for this age).")]
         : []),
       N("Wartości niskie/wysokie obejmują pasmo czynnika napięcia mięśniowego (0,9–1,1).", "Low/high values span the muscle-tone factor range (0.9-1.1)."),
-      ...(sex === "boys" && ageMonths < 36
-        ? [N("Uwaga: u chłopców <3 lat równanie Schofielda prawie nie zależy od masy ciała (współczynnik 0,167) — C zmienia się głównie z długością; czytaj razem z %A/%B i trendem masy.", "Note: the boys' <3 y Schofield equation barely depends on body weight (coefficient 0.167) — C changes mainly with length; read it together with %A/%B and the weight trend.")]
-        : []),
+      N("Dla 0–3 lat forma wagowa Schofielda (W): BMR = 59,48 × masa − 30,33 (chłopcy) / 58,29 × masa − 31,05 (dziewczynki); od 3. roku życia forma masa+wzrost (WH). Źródło: wytyczne ESPGHAN/ESPEN.", "Ages 0-3 y use the Schofield weight-only (W) form: BMR = 59.48 × weight − 30.33 (boys) / 58.29 × weight − 31.05 (girls); from age 3 y the weight+height (WH) form. Source: ESPGHAN/ESPEN guideline."),
     ],
   };
 
