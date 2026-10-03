@@ -6,7 +6,7 @@
   "description": "WHS Feeding & Growth Explorer - bilingual calculator and evidence site (work in progress)",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/sync_site.mjs",
     "test": "vitest run",
     "preview": "vite preview"
   },

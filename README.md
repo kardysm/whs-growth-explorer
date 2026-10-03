@@ -33,10 +33,12 @@ Source verification (live fetches; nothing is marked verified from memory):
 The site is a single static page with **relative** asset paths (`base: "./"`), so it works unchanged from a project subpath (`https://<user>.github.io/<repo>/`). A ready workflow lives at `.github/workflows/deploy.yml`:
 
 1. Create a GitHub repository and push this project (branch `main`).
-2. In the repo: Settings -> Pages -> Build and deployment -> Source: **GitHub Actions**.
+2. In the repo: Settings -> Pages -> Build and deployment -> Source: **GitHub Actions** (the clean path; the workflow then publishes `dist/`).
 3. Push to `main` (or run the workflow manually) — it installs, runs tests, builds `dist/` and publishes it. The footer build stamp then shows the deployed commit.
 
 `public/.nojekyll` is copied into the build so GitHub Pages serves everything verbatim (no Jekyll processing). `dist/` stays out of git — CI rebuilds it on every deploy.
+
+**Branch-mode fallback (no settings change needed).** If the repository is left on the default Pages source ("Deploy from a branch", folder `/`), GitHub serves the repository root — where `index.html` references the raw TypeScript entry, which browsers refuse to execute (non-JS MIME type) and the page would stay blank. To make that mode work too, `index.html` carries a small fallback loader: when the app has not mounted, it loads the prebuilt bundle committed under `site/` (`site/app.js`, `site/app.css`). `npm run build` refreshes these two files automatically (`scripts/sync_site.mjs`); **commit them together with source changes**. In dev and in Actions-mode deployments the fallback stays dormant. Either Pages mode therefore serves a working site.
 
 ## Layout
 
