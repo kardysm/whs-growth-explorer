@@ -207,3 +207,17 @@ thead th { top: 0; }
   main { padding: 0.6rem; }
   .chart { height: 300px; }
 }
+
+/* bigger desktop header (kanban card: "Bigger header for desktop") */
+@media (min-width: 1024px) {
+  header.top { padding: 0.95rem 1.5rem 0.75rem; gap: 0.45rem 1.25rem; }
+  header.top h1 { font-size: 1.5rem; margin: 0 1.25rem 0 0; letter-spacing: -0.01em; }
+  nav.main { order: 10; flex-basis: 100%; gap: 1.0rem; }
+  nav.main a { font-size: 0.95rem; }
+  .hdr-btn { padding: 0.32rem 0.75rem; font-size: 0.95rem; }
+  .lang-toggle button { padding: 0.32rem 0.75rem; font-size: 0.95rem; }
+}
+
+/* 2026-10-03 quick wins: band explanations + option hints */
+.band-note { margin-top: -0.35rem; }
+.hint { margin-top: -0.2rem; }

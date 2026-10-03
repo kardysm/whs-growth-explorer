@@ -1,25 +1,70 @@
 {
-  "meta": { "default": "pl", "stamp": { "pl": "Wersja {v} • zbudowano {date} • commit {commit}", "en": "Version {v} • built {date} • commit {commit}" } },
-  "meta_desc": { "pl": "WHS: żywienie i wzrastanie — kalkulator zapotrzebowania, siatki WHS/WHO, sygnały alarmowe, zasady diety i lista produktów.", "en": "WHS feeding & growth — needs calculator, WHS/WHO growth charts, red flags, diet rules and a product list." },
+  "meta": {
+    "default": "pl",
+    "stamp": {
+      "pl": "Wersja {v} • zbudowano {date} • commit {commit}",
+      "en": "Version {v} • built {date} • commit {commit}"
+    }
+  },
+  "meta_desc": {
+    "pl": "WHS: żywienie i wzrastanie — kalkulator zapotrzebowania, siatki WHS/WHO, sygnały alarmowe, zasady diety i lista produktów.",
+    "en": "WHS feeding & growth — needs calculator, WHS/WHO growth charts, red flags, diet rules and a product list."
+  },
   "disclaimer_short": {
-    "pl": "Serwis edukacyjny. Nie zastępuje porady lekarskiej ani diety klinicznej. Wyniki kalkulatora to punkt startowy do omówienia z lekarzem prowadzącym i dietetykiem klinicznym — dawki i sposób żywienia zawsze ustala zespół terapeutyczny.",
-    "en": "Educational site. Not a substitute for medical advice or clinical dietetics. Calculator results are a starting point to discuss with the treating physician and a clinical dietitian — feeding plans are always set by the care team."
+    "pl": "Serwis edukacyjny o zespole Wolfa-Hirschhorna (WHS). Nie zastępuje porady lekarskiej ani diety klinicznej. Wyniki kalkulatora to punkt startowy do omówienia z lekarzem prowadzącym i dietetykiem klinicznym — dawki i sposób żywienia zawsze ustala zespół terapeutyczny.",
+    "en": "Educational site about Wolf-Hirschhorn syndrome (WHS). Not a substitute for medical advice or clinical dietetics. Calculator results are a starting point to discuss with the treating physician and a clinical dietitian — feeding plans are always set by the care team."
   },
   "nav": {
-    "start": { "pl": "Start", "en": "Start" },
-    "calc": { "pl": "Kalkulator", "en": "Calculator" },
-    "charts": { "pl": "Wykresy", "en": "Charts" },
-    "table": { "pl": "Tabela", "en": "Table" },
-    "why": { "pl": "Dlaczego mimo jedzenia?", "en": "Why despite eating?" },
-    "flags": { "pl": "Sygnały alarmowe", "en": "Red flags" },
-    "rules": { "pl": "Zasady diety", "en": "Diet rules" },
-    "products": { "pl": "Produkty w Polsce", "en": "Products in Poland" },
-    "sources": { "pl": "Źródła", "en": "Sources" },
-    "method": { "pl": "Metodologia i ograniczenia", "en": "Methods & limitations" },
-    "aria": { "pl": "sekcje", "en": "sections" }
+    "start": {
+      "pl": "Start",
+      "en": "Start"
+    },
+    "calc": {
+      "pl": "Kalkulator",
+      "en": "Calculator"
+    },
+    "charts": {
+      "pl": "Wykresy",
+      "en": "Charts"
+    },
+    "table": {
+      "pl": "Tabela",
+      "en": "Table"
+    },
+    "why": {
+      "pl": "Dlaczego mimo jedzenia?",
+      "en": "Why despite eating?"
+    },
+    "flags": {
+      "pl": "Sygnały alarmowe",
+      "en": "Red flags"
+    },
+    "rules": {
+      "pl": "Zasady diety",
+      "en": "Diet rules"
+    },
+    "products": {
+      "pl": "Produkty w Polsce",
+      "en": "Products in Poland"
+    },
+    "sources": {
+      "pl": "Źródła",
+      "en": "Sources"
+    },
+    "method": {
+      "pl": "Metodologia i ograniczenia",
+      "en": "Methods & limitations"
+    },
+    "aria": {
+      "pl": "sekcje",
+      "en": "sections"
+    }
   },
   "start": {
-    "title": { "pl": "WHS: żywienie i wzrastanie — punkt startowy", "en": "WHS feeding & growth — a starting point" },
+    "title": {
+      "pl": "WHS: żywienie i wzrastanie — punkt startowy",
+      "en": "WHS feeding & growth — a starting point"
+    },
     "intro": {
       "pl": [
         "Dzieci z zespołem Wolfa-Hirschhorna (WHS) rosną inaczej: ich wzrastanie ma własne siatki centylowe i własne tempo.",
@@ -36,7 +81,10 @@
         "Results are RANGES (low–central–high), never a single \"true\" number — and always a starting point for a clinical dietitian to adjust using the child's weight trend."
       ]
     },
-    "howto_title": { "pl": "Jak korzystać", "en": "How to use" },
+    "howto_title": {
+      "pl": "Jak korzystać",
+      "en": "How to use"
+    },
     "howto": {
       "pl": [
         "Wpisz aktualną masę (i długość, jeśli znasz) w kalkulatorze.",
@@ -51,7 +99,10 @@
         "Print (Ctrl+P) and take it to your clinical dietitian visit."
       ]
     },
-    "safety_title": { "pl": "Bezpieczeństwo", "en": "Safety" },
+    "safety_title": {
+      "pl": "Bezpieczeństwo",
+      "en": "Safety"
+    },
     "safety": {
       "pl": [
         "Nie zmieniaj proporcji mleka modyfikowanego (więcej proszku niż podaje etykieta) i nie dodawaj modułów energetycznych/białkowych do mleka niemowlęcia bez zgody lekarza — ryzyko odwodnienia i zaburzeń elektrolitowych (WHO).",
@@ -66,64 +117,238 @@
     }
   },
   "calc": {
-    "title": { "pl": "Kalkulator zapotrzebowania", "en": "Needs calculator" },
-    "hint": { "pl": "Wartości domyślne dotyczą dziecka z hipotonią; zmień, jeśli dotyczy.", "en": "Defaults describe a hypotonic child; change as needed." },
-    "sex": { "pl": "Płeć", "en": "Sex" },
-    "boy": { "pl": "Chłopiec", "en": "Boy" },
-    "girl": { "pl": "Dziewczynka", "en": "Girl" },
-    "age": { "pl": "Wiek (miesiące, 0–48)", "en": "Age (months, 0–48)" },
-    "weight": { "pl": "Masa ciała (kg)", "en": "Body weight (kg)" },
-    "length": { "pl": "Długość/wzrost (cm, opcjonalnie)", "en": "Length/height (cm, optional)" },
-    "tone": { "pl": "Napięcie mięśniowe", "en": "Muscle tone" },
-    "tone_hypo": { "pl": "Hipotonia (obniżone)", "en": "Hypotonia (decreased)" },
-    "tone_norm": { "pl": "Prawidłowe", "en": "Normal" },
-    "tone_hyper": { "pl": "Podwyższone", "en": "Increased" },
-    "mobility": { "pl": "Aktywność", "en": "Mobility" },
-    "mob_bed": { "pl": "Leżące (unieruchomione)", "en": "Bedridden" },
-    "mob_dep": { "pl": "Zależne od opieki", "en": "Dependent" },
-    "mob_crawl": { "pl": "Raczkujące / pełzające", "en": "Crawling" },
-    "mob_amb": { "pl": "Chodzące", "en": "Ambulatory" },
-    "target": { "pl": "Cel masy ciała (doganianie)", "en": "Target weight (catch-up)" },
-    "target_whs_mean": { "pl": "Siatka WHS — średnia", "en": "WHS chart — mean" },
-    "target_whs_m1": { "pl": "Siatka WHS — −1 SD", "en": "WHS chart — −1 SD" },
-    "target_who_med": { "pl": "WHO — mediana dla długości", "en": "WHO — median for length" },
-    "horizon": { "pl": "Horyzont doganiania (tygodnie)", "en": "Catch-up horizon (weeks)" },
-    "density": { "pl": "Gęstość energetyczna pokarmu (kcal/ml)", "en": "Feed energy density (kcal/ml)" },
-    "feeds": { "pl": "Posiłków na dobę (opcjonalnie)", "en": "Feeds per day (optional)" },
-    "ml_per_feed": { "pl": "Tolerowana porcja (ml)", "en": "Tolerated ml per feed" },
-    "intake": { "pl": "Rzeczywiste spożycie (kcal/dzień, opcjonalnie)", "en": "Actual intake (kcal/day, optional)" },
-    "compute": { "pl": "Przelicz", "en": "Calculate" },
-    "results_title": { "pl": "Wyniki", "en": "Results" },
-    "method_a_t": { "pl": "A. Dziecko zdrowe: ten sam wiek", "en": "A. Healthy child: same age" },
-    "method_a_sub": { "pl": "ile je zdrowe dziecko w tym samym wieku — punkt odniesienia", "en": "what a healthy child of the same age eats — a reference point" },
-    "method_a_tip": { "pl": "Metoda A: wartość dla zdrowego dziecka w tym samym wieku (EFSA/PZH, NASEM, FAO/WHO/UNU)", "en": "Method A: healthy child of the same age (EFSA/PZH, NASEM, FAO/WHO/UNU)" },
-    "method_b_t": { "pl": "B. Dziecko zdrowe: ta sama masa", "en": "B. Healthy child: same weight" },
-    "method_b_sub": { "pl": "odniesienie dla dziecka o tej samej masie (wiek masowy: {wa} mies.)", "en": "reference for a child of the same weight (weight-age: {wa} mo)" },
-    "method_b_tip": { "pl": "Metoda B: wartość dla zdrowego dziecka o tej samej masie ciała; wiek masowy = wiek, w którym mediana masy WHO równa się masie dziecka", "en": "Method B: healthy child of the same weight; weight-age = the age at which the WHO median weight equals the child's weight" },
-    "method_c_t": { "pl": "C. Utrzymanie (hipotonia)", "en": "C. Maintenance (hypotonia)" },
-    "method_c_sub": { "pl": "nasza główna estymacja dla WHS — zapotrzebowanie podstawowe (metoda typu Krick)", "en": "the core WHS estimate — maintenance need (Krick-type method)" },
-    "method_c_tip": { "pl": "Metoda C: BMR wg Schofielda × czynnik napięcia mięśniowego × aktywność (typ Krick)", "en": "Method C: Schofield BMR × muscle-tone factor × activity (Krick-type)" },
-    "method_d_t": { "pl": "D. Cel z doganianiem", "en": "D. Catch-up target" },
-    "method_d_sub": { "pl": "ile podawać, aby dogonić wzrost — zwiększona podaż", "en": "how much to feed to catch up on growth — increased intake" },
-    "method_d_tip": { "pl": "Metoda D: utrzymanie (C) + koszt energetyczny przyrostu tkanek", "en": "Method D: maintenance (C) + energy cost of tissue gain" },
-    "method_e_t": { "pl": "E. Objętości", "en": "E. Volumes" },
-    "method_e_sub": { "pl": "ile ml pokarmu potrzeba przy różnych gęstościach", "en": "how many ml of feed are needed at different densities" },
-    "method_f_t": { "pl": "F. Porównanie ze spożyciem", "en": "F. Intake comparison" },
-    "method_f_sub": { "pl": "porównanie z faktycznym spożyciem (jeśli wpisane)", "en": "comparison with the actual intake (if entered)" },
-    "how": { "pl": "Jak to policzono", "en": "How it was computed" },
-    "sources_label": { "pl": "Źródła", "en": "Sources" },
-    "extrapolation_note": { "pl": "D — ekstrapolacja z populacji z niepełnosprawnością neurologiczną / MPD; brak badań wydatku energetycznego w WHS.", "en": "D — extrapolation from neurological-impairment / CP populations; no WHS energy-expenditure studies exist." },
-    "infant_density_caution": { "pl": "NIEMOWLĘ: nie zagęszczaj mleka modyfikowanego ponad instrukcję producenta i nie dodawaj modułów energetycznych/białkowych bez nadzoru klinicznego. Objętości przy gęstości >1 kcal/ml zakładają produkt specjalistyczny zalecony przez lekarza lub dietetyka.", "en": "INFANT: never concentrate infant formula beyond the manufacturer's instructions and never add energy/protein modules without clinical supervision. Volumes above 1 kcal/ml assume a prescribed specialist product." },
-    "density_col": { "pl": "gęstość (kcal/ml)", "en": "density (kcal/ml)" },
-    "fluid_label": { "pl": "płyny podtrzymujące (Holliday–Segar)", "en": "maintenance fluid (Holliday-Segar)" },
-    "protein_label": { "pl": "białko", "en": "protein" },
-    "ml_at_density": { "pl": "objętość przy gęstości {d} kcal/ml", "en": "volume at {d} kcal/ml" },
-    "method_d2_t": { "pl": "D-2. Scenariusz: masa do długości", "en": "D-2. Scenario: weight-for-length" },
-    "method_d2_sub": { "pl": "wariant celu: masa odpowiednia do długości (pojedyncza wartość scenariuszowa)", "en": "target variant: the weight that matches the length (single scenario value)" },
-    "method_d2_tip": { "pl": "Metoda D-2: kcal/kg w wieku masowym × masa idealna dla długości (mediana WHO)", "en": "Method D-2: kcal/kg at weight-age × ideal weight for length (WHO median)" },
-    "density_caution": { "pl": "Gęstość >1 kcal/ml wymaga nadzoru klinicznego (produkt specjalistyczny zalecony przez lekarza/dietetyka).", "en": "Density above 1 kcal/ml requires clinical supervision (a prescribed specialist product)." },
-    "volume_density_note": { "pl": "Przy 0,67 kcal/ml objętość przekracza płyny podtrzymujące — rozważ wyższą gęstość (pod nadzorem klinicznym).", "en": "At 0.67 kcal/ml the volume exceeds maintenance fluid — consider a higher density (under clinical supervision)." },
-    "length_hint": { "pl": "Wpisz zmierzoną długość, jeśli ją znasz — bez niej liczby C/D zakładają średnią długość WHS dla wieku, a przesiew ryzyka działa wg masy do wieku.", "en": "Enter a measured length if you have it — without it, C/D assume the WHS mean length for age and the risk screen falls back to weight-for-age." },
+    "title": {
+      "pl": "Kalkulator zapotrzebowania",
+      "en": "Needs calculator"
+    },
+    "hint": {
+      "pl": "Wartości domyślne dotyczą dziecka z hipotonią; zmień, jeśli dotyczy.",
+      "en": "Defaults describe a hypotonic child; change as needed."
+    },
+    "sex": {
+      "pl": "Płeć",
+      "en": "Sex"
+    },
+    "boy": {
+      "pl": "Chłopiec",
+      "en": "Boy"
+    },
+    "girl": {
+      "pl": "Dziewczynka",
+      "en": "Girl"
+    },
+    "age": {
+      "pl": "Wiek (miesiące, 0–48)",
+      "en": "Age (months, 0–48)"
+    },
+    "weight": {
+      "pl": "Masa ciała (kg)",
+      "en": "Body weight (kg)"
+    },
+    "length": {
+      "pl": "Długość/wzrost (cm, opcjonalnie)",
+      "en": "Length/height (cm, optional)"
+    },
+    "tone": {
+      "pl": "Napięcie mięśniowe",
+      "en": "Muscle tone"
+    },
+    "tone_hypo": {
+      "pl": "Hipotonia (obniżone)",
+      "en": "Hypotonia (decreased)"
+    },
+    "tone_norm": {
+      "pl": "Prawidłowe",
+      "en": "Normal"
+    },
+    "tone_hyper": {
+      "pl": "Podwyższone",
+      "en": "Increased"
+    },
+    "mobility": {
+      "pl": "Aktywność",
+      "en": "Mobility"
+    },
+    "mob_bed": {
+      "pl": "Leżące (unieruchomione)",
+      "en": "Bedridden"
+    },
+    "mob_dep": {
+      "pl": "Zależne od opieki",
+      "en": "Dependent"
+    },
+    "mob_crawl": {
+      "pl": "Raczkujące / pełzające",
+      "en": "Crawling"
+    },
+    "mob_amb": {
+      "pl": "Chodzące",
+      "en": "Ambulatory"
+    },
+    "target": {
+      "pl": "Cel masy ciała (doganianie)",
+      "en": "Target weight (catch-up)"
+    },
+    "target_whs_mean": {
+      "pl": "Siatka WHS — średnia",
+      "en": "WHS chart — mean"
+    },
+    "target_whs_m1": {
+      "pl": "Siatka WHS — −1 SD",
+      "en": "WHS chart — −1 SD"
+    },
+    "target_who_med": {
+      "pl": "WHO — mediana dla długości",
+      "en": "WHO — median for length"
+    },
+    "horizon": {
+      "pl": "Horyzont doganiania (tygodnie)",
+      "en": "Catch-up horizon (weeks)"
+    },
+    "density": {
+      "pl": "Gęstość energetyczna pokarmu (kcal/ml)",
+      "en": "Feed energy density (kcal/ml)"
+    },
+    "feeds": {
+      "pl": "Posiłków na dobę (opcjonalnie)",
+      "en": "Feeds per day (optional)"
+    },
+    "ml_per_feed": {
+      "pl": "Tolerowana porcja (ml)",
+      "en": "Tolerated ml per feed"
+    },
+    "intake": {
+      "pl": "Rzeczywiste spożycie (kcal/dzień, opcjonalnie)",
+      "en": "Actual intake (kcal/day, optional)"
+    },
+    "compute": {
+      "pl": "Przelicz",
+      "en": "Calculate"
+    },
+    "results_title": {
+      "pl": "Wyniki",
+      "en": "Results"
+    },
+    "method_a_t": {
+      "pl": "A. Dziecko zdrowe: ten sam wiek",
+      "en": "A. Healthy child: same age"
+    },
+    "method_a_sub": {
+      "pl": "ile je zdrowe dziecko w tym samym wieku — punkt odniesienia",
+      "en": "what a healthy child of the same age eats — a reference point"
+    },
+    "method_a_tip": {
+      "pl": "Metoda A: wartość dla zdrowego dziecka w tym samym wieku (EFSA/PZH, NASEM, FAO/WHO/UNU)",
+      "en": "Method A: healthy child of the same age (EFSA/PZH, NASEM, FAO/WHO/UNU)"
+    },
+    "method_b_t": {
+      "pl": "B. Dziecko zdrowe: ta sama masa",
+      "en": "B. Healthy child: same weight"
+    },
+    "method_b_sub": {
+      "pl": "odniesienie dla dziecka o tej samej masie (wiek masowy: {wa} mies.)",
+      "en": "reference for a child of the same weight (weight-age: {wa} mo)"
+    },
+    "method_b_tip": {
+      "pl": "Metoda B: wartość dla zdrowego dziecka o tej samej masie ciała; wiek masowy = wiek, w którym mediana masy WHO równa się masie dziecka",
+      "en": "Method B: healthy child of the same weight; weight-age = the age at which the WHO median weight equals the child's weight"
+    },
+    "method_c_t": {
+      "pl": "C. Utrzymanie (hipotonia)",
+      "en": "C. Maintenance (hypotonia)"
+    },
+    "method_c_sub": {
+      "pl": "nasza główna estymacja dla WHS — zapotrzebowanie podstawowe (metoda typu Krick)",
+      "en": "the core WHS estimate — maintenance need (Krick-type method)"
+    },
+    "method_c_tip": {
+      "pl": "Metoda C: BMR wg Schofielda × czynnik napięcia mięśniowego × aktywność (typ Krick)",
+      "en": "Method C: Schofield BMR × muscle-tone factor × activity (Krick-type)"
+    },
+    "method_d_t": {
+      "pl": "D. Cel z doganianiem",
+      "en": "D. Catch-up target"
+    },
+    "method_d_sub": {
+      "pl": "ile podawać, aby dogonić wzrost — zwiększona podaż",
+      "en": "how much to feed to catch up on growth — increased intake"
+    },
+    "method_d_tip": {
+      "pl": "Metoda D: utrzymanie (C) + koszt energetyczny przyrostu tkanek",
+      "en": "Method D: maintenance (C) + energy cost of tissue gain"
+    },
+    "method_e_t": {
+      "pl": "E. Objętości",
+      "en": "E. Volumes"
+    },
+    "method_e_sub": {
+      "pl": "ile ml pokarmu potrzeba przy różnych gęstościach",
+      "en": "how many ml of feed are needed at different densities"
+    },
+    "method_f_t": {
+      "pl": "F. Porównanie ze spożyciem",
+      "en": "F. Intake comparison"
+    },
+    "method_f_sub": {
+      "pl": "porównanie z faktycznym spożyciem (jeśli wpisane)",
+      "en": "comparison with the actual intake (if entered)"
+    },
+    "how": {
+      "pl": "Jak to policzono",
+      "en": "How it was computed"
+    },
+    "sources_label": {
+      "pl": "Źródła",
+      "en": "Sources"
+    },
+    "extrapolation_note": {
+      "pl": "D — ekstrapolacja z populacji z niepełnosprawnością neurologiczną / MPD; brak badań wydatku energetycznego w WHS.",
+      "en": "D — extrapolation from neurological-impairment / CP populations; no WHS energy-expenditure studies exist."
+    },
+    "infant_density_caution": {
+      "pl": "NIEMOWLĘ: nie zagęszczaj mleka modyfikowanego ponad instrukcję producenta i nie dodawaj modułów energetycznych/białkowych bez nadzoru klinicznego. Objętości przy gęstości >1 kcal/ml zakładają produkt specjalistyczny zalecony przez lekarza lub dietetyka.",
+      "en": "INFANT: never concentrate infant formula beyond the manufacturer's instructions and never add energy/protein modules without clinical supervision. Volumes above 1 kcal/ml assume a prescribed specialist product."
+    },
+    "density_col": {
+      "pl": "gęstość (kcal/ml)",
+      "en": "density (kcal/ml)"
+    },
+    "fluid_label": {
+      "pl": "płyny podtrzymujące (Holliday–Segar)",
+      "en": "maintenance fluid (Holliday-Segar)"
+    },
+    "protein_label": {
+      "pl": "białko",
+      "en": "protein"
+    },
+    "ml_at_density": {
+      "pl": "objętość przy gęstości {d} kcal/ml",
+      "en": "volume at {d} kcal/ml"
+    },
+    "method_d2_t": {
+      "pl": "D-2. Scenariusz: masa do długości",
+      "en": "D-2. Scenario: weight-for-length"
+    },
+    "method_d2_sub": {
+      "pl": "wariant celu: masa odpowiednia do długości (pojedyncza wartość scenariuszowa)",
+      "en": "target variant: the weight that matches the length (single scenario value)"
+    },
+    "method_d2_tip": {
+      "pl": "Metoda D-2: kcal/kg w wieku masowym × masa idealna dla długości (mediana WHO)",
+      "en": "Method D-2: kcal/kg at weight-age × ideal weight for length (WHO median)"
+    },
+    "density_caution": {
+      "pl": "Gęstość >1 kcal/ml wymaga nadzoru klinicznego (produkt specjalistyczny zalecony przez lekarza/dietetyka).",
+      "en": "Density above 1 kcal/ml requires clinical supervision (a prescribed specialist product)."
+    },
+    "volume_density_note": {
+      "pl": "Przy 0,67 kcal/ml objętość przekracza płyny podtrzymujące — rozważ wyższą gęstość (pod nadzorem klinicznym).",
+      "en": "At 0.67 kcal/ml the volume exceeds maintenance fluid — consider a higher density (under clinical supervision)."
+    },
+    "length_hint": {
+      "pl": "Wpisz zmierzoną długość, jeśli ją znasz — bez niej liczby C/D zakładają średnią długość WHS dla wieku, a przesiew ryzyka działa wg masy do wieku.",
+      "en": "Enter a measured length if you have it — without it, C/D assume the WHS mean length for age and the risk screen falls back to weight-for-age."
+    },
     "refeeding_banner": {
       "pl": "UWAGA: masa ciała leży znacznie poniżej siatki WHS (poniżej ok. −3 SD względem siatki WHS — ocena przybliżona; dzieci z WHS są konstytucyjnie mniejsze niż w siatkach WHO). Rozpoczynanie żywienia w takim stanie wymaga szczególnej ostrożności (ryzyko zespołu ponownego odżywienia: kontrola elektrolitów, stopniowe zwiększanie). Skontaktuj się z zespołem prowadzącym przed zmianami.",
       "en": "CAUTION: body weight sits far below the WHS chart (below approx. −3 SD relative to the WHS chart — approximate; WHS children are constitutionally smaller than on WHO charts). Starting feeding in this state requires particular caution (refeeding-syndrome risk: electrolyte monitoring, gradual increases). Contact the care team before changes."
@@ -131,38 +356,135 @@
     "note_estimate": {
       "pl": "To szacunek startowy. Ostateczne dawki ustala dietetyk na podstawie trendu masy ciała (min. 3–4 tygodnie obserwacji).",
       "en": "This is a starting estimate. Final targets are set by a dietitian from the weight trend (at least 3–4 weeks of observation)."
+    },
+    "tone_hint": {
+      "pl": "Hipotonia (obniżone) = wiotkość, obniżone napięcie mięśniowe (×0,9). Prawidłowe = bez zaburzeń napięcia (×1,0). Podwyższone = wzmożone napięcie / spastyczność (×1,1).",
+      "en": "Hypotonia (decreased) = floppiness, low muscle tone (×0.9). Normal = no tone disorder (×1.0). Increased = high tone / spasticity (×1.1)."
+    },
+    "mob_hint": {
+      "pl": "Leżące (unieruchomione) = dziecko nie przemieszcza się samodzielnie (wsp. 1,15). Zależne od opieki = przemieszcza się częściowo, ale potrzebuje pomocy i zmiany pozycji (1,2). Raczkujące / pełzające = samodzielnie się przemieszcza (1,25). Chodzące = chodzi samodzielnie (1,3).",
+      "en": "Bedridden = does not move independently (factor 1.15). Dependent = moves partially but needs help and repositioning (1.2). Crawling = moves independently (1.25). Ambulatory = walks independently (1.3)."
+    },
+    "band_a": {
+      "pl": "Dolna–górna: rozrzut między źródłami (NASEM, EFSA/PZH, FAO) dla tego wieku. Środkowa: źródło priorytetowe dla wieku.",
+      "en": "Low–high: spread across sources (NASEM, EFSA/PZH, FAO) for this age. Central: the priority source for the age."
+    },
+    "band_b": {
+      "pl": "Dolna–górna: ten sam rozrzut źródeł przeliczony na aktualną masę. Środkowa: źródło priorytetowe.",
+      "en": "Low–high: the same source spread scaled to the current weight. Central: the priority source."
+    },
+    "band_c": {
+      "pl": "Dolna–górna: pasmo napięcia mięśniowego (×0,9–×1,1). Środkowa: napięcie prawidłowe (×1,0) i Twoja aktywność.",
+      "en": "Low–high: muscle-tone band (×0.9–×1.1). Central: normal tone (×1.0) with your activity factor."
+    },
+    "band_d": {
+      "pl": "Dolna–górna: koszt energetyczny przyrostu 4,1–6,0 kcal/g. Środkowa: 5 kcal/g (FAO/WHO/UNU).",
+      "en": "Low–high: energy cost of gain 4.1–6.0 kcal/g. Central: 5 kcal/g (FAO/WHO/UNU)."
+    },
+    "band_e": {
+      "pl": "Dolna–górna: skrajne kombinacje pasm C i D. Środkowa: C+D przy wartościach środkowych.",
+      "en": "Low–high: extreme combinations of the C and D bands. Central: C+D at central values."
     }
   },
   "charts": {
-    "title": { "pl": "Wykresy", "en": "Charts" },
-    "chart1_title": { "pl": "Energia vs masa ciała (w wieku {age} mies.)", "en": "Energy vs weight (at {age} months)" },
-    "chart1_hint": { "pl": "A — zdrowe dziecko: ten sam wiek; B — zdrowe dziecko: ta sama masa; C — utrzymanie z hipotonią (pasmo; użyta jest wpisana długość, a bez niej — średnia długość WHS dla wieku; dla wieku <6 mies. C może leżeć poza wiarygodnym zakresem — patrz karta C); D — cel z doganianiem (pasmo). Kliknij punkt, aby ustawić masę w kalkulatorze.", "en": "A — healthy child: same age; B — healthy child: same weight; C — maintenance with hypotonia (band; the entered length is used, or the WHS mean length for age when none is entered; for ages <6 mo, C may sit outside a plausible range — see card C); D — catch-up target (band). Click a point to set calculator weight." },
-    "chart2_title": { "pl": "Masa ciała w czasie — siatka WHS i WHO", "en": "Weight for age — WHS chart and WHO" },
-    "chart2_hint": { "pl": "Linie: średnia i ±1/±2 SD (siatka WHS 0–4 lata, dane zdigitalizowane) oraz mediana i −2 SD WHO. Punkt — Twoje dziecko.", "en": "Lines: mean and ±1/±2 SD (WHS chart 0–4 y, digitized) plus WHO median and −2 SD. Marker — your child." },
-    "chart2_note": { "pl": "Linie zielone (2025 p25/p50/p75): percentyle 25/50/75 z Calhoun i in. 2025 (zdigitalizowane; 0–24 mies. z modelu niemowlęcego, 30–48 mies. z modelu 2+; skrajne percentyle nie łączą się na styku 2. lat). Zastrzeżenia — Metodologia.", "en": "Green lines (2025 p25/p50/p75): quartiles from Calhoun et al. 2025 (digitized; months 0–24 from the infant model, months 30–48 from the 2+ model; extreme percentiles do not join at the 2-y seam). Caveats — Methods." },
-    "chart3_title": { "pl": "Objętość pokarmu vs płyny podtrzymujące", "en": "Feed volume vs maintenance fluid" },
-    "chart3_hint": { "pl": "Objętość pokarmu potrzebna przy gęstości {density} kcal/ml oraz przy 0,67/1,0/1,5 kcal/ml, na tle płynów podtrzymujących (Holliday–Segar). Dla niemowląt gęstości >1 kcal/ml tylko pod nadzorem klinicznym — patrz sekcja E.", "en": "Feed volume needed at {density} kcal/ml and at 0.67/1.0/1.5 kcal/ml, against maintenance fluid (Holliday–Segar). For infants, densities above 1 kcal/ml only under clinical supervision — see section E." }
+    "title": {
+      "pl": "Wykresy",
+      "en": "Charts"
+    },
+    "chart1_title": {
+      "pl": "Energia vs masa ciała (w wieku {age} mies.)",
+      "en": "Energy vs weight (at {age} months)"
+    },
+    "chart1_hint": {
+      "pl": "A — zdrowe dziecko: ten sam wiek; B — zdrowe dziecko: ta sama masa; C — utrzymanie z hipotonią (pasmo; dla 0–3 lat proporcjonalne do masy, od 3 lat z wpisaną długością lub średnią długością WHS dla wieku); D — cel z doganianiem (pasmo). Kliknij punkt, aby ustawić masę w kalkulatorze. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
+      "en": "A — healthy child: same age; B — healthy child: same weight; C — maintenance with hypotonia (band; weight-proportional below 3 y, from 3 y with the entered length or the WHS mean length for age); D — catch-up target (band). Click a point to set calculator weight. Click a series name in the legend to hide or show it."
+    },
+    "chart2_title": {
+      "pl": "Masa ciała w czasie — siatka WHS i WHO",
+      "en": "Weight for age — WHS chart and WHO"
+    },
+    "chart2_hint": {
+      "pl": "Linie: średnia i ±1/±2 SD (siatka WHS 0–4 lata, dane zdigitalizowane) oraz mediana i −2 SD WHO. Punkt — Twoje dziecko. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
+      "en": "Lines: mean and ±1/±2 SD (WHS chart 0–4 y, digitized) plus WHO median and −2 SD. Marker — your child. Click a series name in the legend to hide or show it."
+    },
+    "chart2_note": {
+      "pl": "Linie zielone (2025 p25/p50/p75): percentyle 25/50/75 z Calhoun i in. 2025 (zdigitalizowane; 0–24 mies. z modelu niemowlęcego, 30–48 mies. z modelu 2+; skrajne percentyle nie łączą się na styku 2. lat). Zastrzeżenia — Metodologia.",
+      "en": "Green lines (2025 p25/p50/p75): quartiles from Calhoun et al. 2025 (digitized; months 0–24 from the infant model, months 30–48 from the 2+ model; extreme percentiles do not join at the 2-y seam). Caveats — Methods."
+    },
+    "chart3_title": {
+      "pl": "Objętość pokarmu vs płyny podtrzymujące",
+      "en": "Feed volume vs maintenance fluid"
+    },
+    "chart3_hint": {
+      "pl": "Objętość pokarmu potrzebna przy gęstości {density} kcal/ml oraz przy 0,67/1,0/1,5 kcal/ml, na tle płynów podtrzymujących (Holliday–Segar). Dla niemowląt gęstości >1 kcal/ml tylko pod nadzorem klinicznym — patrz sekcja E. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
+      "en": "Feed volume needed at {density} kcal/ml and at 0.67/1.0/1.5 kcal/ml, against maintenance fluid (Holliday–Segar). For infants, densities above 1 kcal/ml only under clinical supervision — see section E. Click a series name in the legend to hide or show it."
+    }
   },
   "table": {
-    "title": { "pl": "Tabela (masa → kcal/dzień)", "en": "Table (weight → kcal/day)" },
-    "hint": { "pl": "Wiersze: masy 2–20 kg; wiek i płeć jak w kalkulatorze; kolumny C/D liczone są dla wpisanej długości, a bez niej — ze średniej długości WHS dla wieku. Kliknij nagłówek, aby sortować; kliknij wiersz, aby ustawić masę. (Dla wieku <6 mies. C może leżeć poniżej wiarygodnego zakresu — patrz karta C.)", "en": "Rows: weights 2–20 kg; age and sex from the calculator; columns C/D use the entered length, or the WHS mean length for age when none is entered (for ages <6 mo, C may sit below a plausible range — see card C). Click a header to sort; click a row to set the weight." },
-    "export": { "pl": "Pobierz CSV", "en": "Download CSV" },
-    "col_weight": { "pl": "Masa (kg)", "en": "Weight (kg)" },
-    "col_a": { "pl": "A (ten sam wiek)", "en": "A (same age)" },
-    "col_b": { "pl": "B (ta sama masa)", "en": "B (same weight)" },
-    "col_c": { "pl": "C (utrzymanie)", "en": "C (maintenance)" },
-    "col_d": { "pl": "D (doganianie)", "en": "D (catch-up)" },
-    "col_fluid": { "pl": "Płyny (ml)", "en": "Fluid (ml)" }
+    "title": {
+      "pl": "Tabela (masa → kcal/dzień)",
+      "en": "Table (weight → kcal/day)"
+    },
+    "hint": {
+      "pl": "Wiersze: masy 2–20 kg; wiek i płeć jak w kalkulatorze; kolumny C/D liczone są dla wpisanej długości, a bez niej — ze średniej długości WHS dla wieku. Kliknij nagłówek, aby sortować; kliknij wiersz, aby ustawić masę. (Dla wieku <6 mies. C może leżeć poniżej wiarygodnego zakresu — patrz karta C.)",
+      "en": "Rows: weights 2–20 kg; age and sex from the calculator; columns C/D use the entered length, or the WHS mean length for age when none is entered (for ages <6 mo, C may sit below a plausible range — see card C). Click a header to sort; click a row to set the weight."
+    },
+    "export": {
+      "pl": "Pobierz CSV",
+      "en": "Download CSV"
+    },
+    "col_weight": {
+      "pl": "Masa (kg)",
+      "en": "Weight (kg)"
+    },
+    "col_a": {
+      "pl": "A (ten sam wiek)",
+      "en": "A (same age)"
+    },
+    "col_b": {
+      "pl": "B (ta sama masa)",
+      "en": "B (same weight)"
+    },
+    "col_c": {
+      "pl": "C (utrzymanie)",
+      "en": "C (maintenance)"
+    },
+    "col_d": {
+      "pl": "D (doganianie)",
+      "en": "D (catch-up)"
+    },
+    "col_fluid": {
+      "pl": "Płyny (ml)",
+      "en": "Fluid (ml)"
+    }
   },
   "sources": {
-    "title": { "pl": "Źródła", "en": "Sources" },
-    "intro": { "pl": "Każde źródło zostało zweryfikowane w tym projekcie przez pobranie rekordu DOI/PMID/URL. Data dostępu podana przy każdym wpisie.", "en": "Every source was verified in this project by fetching its DOI/PMID/URL record. Access date is given per entry." },
-    "verified": { "pl": "zweryfikowane", "en": "verified" },
-    "accessed": { "pl": "dostęp", "en": "accessed" },
-    "legend": { "pl": "Klasy dowodów: A — wytyczne / przeglądy systematyczne; B — badania kohortowe lub RCT w populacji z niepełnosprawnością; C — serie przypadków WHS; D — opinia ekspercka / ekstrapolacja z innej populacji (oznaczone w treści).", "en": "Evidence grades: A — guidelines / systematic reviews; B — cohort studies or RCTs in disability populations; C — WHS case series; D — expert opinion / extrapolation from another population (flagged inline)." }
+    "title": {
+      "pl": "Źródła",
+      "en": "Sources"
+    },
+    "intro": {
+      "pl": "Każde źródło zostało zweryfikowane w tym projekcie przez pobranie rekordu DOI/PMID/URL. Data dostępu podana przy każdym wpisie.",
+      "en": "Every source was verified in this project by fetching its DOI/PMID/URL record. Access date is given per entry."
+    },
+    "verified": {
+      "pl": "zweryfikowane",
+      "en": "verified"
+    },
+    "accessed": {
+      "pl": "dostęp",
+      "en": "accessed"
+    },
+    "legend": {
+      "pl": "Klasy dowodów: A — wytyczne / przeglądy systematyczne; B — badania kohortowe lub RCT w populacji z niepełnosprawnością; C — serie przypadków WHS; D — opinia ekspercka / ekstrapolacja z innej populacji (oznaczone w treści).",
+      "en": "Evidence grades: A — guidelines / systematic reviews; B — cohort studies or RCTs in disability populations; C — WHS case series; D — expert opinion / extrapolation from another population (flagged inline)."
+    }
   },
   "method": {
-    "title": { "pl": "Metodologia i ograniczenia", "en": "Methods & limitations" },
+    "title": {
+      "pl": "Metodologia i ograniczenia",
+      "en": "Methods & limitations"
+    },
     "p1": {
       "pl": "Energia A/B: europejskie wartości EFSA (2013) i polskie Normy 2024 (PZH): niemowlęta — miesiąc 6 wg PZH 2024, miesiące 7–11 wg EFSA z interpolacją dla wieku ułamkowego; dzieci od 1. r.ż. wg roku (PAL 1,4). Kontrola: NASEM (2023), FAO/WHO/UNU (2004). Gdy metody różnią się >5%, pokazujemy oba końce przedziału.",
       "en": "Energy A/B: EFSA (2013) reference values and Polish PZH Norms 2024 (infants: month 6 from PZH 2024, months 7-11 EFSA with interpolation for fractional ages; children from year 1, yearly values at PAL 1.4), cross-checked with NASEM (2023) and FAO/WHO/UNU (2004). When methods differ by >5%, both ends of the range are shown."
@@ -187,60 +509,236 @@
       "pl": "Czego kalkulator NIE potrafi: nie ustala rozpoznań, nie zastępuje oceny połykania, nie uwzględnia indywidualnej absorpcji, a przy gęstości >1 kcal/ml wymaga nadzoru klinicznego. Mleka aminokwasowe i rzadkie moduły — dawki indywidualne.",
       "en": "What the calculator cannot do: it does not diagnose, does not replace a swallow assessment, does not model individual absorption, and densities above 1 kcal/ml require clinical supervision. Amino-acid formulas / rare modules need individual targets."
     },
-    "p8": { "pl": "Założenia dodatkowe: pasmo C = zakres napięcia mięśniowego 0,9–1,1; gdy celu nie da się dogonić w horyzoncie (cel ≤ masa), sekcja D pokazuje wartość = C (bez doganiania); skala siatki WHO zmienia się na styku 2. lat (długość leżąca vs wzrost stojący); kryteria NICE stosuj do siatki WHS w przestrzeni SD (pasma między liniami ±SD). Od 12. mies. wartości EFSA są roczne, a nie miesięczne — dla niemowląt liczymy miesięcznie. Uwaga: wartość B ma widoczne „schodki” na granicach kategorii wiekowych NASEM/EFSA (zmiana równania i dodatku wzrostu) — to właściwość opublikowanych tabel, nie błąd.", "en": "Extra assumptions: C band = muscle-tone range 0.9–1.1; when the target cannot be caught up within the horizon (target <= weight), section D shows = C (no catch-up); the WHO scale changes at the 2-year seam (recumbent length vs standing height); apply NICE criteria to the WHS chart in SD space (bands between ±SD lines). From 12 months, EFSA values are yearly, not monthly — infants are computed monthly. Note: the B value shows visible steps at NASEM/EFSA age-category boundaries (equation and growth-addend switches) — a property of the published tables, not an error." },
+    "p8": {
+      "pl": "Założenia dodatkowe: pasmo C = zakres napięcia mięśniowego 0,9–1,1; gdy celu nie da się dogonić w horyzoncie (cel ≤ masa), sekcja D pokazuje wartość = C (bez doganiania); skala siatki WHO zmienia się na styku 2. lat (długość leżąca vs wzrost stojący); kryteria NICE stosuj do siatki WHS w przestrzeni SD (pasma między liniami ±SD). Od 12. mies. wartości EFSA są roczne, a nie miesięczne — dla niemowląt liczymy miesięcznie. Uwaga: wartość B ma widoczne „schodki” na granicach kategorii wiekowych NASEM/EFSA (zmiana równania i dodatku wzrostu) — to właściwość opublikowanych tabel, nie błąd.",
+      "en": "Extra assumptions: C band = muscle-tone range 0.9–1.1; when the target cannot be caught up within the horizon (target <= weight), section D shows = C (no catch-up); the WHO scale changes at the 2-year seam (recumbent length vs standing height); apply NICE criteria to the WHS chart in SD space (bands between ±SD lines). From 12 months, EFSA values are yearly, not monthly — infants are computed monthly. Note: the B value shows visible steps at NASEM/EFSA age-category boundaries (equation and growth-addend switches) — a property of the published tables, not an error."
+    },
     "p7": {
       "pl": "Krzywe wzrostowe 2025 (Calhoun i in., AJMG A 2025) zdigitalizowano na potrzeby projektu (1269 punktów; kontrola pikselowa 100%; mediana długości zgodna z siatką Antonius 2008 w granicach 0,2 cm przy 6/12/24 mies.). Zastrzeżenia: autorzy dopasowali dwa osobne modele (≤24 mies. i ≥24 mies.), więc skrajne percentyle nie łączą się na styku 2. lat; skrajne linie (2,5/97,5) to krzywe przedziałów predykcji modelu SITAR, a nie wartości empiryczne — do odczytu służą pasma środkowe (25/50/75, 10/90).",
       "en": "The 2025 growth charts (Calhoun et al., AJMG A 2025) were digitized for this project (1,269 points; 100% pixel-level audit; median length matches the Antonius 2008 chart within 0.2 cm at 6/12/24 mo). Caveats: the authors fitted two separate models (≤24 mo and ≥24 mo), so extreme percentiles do not join at the 2-year seam; the extreme lines (2.5/97.5) are SITAR prediction-ellipsoid curves, not empirical quantiles — read the mid bands (25/50/75, 10/90)."
     }
   },
   "products": {
-    "search": { "pl": "Szukaj produktu…", "en": "Search product…" },
-    "category": { "pl": "Kategoria", "en": "Category" },
-    "sort": { "pl": "Sortowanie", "en": "Sort" },
-    "sort_kcal": { "pl": "kcal / 100 (malejąco)", "en": "kcal / 100 (desc)" },
-    "sort_protein": { "pl": "białko / 100 (malejąco)", "en": "protein / 100 (desc)" },
-    "sort_name": { "pl": "nazwa (A→Z)", "en": "name (A→Z)" },
-    "all": { "pl": "wszystkie", "en": "all" },
-    "household": { "pl": "porcje domowe", "en": "household measures" },
-    "source": { "pl": "źródło", "en": "source" },
-    "count": { "pl": "pozycji", "en": "items" },
-    "count1": { "pl": "pozycja", "en": "item" },
-    "count2": { "pl": "pozycje", "en": "items" },
-    "foods_note": { "pl": "Skład produktów spożywczych: USDA FoodData Central (SR Legacy) — oznaczone jako dane nie-polskie; opisy miar domowych w jednostkach USDA (j. angielski). Produkty specjalistyczne: strony producentów.", "en": "Food composition: USDA FoodData Central (SR Legacy) — flagged as non-PL data; household-measure descriptions use USDA units (English). Specialist products: manufacturer pages." },
+    "search": {
+      "pl": "Szukaj produktu…",
+      "en": "Search product…"
+    },
+    "category": {
+      "pl": "Kategoria",
+      "en": "Category"
+    },
+    "sort": {
+      "pl": "Sortowanie",
+      "en": "Sort"
+    },
+    "sort_kcal": {
+      "pl": "kcal / 100 (malejąco)",
+      "en": "kcal / 100 (desc)"
+    },
+    "sort_protein": {
+      "pl": "białko / 100 (malejąco)",
+      "en": "protein / 100 (desc)"
+    },
+    "sort_name": {
+      "pl": "nazwa (A→Z)",
+      "en": "name (A→Z)"
+    },
+    "all": {
+      "pl": "wszystkie",
+      "en": "all"
+    },
+    "household": {
+      "pl": "porcje domowe",
+      "en": "household measures"
+    },
+    "source": {
+      "pl": "źródło",
+      "en": "source"
+    },
+    "count": {
+      "pl": "pozycji",
+      "en": "items"
+    },
+    "count1": {
+      "pl": "pozycja",
+      "en": "item"
+    },
+    "count2": {
+      "pl": "pozycje",
+      "en": "items"
+    },
+    "foods_note": {
+      "pl": "Skład produktów spożywczych: USDA FoodData Central (SR Legacy) — oznaczone jako dane nie-polskie; opisy miar domowych w jednostkach USDA (j. angielski). Produkty specjalistyczne: strony producentów.",
+      "en": "Food composition: USDA FoodData Central (SR Legacy) — flagged as non-PL data; household-measure descriptions use USDA units (English). Specialist products: manufacturer pages."
+    },
     "cats": {
-      "pl": { "fats": "tłuszcze", "dairy": "nabiał", "protein": "białko", "carbs": "węglowodany", "produce": "warzywa i owoce", "nuts-seeds": "orzechy i nasiona", "sweets": "słodycze", "fsmp-infant": "FSMP niemowlęcy", "fsmp-child": "FSMP dla dzieci", "module": "moduły" },
-      "en": { "fats": "fats", "dairy": "dairy", "protein": "protein foods", "carbs": "carbohydrates", "produce": "fruit & vegetables", "nuts-seeds": "nuts & seeds", "sweets": "sweets", "fsmp-infant": "infant FSMP", "fsmp-child": "child FSMP", "module": "modules" }
+      "pl": {
+        "fats": "tłuszcze",
+        "dairy": "nabiał",
+        "protein": "białko",
+        "carbs": "węglowodany",
+        "produce": "warzywa i owoce",
+        "nuts-seeds": "orzechy i nasiona",
+        "sweets": "słodycze",
+        "fsmp-infant": "FSMP niemowlęcy",
+        "fsmp-child": "FSMP dla dzieci",
+        "module": "moduły"
+      },
+      "en": {
+        "fats": "fats",
+        "dairy": "dairy",
+        "protein": "protein foods",
+        "carbs": "carbohydrates",
+        "produce": "fruit & vegetables",
+        "nuts-seeds": "nuts & seeds",
+        "sweets": "sweets",
+        "fsmp-infant": "infant FSMP",
+        "fsmp-child": "child FSMP",
+        "module": "modules"
+      }
     },
     "taglabels": {
-      "pl": { "high-energy": "gęste energetycznie", "high-protein": "wysokobiałkowe", "vitD": "wit. D", "Fe": "żelazo", "Zn": "cynk", "Ca": "wapń", "fibre": "błonnik", "oral-ok": "doustnie", "tube-ok": "przez sondę", "infant": "niemowlęta", "child": "dzieci", "dairy": "mleko", "lactose-free": "bez laktozy", "gluten-free": "bezglutenowe", "module": "moduł", "age-3plus": "od 3 lat", "age-12plus": "od 12. mies.", "omega3": "omega-3", "gluten": "gluten", "egg": "jaja", "fish": "ryby", "nuts": "orzechy", "sesame": "sezam", "soy": "soja", "choking": "ryzyko zadławienia" },
-      "en": { "high-energy": "energy-dense", "high-protein": "high-protein", "vitD": "vit. D", "Fe": "iron", "Zn": "zinc", "Ca": "calcium", "fibre": "fibre", "oral-ok": "oral", "tube-ok": "tube", "infant": "infants", "child": "children", "dairy": "milk", "lactose-free": "lactose-free", "gluten-free": "gluten-free", "module": "module", "age-3plus": "age 3+", "age-12plus": "age 12+", "omega3": "omega-3", "gluten": "gluten", "egg": "egg", "fish": "fish", "nuts": "nuts", "sesame": "sesame", "soy": "soy", "choking": "choking risk" }
+      "pl": {
+        "high-energy": "gęste energetycznie",
+        "high-protein": "wysokobiałkowe",
+        "vitD": "wit. D",
+        "Fe": "żelazo",
+        "Zn": "cynk",
+        "Ca": "wapń",
+        "fibre": "błonnik",
+        "oral-ok": "doustnie",
+        "tube-ok": "przez sondę",
+        "infant": "niemowlęta",
+        "child": "dzieci",
+        "dairy": "mleko",
+        "lactose-free": "bez laktozy",
+        "gluten-free": "bezglutenowe",
+        "module": "moduł",
+        "age-3plus": "od 3 lat",
+        "age-12plus": "od 12. mies.",
+        "omega3": "omega-3",
+        "gluten": "gluten",
+        "egg": "jaja",
+        "fish": "ryby",
+        "nuts": "orzechy",
+        "sesame": "sezam",
+        "soy": "soja",
+        "choking": "ryzyko zadławienia"
+      },
+      "en": {
+        "high-energy": "energy-dense",
+        "high-protein": "high-protein",
+        "vitD": "vit. D",
+        "Fe": "iron",
+        "Zn": "zinc",
+        "Ca": "calcium",
+        "fibre": "fibre",
+        "oral-ok": "oral",
+        "tube-ok": "tube",
+        "infant": "infants",
+        "child": "children",
+        "dairy": "milk",
+        "lactose-free": "lactose-free",
+        "gluten-free": "gluten-free",
+        "module": "module",
+        "age-3plus": "age 3+",
+        "age-12plus": "age 12+",
+        "omega3": "omega-3",
+        "gluten": "gluten",
+        "egg": "egg",
+        "fish": "fish",
+        "nuts": "nuts",
+        "sesame": "sesame",
+        "soy": "soy",
+        "choking": "choking risk"
+      }
     }
   },
   "a11y": {
-    "skip": { "pl": "Przejdź do treści", "en": "Skip to content" },
-    "fallback": { "pl": "Dane wykresu w formie tabeli", "en": "Chart data as a table" },
-    "age": { "pl": "wiek (mies.)", "en": "age (mo)" },
-    "weight": { "pl": "masa (kg)", "en": "weight (kg)" },
-    "whs_mean": { "pl": "WHS średnia", "en": "WHS mean" },
-    "who_med": { "pl": "WHO mediana", "en": "WHO median" },
-    "sort_hint": { "pl": "Sortuj po kolumnie", "en": "Sort by column" },
-    "chart1_desc": { "pl": "Wykres liniowy: energia na dobę (kcal lub kJ) w funkcji masy ciała 2–20 kg; pasma A, B oraz C−/C/C+ i D−/D/D+ dla ustawień z kalkulatora.", "en": "Line chart: daily energy needs versus body weight 2-20 kg; series A, B and bands C-/C/C+ and D-/D/D+ for the current calculator settings." },
-    "chart2_desc": { "pl": "Wykres liniowy: masa ciała w wieku 0–48 miesięcy; linie siatki WHS (średnia i ±1/±2 SD), mediana i −2 SD WHO, percentyle 25/50/75 z 2025 oraz punkt oznaczający Twoje dziecko.", "en": "Line chart: weight from 0-48 months; WHS chart lines (mean and ±1/±2 SD), WHO median and −2 SD, 2025 quartiles p25/p50/p75 and a marker for your child." },
-    "chart3_desc": { "pl": "Wykres liniowy: objętość pokarmu (ml/dobę) w funkcji masy ciała przy wybranej gęstości oraz 0,67/1,0/1,5 kcal/ml, na tle płynów podtrzymujących Hollidaya–Segara.", "en": "Line chart: feed volume (ml/day) versus body weight at the chosen density and at 0.67/1.0/1.5 kcal/ml, against Holliday-Segar maintenance fluid." }
+    "skip": {
+      "pl": "Przejdź do treści",
+      "en": "Skip to content"
+    },
+    "fallback": {
+      "pl": "Dane wykresu w formie tabeli",
+      "en": "Chart data as a table"
+    },
+    "age": {
+      "pl": "wiek (mies.)",
+      "en": "age (mo)"
+    },
+    "weight": {
+      "pl": "masa (kg)",
+      "en": "weight (kg)"
+    },
+    "whs_mean": {
+      "pl": "WHS średnia",
+      "en": "WHS mean"
+    },
+    "who_med": {
+      "pl": "WHO mediana",
+      "en": "WHO median"
+    },
+    "sort_hint": {
+      "pl": "Sortuj po kolumnie",
+      "en": "Sort by column"
+    },
+    "chart1_desc": {
+      "pl": "Wykres liniowy: energia na dobę (kcal lub kJ) w funkcji masy ciała 2–20 kg; pasma A, B oraz C−/C/C+ i D−/D/D+ dla ustawień z kalkulatora.",
+      "en": "Line chart: daily energy needs versus body weight 2-20 kg; series A, B and bands C-/C/C+ and D-/D/D+ for the current calculator settings."
+    },
+    "chart2_desc": {
+      "pl": "Wykres liniowy: masa ciała w wieku 0–48 miesięcy; linie siatki WHS (średnia i ±1/±2 SD), mediana i −2 SD WHO, percentyle 25/50/75 z 2025 oraz punkt oznaczający Twoje dziecko.",
+      "en": "Line chart: weight from 0-48 months; WHS chart lines (mean and ±1/±2 SD), WHO median and −2 SD, 2025 quartiles p25/p50/p75 and a marker for your child."
+    },
+    "chart3_desc": {
+      "pl": "Wykres liniowy: objętość pokarmu (ml/dobę) w funkcji masy ciała przy wybranej gęstości oraz 0,67/1,0/1,5 kcal/ml, na tle płynów podtrzymujących Hollidaya–Segara.",
+      "en": "Line chart: feed volume (ml/day) versus body weight at the chosen density and at 0.67/1.0/1.5 kcal/ml, against Holliday-Segar maintenance fluid."
+    }
   },
   "search": {
-    "open": { "pl": "Szukaj", "en": "Search" },
-    "ph": { "pl": "Szukaj (Ctrl+K): np. żelazo, refluks, botulizm…", "en": "Search (Ctrl+K): e.g. iron, reflux, botulism…" },
-    "res1": { "pl": "wynik", "en": "result" },
-    "res2": { "pl": "wyniki", "en": "results" },
-    "res5": { "pl": "wyników", "en": "results" },
-    "empty": { "pl": "Wpisz co najmniej 2 znaki.", "en": "Type at least 2 characters." },
-    "none": { "pl": "Brak wyników.", "en": "No results." },
-    "close": { "pl": "Zamknij", "en": "Close" },
-    "hint": { "pl": "↑↓ wybór · Enter otwiera · Esc zamyka", "en": "↑↓ select · Enter opens · Esc closes" }
+    "open": {
+      "pl": "Szukaj",
+      "en": "Search"
+    },
+    "ph": {
+      "pl": "Szukaj (Ctrl+K): np. żelazo, refluks, botulizm…",
+      "en": "Search (Ctrl+K): e.g. iron, reflux, botulism…"
+    },
+    "res1": {
+      "pl": "wynik",
+      "en": "result"
+    },
+    "res2": {
+      "pl": "wyniki",
+      "en": "results"
+    },
+    "res5": {
+      "pl": "wyników",
+      "en": "results"
+    },
+    "empty": {
+      "pl": "Wpisz co najmniej 2 znaki.",
+      "en": "Type at least 2 characters."
+    },
+    "none": {
+      "pl": "Brak wyników.",
+      "en": "No results."
+    },
+    "close": {
+      "pl": "Zamknij",
+      "en": "Close"
+    },
+    "hint": {
+      "pl": "↑↓ wybór · Enter otwiera · Esc zamyka",
+      "en": "↑↓ select · Enter opens · Esc closes"
+    }
   },
   "theme": {
-    "toggle": { "pl": "Przełącz tryb ciemny/jasny", "en": "Toggle dark/light mode" }
+    "toggle": {
+      "pl": "Przełącz tryb ciemny/jasny",
+      "en": "Toggle dark/light mode"
+    }
   },
   "footer": {
     "pl": "WHS Feeding & Growth Explorer — wersja robocza (draft). Projekt badawczy; patrz Źródła i Metodologia.",

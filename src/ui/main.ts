@@ -81,6 +81,16 @@ function fmt(kcal: number | null | undefined, dec = 0): string {
 
 const loc = (v: number): string => fmt(v, 2);
 
+// US customary -> metric in portion descriptions (user request, 2026-10-03: no "oz" shown in the UI).
+function metricDesc(d: string): { text: string; converted: boolean } {
+  const frac = (n: string): number => (n.includes("/") ? Number(n.split("/")[0]) / Number(n.split("/")[1]) : Number(n));
+  let changed = false;
+  const text = d
+    .replace(/(\d+(?:\.\d+)?|\d+\/\d+)\s*fl\s+oz\b/gi, (_: string, n: string) => { changed = true; return `${Math.round(frac(n) * 29.5735)} ml`; })
+    .replace(/(\d+(?:\.\d+)?|\d+\/\d+)\s*oz\b/gi, (_: string, n: string) => { changed = true; return `${Math.round(frac(n) * 28.3495)} g`; });
+  return { text, converted: changed };
+}
+
 function bandStr(b: { low: number | null; central: number | null; high: number | null }): string {
   if (b.central === null) return "—";
   return `${fmt(b.low)} – ${fmt(b.central)} – ${fmt(b.high)} ${unit === "kcal" ? "kcal" : "kJ"}/24h`;
@@ -196,6 +206,7 @@ function renderCalcForm(): void {
         <option value="normal" ${input.tone === "normal" ? "selected" : ""}>${t("calc.tone_norm")}</option>
         <option value="hypertonic" ${input.tone === "hypertonic" ? "selected" : ""}>${t("calc.tone_hyper")}</option>
       </select>
+      <p class="small hint">${t("calc.tone_hint")}</p>
       <label for="in-mobility">${t("calc.mobility")}</label>
       <select id="in-mobility">
         <option value="bedridden" ${input.mobility === "bedridden" ? "selected" : ""}>${t("calc.mob_bed")}</option>
@@ -203,6 +214,7 @@ function renderCalcForm(): void {
         <option value="crawling" ${input.mobility === "crawling" ? "selected" : ""}>${t("calc.mob_crawl")}</option>
         <option value="ambulatory" ${input.mobility === "ambulatory" ? "selected" : ""}>${t("calc.mob_amb")}</option>
       </select>
+      <p class="small hint">${t("calc.mob_hint")}</p>
       <label for="in-target">${t("calc.target")}</label>
       <select id="in-target">
         <option value="whs_mean" ${input.targetRef === "whs_mean" ? "selected" : ""}>${t("calc.target_whs_mean")}</option>
@@ -285,10 +297,11 @@ function recalc(): void {
     if (z !== null && z <= -3) refeeding = `<p class="banner crit">${t("calc.refeeding_banner")}</p>`;
   }
 
-  const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean; sub?: string; tip?: string } = {}) => `
+  const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean; sub?: string; tip?: string; band?: string } = {}) => `
     <div class="card"><h3${opts.tip ? ` title="${opts.tip}"` : ""}>${title} ${opts.grade ? `<span class="badge grade${opts.grade}">${opts.grade}</span>` : ""}</h3>
       ${opts.sub ? `<p class="small sub">${opts.sub}</p>` : ""}
       <p><strong>${bandStr(b)}</strong></p>
+      ${opts.band ? `<p class="small band-note">${opts.band}</p>` : ""}
       ${opts.extrap ? `<p class="small">${t("calc.extrapolation_note")}</p>` : ""}
       ${(opts.alerts ?? []).map((a) => `<p class="banner warn">${B(a)}</p>`).join("")}
       ${notes.length ? (b.central === null
@@ -302,16 +315,16 @@ function recalc(): void {
   const cCarry = (r.C.alerts ?? []).filter(() => r.C.kcalPerDay.central !== null);
   res.innerHTML = `
     ${refeeding}
-    ${card(t("calc.method_a_t"), r.A.kcalPerDay, r.A.notes, r.A.sourceIds, { grade: "A", sub: t("calc.method_a_sub"), tip: t("calc.method_a_tip") })}
-    ${card(t("calc.method_b_t"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A", sub: t("calc.method_b_sub").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), tip: t("calc.method_b_tip") })}
+    ${card(t("calc.method_a_t"), r.A.kcalPerDay, r.A.notes, r.A.sourceIds, { grade: "A", sub: t("calc.method_a_sub"), tip: t("calc.method_a_tip"), band: t("calc.band_a") })}
+    ${card(t("calc.method_b_t"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A", sub: t("calc.method_b_sub").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), tip: t("calc.method_b_tip"), band: t("calc.band_b") })}
     ${card(t("calc.method_c_t"), r.C.kcalPerDay, [
       ...(r.C.notes ?? []),
       { pl: `% A: ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}%, % B: ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%`, en: `% A: ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}%, % B: ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%` },
       ...((r.heightBased.kcalPerDay !== null && !(r.C.alerts && r.C.alerts.length)) ? [{ pl: `kcal/cm: ${lang === "pl" ? String(r.heightBased.kcalPerCmPerDay).replace(".", ",") : r.heightBased.kcalPerCmPerDay} → ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h`, en: `kcal/cm: ${r.heightBased.kcalPerCmPerDay} -> ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h` }] : []),
       r.heightBased.note,
       ...(r.whsZ.weight !== null ? [{ pl: `Pozycja masy na siatce WHS: ≈ ${r.whsZ.weight.toFixed(1).replace(".", ",")} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`, en: `Weight position on the WHS chart: ≈ ${r.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)` }] : []),
-    ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts, sub: t("calc.method_c_sub"), tip: t("calc.method_c_tip") })}
-    ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, sub: t("calc.method_d_sub"), tip: t("calc.method_d_tip"), alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}
+    ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts, sub: t("calc.method_c_sub"), tip: t("calc.method_c_tip"), band: t("calc.band_c") })}
+    ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, sub: t("calc.method_d_sub"), tip: t("calc.method_d_tip"), band: t("calc.band_d"), alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}
     <div class="card"><h3 title="${t("calc.method_d2_tip")}">${t("calc.method_d2_t")} <span class="badge gradeD">D</span></h3>
       <p class="small sub">${t("calc.method_d2_sub")}</p>
       <p class="small">${t("calc.extrapolation_note")}</p>
@@ -323,6 +336,7 @@ function recalc(): void {
     </div>
     <div class="card"><h3>${t("calc.method_e_t")}</h3>
       <p class="small sub">${t("calc.method_e_sub")}</p>
+      <p class="small band-note">${t("calc.band_e")}</p>
       ${cCarry.length ? `<p class="banner warn">${B(cCarry[0])}</p>` : ""}
       ${input.age < 12 ? `<p class="banner warn">${t("calc.infant_density_caution")}</p>` : (input.density > 1.0 ? `<p class="banner warn">${t("calc.density_caution")}</p>` : "")}
       <table><thead><tr><th>${t("calc.density_col")}</th><th>C (ml/24h)</th><th>D (ml/24h)</th></tr></thead>
@@ -413,7 +427,7 @@ function drawCharts(): void {
     aria: { enabled: true, label: { description: t("a11y.chart1_desc") } },
     darkMode: false,
     textStyle: { color: fgVar },
-    legend: { bottom: 0, type: "scroll", textStyle: { color: fgVar } },
+    legend: { bottom: 0, type: "scroll", selectedMode: true, textStyle: { color: fgVar } },
     grid: { left: 60, right: 30, top: 30, bottom: 60 },
     xAxis: { type: "value", name: "kg", min: 2, max: 20, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     yAxis: { type: "value", name: unit === "kcal" ? "kcal/24h" : "kJ/24h", axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
@@ -468,7 +482,7 @@ function drawCharts(): void {
     aria: { enabled: true, label: { description: t("a11y.chart2_desc") } },
     darkMode: false,
     textStyle: { color: fgVar },
-    legend: { bottom: 0, type: "scroll", textStyle: { color: fgVar } },
+    legend: { bottom: 0, type: "scroll", selectedMode: true, textStyle: { color: fgVar } },
     grid: { left: 60, right: 30, top: 30, bottom: 60 },
     xAxis: { type: "value", name: lang === "pl" ? "wiek (mies.)" : "age (mo)", min: 0, max: 48, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     yAxis: { type: "value", name: "kg", min: 0, max: 20, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
@@ -498,7 +512,7 @@ function drawCharts(): void {
     aria: { enabled: true, label: { description: t("a11y.chart3_desc") } },
     darkMode: false,
     textStyle: { color: fgVar },
-    legend: { bottom: 0, type: "scroll", textStyle: { color: fgVar } },
+    legend: { bottom: 0, type: "scroll", selectedMode: true, textStyle: { color: fgVar } },
     grid: { left: 60, right: 30, top: 30, bottom: 60 },
     xAxis: { type: "value", name: "kg", min: 2, max: 20, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     yAxis: { type: "value", name: "ml/24h", axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
@@ -775,10 +789,16 @@ function buildProducts(): PItem[] {
       id: x.id, kind: "food", category: x.category, name: x.name, basis: "g" as const,
       per100: n,
       warning: x.warning,
-      measures: (x.portions ?? []).map((p) => ({
-        label: { pl: `≈ <span lang="en">${p.desc}</span> (${String(p.g).replace(".", ",")} g)`, en: `≈ ${p.desc} (${p.g} g)` },
-        kcal: n.kcal !== null && n.kcal !== undefined ? Math.round((n.kcal * p.g) / 100) : null,
-      })),
+      measures: (x.portions ?? []).map((p) => {
+        const md = metricDesc(p.desc);
+        return {
+          label: {
+            pl: `≈ <span lang="en">${md.text}</span>${md.converted ? "" : ` (${String(p.g).replace(".", ",")} g)`}`,
+            en: `≈ ${md.text}${md.converted ? "" : ` (${p.g} g)`}`,
+          },
+          kcal: n.kcal !== null && n.kcal !== undefined ? Math.round((n.kcal * p.g) / 100) : null,
+        };
+      }),
       tags: Array.from(new Set(tags)),
       source: { label: { pl: "USDA FDC — karta produktu (opis oryginalny w j. angielskim)", en: `${x.fdc_desc} — USDA FDC` }, url: `https://fdc.nal.usda.gov/food-details/${x.fdc_id}/nutrients` },
     };
