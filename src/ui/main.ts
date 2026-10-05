@@ -255,8 +255,8 @@ function renderStart(): void {
   const howto = (base.start.howto as Record<string, string[]>)[lang] ?? [];
   const safety = (base.start.safety as Record<string, string[]>)[lang] ?? [];
   document.getElementById("start-body")!.innerHTML = `
-    <div class="card"><ul class="tight">${intro.map((x) => `<li>${x}</li>`).join("")}</ul></div>
-    <div class="grid2">
+    <div class="cards-grid">
+      <div class="card"><ul class="tight">${intro.map((x) => `<li>${x}</li>`).join("")}</ul></div>
       <div class="card"><h3>${t("start.howto_title")}</h3><ol>${howto.map((x) => `<li>${x}</li>`).join("")}</ol></div>
       <div class="card"><h3>${t("start.safety_title")}</h3><ul class="tight">${safety.map((x) => `<li>${x}</li>`).join("")}</ul></div>
     </div>`;
@@ -294,7 +294,7 @@ function readInputs(): void {
 function renderCalcForm(): void {
   const b = document.getElementById("calc-body")!;
   b.innerHTML = `
-  <div class="grid2">
+  <div class="calc-grid">
     <form class="card" id="calc-form" aria-label="calculator">
       <label for="in-sex">${t("calc.sex")}</label>
       <select id="in-sex">
@@ -495,6 +495,7 @@ let ch3: echarts.ECharts | null = null;
 
 function renderChartsShell(): void {
   document.getElementById("charts-body")!.innerHTML = `
+    <div class="chart-grid">
     <div class="card"><h3>${t("charts.chart1_title").replace("{age}", String(input.age))}</h3>
       <p class="small">${t("charts.chart1_hint")}</p><div id="chart1" class="chart"></div>
       <div id="fallback1"></div></div>
@@ -503,7 +504,8 @@ function renderChartsShell(): void {
       <p class="small">${t("charts.chart2_note")}</p><div id="fallback2"></div></div>
     <div class="card"><h3>${t("charts.chart3_title")}</h3>
       <p class="small">${t("charts.chart3_hint").replace("{milkd}", loc(input.milkDensity)).replace("{ml}", String(input.milkMl)).replace("{meald}", loc(input.mealDensity))}</p><div id="chart3" class="chart"></div>
-      <div id="fallback3"></div></div>`;
+      <div id="fallback3"></div></div>
+    </div>`;
 }
 
 function drawCharts(): void {
@@ -841,7 +843,7 @@ function gradeBadge(g: string): string {
 
 function renderWhy(): void {
   const R = reasons as unknown as { intro: BiText; consultLabels: Record<string, BiText>; groups: { id: string; title: BiText; items: ItemT[] }[] };
-  const html = [`<p class="card small">${B(R.intro)}</p>`];
+  const html = [`<p class="card small">${B(R.intro)}</p>`, `<div class="cards-grid">`];
   for (const g of R.groups) {
     const items = g.items
       .map(
@@ -856,13 +858,14 @@ function renderWhy(): void {
       .join("");
     html.push(`<div class="card"><h3>${B(g.title)}</h3>${items}</div>`);
   }
+  html.push("</div>");
   document.getElementById("why-body")!.innerHTML = html.join("");
 }
 
 function renderFlags(): void {
   const F = flags as unknown as { intro: BiText; levels: Record<string, BiText>; items: ItemT[] };
   const cls: Record<string, string> = { now: "crit", week: "warn", visit: "" };
-  const html = [`<p class="card small">${B(F.intro)}</p>`];
+  const html = [`<p class="card small">${B(F.intro)}</p>`, `<div class="cards-grid">`];
   for (const lvl of ["now", "week", "visit"]) {
     const items = F.items
       .filter((i) => i.level === lvl)
@@ -876,12 +879,13 @@ function renderFlags(): void {
       .join("");
     html.push(`<div class="card ${cls[lvl]}"><h3>${B(F.levels[lvl])}</h3>${items}</div>`);
   }
+  html.push("</div>");
   document.getElementById("flags-body")!.innerHTML = html.join("");
 }
 
 function renderRules(): void {
   const RR = rules as unknown as { intro: BiText; blocks: { id: string; title: BiText; items: ItemT[] }[] };
-  const html = [`<p class="card small">${B(RR.intro)}</p>`];
+  const html = [`<p class="card small">${B(RR.intro)}</p>`, `<div class="cards-grid">`];
   for (const bl of RR.blocks) {
     const items = bl.items
       .map(
@@ -894,6 +898,7 @@ function renderRules(): void {
       .join("");
     html.push(`<div class="card"><h3>${B(bl.title)}</h3>${items}</div>`);
   }
+  html.push("</div>");
   html.push(`<div class="card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`);
   document.getElementById("rules-body")!.innerHTML = html.join("");
   renderNutrients();
@@ -1211,7 +1216,7 @@ function renderProducts(): void {
       return (b.per100[key] ?? -1) - (a.per100[key] ?? -1);
     });
     document.getElementById("p-count")!.textContent = `${list.length} ${plural(list.length)}`;
-    document.getElementById("p-list")!.innerHTML = `<div class="grid2">` + list.map((x) => {
+    document.getElementById("p-list")!.innerHTML = `<div class="cards-grid">` + list.map((x) => {
       const n = x.per100;
       const basis = x.basis === "g" ? "100 g" : "100 ml";
       const meas = (x.measures ?? []).length
