@@ -1,7 +1,7 @@
 {
   "intro": {
-    "pl": "Normy dla dzieci zdrowych wg wieku (PZH 2024; białko także wg WHO/FAO/UNU). Przełącz widok, aby przeliczyć proporcje (g/kg masy, % energii) na masę i wartość C z kalkulatora.",
-    "en": "Norms for healthy children by age (PZH 2024; protein also per WHO/FAO/UNU). Switch the view to apply the proportions (g/kg body weight, % energy) to your child's weight and the calculator's C value."
+    "pl": "Normy dla dzieci zdrowych wg wieku (PZH 2024; białko także wg WHO/FAO/UNU). Przełącz widok, aby przeliczyć proporcje (g/kg masy, % energii) na masę i wartość C (utrzymanie) z kalkulatora.",
+    "en": "Norms for healthy children by age (PZH 2024; protein also per WHO/FAO/UNU). Switch the view to apply the proportions (g/kg body weight, % energy) to your child's weight and the calculator's C (maintenance) value."
   },
   "bands": [
     { "id": "b1", "label": { "pl": "6–11 mies.", "en": "6–11 mo" } },

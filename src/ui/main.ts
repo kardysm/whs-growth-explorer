@@ -438,7 +438,7 @@ function recalc(): void {
     ${card(t("calc.method_b_t"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A", sub: t("calc.method_b_sub").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), tip: t("calc.method_b_tip"), band: t("calc.band_b") })}
     ${card(t("calc.method_c_t"), r.C.kcalPerDay, [
       ...(r.C.notes ?? []),
-      { pl: `% A: ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}%, % B: ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%`, en: `% A: ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}%, % B: ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%` },
+      { pl: `Ten sam wiek (A): ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}% · Ta sama masa (B): ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%`, en: `Same age (A): ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}% · Same weight (B): ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%` },
       ...((r.heightBased.kcalPerDay !== null && !(r.C.alerts && r.C.alerts.length)) ? [{ pl: `kcal/cm: ${lang === "pl" ? String(r.heightBased.kcalPerCmPerDay).replace(".", ",") : r.heightBased.kcalPerCmPerDay} → ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h`, en: `kcal/cm: ${r.heightBased.kcalPerCmPerDay} -> ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h` }] : []),
       r.heightBased.note,
       ...(r.whsZ.weight !== null ? [{ pl: `Pozycja masy na siatce WHS: ≈ ${r.whsZ.weight.toFixed(1).replace(".", ",")} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`, en: `Weight position on the WHS chart: ≈ ${r.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)` }] : []),
@@ -466,10 +466,10 @@ function recalc(): void {
           const meals = s.restKcal > 0.5 && s.mealsG !== null ? `${fmt(s.mealsG, 0)} g → ${fmt(s.restKcal)} kcal` : t("calc.split_none");
           return `<tr><th scope="row">${label}</th><td>${fmt(s.milkKcal + s.restKcal)} kcal</td><td>${fmt(s.milkKcal)} kcal (${s.milkPct !== null ? Math.round(s.milkPct) : "—"}%)</td><td>${meals}</td></tr>`;
         };
-        return row("C", r.E.split.forC) + row("D", r.E.split.forD);
+        return row(t("calc.split_row_c"), r.E.split.forC) + row(t("calc.split_row_d"), r.E.split.forD);
       })()}</tbody></table>
       <p class="small">${t("calc.sweep_caption")}</p>
-      <table><thead><tr><th>${t("calc.density_col")}</th><th>C (ml/24h)</th><th>D (ml/24h)</th></tr></thead>
+      <table><thead><tr><th>${t("calc.density_col")}</th><th>${t("calc.sweep_col_c")}</th><th>${t("calc.sweep_col_d")}</th></tr></thead>
       <tbody>${r.E.byDensity.map((d) => `<tr><td>${loc(d.density)} kcal/ml</td><td>${d.mlForC !== null ? d.mlForC.toFixed(0) : "—"}</td><td>${d.mlForD !== null ? d.mlForD.toFixed(0) : "—"}</td></tr>`).join("")}</tbody></table>
       <p class="small">${t("calc.fluid_label")}: ${r.E.maintenanceFluidMl.toFixed(0)} ml/24h</p>
       ${(() => { const d67 = r.E.byDensity.find((d) => d.density === 0.67); return d67 && d67.mlForC !== null && d67.mlForC > r.E.maintenanceFluidMl ? `<p class="small">${t("calc.volume_density_note")}</p>` : ""; })()}
@@ -477,7 +477,7 @@ function recalc(): void {
     </div>
     ${r.F ? `<div class="card"><h3>${t("calc.method_f_t")}</h3>
       <p class="small sub">${t("calc.method_f_sub")}</p>
-      <p>${r.F.percentOfC!.toFixed(0)}% C${r.F.percentOfD !== null ? ` · ${r.F.percentOfD.toFixed(0)}% D` : ""}</p>
+      <p>${t("calc.f_pct_c").replace("{p}", r.F.percentOfC!.toFixed(0))}${r.F.percentOfD !== null ? ` · ${t("calc.f_pct_d").replace("{p}", r.F.percentOfD.toFixed(0))}` : ""}</p>
       <p class="small">${B(r.F.note)}</p></div>` : ""}
     <p class="small">${t("calc.note_estimate")}</p>`;
 
@@ -541,6 +541,11 @@ function drawCharts(): void {
   const PAL = dark
     ? { a: "#9db1f5", b: "#f0c674", c: "#c99bf0", d: "#7fd0e8", who: "#7fb6ec", whs2: "#c9a3d9", cal: "#6fd0c0", child: "#f3eefc", fluid: "#b9aed2" }
     : { a: "#4e6ac2", b: "#b0790f", c: "#7d2fa6", d: "#12768f", who: "#2456a8", whs2: "#a05fb4", cal: "#0e7f74", child: "#2c0735", fluid: "#6b5f8a" };
+  // Method labels: descriptive name + letter (user request 2026-10-05: no bare A–D as chart labels).
+  const nmA = `${t("charts.m_a")} (A)`;
+  const nmB = `${t("charts.m_b")} (B)`;
+  const nmC = `${t("charts.m_c")} (C)`;
+  const nmD = `${t("charts.m_d")} (D)`;
   ch1 = echarts.init(document.getElementById("chart1")!);
   ch1.setOption({
     tooltip: {
@@ -549,7 +554,7 @@ function drawCharts(): void {
         const first = ps[0]?.value as [number, number] | undefined;
         const head = `${lang === "pl" ? "masa" : "weight"} ${first ? num0(first[0]) : "—"} kg`;
         const rows = ps.map((p) => { const v = p.value as [number, number]; return `${p.marker ?? ""} ${p.seriesName ?? ""}: ${num0(v[1])} ${unit === "kcal" ? "kcal" : "kJ"}`; });
-        const c = ps.find((p) => p.seriesName === "C");
+        const c = ps.find((p) => p.seriesName === nmC);
         let extra = "";
         if (c && Array.isArray(c.value)) {
           const cv = (c.value as [number, number])[1];
@@ -569,14 +574,14 @@ function drawCharts(): void {
     xAxis: { type: "value", name: "kg", min: 2, max: 20, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     yAxis: { type: "value", name: unit === "kcal" ? "kcal/24h" : "kJ/24h", axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     series: [
-      line("A", Y(rs.map((r) => r.A.kcalPerDay.central)), { color: PAL.a }),
-      line("B", Y(rs.map((r) => r.B.kcalPerDay.central)), { color: PAL.b }),
-      line("C", Y(rs.map((r) => r.C.kcalPerDay.central)), { color: PAL.c }),
-      line("C−", Y(rs.map((r) => r.C.kcalPerDay.low)), { color: PAL.c, lineStyle: { type: "dashed", width: 1 } }),
-      line("C+", Y(rs.map((r) => r.C.kcalPerDay.high)), { color: PAL.c, lineStyle: { type: "dashed", width: 1 } }),
-      line("D", Y(rs.map((r) => r.D.kcalPerDay.central)), { color: PAL.d }),
-      line("D−", Y(rs.map((r) => r.D.kcalPerDay.low)), { color: PAL.d, lineStyle: { type: "dashed", width: 1 } }),
-      line("D+", Y(rs.map((r) => r.D.kcalPerDay.high)), { color: PAL.d, lineStyle: { type: "dashed", width: 1 } }),
+      line(nmA, Y(rs.map((r) => r.A.kcalPerDay.central)), { color: PAL.a }),
+      line(nmB, Y(rs.map((r) => r.B.kcalPerDay.central)), { color: PAL.b }),
+      line(nmC, Y(rs.map((r) => r.C.kcalPerDay.central)), { color: PAL.c }),
+      line(`${t("charts.m_c")} − (C−)`, Y(rs.map((r) => r.C.kcalPerDay.low)), { color: PAL.c, lineStyle: { type: "dashed", width: 1 } }),
+      line(`${t("charts.m_c")} + (C+)`, Y(rs.map((r) => r.C.kcalPerDay.high)), { color: PAL.c, lineStyle: { type: "dashed", width: 1 } }),
+      line(nmD, Y(rs.map((r) => r.D.kcalPerDay.central)), { color: PAL.d }),
+      line(`${t("charts.m_d")} − (D−)`, Y(rs.map((r) => r.D.kcalPerDay.low)), { color: PAL.d, lineStyle: { type: "dashed", width: 1 } }),
+      line(`${t("charts.m_d")} + (D+)`, Y(rs.map((r) => r.D.kcalPerDay.high)), { color: PAL.d, lineStyle: { type: "dashed", width: 1 } }),
     ],
   });
   ch1.on("click", (p: { value?: unknown }) => {
@@ -624,16 +629,16 @@ function drawCharts(): void {
     xAxis: { type: "value", name: lang === "pl" ? "wiek (mies.)" : "age (mo)", min: 0, max: 48, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     yAxis: { type: "value", name: "kg", min: 0, max: 20, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     series: [
-      { name: lang === "pl" ? "WHS średnia" : "WHS mean", type: "line", showSymbol: false, data: pairs("w_mean"), color: PAL.c },
-      { name: "+1 SD", type: "line", showSymbol: false, data: pairs("w_+1SD"), color: PAL.c, lineStyle: { type: "dashed", width: 1 } },
-      { name: "−1 SD", type: "line", showSymbol: false, data: pairs("w_-1SD"), color: PAL.c, lineStyle: { type: "dashed", width: 1 } },
-      { name: "+2 SD", type: "line", showSymbol: false, data: pairs("w_+2SD"), color: PAL.whs2, lineStyle: { type: "dotted", width: 1 } },
-      { name: "−2 SD", type: "line", showSymbol: false, data: pairs("w_-2SD"), color: PAL.whs2, lineStyle: { type: "dotted", width: 1 } },
-      { name: lang === "pl" ? "WHO mediana" : "WHO median", type: "line", showSymbol: false, data: pairs("who_w_med"), color: PAL.who, lineStyle: { type: "dashed" } },
-      { name: "WHO −2 SD", type: "line", showSymbol: false, data: pairs("who_w_m2"), color: PAL.who, lineStyle: { type: "dotted" } },
-      { name: "2025 p25", type: "line", showSymbol: false, data: cal2025("p25"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
-      { name: "2025 p50", type: "line", showSymbol: false, data: cal2025("p50"), color: PAL.cal },
-      { name: "2025 p75", type: "line", showSymbol: false, data: cal2025("p75"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
+      { name: lang === "pl" ? "WHS: średnia" : "WHS: mean", type: "line", showSymbol: false, data: pairs("w_mean"), color: PAL.c },
+      { name: "WHS: +1 SD", type: "line", showSymbol: false, data: pairs("w_+1SD"), color: PAL.c, lineStyle: { type: "dashed", width: 1 } },
+      { name: "WHS: −1 SD", type: "line", showSymbol: false, data: pairs("w_-1SD"), color: PAL.c, lineStyle: { type: "dashed", width: 1 } },
+      { name: "WHS: +2 SD", type: "line", showSymbol: false, data: pairs("w_+2SD"), color: PAL.whs2, lineStyle: { type: "dotted", width: 1 } },
+      { name: "WHS: −2 SD", type: "line", showSymbol: false, data: pairs("w_-2SD"), color: PAL.whs2, lineStyle: { type: "dotted", width: 1 } },
+      { name: lang === "pl" ? "WHO: mediana" : "WHO: median", type: "line", showSymbol: false, data: pairs("who_w_med"), color: PAL.who, lineStyle: { type: "dashed" } },
+      { name: "WHO: −2 SD", type: "line", showSymbol: false, data: pairs("who_w_m2"), color: PAL.who, lineStyle: { type: "dotted" } },
+      { name: lang === "pl" ? "Calhoun 2025: 25. centyl" : "Calhoun 2025: 25th centile", type: "line", showSymbol: false, data: cal2025("p25"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
+      { name: lang === "pl" ? "Calhoun 2025: 50. centyl" : "Calhoun 2025: 50th centile", type: "line", showSymbol: false, data: cal2025("p50"), color: PAL.cal },
+      { name: lang === "pl" ? "Calhoun 2025: 75. centyl" : "Calhoun 2025: 75th centile", type: "line", showSymbol: false, data: cal2025("p75"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
       {
         name: lang === "pl" ? "Twoje dziecko" : "Your child", type: "scatter", symbolSize: 12,
         data: input.age <= 48 ? [[input.age, input.weight]] : [], color: PAL.child,
@@ -650,21 +655,40 @@ function drawCharts(): void {
   const milkAllC = rs.map((r) => (r.C.kcalPerDay.central !== null ? r.C.kcalPerDay.central / milkD : null));
   const mealsC = rs.map((r) => (r.C.kcalPerDay.central !== null ? Math.max(0, r.C.kcalPerDay.central - milkKcalFix) / mealD : null));
   const mealsD = rs.map((r) => (r.D.kcalPerDay.central !== null ? Math.max(0, r.D.kcalPerDay.central - milkKcalFix) / mealD : null));
+  const c3Names = [
+    t("charts.c3_milk").replace("{d}", pDen(milkD)),
+    t("charts.c3_meals_c").replace("{g}", pDen(mealD)),
+    t("charts.c3_meals_d").replace("{g}", pDen(mealD)),
+    lang === "pl" ? "płyny podtrzymujące" : "maintenance fluid",
+  ];
+  const wSel = input.weight;
+  const showSel = Number.isFinite(wSel) && wSel >= 2 && wSel <= 20;
   ch3 = echarts.init(document.getElementById("chart3")!);
   ch3.setOption({
     tooltip: { trigger: "axis", valueFormatter: (v: unknown) => (typeof v === "number" ? `${num0(v)}` : "—") },
     aria: { enabled: true, label: { description: t("a11y.chart3_desc").replace("{milkd}", loc(input.milkDensity)).replace("{ml}", String(input.milkMl)).replace("{meald}", loc(input.mealDensity)) } },
     darkMode: false,
     textStyle: { color: fgVar },
-    legend: { bottom: 0, type: "scroll", selectedMode: true, textStyle: { color: fgVar } },
+    legend: { bottom: 0, type: "scroll", selectedMode: true, textStyle: { color: fgVar }, data: c3Names },
     grid: { left: 60, right: 30, top: 30, bottom: 60 },
     xAxis: { type: "value", name: "kg", min: 2, max: 20, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     yAxis: { type: "value", name: "ml lub g /24h", axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     series: [
-      { name: t("charts.c3_milk").replace("{d}", pDen(milkD)), type: "line", showSymbol: false, data: ws.map((w, i) => [w, milkAllC[i]]), color: PAL.a },
-      { name: t("charts.c3_meals_c").replace("{g}", pDen(mealD)), type: "line", showSymbol: false, data: ws.map((w, i) => [w, mealsC[i]]), color: PAL.c },
-      { name: t("charts.c3_meals_d").replace("{g}", pDen(mealD)), type: "line", showSymbol: false, data: ws.map((w, i) => [w, mealsD[i]]), color: PAL.d, lineStyle: { type: "dashed", width: 1 } },
-      { name: lang === "pl" ? "płyny podtrzymujące" : "maintenance fluid", type: "line", showSymbol: false, data: ws.map((w) => [w, w <= 10 ? w * 100 : w <= 20 ? 1000 + (w - 10) * 50 : 1500 + (w - 20) * 20]), color: PAL.fluid },
+      { name: c3Names[0], type: "line", showSymbol: false, data: ws.map((w, i) => [w, milkAllC[i]]), color: PAL.a },
+      { name: c3Names[1], type: "line", showSymbol: false, data: ws.map((w, i) => [w, mealsC[i]]), color: PAL.c },
+      { name: c3Names[2], type: "line", showSymbol: false, data: ws.map((w, i) => [w, mealsD[i]]), color: PAL.d, lineStyle: { type: "dashed", width: 1 } },
+      { name: c3Names[3], type: "line", showSymbol: false, data: ws.map((w) => [w, w <= 10 ? w * 100 : w <= 20 ? 1000 + (w - 10) * 50 : 1500 + (w - 20) * 20]), color: PAL.fluid },
+      // Vertical marker at the currently selected weight (user request 2026-10-05). Own unnamed
+      // series so hiding legend entries never removes the line; excluded from the legend via data.
+      {
+        name: "", type: "line", data: [], silent: true, legendHoverLink: false,
+        markLine: {
+          symbol: "none", silent: false,
+          lineStyle: { color: PAL.child, type: "dashed", width: 2 },
+          label: { position: "insideEndTop", color: fgVar, formatter: `${lang === "pl" ? "wybrana masa" : "selected weight"}: ${loc(wSel)} kg` },
+          data: showSel ? [{ xAxis: wSel }] : [],
+        },
+      },
     ],
   });
   renderChartFallbacks(ws, rs);
@@ -697,7 +721,7 @@ function renderChartFallbacks(ws: number[], rs: ReturnType<typeof computeAll>[])
     const hit = src?.find(([a]) => Math.abs(a - age) < 1e-6);
     return hit ? hit[1] : null;
   };
-  put("fallback2", `${open}<table><thead><tr><th>${t("a11y.age")}</th><th>${t("a11y.whs_mean")}</th><th>${t("a11y.who_med")}</th><th>2025 p25</th><th>2025 p50</th><th>2025 p75</th></tr></thead><tbody>
+  put("fallback2", `${open}<table><thead><tr><th>${t("a11y.age")}</th><th>${t("a11y.whs_mean")}</th><th>${t("a11y.who_med")}</th><th>${lang === "pl" ? "Calhoun 2025: 25. centyl" : "Calhoun 2025: 25th centile"}</th><th>${lang === "pl" ? "Calhoun 2025: 50. centyl" : "Calhoun 2025: 50th centile"}</th><th>${lang === "pl" ? "Calhoun 2025: 75. centyl" : "Calhoun 2025: 75th centile"}</th></tr></thead><tbody>
     ${[0, 6, 12, 18, 24, 30, 36, 42, 48].map((m) => `<tr><td>${m}</td><td>${n2(findRef(m, "w_mean"))}</td><td>${n2(findRef(m, "who_w_med"))}</td><td>${n2(calAt("p25", m))}</td><td>${n2(calAt("p50", m))}</td><td>${n2(calAt("p75", m))}</td></tr>`).join("")}</tbody></table>${close}`);
 
   put("fallback3", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>${t("table.col_milk")}</th><th>${t("table.col_meals")}</th><th>${lang === "pl" ? "płyny podtrzymujące" : "maintenance fluid"}</th></tr></thead><tbody>
@@ -794,7 +818,7 @@ function renderTable(): void {
   });
 
   document.getElementById("csv-btn")!.addEventListener("click", () => {
-    const header = "weight_kg,A_kcal,B_kcal,C_kcal,D_kcal,fluid_ml,milk_ml_all_C,meals_g_topup_C";
+    const header = "weight_kg,same_age_kcal,same_weight_kcal,maintenance_kcal,catchup_kcal,fluid_ml,milk_ml_all_maintenance,meals_g_topup_maintenance";
     const lines = rows.map((r) => {
       const cNum = r.C !== null && Number.isFinite(Number(r.C)) ? Number(r.C) : null;
       const milkAll = cNum !== null ? (cNum / input.milkDensity).toFixed(0) : "";
@@ -977,10 +1001,10 @@ function renderNutrients(): void {
           how = `${nf(c.lo)}${c.lo !== c.hi ? "–" + nf(c.hi) : ""} g/kg × ${nf(w, 1)} kg`;
         } else if (c && band && r.kind === "percent" && c.lo !== undefined && c.hi !== undefined && cKcal !== null) {
           val = `≈ ${nf((c.lo / 100) * cKcal / 9, 0)}–${nf((c.hi / 100) * cKcal / 9, 0)} g/d`;
-          how = `${nf(c.lo, 0)}–${nf(c.hi, 0)}% E × C = ${nf(cKcal, 0)} kcal ÷ 9`;
+          how = lang === "pl" ? `${nf(c.lo, 0)}–${nf(c.hi, 0)}% energii × C (utrzymanie) = ${nf(cKcal, 0)} kcal ÷ 9` : `${nf(c.lo, 0)}–${nf(c.hi, 0)}% energy × C (maintenance) = ${nf(cKcal, 0)} kcal ÷ 9`;
         } else if (c && band && r.kind === "percent" && c.lo !== undefined && c.hi !== undefined) {
           val = `${nf(c.lo, 0)}–${nf(c.hi, 0)}% E`;
-          how = lang === "pl" ? "C niedostępne — patrz karta C" : "C unavailable — see card C";
+          how = lang === "pl" ? "C (utrzymanie) niedostępne — patrz karta C" : "C (maintenance) unavailable — see card C";
         } else if (c && band && r.kind === "daily" && c.num !== undefined) {
           val = `${nf(c.num, c.num < 10 ? 1 : 0)} ${r.unit}${c.ai ? " (AI)" : ""}`;
           how = lang === "pl" ? `dawka dobowa dla wieku (niezależna od masy); ≈ ${nf(c.num / w, 2)} ${r.unit}/kg` : `daily amount for age (weight-independent); ≈ ${nf(c.num / w, 2)} ${r.unit}/kg`;
