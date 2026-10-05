@@ -18,6 +18,7 @@ import nutrientsContent from "../../content/nutrients.json";
 import foodsData from "../data/products_foods.json";
 import { computeAll } from "../calc/methods.js";
 import { loadContext } from "../calc/load.js";
+import { descPl } from "./desc-pl.js";
 import { whsAgeForLength, whsWeightZ } from "../calc/whs.js";
 import type { CalcInput } from "../calc/types.js";
 
@@ -109,12 +110,13 @@ function fmt(kcal: number | null | undefined, dec = 0): string {
 const loc = (v: number): string => fmt(v, 2);
 
 // US customary -> metric in portion descriptions (user request, 2026-10-03: no "oz" shown in the UI).
+// The `\.\d+` alternative handles USDA's dot-leading decimals (".5 oz"), which used to convert as "5 oz".
 function metricDesc(d: string): { text: string; converted: boolean } {
   const frac = (n: string): number => (n.includes("/") ? Number(n.split("/")[0]) / Number(n.split("/")[1]) : Number(n));
   let changed = false;
   const text = d
-    .replace(/(\d+(?:\.\d+)?|\d+\/\d+)\s*fl\s+oz\b/gi, (_: string, n: string) => { changed = true; return `${Math.round(frac(n) * 29.5735)} ml`; })
-    .replace(/(\d+(?:\.\d+)?|\d+\/\d+)\s*oz\b/gi, (_: string, n: string) => { changed = true; return `${Math.round(frac(n) * 28.3495)} g`; });
+    .replace(/(\.\d+|\d+(?:\.\d+)?|\d+\/\d+)\s*fl\s+oz\b/gi, (_: string, n: string) => { changed = true; return `${Math.round(frac(n) * 29.5735)} ml`; })
+    .replace(/(\.\d+|\d+(?:\.\d+)?|\d+\/\d+)\s*oz\b/gi, (_: string, n: string) => { changed = true; return `${Math.round(frac(n) * 28.3495)} g`; });
   return { text, converted: changed };
 }
 
@@ -354,8 +356,10 @@ function renderCalcForm(): void {
     </form>
     <div>
       <div class="card small">${t("calc.hint")}<br>${t("calc.grades_hint")}</div>
-      <div id="results"></div>
-      <div id="milk-card"></div>
+      <div class="cards-flow">
+        <div id="results"></div>
+        <div id="milk-card"></div>
+      </div>
     </div>
   </div>`;
 
@@ -1167,11 +1171,13 @@ function buildProducts(): PItem[] {
       warning: x.warning,
       allergens: x.allergens,
       measures: (x.portions ?? []).map((p) => {
-        const md = metricDesc(p.desc);
+        const en = metricDesc(p.desc);
+        const pl = metricDesc(descPl(p.desc)); // translate first, then metric-convert (PL mode only)
+        const suffix = (conv: boolean, l2: "pl" | "en"): string => (conv ? "" : ` (${l2 === "pl" ? String(p.g).replace(".", ",") : p.g} g)`);
         return {
           label: {
-            pl: `≈ <span lang="en">${md.text}</span>${md.converted ? "" : ` (${String(p.g).replace(".", ",")} g)`}`,
-            en: `≈ ${md.text}${md.converted ? "" : ` (${p.g} g)`}`,
+            pl: `≈ ${pl.text.replace(/(\d)\.(\d)/g, "$1,$2")}${suffix(pl.converted, "pl")}`,
+            en: `≈ ${en.text}${suffix(en.converted, "en")}`,
           },
           kcal: n.kcal !== null && n.kcal !== undefined ? Math.round((n.kcal * p.g) / 100) : null,
         };

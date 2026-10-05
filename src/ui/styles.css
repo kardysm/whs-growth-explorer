@@ -159,13 +159,19 @@ main { max-width: none; margin: 0; padding: clamp(0.75rem, 1.2vw, 1.5rem); }
 section { margin: 2.5rem 0; scroll-margin-top: 4rem; }
 section h2 { border-bottom: 2px solid var(--accent); padding-bottom: 0.25rem; }
 /* Card grids: cards flow into as many columns as fit and wrap to lower rows as the viewport
-   narrows (auto-fit). Grid gap replaces the cards' own vertical margins. */
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 1rem; }
-.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 1rem; }
+   narrows (auto-fit), but never more than 3 per row on wide desktops (user request 2026-10-05:
+   „make cards wider for desktop, max 3 cards per desktop”): the min track size is
+   max(<base>px, (100% - 2.5rem)/3), so at most three tracks can ever fit. */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(360px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; }
+.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(520px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; }
 .calc-grid { display: grid; grid-template-columns: minmax(min(100%, 340px), 400px) minmax(0, 1fr); gap: 1rem; align-items: start; }
 @media (max-width: 920px) { .calc-grid { grid-template-columns: 1fr; } }
-#results { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 1rem; align-items: start; }
-#results > p { grid-column: 1 / -1; }
+/* Results flow: one grid holding the method cards A–F AND the milk-balance card (user request
+   2026-10-05: „bilans” belongs in the same cards section as A–E); #results dissolves into it. */
+.cards-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(360px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; align-items: start; }
+#results { display: contents; }
+#results > p { grid-column: 1 / -1; order: 1; }
+#milk-card > .card { margin: 0; }
 
 /* ---------- glass surfaces ---------- */
 .card {
@@ -286,7 +292,7 @@ details.hint-toggle > summary { color: var(--accent2); cursor: pointer; width: f
 details.hint-toggle > summary:hover { text-decoration: underline; }
 details.hint-toggle > p { margin: 0.35rem 0 0; }
 .card, #search-results li, #sources-body li { overflow-wrap: anywhere; }
-.cards-grid > *, .chart-grid > *, .calc-grid > *, #results > * { min-width: 0; }
+.cards-grid > *, .chart-grid > *, .calc-grid > *, .cards-flow > *, #results > * { min-width: 0; }
 .cards-grid > .card, .chart-grid > .card, #results > .card { margin: 0; }
 .hdr-btn, .lang-toggle button, .nut-toggle button, button.primary, select, input { transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, filter 0.15s ease; }
 
