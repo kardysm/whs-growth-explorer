@@ -30,7 +30,8 @@ const baseInput: Omit<CalcInput, "sex" | "ageMonths" | "weightKg" | "lengthCm"> 
   mealDensityKcalPerG: 1.0,
   milkMlPerDay: 500,
   feedsPerDay: null,
-  mlPerFeed: null,
+  milkPortionMl: null,
+  mealPortionG: null,
   actualIntakeKcalPerDay: null,
   actualIntakeMlPerDay: null,
 };

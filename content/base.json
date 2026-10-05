@@ -233,9 +233,17 @@
       "pl": "Posiłków na dobę (opcjonalnie)",
       "en": "Feeds per day (optional)"
     },
-    "ml_per_feed": {
-      "pl": "Tolerowana porcja (ml)",
-      "en": "Tolerated ml per feed"
+    "milk_portion": {
+      "pl": "Tolerowana porcja mleka (ml)",
+      "en": "Tolerated milk portion (ml)"
+    },
+    "meal_portion": {
+      "pl": "Tolerowana porcja pozostałych posiłków (g)",
+      "en": "Tolerated portion of other meals (g)"
+    },
+    "portions_hint": {
+      "pl": "Porcja = ilość na jedno karmienie. Dla płynnych posiłków 1 g ≈ 1 ml.",
+      "en": "Portion = amount per feed. For liquid meals 1 g ≈ 1 ml."
     },
     "intake": {
       "pl": "Rzeczywiste spożycie (kcal/dzień, opcjonalnie)",

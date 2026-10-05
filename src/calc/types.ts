@@ -46,7 +46,9 @@ export interface CalcInput {
   mealDensityKcalPerG: number;
   milkMlPerDay: number;
   feedsPerDay: number | null;
-  mlPerFeed: number | null;
+  /** Tolerated portion per feed, split by component (user request 2026-10-05): milk in ml, other meals in g. */
+  milkPortionMl: number | null;
+  mealPortionG: number | null;
   actualIntakeKcalPerDay: number | null;
   actualIntakeMlPerDay: number | null;
 }

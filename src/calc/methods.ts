@@ -382,15 +382,29 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     forD: splitOf(D.kcalPerDay.central),
   };
   const volumeFlags: CalcNote[] = [];
-  if (input.feedsPerDay !== null && input.mlPerFeed !== null) {
-    const tolerated = input.feedsPerDay * input.mlPerFeed;
-    // Approximate total diet volume: milk ml + meals grams (1 g of complementary food ≈ 1 ml; labelled).
-    const volC = split.forC.mealsG !== null ? input.milkMlPerDay + split.forC.mealsG : null;
-    if (volC !== null && tolerated > 0 && volC > tolerated) {
-      volumeFlags.push(N(
-        `Ograniczenie objętości: przybliżona objętość diety ~${volC.toFixed(0)} ml/d (mleko ${input.milkMlPerDay} ml + posiłki ~${split.forC.mealsG!.toFixed(0)} g ≈ ml) przekracza tolerowane ${tolerated} ml/d (porcje × ml) — rozważ zagęszczenie energii pod nadzorem klinicznym.`,
-        `Volume-limited: approximate diet volume ~${volC.toFixed(0)} ml/day (milk ${input.milkMlPerDay} ml + meals ~${split.forC.mealsG!.toFixed(0)} g ≈ ml) exceeds the tolerated ${tolerated} ml/day (feeds x ml/feed) — consider energy densification with clinician guidance.`,
-      ));
+  if (input.feedsPerDay !== null && input.feedsPerDay > 0) {
+    const feeds = input.feedsPerDay;
+    // Split tolerance (user request 2026-10-05): the tolerated portion is per component — milk in
+    // ml, other meals in grams. Each component is checked against feeds x its own portion
+    // (conservative: that component's feeds are at most all of them).
+    if (input.milkPortionMl !== null) {
+      const toleratedMilk = feeds * input.milkPortionMl;
+      if (toleratedMilk > 0 && input.milkMlPerDay > toleratedMilk) {
+        volumeFlags.push(N(
+          `Ograniczenie objętości mleka: ${input.milkMlPerDay} ml/d przekracza tolerowane porcje mleka (${feeds} × ${input.milkPortionMl} ml = ${toleratedMilk.toFixed(0)} ml/d) — rozważ zagęszczenie mleka pod nadzorem klinicznym.`,
+          `Milk volume limit: ${input.milkMlPerDay} ml/day exceeds the tolerated milk portions (${feeds} x ${input.milkPortionMl} ml = ${toleratedMilk.toFixed(0)} ml/day) — consider milk energy densification with clinician guidance.`,
+        ));
+      }
+    }
+    if (input.mealPortionG !== null) {
+      const toleratedMeals = feeds * input.mealPortionG;
+      const mealsC = split.forC.mealsG;
+      if (mealsC !== null && toleratedMeals > 0 && mealsC > toleratedMeals) {
+        volumeFlags.push(N(
+          `Ograniczenie objętości posiłków: ~${mealsC.toFixed(0)} g/d (pozostała część diety C) przekracza tolerowane porcje posiłków (${feeds} × ${input.mealPortionG} g = ${toleratedMeals.toFixed(0)} g/d) — rozważ gęstsze posiłki pod nadzorem klinicznym.`,
+          `Meal volume limit: ~${mealsC.toFixed(0)} g/day (the remaining part of the C diet) exceeds the tolerated meal portions (${feeds} x ${input.mealPortionG} g = ${toleratedMeals.toFixed(0)} g/day) — consider denser meals with clinician guidance.`,
+        ));
+      }
     }
     if (input.milkMlPerDay > maintenance) {
       volumeFlags.push(N(

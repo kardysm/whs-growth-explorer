@@ -20,7 +20,8 @@ const base: CalcInput = {
   mealDensityKcalPerG: 1.0,
   milkMlPerDay: 500,
   feedsPerDay: null,
-  mlPerFeed: null,
+  milkPortionMl: null,
+  mealPortionG: null,
   actualIntakeKcalPerDay: null,
   actualIntakeMlPerDay: null,
 };
@@ -72,11 +73,17 @@ describe("full pipeline (representative case)", () => {
     expect(s.forD.mealsG!).toBeCloseTo(Math.max(0, r.D.kcalPerDay.central! - milkKcal) / 1.0, 6);
   });
 
-  it("E volume flags: approximate diet volume vs tolerance; milk volume vs maintenance fluid", () => {
-    const rv = computeAll({ ...base, feedsPerDay: 6, mlPerFeed: 100 }, ctx); // tolerated 600 < 500 ml milk + ~188 g meals
-    expect(rv.E.volumeFlags.length).toBeGreaterThan(0);
-    const rm = computeAll({ ...base, milkMlPerDay: 1000, feedsPerDay: 6, mlPerFeed: 200 }, ctx); // 1000 ml > 900 ml maintenance
+  it("E volume flags: milk and meals volumes vs their tolerated portions; milk volume vs maintenance fluid", () => {
+    // milk 500 ml > 6 x 80 = 480 ml; meals ~188 g > 6 x 30 = 180 g (both components flagged)
+    const rv = computeAll({ ...base, feedsPerDay: 6, milkPortionMl: 80, mealPortionG: 30 }, ctx);
+    const flags = rv.E.volumeFlags.map((f) => f.en).join(" ");
+    expect(flags).toContain("Milk volume limit");
+    expect(flags).toContain("Meal volume limit");
+    const rm = computeAll({ ...base, milkMlPerDay: 1000, feedsPerDay: 6, milkPortionMl: 200 }, ctx); // 1000 ml > 900 ml maintenance
     expect(rm.E.volumeFlags.map((f) => f.en).join(" ")).toContain("exceeds Holliday-Segar");
+    // within tolerance: no component flags
+    const ok = computeAll({ ...base, feedsPerDay: 7, milkPortionMl: 80, mealPortionG: 30 }, ctx); // 560 >= 500; 210 >= 188
+    expect(ok.E.volumeFlags.length).toBe(0);
   });
 
   it("F gap analysis with measured intake", () => {

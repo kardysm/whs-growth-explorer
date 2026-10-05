@@ -43,7 +43,9 @@ interface Inputs {
   mealDensity: number;
   milkMl: number;
   feeds: number | null;
-  mlPerFeed: number | null;
+  /** Tolerated portion per feed, split (user request 2026-10-05): milk ml / other meals g. */
+  milkPortionMl: number | null;
+  mealPortionG: number | null;
   intake: number | null;
 }
 let input: Inputs = {
@@ -59,7 +61,8 @@ let input: Inputs = {
   mealDensity: 1.0,
   milkMl: 500,
   feeds: null,
-  mlPerFeed: null,
+  milkPortionMl: null,
+  mealPortionG: null,
   intake: null,
 };
 
@@ -69,10 +72,13 @@ let rememberMe = false;
 try {
   const raw = localStorage.getItem(STORE_KEY);
   if (raw) {
-    const parsed = JSON.parse(raw) as Partial<Inputs> & { density?: number };
+    const parsed = JSON.parse(raw) as Partial<Inputs> & { density?: number; mlPerFeed?: number };
     // migrate the pre-split single density into the milk density (2026-10-05)
     if (typeof parsed.density === "number" && typeof parsed.milkDensity !== "number") parsed.milkDensity = parsed.density;
     delete parsed.density;
+    // migrate the pre-split single tolerated portion into the milk portion (2026-10-05)
+    if (typeof parsed.mlPerFeed === "number" && typeof parsed.milkPortionMl !== "number") parsed.milkPortionMl = parsed.mlPerFeed;
+    delete parsed.mlPerFeed;
     input = { ...input, ...parsed };
     rememberMe = true;
   }
@@ -274,7 +280,8 @@ function readInputs(): void {
     mealDensity: Number((document.getElementById("in-meald") as HTMLInputElement).value),
     milkMl: Number((document.getElementById("in-milkml") as HTMLInputElement).value),
     feeds: (document.getElementById("in-feeds") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-feeds") as HTMLInputElement).value),
-    mlPerFeed: (document.getElementById("in-mlfeed") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-mlfeed") as HTMLInputElement).value),
+    milkPortionMl: (document.getElementById("in-milkportion") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-milkportion") as HTMLInputElement).value),
+    mealPortionG: (document.getElementById("in-mealportion") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-mealportion") as HTMLInputElement).value),
     intake: (document.getElementById("in-intake") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-intake") as HTMLInputElement).value),
   };
   try {
@@ -334,8 +341,11 @@ function renderCalcForm(): void {
       <p class="small hint">${t("calc.meal_density_hint")}</p>
       <label for="in-feeds">${t("calc.feeds")}</label>
       <input id="in-feeds" type="number" min="1" max="12" step="1" value="${input.feeds ?? ""}" />
-      <label for="in-mlfeed">${t("calc.ml_per_feed")}</label>
-      <input id="in-mlfeed" type="number" min="10" max="400" step="5" value="${input.mlPerFeed ?? ""}" />
+      <label for="in-milkportion">${t("calc.milk_portion")}</label>
+      <input id="in-milkportion" type="number" min="10" max="400" step="5" value="${input.milkPortionMl ?? ""}" />
+      <label for="in-mealportion">${t("calc.meal_portion")}</label>
+      <input id="in-mealportion" type="number" min="5" max="400" step="5" value="${input.mealPortionG ?? ""}" />
+      <p class="small hint">${t("calc.portions_hint")}</p>
       <label for="in-intake">${t("calc.intake")}</label>
       <input id="in-intake" type="number" min="0" max="3000" step="10" value="${input.intake ?? ""}" />
       <label class="remember"><input type="checkbox" id="in-remember" ${rememberMe ? "checked" : ""}/> ${t("calc.remember")}</label>
@@ -349,7 +359,7 @@ function renderCalcForm(): void {
     </div>
   </div>`;
 
-  for (const id of ["in-sex", "in-age", "in-weight", "in-length", "in-tone", "in-mobility", "in-target", "in-horizon", "in-milkd", "in-milkml", "in-meald", "in-feeds", "in-mlfeed", "in-intake"]) {
+  for (const id of ["in-sex", "in-age", "in-weight", "in-length", "in-tone", "in-mobility", "in-target", "in-horizon", "in-milkd", "in-milkml", "in-meald", "in-feeds", "in-milkportion", "in-mealportion", "in-intake"]) {
     document.getElementById(id)!.addEventListener("change", readInputs);
   }
   document.getElementById("btn-recalc")!.addEventListener("click", readInputs);
@@ -378,7 +388,8 @@ function recalc(): void {
     mealDensityKcalPerG: input.mealDensity,
     milkMlPerDay: input.milkMl,
     feedsPerDay: input.feeds,
-    mlPerFeed: input.mlPerFeed,
+    milkPortionMl: input.milkPortionMl,
+    mealPortionG: input.mealPortionG,
     actualIntakeKcalPerDay: input.intake,
     actualIntakeMlPerDay: null,
   };
@@ -506,7 +517,7 @@ function drawCharts(): void {
       tone: input.tone, mobility: input.mobility, targetRef: input.targetRef,
       customTargetKg: null, horizonWeeks: input.horizonWeeks,
       milkDensityKcalPerMl: input.milkDensity, mealDensityKcalPerG: input.mealDensity, milkMlPerDay: input.milkMl,
-      feedsPerDay: null, mlPerFeed: null, actualIntakeKcalPerDay: null, actualIntakeMlPerDay: null,
+      feedsPerDay: null, milkPortionMl: null, mealPortionG: null, actualIntakeKcalPerDay: null, actualIntakeMlPerDay: null,
     }, ctx);
   const rs = ws.map(mk);
   const conv = (v: number | null): number | null => (v === null ? null : (unit === "kcal" ? v : v * 4.184));
@@ -710,7 +721,7 @@ function renderTable(): void {
       tone: input.tone, mobility: input.mobility, targetRef: input.targetRef,
       customTargetKg: null, horizonWeeks: input.horizonWeeks,
       milkDensityKcalPerMl: input.milkDensity, mealDensityKcalPerG: input.mealDensity, milkMlPerDay: input.milkMl,
-      feedsPerDay: null, mlPerFeed: null, actualIntakeKcalPerDay: null, actualIntakeMlPerDay: null,
+      feedsPerDay: null, milkPortionMl: null, mealPortionG: null, actualIntakeKcalPerDay: null, actualIntakeMlPerDay: null,
     }, ctx);
     rows.push({
       w: ww,
@@ -724,7 +735,7 @@ function renderTable(): void {
     tone: input.tone, mobility: input.mobility, targetRef: input.targetRef,
     customTargetKg: null, horizonWeeks: input.horizonWeeks,
     milkDensityKcalPerMl: input.milkDensity, mealDensityKcalPerG: input.mealDensity, milkMlPerDay: input.milkMl,
-    feedsPerDay: null, mlPerFeed: null, actualIntakeKcalPerDay: null, actualIntakeMlPerDay: null,
+    feedsPerDay: null, milkPortionMl: null, mealPortionG: null, actualIntakeKcalPerDay: null, actualIntakeMlPerDay: null,
   }, ctx);
   const cNote = probe.C.alerts && probe.C.alerts.length && probe.C.kcalPerDay.central !== null ? `<p class="banner warn small">${B(probe.C.alerts[0])}</p>` : "";
   const tf = (v: unknown, dec = 0) => (v === null || v === undefined ? "—" : fmt(Number(v), dec));
