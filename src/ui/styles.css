@@ -264,6 +264,9 @@ thead th { font-weight: 600; }
 .badge.gradeB { border-color: #1d4ed8; color: #1d4ed8; }
 .badge.gradeC { border-color: #b45309; color: #b45309; }
 .badge.gradeD { border-color: #8e24aa; color: #8e24aa; }
+/* allergen chips on product cards (user request 2026-10-05) */
+.allergens { margin-top: -0.15rem; }
+.allergens .badge.alg { border-color: var(--warn-line); color: var(--fg); background: var(--warn-bg); }
 ul.tight li { margin: 0.2rem 0; }
 footer { padding: 2rem 1rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); }
 main a, footer a { color: var(--accent2); }

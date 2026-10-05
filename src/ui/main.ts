@@ -1125,8 +1125,19 @@ interface PItem {
   per100: Record<string, number | null>;
   measures: { label: BiText; kcal: number | null; note?: BiText }[];
   tags: string[];
+  /** EU-14 allergen codes found in the declared composition (user request 2026-10-05). */
+  allergens?: string[];
+  /** Provenance of the allergen flags, e.g. "doz.pl — etykieta: …". */
+  allergen_source?: string;
   source: { label: BiText | string; url: string };
 }
+
+// Allergen display (EU-14 subset present in this dataset; user request 2026-10-05):
+// icons + labels for the chip row; allergen-carrying tags are hidden from the generic tag row.
+const ALG_ICONS: Record<string, string> = { milk: "🥛", egg: "🥚", fish: "🐟", gluten: "🌾", soy: "🌱", nuts: "🌰", peanuts: "🥜", sesame: "🫘" };
+const ALG_KEYS: Record<string, string> = { milk: "allergen_milk", egg: "allergen_egg", fish: "allergen_fish", gluten: "allergen_gluten", soy: "allergen_soy", nuts: "allergen_nuts", peanuts: "allergen_peanuts", sesame: "allergen_sesame" };
+const ALG_TAGS = new Set(["dairy", "egg", "fish", "soy", "gluten", "nuts", "sesame"]);
+const algLabel = (a: string): string => (ALG_KEYS[a] ? t(`products.${ALG_KEYS[a]}`) : a);
 
 let pSearch = "";
 let pCat = "all";
@@ -1136,7 +1147,7 @@ function buildProducts(): PItem[] {
   const fsmp = (productsContent as unknown as { items: PItem[] }).items.map((x) => ({ ...x, kind: "fsmp" }));
   interface FoodRow {
     id: string; category: string; name: BiText; tags?: string[]; warning?: BiText; per100g: Record<string, number | null>;
-    portions: { desc: string; g: number }[]; fdc_id: string; fdc_desc: string;
+    portions: { desc: string; g: number }[]; fdc_id: string; fdc_desc: string; allergens?: string[];
   }
   const foods = (foodsData as unknown as { items: FoodRow[] }).items.map((x) => {
     const n = x.per100g;
@@ -1154,6 +1165,7 @@ function buildProducts(): PItem[] {
       id: x.id, kind: "food", category: x.category, name: x.name, basis: "g" as const,
       per100: n,
       warning: x.warning,
+      allergens: x.allergens,
       measures: (x.portions ?? []).map((p) => {
         const md = metricDesc(p.desc);
         return {
@@ -1181,6 +1193,7 @@ function renderProducts(): void {
 
   document.getElementById("products-body")!.innerHTML = `
     <p class="small">${t("products.foods_note")}</p>
+    <p class="small">${t("products.allergen_legend")}</p>
     <div class="card" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
       <div style="flex:1 1 220px"><label for="p-search">${t("products.search")}</label><input id="p-search" type="search" value="${pSearch.replace(/"/g, "&quot;")}"></div>
       <div><label for="p-cat">${t("products.category")}</label>
@@ -1209,7 +1222,7 @@ function renderProducts(): void {
   function paint(): void {
     let list = all.filter((x) => (pCat === "all" ? true : x.category === pCat));
     const q = strip(pSearch.trim());
-    if (q) list = list.filter((x) => strip(`${x.name.pl} ${x.name.en} ${x.tags.join(" ")} ${x.tags.map(tagLabel).join(" ")} ${catLabel(x.category)} ${x.form ? x.form.pl + " " + x.form.en : ""}`).includes(q));
+    if (q) list = list.filter((x) => strip(`${x.name.pl} ${x.name.en} ${x.tags.join(" ")} ${x.tags.map(tagLabel).join(" ")} ${(x.allergens ?? []).map(algLabel).join(" ")} ${catLabel(x.category)} ${x.form ? x.form.pl + " " + x.form.en : ""}`).includes(q));
     list.sort((a, b) => {
       if (pSort === "name") return a.name[lang].localeCompare(b.name[lang]);
       const key = pSort === "kcal" ? "kcal" : "protein";
@@ -1225,9 +1238,15 @@ function renderProducts(): void {
       return `<div class="card" id="prod-${x.id}">
         <p><b>${x.name[lang]}</b></p>
         ${x.form ? `<p class="small">${B(x.form)}</p>` : ""}
+        ${(() => {
+          const algs = x.allergens;
+          if (!algs || !algs.length) return "";
+          const tip = x.allergen_source ? t("products.allergen_tip").replace("{src}", x.allergen_source.replace(/"/g, "&quot;")) : t("products.allergen_tip_ident");
+          return `<p class="small allergens">${t("products.allergen_label")} ${algs.map((a) => `<span class="badge alg" data-tip="${tip}"><span aria-hidden="true">${ALG_ICONS[a] ?? "⚠️"}</span> ${algLabel(a)}</span>`).join(" ")}</p>`;
+        })()}
         ${x.warning ? `<p class="banner crit small">${B(x.warning)}</p>` : ""}
         <p class="small">${basis}: <b>${pn(n.kcal)} kcal</b> · ${lang === "pl" ? "B" : "P"} ${pn(n.protein)} g · ${lang === "pl" ? "T" : "F"} ${pn(n.fat)} g · ${lang === "pl" ? "W" : "C"} ${pn(n.carbs)} g${n.fibre ? ` · ${tagLabel("fibre")} ${pn(n.fibre)} g` : ""}${n.iron_mg ? ` · Fe ${pn(n.iron_mg)} mg` : ""}${n.zinc_mg ? ` · Zn ${pn(n.zinc_mg)} mg` : ""}${n.calcium_mg ? ` · Ca ${pn(n.calcium_mg)} mg` : ""}${n.vitd_ug ? ` · D ${pn(n.vitd_ug)} µg` : ""}</p>
-        <p>${x.tags.map((tg) => `<span class="badge">${tagLabel(tg)}</span>`).join(" ")}</p>
+        ${(() => { const rest = x.tags.filter((tg) => !ALG_TAGS.has(tg)); return rest.length ? `<p>${rest.map((tg) => `<span class="badge">${tagLabel(tg)}</span>`).join(" ")}</p>` : ""; })()}
         ${meas}
         <p class="small">${t("products.source")}: <a href="${x.source.url}" rel="noopener">${typeof x.source.label === "string" ? x.source.label : B(x.source.label as BiText)}</a></p>
       </div>`;

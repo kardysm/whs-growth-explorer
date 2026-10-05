@@ -679,6 +679,54 @@
       "pl": "Skład produktów spożywczych: USDA FoodData Central (SR Legacy) — oznaczone jako dane nie-polskie; opisy miar domowych w jednostkach USDA (j. angielski). Produkty specjalistyczne: strony producentów.",
       "en": "Food composition: USDA FoodData Central (SR Legacy) — flagged as non-PL data; household-measure descriptions use USDA units (English). Specialist products: manufacturer pages."
     },
+    "allergen_legend": {
+      "pl": "Alergeny (lista 14 UE): 🥛 mleko · 🥚 jaja · 🐟 ryby · 🌾 gluten (zboża) · 🌱 soja · 🌰 orzechy · 🥜 orzeszki ziemne · 🫘 sezam. Produkty specjalistyczne: wg deklaracji składu z etykiety produktu (źródło w podpowiedzi); produkty jednoskładnikowe: wg identyfikacji składnika. Brak ikon = brak alergenów z listy 14. Zawsze sprawdź aktualną etykietę.",
+      "en": "Allergens (EU-14 list): 🥛 milk · 🥚 egg · 🐟 fish · 🌾 gluten (cereals) · 🌱 soy · 🌰 nuts · 🥜 peanuts · 🫘 sesame. Specialist products: per the composition declaration on the product label (source in the tooltip); single-ingredient foods: per ingredient identity. No icons = no EU-14 allergens. Always check the current label."
+    },
+    "allergen_label": {
+      "pl": "Alergeny:",
+      "en": "Allergens:"
+    },
+    "allergen_tip": {
+      "pl": "Alergen z listy 14 UE obecny w składzie. Źródło: {src}.",
+      "en": "EU-14 allergen present in the composition. Source: {src}."
+    },
+    "allergen_tip_ident": {
+      "pl": "Alergen z listy 14 UE — składnik jednoznacznie identyfikowalny z nazwy produktu (produkt jednoskładnikowy).",
+      "en": "EU-14 allergen — ingredient unambiguous from the product identity (single-ingredient food)."
+    },
+    "allergen_milk": {
+      "pl": "mleko",
+      "en": "milk"
+    },
+    "allergen_egg": {
+      "pl": "jaja",
+      "en": "egg"
+    },
+    "allergen_fish": {
+      "pl": "ryby",
+      "en": "fish"
+    },
+    "allergen_gluten": {
+      "pl": "gluten",
+      "en": "gluten"
+    },
+    "allergen_soy": {
+      "pl": "soja",
+      "en": "soy"
+    },
+    "allergen_nuts": {
+      "pl": "orzechy",
+      "en": "nuts"
+    },
+    "allergen_peanuts": {
+      "pl": "orzeszki ziemne",
+      "en": "peanuts"
+    },
+    "allergen_sesame": {
+      "pl": "sezam",
+      "en": "sesame"
+    },
     "cats": {
       "pl": {
         "fats": "tłuszcze",

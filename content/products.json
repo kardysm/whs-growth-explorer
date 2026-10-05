@@ -1,7 +1,7 @@
 {
   "note": {
-    "pl": "Skład produktów (specjalistycznych oraz mleka standardowego) wg stron producentów (odczyt 2026-10-02/03). Produkty FSMP stosować wyłącznie pod kontrolą lekarza/dietetyka. Dostępność w Polsce może się zmieniać — sprawdź etykietę.",
-    "en": "Product composition (specialist products and standard formula) from manufacturer pages (read 2026-10-02/03). FSMP products only under medical/dietitian supervision. Availability in Poland may change — check the label."
+    "pl": "Skład produktów (specjalistycznych oraz mleka standardowego) wg stron producentów (odczyt 2026-10-02/03). Produkty FSMP stosować wyłącznie pod kontrolą lekarza/dietetyka. Dostępność w Polsce może się zmieniać — sprawdź etykietę. Deklaracje alergenów (odczyt 2026-10-05): transkrypcje etykiet i składów ze stron aptecznych oraz producentów — źródło podane przy każdym produkcie.",
+    "en": "Product composition (specialist products and standard formula) from manufacturer pages (read 2026-10-02/03). FSMP products only under medical/dietitian supervision. Availability in Poland may change — check the label. Allergen declarations (read 2026-10-05): transcriptions of labels and compositions from pharmacy and manufacturer pages — source noted per product."
   },
   "items": [
     {
@@ -56,7 +56,12 @@
           "en": "Nutricia (Akademia Nutricia) — manufacturer nutrition table"
         },
         "url": "https://akademianutricia.pl/produkty-i-sprzet/1"
-      }
+      },
+      "allergens": [
+        "milk",
+        "fish"
+      ],
+      "allergen_source": "doz.pl — etykieta: „Zawarte alergeny: mleko, olej rybi”"
     },
     {
       "id": "fsmp-infatrini-powder",
@@ -110,7 +115,12 @@
           "en": "Nutricia (Akademia Nutricia)"
         },
         "url": "https://akademianutricia.pl/produkty-i-sprzet/3"
-      }
+      },
+      "allergens": [
+        "milk",
+        "fish"
+      ],
+      "allergen_source": "doz.pl — etykieta: mleko krowie, olej rybi"
     },
     {
       "id": "fsmp-nutrini",
@@ -154,7 +164,13 @@
           "en": "Nutricia (Akademia Nutricia)"
         },
         "url": "https://akademianutricia.pl/produkty-i-sprzet/4"
-      }
+      },
+      "allergens": [
+        "milk",
+        "soy",
+        "fish"
+      ],
+      "allergen_source": "doz.pl — etykieta: „Zawarte alergeny: mleko, soja, ryby”"
     },
     {
       "id": "fsmp-nutrini-energy-mf",
@@ -200,7 +216,11 @@
           "en": "Nutricia (Akademia Nutricia)"
         },
         "url": "https://akademianutricia.pl/produkty-i-sprzet/5"
-      }
+      },
+      "allergens": [
+        "milk"
+      ],
+      "allergen_source": "Nutricia (strona produktu): „białka serwatkowe i kazeinowe”"
     },
     {
       "id": "fsmp-nutrini-mf",
@@ -245,7 +265,13 @@
           "en": "Nutricia (Akademia Nutricia)"
         },
         "url": "https://akademianutricia.pl/produkty-i-sprzet/6"
-      }
+      },
+      "allergens": [
+        "milk",
+        "soy",
+        "fish"
+      ],
+      "allergen_source": "apteline.pl — skład: białka mleka, lecytyna sojowa, olej rybi"
     },
     {
       "id": "fsmp-nutridrink-dzieci",
@@ -290,7 +316,12 @@
           "en": "Nutricia (Akademia Nutricia)"
         },
         "url": "https://akademianutricia.pl/produkty-i-sprzet/1191"
-      }
+      },
+      "allergens": [
+        "milk",
+        "soy"
+      ],
+      "allergen_source": "doz.pl — etykieta: mleko, soja"
     },
     {
       "id": "fsmp-fantomalt",
@@ -341,7 +372,9 @@
           "en": "Nutricia PL — 2023 product catalogue"
         },
         "url": "https://akademianutricia.pl/e-learning-files/Katalog-Nutricia-2023.pdf"
-      }
+      },
+      "allergens": [],
+      "allergen_source": "doz.pl + katalog Nutricia — skład: maltodekstryna (bezglutenowy, nie zawiera laktozy)"
     },
     {
       "id": "fsmp-protifar",
@@ -398,7 +431,12 @@
           "en": "Nutricia PL — 2023 product catalogue"
         },
         "url": "https://akademianutricia.pl/e-learning-files/Katalog-Nutricia-2023.pdf"
-      }
+      },
+      "allergens": [
+        "milk",
+        "soy"
+      ],
+      "allergen_source": "doz.pl — etykieta: „Zawarte alergeny: mleko krowie, soja”; skład: koncentrat białek mleka krowiego, lecytyna sojowa"
     },
     {
       "id": "fsmp-resource-junior-liquid",
@@ -443,7 +481,11 @@
           "en": "Nestlé Health Science Poland"
         },
         "url": "https://www.nestlehealthscience.pl/produkty/resource-junior/resource-junior-plyn"
-      }
+      },
+      "allergens": [
+        "milk"
+      ],
+      "allergen_source": "nestlehealthscience.pl — skład: białka mleka"
     },
     {
       "id": "fsmp-resource-junior-powder",
@@ -505,7 +547,13 @@
           "en": "Nestlé Health Science Poland"
         },
         "url": "https://www.nestlehealthscience.pl/produkty/resource-junior/resource-junior-400g"
-      }
+      },
+      "allergens": [
+        "milk",
+        "soy",
+        "fish"
+      ],
+      "allergen_source": "nestlehealthscience.pl — skład: białka mleka, lecytyna sojowa, olej rybi"
     },
     {
       "id": "formula-standard-hipp1",
@@ -564,7 +612,12 @@
           },
           "kcal": 66
         }
-      ]
+      ],
+      "allergens": [
+        "milk",
+        "fish"
+      ],
+      "allergen_source": "doz.pl/hipp.pl — skład: odtłuszczone mleko, serwatka z mleka, olej rybi"
     }
   ]
 }

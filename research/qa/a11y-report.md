@@ -103,3 +103,11 @@ Re-run on the rebuilt site after the two fixes: **light 0 violations, dark 0 vio
   beneath: fg ≥13.7:1 (light) / ≥10.4:1 (dark); nav links ≥9.0 / ≥8.2; muted ≥5.5 / ≥5.7 — all AA.
   All runs stay at **0 violations**; incomplete counts: at rest 2 (gradient buttons), scrolled ≤11
   (header text), none affecting resolved pairs.
+
+### Addendum 2026-10-05 (allergen chips, D-038)
+
+Product cards gained an „Alergeny:” icon row; the chips use a solid `--warn-bg` fill so axe can
+resolve their contrast (translucent chips were "incomplete" on 10 nodes). Re-run after the change:
+light/dark **0 violations**; at rest 2 incompletes (gradient buttons), scrolled ≤9 (sticky
+translucent headers/tables — the known glass class from the D-035 note). Chips carry visible text
+(icon `aria-hidden`) and a tooltip with the source; no duplicate allergen text tags remain.
