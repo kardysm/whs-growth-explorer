@@ -71,8 +71,8 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <section id="sources"><h2>${$(`sources.title`)}</h2><div id="sources-body"></div></section>
     <section id="method"><h2>${$(`method.title`)}</h2><div id="method-body"></div></section>
   </main>
-  <footer>${$(`footer`)}
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-05`).replace(`{commit}`,`da56021+`)}</p>
+  <footer><p>${$(`footer`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-05`).replace(`{commit}`,`d622619+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
@@ -148,7 +148,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
       <button class="primary" type="button" id="btn-recalc">${$(`calc.compute`)}</button>
     </form>
     <div>
-      <div class="card small">${$(`calc.hint`)}<br>${$(`calc.grades_hint`)}</div>
+      <div class="card small"><p>${$(`calc.hint`)}</p><p>${$(`calc.grades_hint`)}</p></div>
       <div class="cards-flow">
         <div id="results"></div>
         <div id="milk-card"></div>

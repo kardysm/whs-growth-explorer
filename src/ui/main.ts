@@ -168,7 +168,7 @@ function renderShell(): void {
     <section id="sources"><h2>${t("sources.title")}</h2><div id="sources-body"></div></section>
     <section id="method"><h2>${t("method.title")}</h2><div id="method-body"></div></section>
   </main>
-  <footer>${t("footer")}
+  <footer><p>${t("footer")}</p>
     <p class="small" id="build-stamp">${t("meta.stamp").replace("{v}", __BUILD_VERSION__).replace("{date}", __BUILD_DATE__).replace("{commit}", __BUILD_COMMIT__)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${t("search.open")}">
@@ -355,7 +355,7 @@ function renderCalcForm(): void {
       <button class="primary" type="button" id="btn-recalc">${t("calc.compute")}</button>
     </form>
     <div>
-      <div class="card small">${t("calc.hint")}<br>${t("calc.grades_hint")}</div>
+      <div class="card small"><p>${t("calc.hint")}</p><p>${t("calc.grades_hint")}</p></div>
       <div class="cards-flow">
         <div id="results"></div>
         <div id="milk-card"></div>
