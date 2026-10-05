@@ -82,3 +82,24 @@ Notes:
   no blur, wash off).
 - Text-pair contrast table for both themes: `DESIGN-SYSTEM.md` §1 (min text pair ≥4.5:1; links
   ≥10:1; buttons ≥5.7:1).
+
+## Addendum 2026-10-05 (tooltip stacking fix + collapsible activity hint — user reports)
+
+Re-run on the rebuilt site after the two fixes: **light 0 violations, dark 0 violations**
+(same 2 gradient-button incompletes as above).
+
+- **Tooltip stacking fixed** (visual-only bug, no a11y impact): when the cursor sits directly on a
+  grade badge inside a card heading, the heading's tooltip now stays hidden while the badge's own
+  tooltip shows — CSS-only via `[data-tip]:has([data-tip]:hover/focus-visible)` (D-034). Verified:
+  exactly 1 visible tooltip in both hover positions; `::before` arrows follow the same rule.
+- **Collapsible activity hint**: the long „Jak wybrać poziom aktywności / How to choose the activity
+  level” explanation is now a native `<details>/<summary>` (collapsed by default) — keyboard- and
+  screen-reader-accessible by construction; `checkVisibility()` false while closed, both languages verified.
+- **Scrolled-state note (glass header, inherent)**: with the page scrolled, axe reports the sticky
+  translucent header's text as "incomplete" (its background is a blur over arbitrary scrolling
+  content — axe cannot resolve it). Making the header opaque restores axe's clean read, so this is a
+  property of the glass look, not a defect. Worst-case manual math for header text at
+  `--glass-strong` α (0.88 light / 0.84 dark) over the darkest / lightest content that can pass
+  beneath: fg ≥13.7:1 (light) / ≥10.4:1 (dark); nav links ≥9.0 / ≥8.2; muted ≥5.5 / ≥5.7 — all AA.
+  All runs stay at **0 violations**; incomplete counts: at rest 2 (gradient buttons), scrolled ≤11
+  (header text), none affecting resolved pairs.

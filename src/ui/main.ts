@@ -315,7 +315,7 @@ function renderCalcForm(): void {
         <option value="crawling" ${input.mobility === "crawling" ? "selected" : ""}>${t("calc.mob_crawl")}</option>
         <option value="ambulatory" ${input.mobility === "ambulatory" ? "selected" : ""}>${t("calc.mob_amb")}</option>
       </select>
-      <p class="small hint">${t("calc.mob_hint")}</p>
+      <details class="hint-toggle"><summary class="small">${t("calc.mob_hint_title")}</summary><p class="small hint">${t("calc.mob_hint")}</p></details>
       <label for="in-target">${t("calc.target")}</label>
       <select id="in-target">
         <option value="whs_mean" ${input.targetRef === "whs_mean" ? "selected" : ""}>${t("calc.target_whs_mean")}</option>
