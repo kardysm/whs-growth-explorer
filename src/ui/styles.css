@@ -158,8 +158,8 @@ body::before {
 main { max-width: 1100px; margin: 0 auto; padding: 1rem; }
 section { margin: 2.5rem 0; scroll-margin-top: 4rem; }
 section h2 { border-bottom: 2px solid var(--accent); padding-bottom: 0.25rem; }
-.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
-.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 0.75rem; }
 
 /* ---------- glass surfaces ---------- */
 .card {
@@ -313,8 +313,7 @@ button[data-tip], a[data-tip], .th-sort[data-tip] { cursor: pointer; }
   padding: 0.45rem 0.6rem;
   box-shadow: var(--shadow-card);
   backdrop-filter: blur(14px) saturate(160%);
-  opacity: 0;
-  visibility: hidden;
+  display: none; /* hidden tooltips must not create scrollable overflow on phones (D-035) */
   pointer-events: none;
 }
 [data-tip]::before {
@@ -329,16 +328,15 @@ button[data-tip], a[data-tip], .th-sort[data-tip] { cursor: pointer; }
   border-right: 1px solid var(--glass-line);
   border-bottom: 1px solid var(--glass-line);
   z-index: 91;
-  opacity: 0;
-  visibility: hidden;
+  display: none; /* same as ::after — see D-035 */
   pointer-events: none;
 }
 [data-tip]:hover::after, [data-tip]:focus-visible::after,
-[data-tip]:hover::before, [data-tip]:focus-visible::before { opacity: 1; visibility: visible; }
+[data-tip]:hover::before, [data-tip]:focus-visible::before { display: block; }
 /* max 1 tooltip at a time: an ancestor tooltip stays hidden while a nested tooltip trigger is
    hovered/focused (e.g. the grade badge inside a card heading) — user report 2026-10-05 */
 [data-tip]:has([data-tip]:hover)::after, [data-tip]:has([data-tip]:hover)::before,
-[data-tip]:has([data-tip]:focus-visible)::after, [data-tip]:has([data-tip]:focus-visible)::before { opacity: 0; visibility: hidden; }
+[data-tip]:has([data-tip]:focus-visible)::after, [data-tip]:has([data-tip]:focus-visible)::before { display: none; }
 /* below-variant (tooltips inside the scrollable table header) */
 [data-tip].tip-below::after { bottom: auto; top: calc(100% + 9px); }
 [data-tip].tip-below::before { bottom: auto; top: calc(100% + 4px); transform: translateX(-50%) rotate(225deg); }
