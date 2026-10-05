@@ -779,7 +779,8 @@
         "fsmp-infant": "FSMP niemowlęcy",
         "fsmp-child": "FSMP dla dzieci",
         "module": "moduły",
-        "formula": "mleko standardowe"
+        "formula": "mleko standardowe",
+        "thickener": "zagęszczacze"
       },
       "en": {
         "fats": "fats",
@@ -792,7 +793,8 @@
         "fsmp-infant": "infant FSMP",
         "fsmp-child": "child FSMP",
         "module": "modules",
-        "formula": "standard formula"
+        "formula": "standard formula",
+        "thickener": "thickeners"
       }
     },
     "taglabels": {
@@ -821,7 +823,8 @@
         "nuts": "orzechy",
         "sesame": "sezam",
         "soy": "soja",
-        "choking": "ryzyko zadławienia"
+        "choking": "ryzyko zadławienia",
+        "thickener": "zagęszczacz"
       },
       "en": {
         "high-energy": "energy-dense",
@@ -848,7 +851,8 @@
         "nuts": "nuts",
         "sesame": "sesame",
         "soy": "soy",
-        "choking": "choking risk"
+        "choking": "choking risk",
+        "thickener": "thickener"
       }
     }
   },

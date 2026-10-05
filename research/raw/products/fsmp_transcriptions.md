@@ -21,3 +21,17 @@ per 100 ml: 425 kJ / 101 kcal; fat 4.4 g (sat 0.5); carbs 12.5 g (sugars 0.8); f
 per 100 ml: 1006 kJ / 240 kcal; fat 10.9 g; carbs (incl. fibre) ~; protein 5.7 g; fibre 2.4 g; vit A 105 µg; vit D 3.1 µg; salt 0.20-0.22 g. (2.4 kcal/ml)
 
 ## Status (updated 2026-10-02, round-1 audit): Fantomalt, Protifar and Resource Junior (liquid + powder) fetched and transcribed into content/products.json. Still intentionally not covered (documented limitation): Fortini (absent from the 2023 PL catalogue), NAN Expert, Frebini Energy, PediaSure, MCT oil. Revisit if availability/configurator output changes.
+
+## Batch 2 (2026-10-05, evening): product-list expansion — sources per product
+
+New products added to `content/products.json` (7; list now 18 items). Sources fetched and saved in this folder:
+
+- **NutriniMax Energy** (Nutricia, 1.5 kcal/ml, children 7–12 y / 21–45 kg): composition from `doz_nutrinimax_energy.html` (table on page as "w 100 g"; product states 1.5 kcal/ml; pelnaporcja confirms), allergens from the same page ("Zawarte alergeny: mleko, olej rybi, soja"). Who/indication from doz.pl "Przeznaczenie".
+- **NutriKid Multi Fibre** (Nutricia, 1.5 kcal/ml, over 1 y): composition `doz_nutrikid_mf.html` (per 100 ml), ingredients plus "Produkt bezglutenowy. Nie zawiera laktozy." from `apteline_nutrikid_choc.html`. Allergens derived from ingredients: milk (caseinate), soy (soy polysaccharides, soy lecithin).
+- **Nutrini Peptisorb Energy** (Nutricia, 1.5 kcal/ml peptide, children over 1 y): composition `apteline_peptisorb_energy.html` (per 100 ml); ingredients: whey-protein hydrolysate (milk), soy oil, fish oil. Note: "Nie stosować u niemowląt".
+- **Calogen** (Nutricia, fat emulsion 4.5 kcal/ml): composition and ingredients from `doz_calogen.html` and `nfarm_calogen.html` (oils: rapeseed, sunflower; water; emulsifier — no EU-14 allergens). Under 5 y: dilute.
+- **Nutilis Clear** (Nutricia, thickener): composition and ingredients from `doz_nutilis_clear.html` (maltodextrin, xanthan gum, guar gum; gluten-free and lactose-free; scoop 3 g).
+- **Nutramigen 1 LGG Complete** (Mead Johnson, hypoallergenic, from birth): composition `doz_nutramigen1_lgg.html` (per 100 g powder and per 100 ml prepared); ingredients from `apteline_nutramigen1b.html` (casein hydrolysate (milk), soy oil; DHA from microalgae).
+- **Resource Instant Protein** (Nestlé Health Science, 90 g protein/100 g, age 3+): composition `doz_resource_ip.html` / `apteline_resource_ip.html`; allergens "Zawarte alergeny: mleko, soja" (doz.pl).
+
+Still not covered (unchanged limitation plus new findings): Fortini (not in the 2023 PL catalogue; absent from DOZ), PediaSure (not found on PL pharmacy retail), Duocal / Liquigen / Polycal (no PL retail listing found — import/foreign only; Fantomalt covers maltodextrin in PL), MCT oil (import docelowy only, per AOTM documents), NAN Expert, Frebini Energy.

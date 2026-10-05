@@ -1,7 +1,7 @@
 {
   "note": {
-    "pl": "Skład produktów (specjalistycznych oraz mleka standardowego) wg stron producentów (odczyt 2026-10-02/03). Produkty FSMP stosować wyłącznie pod kontrolą lekarza/dietetyka. Dostępność w Polsce może się zmieniać — sprawdź etykietę. Deklaracje alergenów (odczyt 2026-10-05): transkrypcje etykiet i składów ze stron aptecznych oraz producentów — źródło podane przy każdym produkcie.",
-    "en": "Product composition (specialist products and standard formula) from manufacturer pages (read 2026-10-02/03). FSMP products only under medical/dietitian supervision. Availability in Poland may change — check the label. Allergen declarations (read 2026-10-05): transcriptions of labels and compositions from pharmacy and manufacturer pages — source noted per product."
+    "pl": "Skład produktów (specjalistycznych oraz mleka standardowego) wg stron producentów (odczyt 2026-10-02/03). Produkty FSMP stosować wyłącznie pod kontrolą lekarza/dietetyka. Dostępność w Polsce może się zmieniać — sprawdź etykietę. Deklaracje alergenów (odczyt 2026-10-05): transkrypcje etykiet i składów ze stron aptecznych oraz producentów — źródło podane przy każdym produkcie. Lista rozszerzona (odczyt 2026-10-05): NutriniMax Energy, NutriKid Multi Fibre, Nutrini Peptisorb Energy, Calogen, Nutilis Clear, Nutramigen 1 LGG Complete, Resource Instant Protein — szczegóły i źródła przy produktach.",
+    "en": "Product composition (specialist products and standard formula) from manufacturer pages (read 2026-10-02/03). FSMP products only under medical/dietitian supervision. Availability in Poland may change — check the label. Allergen declarations (read 2026-10-05): transcriptions of labels and compositions from pharmacy and manufacturer pages — source noted per product. List expanded (read 2026-10-05): NutriniMax Energy, NutriKid Multi Fibre, Nutrini Peptisorb Energy, Calogen, Nutilis Clear, Nutramigen 1 LGG Complete, Resource Instant Protein — details and sources on each product."
   },
   "items": [
     {
@@ -618,6 +618,402 @@
         "fish"
       ],
       "allergen_source": "doz.pl/hipp.pl — skład: odtłuszczone mleko, serwatka z mleka, olej rybi"
+    },
+    {
+      "id": "fsmp-nutrinimax-energy",
+      "category": "fsmp-child",
+      "name": {
+        "pl": "NutriniMax Energy (płyn, 1,5 kcal/ml)",
+        "en": "NutriniMax Energy (liquid, 1.5 kcal/ml)"
+      },
+      "form": {
+        "pl": "produkt gotowy do picia / sondy, dzieci 7–12 lat lub 21–45 kg",
+        "en": "ready-to-drink / tube feed, children 7–12 y or 21–45 kg"
+      },
+      "basis": "ml",
+      "per100": {
+        "kcal": 150,
+        "protein": 4.8,
+        "fat": 6.3,
+        "carbs": 18.5,
+        "fibre": 0,
+        "calcium_mg": 95,
+        "iron_mg": 2.0,
+        "zinc_mg": 1.7,
+        "sodium_mg": 107,
+        "potassium_mg": 186,
+        "vita_ug": 92,
+        "vitd_ug": 1.1
+      },
+      "measures": [
+        {
+          "label": {
+            "pl": "butelka 500 ml",
+            "en": "500 ml bottle"
+          },
+          "kcal": 750
+        }
+      ],
+      "tags": [
+        "high-energy",
+        "vitD",
+        "Fe",
+        "Zn",
+        "Ca",
+        "oral-ok",
+        "tube-ok",
+        "child",
+        "dairy",
+        "lactose-free",
+        "gluten-free"
+      ],
+      "source": {
+        "label": {
+          "pl": "Nutricia (Pełna Porcja Opieki) + doz.pl — tabela wartości odżywczej",
+          "en": "Nutricia (Pełna Porcja Opieki) + doz.pl — manufacturer nutrition table"
+        },
+        "url": "https://pelnaporcjaopieki.pl/produkty-lista/nutrinimax-energy/"
+      },
+      "allergens": [
+        "milk",
+        "fish",
+        "soy"
+      ],
+      "allergen_source": "doz.pl — etykieta: „Zawarte alergeny: mleko, olej rybi, soja”"
+    },
+    {
+      "id": "fsmp-nutrikid-mf",
+      "category": "fsmp-child",
+      "name": {
+        "pl": "NutriKid Multi Fibre (płyn, 1,5 kcal/ml)",
+        "en": "NutriKid Multi Fibre (liquid, 1.5 kcal/ml)"
+      },
+      "form": {
+        "pl": "produkt gotowy do picia / sondy, dzieci powyżej 1. roku życia",
+        "en": "ready-to-drink / tube feed, children over 1 y"
+      },
+      "basis": "ml",
+      "per100": {
+        "kcal": 153,
+        "protein": 3.3,
+        "fat": 6.8,
+        "carbs": 18.8,
+        "fibre": 1.5,
+        "calcium_mg": 84,
+        "iron_mg": 1.5,
+        "zinc_mg": 1.5,
+        "sodium_mg": 65,
+        "potassium_mg": 153,
+        "vita_ug": 61,
+        "vitd_ug": 1.5
+      },
+      "measures": [
+        {
+          "label": {
+            "pl": "buteleczka 200 ml",
+            "en": "200 ml bottle"
+          },
+          "kcal": 306
+        }
+      ],
+      "tags": [
+        "high-energy",
+        "vitD",
+        "Fe",
+        "Zn",
+        "Ca",
+        "fibre",
+        "oral-ok",
+        "tube-ok",
+        "child",
+        "dairy",
+        "lactose-free",
+        "gluten-free"
+      ],
+      "source": {
+        "label": {
+          "pl": "Nutricia (Pełna Porcja Opieki) + apteline.pl — tabela wartości odżywczej",
+          "en": "Nutricia (Pełna Porcja Opieki) + apteline.pl — manufacturer nutrition table"
+        },
+        "url": "https://pelnaporcjaopieki.pl/produkty-lista/nutrikid-multi-fibre-smak-czekoladowy/"
+      },
+      "allergens": [
+        "milk",
+        "soy"
+      ],
+      "allergen_source": "apteline.pl — skład: białko mleka krowiego (kazeinian), polisacharydy sojowe, lecytyna sojowa"
+    },
+    {
+      "id": "fsmp-nutrini-peptisorb-energy",
+      "category": "fsmp-child",
+      "name": {
+        "pl": "Nutrini Peptisorb Energy (płyn, 1,5 kcal/ml, peptydowy)",
+        "en": "Nutrini Peptisorb Energy (liquid, 1.5 kcal/ml, peptide-based)"
+      },
+      "form": {
+        "pl": "produkt gotowy do picia / sondy, dzieci powyżej 1. roku życia; białko serwatkowe hydrolizowane",
+        "en": "ready-to-drink / tube feed, children over 1 y; hydrolysed whey protein"
+      },
+      "basis": "ml",
+      "per100": {
+        "kcal": 152,
+        "protein": 4.2,
+        "fat": 6.7,
+        "carbs": 18.8,
+        "fibre": 0.5,
+        "calcium_mg": 130,
+        "iron_mg": 1.5,
+        "zinc_mg": 1.5,
+        "sodium_mg": 94.6,
+        "potassium_mg": 168,
+        "vita_ug": 61.5,
+        "vitd_ug": 1.88
+      },
+      "measures": [
+        {
+          "label": {
+            "pl": "worek 500 ml",
+            "en": "500 ml pouch"
+          },
+          "kcal": 760
+        }
+      ],
+      "tags": [
+        "high-energy",
+        "vitD",
+        "Fe",
+        "Zn",
+        "Ca",
+        "oral-ok",
+        "tube-ok",
+        "child",
+        "dairy",
+        "gluten-free"
+      ],
+      "source": {
+        "label": {
+          "pl": "Nutricia (Pełna Porcja Opieki) + apteline.pl — tabela wartości odżywczej",
+          "en": "Nutricia (Pełna Porcja Opieki) + apteline.pl — manufacturer nutrition table"
+        },
+        "url": "https://pelnaporcjaopieki.pl/produkty-lista/nutrini-peptisorb-energy/"
+      },
+      "allergens": [
+        "milk",
+        "soy",
+        "fish"
+      ],
+      "allergen_source": "apteline.pl — skład: hydrolizat białek serwatkowych (z mleka krowiego), olej sojowy, olej rybi"
+    },
+    {
+      "id": "fsmp-calogen",
+      "category": "module",
+      "name": {
+        "pl": "Calogen (emulsja tłuszczowa, 4,5 kcal/ml)",
+        "en": "Calogen (fat emulsion, 4.5 kcal/ml)"
+      },
+      "form": {
+        "pl": "emulsja doustna do wzbogacania diety; u dzieci <5 lat rozcieńczać",
+        "en": "oral emulsion for diet enrichment; dilute for children under 5 y"
+      },
+      "basis": "ml",
+      "per100": {
+        "kcal": 450,
+        "protein": 0,
+        "fat": 50,
+        "carbs": 0.1,
+        "sodium_mg": 7
+      },
+      "measures": [
+        {
+          "label": {
+            "pl": "porcja 30 ml (zalecane 3×/dzień)",
+            "en": "30 ml portion (3×/day recommended)"
+          },
+          "kcal": 135
+        }
+      ],
+      "tags": [
+        "high-energy",
+        "module",
+        "oral-ok",
+        "lactose-free",
+        "gluten-free"
+      ],
+      "source": {
+        "label": {
+          "pl": "Nutricia; skład i tabela: nowafarmacja.pl / doz.pl",
+          "en": "Nutricia; composition & table: nowafarmacja.pl / doz.pl"
+        },
+        "url": "https://www.doz.pl/p/calogen-plyn-o-smaku-neutralnym-500-ml-117877"
+      },
+      "allergens": [],
+      "allergen_source": "nowafarmacja.pl — skład: oleje roślinne (rzepakowy, słonecznikowy), woda demineralizowana, emulgator — bez alergenów z listy 14"
+    },
+    {
+      "id": "fsmp-nutilis-clear",
+      "category": "thickener",
+      "name": {
+        "pl": "Nutilis Clear (zagęszczacz, proszek)",
+        "en": "Nutilis Clear (thickener, powder)"
+      },
+      "form": {
+        "pl": "proszek do zagęszczania płynów i pokarmów (dysfagia); bez smaku i zapachu",
+        "en": "powder for thickening fluids and foods (dysphagia); tasteless"
+      },
+      "basis": "g",
+      "per100": {
+        "kcal": 290,
+        "protein": 0.8,
+        "fat": 0,
+        "carbs": 57.6,
+        "fibre": 28,
+        "sodium_mg": 1500
+      },
+      "measures": [
+        {
+          "label": {
+            "pl": "miarka 3 g",
+            "en": "3 g scoop"
+          },
+          "kcal": 9
+        }
+      ],
+      "tags": [
+        "thickener",
+        "gluten-free",
+        "lactose-free",
+        "oral-ok"
+      ],
+      "source": {
+        "label": {
+          "pl": "Nutricia; tabela i skład: doz.pl",
+          "en": "Nutricia; table & composition: doz.pl"
+        },
+        "url": "https://www.doz.pl/p/nutilis-clear-produkt-do-szybkiego-zageszczania-plynow-proszek-175-g-133255"
+      },
+      "allergens": [],
+      "allergen_source": "doz.pl — skład: maltodekstryna, guma ksantanowa, guma guar — bez alergenów z listy 14"
+    },
+    {
+      "id": "formula-nutramigen-1-lgg",
+      "category": "formula",
+      "name": {
+        "pl": "Mleko hipoalergiczne — Nutramigen 1 LGG Complete (0,68 kcal/ml)",
+        "en": "Hypoallergenic formula — Nutramigen 1 LGG Complete (0.68 kcal/ml)"
+      },
+      "form": {
+        "pl": "preparat mlekozastępczy (hydrolizat kazeiny), niemowlęta od urodzenia; alergia na białko mleka krowiego",
+        "en": "milk substitute (casein hydrolysate), infants from birth; cow's milk protein allergy"
+      },
+      "basis": "ml",
+      "per100": {
+        "kcal": 68,
+        "protein": 1.88,
+        "fat": 3.4,
+        "carbs": 7.4,
+        "calcium_mg": 76,
+        "iron_mg": 1.21,
+        "zinc_mg": 0.47,
+        "sodium_mg": 32,
+        "potassium_mg": 82,
+        "vita_ug": 61,
+        "vitd_ug": 1.68
+      },
+      "measures": [
+        {
+          "label": {
+            "pl": "100 ml gotowego mleka",
+            "en": "100 ml prepared formula"
+          },
+          "kcal": 68
+        },
+        {
+          "label": {
+            "pl": "butelka 90 ml (3 miarki)",
+            "en": "90 ml bottle (3 scoops)"
+          },
+          "kcal": 61
+        }
+      ],
+      "tags": [
+        "infant",
+        "dairy",
+        "Fe",
+        "Zn",
+        "Ca",
+        "vitD",
+        "oral-ok",
+        "lactose-free"
+      ],
+      "source": {
+        "label": {
+          "pl": "Mead Johnson (Reckitt); tabela i skład: doz.pl / apteline.pl",
+          "en": "Mead Johnson (Reckitt); table & composition: doz.pl / apteline.pl"
+        },
+        "url": "https://www.doz.pl/p/nutramigen-1-lgg-complete-proszek-400-g-145402"
+      },
+      "allergens": [
+        "milk",
+        "soy"
+      ],
+      "allergen_source": "apteline.pl — skład: hydrolizat kazeiny (z mleka), olej sojowy"
+    },
+    {
+      "id": "fsmp-resource-instant-protein",
+      "category": "module",
+      "name": {
+        "pl": "Resource Instant Protein (koncentrat białka, proszek)",
+        "en": "Resource Instant Protein (protein concentrate, powder)"
+      },
+      "form": {
+        "pl": "proszek do wzbogacania napojów i potraw; od 3. roku życia",
+        "en": "powder for enriching drinks and meals; from age 3"
+      },
+      "basis": "g",
+      "per100": {
+        "kcal": 371,
+        "protein": 90,
+        "fat": 1.0,
+        "carbs": 0.5,
+        "calcium_mg": 1400,
+        "sodium_mg": 40,
+        "potassium_mg": 40
+      },
+      "measures": [
+        {
+          "label": {
+            "pl": "porcja 10 g (2 łyżki stołowe)",
+            "en": "10 g portion (2 tbsp)"
+          },
+          "kcal": 37
+        },
+        {
+          "label": {
+            "pl": "porcja 15 g",
+            "en": "15 g portion"
+          },
+          "kcal": 56
+        }
+      ],
+      "tags": [
+        "high-protein",
+        "module",
+        "age-3plus",
+        "oral-ok",
+        "dairy"
+      ],
+      "source": {
+        "label": {
+          "pl": "Nestlé Health Science; tabela i skład: doz.pl",
+          "en": "Nestlé Health Science; table & composition: doz.pl"
+        },
+        "url": "https://www.doz.pl/p/resource-instant-protein-koncentrat-bialka-w-proszku-400-g-133225"
+      },
+      "allergens": [
+        "milk",
+        "soy"
+      ],
+      "allergen_source": "doz.pl — etykieta: „Zawarte alergeny: mleko, soja”"
     }
   ]
 }
