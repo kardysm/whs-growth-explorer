@@ -137,6 +137,39 @@ describe("full pipeline (representative case)", () => {
   });
 });
 
+describe("A/B line continuity (user report 2026-10-05; DECISIONS D-029)", () => {
+  const bAt = (sex: "boys" | "girls", w: number): number | null =>
+    computeAll({ ...base, sex, ageMonths: 18, weightKg: w }, ctx).B.kcalPerDay.central;
+
+  it("no cliff: max relative adjacent step over 3.5-18 kg is < 6% (was ~20% at the NASEM 3-mo boundary)", () => {
+    for (const sex of ["boys", "girls"] as const) {
+      let prev: number | null = null;
+      let worst = 0;
+      for (let w = 3.5; w <= 18.001; w += 0.25) {
+        const b = bAt(sex, Math.round(w * 100) / 100);
+        if (b !== null && prev !== null) worst = Math.max(worst, Math.abs(b - prev) / prev);
+        prev = b;
+      }
+      expect(worst).toBeLessThan(0.06);
+    }
+  });
+
+  it("the old boys cliff (643 -> 534 kcal between 6.25 and 6.5 kg) is gone; the residual dip is gentle", () => {
+    const d = bAt("boys", 6.25)! - bAt("boys", 6.5)!;
+    expect(d).toBeGreaterThan(0); // still a dip (present in the sources) ...
+    expect(d).toBeLessThan(45); // ... but no cliff
+  });
+
+  it("band interiors keep the published NASEM values (boys 4 kg -> 0-3 mo equation + 200)", () => {
+    expect(bAt("boys", 4)!).toBeCloseTo(482.78, 1);
+  });
+
+  it("A blends across the 6-month NASEM->EFSA handover (no step)", () => {
+    const a = (age: number): number => computeAll({ ...base, ageMonths: age, weightKg: 7.5 }, ctx).A.kcalPerDay.central!;
+    expect(Math.abs(a(6.1) - a(5.9))).toBeLessThan(15);
+  });
+});
+
 describe("property sweeps", () => {
   it("low <= central <= high and no NaN across a grid", () => {
     for (const sex of ["boys", "girls"] as const) {

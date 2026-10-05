@@ -131,17 +131,30 @@ def fao(sex, m):
     return a + (b - a) * (y - lo)
 
 
+def growth_addend(sex, m, win=0.5):
+    """NASEM Table S-2 growth addends with a linear bridge across band boundaries (D-029)."""
+    bands = [(3, 200, 50), (6, 50, 20)] if sex == "boys" else [(3, 180, 60), (6, 60, 20), (12, 20, 15)]
+    g = bands[0][1]
+    for at, fr, to in bands:
+        if m >= at + win:
+            g = to
+        elif m > at - win:
+            g = fr + (to - fr) * (m - (at - win)) / (2 * win)
+    return g
+
+
 def nasem(sex, m, h, w):
     age = m / 12
     if m < 3:
-        return (-716.45 - 1.0 * age + 17.82 * h + 15.06 * w + 200) if sex == "boys" else (-69.15 + 80.0 * age + 2.65 * h + 54.15 * w + 180)
+        base = (-716.45 - 1.0 * age + 17.82 * h + 15.06 * w) if sex == "boys" else (-69.15 + 80.0 * age + 2.65 * h + 54.15 * w)
+        return base + growth_addend(sex, m)
     if m < 6:
-        return (-716.45 - 1.0 * age + 17.82 * h + 15.06 * w + 50) if sex == "boys" else (-69.15 + 80.0 * age + 2.65 * h + 54.15 * w + 60)
+        base = (-716.45 - 1.0 * age + 17.82 * h + 15.06 * w) if sex == "boys" else (-69.15 + 80.0 * age + 2.65 * h + 54.15 * w)
+        return base + growth_addend(sex, m)
     if m < 36:
         if sex == "boys":
-            return -716.45 - 1.0 * age + 17.82 * h + 15.06 * w + 20
-        g = 20 if m < 12 else 15
-        return -69.15 + 80.0 * age + 2.65 * h + 54.15 * w + g
+            return -716.45 - 1.0 * age + 17.82 * h + 15.06 * w + growth_addend(sex, m)
+        return -69.15 + 80.0 * age + 2.65 * h + 54.15 * w + growth_addend(sex, m)
     if 36 <= m < 168:  # low-active equations + growth addend (needed for the A band up to 48 mo)
         if sex == "boys":
             g = 20 if m < 48 else 15
@@ -181,6 +194,17 @@ def whs_mean_at(table, sex, m):
     return None
 
 
+def central_healthy(sex, m, primary, n):
+    """Primary-source handover blend at 6 months (mirrors the JS centralHealthy; D-029)."""
+    W = 0.5
+    if n is not None and 6 - W < m < 6 + W:
+        e_at = primary if primary is not None else efsa(sex, 6)
+        if e_at is not None:
+            t = (m - (6 - W)) / (2 * W)
+            return (1 - t) * n + t * e_at
+    return primary if primary is not None else n
+
+
 def healthy(sex, m):
     """A-type band (primary=EFSA/PZH, NASEM, FAO) with full low/high edges."""
     h = median(WHO[f"lhfa_{sex}"], m)
@@ -191,7 +215,12 @@ def healthy(sex, m):
     vals = [v for v in (primary, nasem(sex, m, h, w), fao(sex, m)) if v is not None]
     if not vals:
         return None, None, None
-    central = primary if primary is not None else nasem(sex, m, h, w)
+    # EFSA month-6 anchor in the lower half of the handover window (keeps low <= central <= high)
+    if primary is None and m > 6 - 0.5 and m < 6:
+        e6 = efsa(sex, 6)
+        if e6 is not None:
+            vals.append(e6)
+    central = central_healthy(sex, m, primary, nasem(sex, m, h, w))
     return min(vals), central, max(vals)
 
 

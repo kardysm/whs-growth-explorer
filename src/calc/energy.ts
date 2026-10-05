@@ -8,6 +8,30 @@ const kcalPerMj = 238.8459; // 1 MJ = 238.8459 kcal
 
 const inRange = (v: number, a: number, b: number) => v >= a && v < b;
 
+/**
+ * NASEM 2023 Table S-2 "energy cost of growth" addends. The published values step at the age-band
+ * boundaries (boys: 200->50 at 3 mo, 50->20 at 6 mo; girls: 180->60, 60->20, 20->15 at 12 mo).
+ * Through the weight->age mapping ("healthy child of the same weight") those steps surface as
+ * cliffs on the B line right where WHS children live (user report 2026-10-05), so the addend is
+ * interpolated linearly across a ±0.5-month window around each boundary. Band interiors keep the
+ * exact published values; the crossing itself is smoothed (documented in DECISIONS D-029).
+ */
+const GROWTH_RAMP_MONTHS = 0.5;
+
+function growthAddend(sex: Sex, ageMonths: number): number {
+  const bands: [number, number, number][] = sex === "boys"
+    ? [[3, 200, 50], [6, 50, 20]]
+    : [[3, 180, 60], [6, 60, 20], [12, 20, 15]];
+  let g = bands[0]![1];
+  for (const [at, from, to] of bands) {
+    if (ageMonths >= at + GROWTH_RAMP_MONTHS) g = to;
+    else if (ageMonths > at - GROWTH_RAMP_MONTHS) {
+      g = from + ((to - from) * (ageMonths - (at - GROWTH_RAMP_MONTHS))) / (2 * GROWTH_RAMP_MONTHS);
+    }
+  }
+  return g;
+}
+
 /** NASEM 2023 EER (Table S-2). age in months here; equations use years. */
 export function nasemEer(
   sex: Sex,
@@ -31,22 +55,21 @@ export function nasemEer(
 
   if (inRange(ageMonths, 0, 3)) {
     const base = sex === "boys"
-      ? -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg + 200
-      : -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg + 180;
-    return { kcal: base, band: "0-2.99mo" };
+      ? -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg
+      : -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg;
+    return { kcal: base + growthAddend(sex, ageMonths), band: "0-2.99mo" };
   }
   if (inRange(ageMonths, 3, 6)) {
     const base = sex === "boys"
-      ? -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg + 50
-      : -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg + 60;
-    return { kcal: base, band: "3-5.99mo" };
+      ? -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg
+      : -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg;
+    return { kcal: base + growthAddend(sex, ageMonths), band: "3-5.99mo" };
   }
   if (inRange(ageMonths, 6, 36)) {
     if (sex === "boys") {
-      return { kcal: -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg + 20, band: "6mo-2.99y" };
+      return { kcal: -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg + growthAddend(sex, ageMonths), band: "6mo-2.99y" };
     }
-    const g = ageMonths < 12 ? 20 : 15; // footnote a
-    return { kcal: -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg + g, band: "6mo-2.99y" };
+    return { kcal: -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg + growthAddend(sex, ageMonths), band: "6mo-2.99y" };
   }
   if (inRange(ageMonths, 36, 168)) {
     if (sex === "boys") {

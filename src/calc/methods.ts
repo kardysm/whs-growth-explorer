@@ -32,6 +32,27 @@ function defaultLengthCm(sex: Sex, ageMonths: number, ctx: CalcContext): { cm: n
   return { cm: null, source: "none" };
 }
 
+/**
+ * Central value for the healthy reference (A/B). The primary source switches from NASEM to EFSA
+ * at 6 months (EFSA/PZH start at month 6); the two families differ by ~30 kcal/d there, which made
+ * the A/B line step (user report on the B line, 2026-10-05). Across a ±0.5-month window around the
+ * switch the two values are blended linearly; below/above the window the primary source is used
+ * exactly (D-029). In the lower half of the window EFSA is clamped at its month-6 value.
+ */
+const HANDOVER_MONTHS = 6;
+const HANDOVER_RAMP = 0.5;
+
+function centralHealthy(sex: Sex, ageMonths: number, primary: number | null, nasemKcal: number | null): number | null {
+  if (nasemKcal !== null && ageMonths > HANDOVER_MONTHS - HANDOVER_RAMP && ageMonths < HANDOVER_MONTHS + HANDOVER_RAMP) {
+    const eAt = primary !== null ? primary : efsaAr(sex, HANDOVER_MONTHS);
+    if (eAt !== null) {
+      const t = (ageMonths - (HANDOVER_MONTHS - HANDOVER_RAMP)) / (2 * HANDOVER_RAMP);
+      return (1 - t) * nasemKcal + t * eAt;
+    }
+  }
+  return primary ?? nasemKcal;
+}
+
 function healthyEstimate(sex: Sex, ageMonths: number, ctx: CalcContext): { band: Band; ids: string[]; note: CalcNote | null } {
   const w = medianAt(whoTable(ctx.who, `wfa_${sex}`), ageMonths);
   const h = medianAt(whoTable(ctx.who, `lhfa_${sex}`), ageMonths);
@@ -45,7 +66,13 @@ function healthyEstimate(sex: Sex, ageMonths: number, ctx: CalcContext): { band:
   if (primary !== null) vals.push(primary);
   if (nasem) vals.push(nasem.kcal);
   if (fao !== null) vals.push(fao);
-  const central = primary ?? (nasem ? nasem.kcal : null);
+  // In the lower half of the 6-month handover window EFSA is not published yet; anchor its month-6
+  // value into the band edges so the blended central value stays within [low, high].
+  if (primary === null && nasem && ageMonths > HANDOVER_MONTHS - HANDOVER_RAMP && ageMonths < HANDOVER_MONTHS) {
+    const e6 = efsaAr(sex, HANDOVER_MONTHS);
+    if (e6 !== null) vals.push(e6);
+  }
+  const central = centralHealthy(sex, ageMonths, primary, nasem ? nasem.kcal : null);
   const band: Band = {
     low: vals.length ? Math.min(...vals) : null,
     central,

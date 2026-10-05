@@ -370,12 +370,12 @@
       "en": "How to choose the activity level:<br>• <b>Bedridden</b> — does not change position on its own; turned and carried by the caregiver (×1.15).<br>• <b>Dependent</b> — e.g. rolls from back to tummy on its own, scoots or rolls a short distance, sits briefly with support, but does not crawl or walk; needs help with sitting up, carrying and changing position (e.g. from bed to a stroller seat) (×1.2).<br>• <b>Crawling</b> — moves around the floor on its own (crawling, creeping, rolling to get around), not yet walking (×1.25).<br>• <b>Ambulatory</b> — walks independently (×1.3).<br>If unsure, pick the closer option — neighbouring levels differ by ~4% of the C result."
     },
     "band_a": {
-      "pl": "Dolna–górna: rozrzut między źródłami (NASEM, EFSA/PZH, FAO) dla tego wieku. Środkowa: źródło priorytetowe dla wieku.",
-      "en": "Low–high: spread across sources (NASEM, EFSA/PZH, FAO) for this age. Central: the priority source for the age."
+      "pl": "Dolna–górna: rozrzut między źródłami (NASEM, EFSA/PZH, FAO) dla tego wieku. Środkowa: źródło priorytetowe dla wieku (przy 6. mies. gładkie przejście NASEM→EFSA).",
+      "en": "Low–high: spread across sources (NASEM, EFSA/PZH, FAO) for this age. Central: the priority source for the age (smooth NASEM→EFSA handover at 6 months)."
     },
     "band_b": {
-      "pl": "Dolna–górna: ten sam rozrzut źródeł przeliczony na aktualną masę. Środkowa: źródło priorytetowe.",
-      "en": "Low–high: the same source spread scaled to the current weight. Central: the priority source."
+      "pl": "Dolna–górna: ten sam rozrzut źródeł przeliczony na aktualną masę. Środkowa: źródło priorytetowe (granice kategorii wygładzone).",
+      "en": "Low–high: the same source spread scaled to the current weight. Central: the priority source (boundaries smoothed)."
     },
     "band_c": {
       "pl": "Dolna–górna: pasmo napięcia mięśniowego (×0,9–×1,1). Środkowa: napięcie prawidłowe (×1,0) i Twoja aktywność.",
@@ -428,8 +428,8 @@
       "en": "Energy vs weight (at {age} months)"
     },
     "chart1_hint": {
-      "pl": "A — zdrowe dziecko: ten sam wiek; B — zdrowe dziecko: ta sama masa; C — utrzymanie z hipotonią (pasmo; dla 0–3 lat proporcjonalne do masy, od 3 lat z wpisaną długością lub średnią długością WHS dla wieku); D — cel z doganianiem (pasmo). Kliknij punkt, aby ustawić masę w kalkulatorze. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
-      "en": "A — healthy child: same age; B — healthy child: same weight; C — maintenance with hypotonia (band; weight-proportional below 3 y, from 3 y with the entered length or the WHS mean length for age); D — catch-up target (band). Click a point to set calculator weight. Click a series name in the legend to hide or show it."
+      "pl": "A — zdrowe dziecko: ten sam wiek; B — zdrowe dziecko: ta sama masa; C — utrzymanie z hipotonią (pasmo; dla 0–3 lat proporcjonalne do masy, od 3 lat z wpisaną długością lub średnią długością WHS dla wieku); D — cel z doganianiem (pasmo). Kliknij punkt, aby ustawić masę w kalkulatorze. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać. Linie A i B są ciągłe na granicach kategorii wiekowych źródeł (patrz Metodologia).",
+      "en": "A — healthy child: same age; B — healthy child: same weight; C — maintenance with hypotonia (band; weight-proportional below 3 y, from 3 y with the entered length or the WHS mean length for age); D — catch-up target (band). Click a point to set calculator weight. Click a series name in the legend to hide or show it. Lines A and B are continuous across source age-category boundaries (see Methods)."
     },
     "chart2_title": {
       "pl": "Masa ciała w czasie — siatka WHS i WHO",
@@ -542,8 +542,8 @@
       "en": "What the calculator cannot do: it does not diagnose, does not replace a swallow assessment, does not model individual absorption, and densities above 1 kcal/ml require clinical supervision. Amino-acid formulas / rare modules need individual targets."
     },
     "p8": {
-      "pl": "Założenia dodatkowe: pasmo C = zakres napięcia mięśniowego 0,9–1,1; gdy celu nie da się dogonić w horyzoncie (cel ≤ masa), sekcja D pokazuje wartość = C (bez doganiania); skala siatki WHO zmienia się na styku 2. lat (długość leżąca vs wzrost stojący); kryteria NICE stosuj do siatki WHS w przestrzeni SD (pasma między liniami ±SD). Od 12. mies. wartości EFSA są roczne, a nie miesięczne — dla niemowląt liczymy miesięcznie. Uwaga: wartość B ma widoczne „schodki” na granicach kategorii wiekowych NASEM/EFSA (zmiana równania i dodatku wzrostu) — to właściwość opublikowanych tabel, nie błąd.",
-      "en": "Extra assumptions: C band = muscle-tone range 0.9–1.1; when the target cannot be caught up within the horizon (target <= weight), section D shows = C (no catch-up); the WHO scale changes at the 2-year seam (recumbent length vs standing height); apply NICE criteria to the WHS chart in SD space (bands between ±SD lines). From 12 months, EFSA values are yearly, not monthly — infants are computed monthly. Note: the B value shows visible steps at NASEM/EFSA age-category boundaries (equation and growth-addend switches) — a property of the published tables, not an error."
+      "pl": "Założenia dodatkowe: pasmo C = zakres napięcia mięśniowego 0,9–1,1; gdy celu nie da się dogonić w horyzoncie (cel ≤ masa), sekcja D pokazuje wartość = C (bez doganiania); skala siatki WHO zmienia się na styku 2. lat (długość leżąca vs wzrost stojący); kryteria NICE stosuj do siatki WHS w przestrzeni SD (pasma między liniami ±SD). Od 12. mies. wartości EFSA są roczne, a nie miesięczne — dla niemowląt liczymy miesięcznie. Linie A/B są ciągłe: skoki opublikowanych tabel (dodatek wzrostu NASEM przy 3/6/12 mies. i przejście NASEM→EFSA przy 6. mies.) są mostkowane liniowo w oknie ±0,5 mies. wieku; poza tymi oknami wartości odpowiadają dokładnie źródłom. W okolicy 3–4 mies. wieku masowego linia B ma łagodne obniżenie — obecne również w tabelach źródłowych (FAO/NASEM).",
+      "en": "Extra assumptions: C band = muscle-tone range 0.9–1.1; when the target cannot be caught up within the horizon (target <= weight), section D shows = C (no catch-up); the WHO scale changes at the 2-year seam (recumbent length vs standing height); apply NICE criteria to the WHS chart in SD space (bands between ±SD lines). From 12 months, EFSA values are yearly, not monthly — infants are computed monthly. Lines A/B are continuous: published-table steps (the NASEM growth addend at 3/6/12 mo and the NASEM→EFSA handover at 6 mo) are bridged linearly across a ±0.5-month window; outside those windows values match the sources exactly. Around 3-4 months of weight-age the B line has a gentle dip that is present in the source tables themselves (FAO/NASEM)."
     },
     "p7": {
       "pl": "Krzywe wzrostowe 2025 (Calhoun i in., AJMG A 2025) zdigitalizowano na potrzeby projektu (1269 punktów; kontrola pikselowa 100%; mediana długości zgodna z siatką Antonius 2008 w granicach 0,2 cm przy 6/12/24 mies.). Zastrzeżenia: autorzy dopasowali dwa osobne modele (≤24 mies. i ≥24 mies.), więc skrajne percentyle nie łączą się na styku 2. lat; skrajne linie (2,5/97,5) to krzywe przedziałów predykcji modelu SITAR, a nie wartości empiryczne — do odczytu służą pasma środkowe (25/50/75, 10/90).",
