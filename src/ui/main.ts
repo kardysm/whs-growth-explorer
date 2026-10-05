@@ -120,6 +120,8 @@ function bandStr(b: { low: number | null; central: number | null; high: number |
 // ---------- shell ----------
 
 let navEscBound = false;
+/** Re-open the mobile menu after a language switch triggered from inside it (2026-10-05). */
+let reopenNav = false;
 
 function renderShell(): void {
   app.innerHTML = `
@@ -130,13 +132,20 @@ function renderShell(): void {
     <nav class="main" id="main-nav" aria-label="${t("nav.aria")}">
       ${( ["start","calc","charts","table","why","flags","rules","products","sources","method"] as const)
         .map((k) => `<a href="#${k}">${t(`nav.${k}`)}</a>`).join("")}
+      <div class="menu-tools">
+        <div class="lang-toggle" role="group" aria-label="język / language">
+          <button type="button" data-lang="pl" aria-pressed="${lang === "pl"}">PL</button>
+          <button type="button" data-lang="en" aria-pressed="${lang === "en"}">EN</button>
+        </div>
+        <button type="button" class="hdr-btn theme-toggle" aria-label="${t("theme.toggle")}" data-tip="${t("theme.toggle")}" aria-pressed="${effectiveTheme() === "dark"}">🌓 ${t("theme.toggle")}</button>
+      </div>
     </nav>
-    <div class="lang-toggle" role="group" aria-label="język / language">
+    <div class="lang-toggle hdr-only" role="group" aria-label="język / language">
       <button type="button" data-lang="pl" aria-pressed="${lang === "pl"}">PL</button>
       <button type="button" data-lang="en" aria-pressed="${lang === "en"}">EN</button>
     </div>
     <button type="button" class="hdr-btn" id="search-open" aria-label="${t("search.open")}">🔍 ${t("search.open")} <span class="small">Ctrl+K</span></button>
-    <button type="button" class="hdr-btn" id="theme-toggle" aria-label="${t("theme.toggle")}" data-tip="${t("theme.toggle")}" aria-pressed="${effectiveTheme() === "dark"}">🌓</button>
+    <button type="button" class="hdr-btn theme-toggle hdr-only" id="theme-toggle" aria-label="${t("theme.toggle")}" data-tip="${t("theme.toggle")}" aria-pressed="${effectiveTheme() === "dark"}">🌓</button>
   </header>
   <main id="main" tabindex="-1">
     <p class="banner" id="disclaimer">${t("disclaimer_short")}</p>
@@ -168,6 +177,8 @@ function renderShell(): void {
   app.querySelectorAll<HTMLButtonElement>(".lang-toggle button").forEach((b) => {
     b.addEventListener("click", () => {
       lang = (b.dataset.lang as Lang) ?? "pl";
+      // keep the mobile menu open when the switch happens from inside it (user request 2026-10-05)
+      reopenNav = !!document.getElementById("main-nav")?.classList.contains("open");
       renderAll();
     });
   });
@@ -185,11 +196,13 @@ function renderShell(): void {
     const li = (e.target as HTMLElement).closest("li[data-a]");
     if (li) goSearch(li.getAttribute("data-a")!);
   });
-  document.getElementById("theme-toggle")?.addEventListener("click", (ev) => {
-    const next = effectiveTheme() === "dark" ? "light" : "dark";
-    applyTheme(next);
-    (ev.currentTarget as HTMLElement).setAttribute("aria-pressed", String(next === "dark"));
-    drawCharts();
+  document.querySelectorAll<HTMLElement>(".theme-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const next = effectiveTheme() === "dark" ? "light" : "dark";
+      applyTheme(next);
+      document.querySelectorAll(".theme-toggle").forEach((b) => b.setAttribute("aria-pressed", String(next === "dark")));
+      drawCharts();
+    });
   });
   // mobile hamburger menu (kanban card, 2026-10-03)
   const navToggleBtn = document.getElementById("nav-toggle-btn");
@@ -208,6 +221,13 @@ function renderShell(): void {
     navEl.addEventListener("click", (e) => {
       if ((e.target as HTMLElement).closest("a")) closeNav();
     });
+    // language switch from inside the menu keeps it open (user request 2026-10-05)
+    if (reopenNav) {
+      navEl.classList.add("open");
+      navToggleBtn.setAttribute("aria-expanded", "true");
+      reopenNav = false;
+      updateScrollPad();
+    }
     if (!navEscBound) {
       navEscBound = true;
       document.addEventListener("keydown", (e) => {

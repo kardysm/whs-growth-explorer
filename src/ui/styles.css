@@ -50,6 +50,8 @@ header.top h1 { font-size: 1rem; margin: 0 1rem 0 0; }
 nav.main { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 nav.main a { color: var(--accent2); text-decoration: none; font-size: 0.9rem; }
 nav.main a:hover, nav.main a:focus { text-decoration: underline; }
+/* theme + language toggles live in the header on desktop, inside the hamburger on phones (2026-10-05) */
+.menu-tools { display: none; }
 .lang-toggle button {
   margin-left: 0.25rem;
   border: 1px solid var(--line);
@@ -260,6 +262,12 @@ thead th { top: 0; }
   .hdr-btn .small { display: none; }
   main { padding: 0.6rem; }
   .chart { height: 300px; }
+  /* toggles move into the menu on phones (user request 2026-10-05) */
+  .hdr-only { display: none !important; }
+  .menu-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; border-top: 1px solid var(--line); margin-top: 0.3rem; padding-top: 0.55rem; }
+  .menu-tools .lang-toggle { display: inline-flex; gap: 0.3rem; }
+  .menu-tools button { min-height: 40px; }
+  .menu-tools .lang-toggle button { min-width: 52px; font-size: 0.95rem; }
 }
 
 /* bigger desktop header (kanban card: "Bigger header for desktop") */
