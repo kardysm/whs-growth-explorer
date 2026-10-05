@@ -49,7 +49,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
       <button type="button" data-lang="en" aria-pressed="${i9===`en`}">EN</button>
     </div>
     <button type="button" class="hdr-btn" id="search-open" aria-label="${$(`search.open`)}">🔍 ${$(`search.open`)} <span class="small">Ctrl+K</span></button>
-    <button type="button" class="hdr-btn" id="theme-toggle" aria-label="${$(`theme.toggle`)}" title="${$(`theme.toggle`)}" aria-pressed="${z9()===`dark`}">🌓</button>
+    <button type="button" class="hdr-btn" id="theme-toggle" aria-label="${$(`theme.toggle`)}" data-tip="${$(`theme.toggle`)}" aria-pressed="${z9()===`dark`}">🌓</button>
   </header>
   <main id="main" tabindex="-1">
     <p class="banner" id="disclaimer">${$(`disclaimer_short`)}</p>
@@ -65,7 +65,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <section id="method"><h2>${$(`method.title`)}</h2><div id="method-body"></div></section>
   </main>
   <footer>${$(`footer`)}
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-05`).replace(`{commit}`,`7c984b1+`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-05`).replace(`{commit}`,`3b4b430+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
@@ -143,7 +143,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
       <div id="milk-card"></div>
     </div>
   </div>`;for(let e of[`in-sex`,`in-age`,`in-weight`,`in-length`,`in-tone`,`in-mobility`,`in-target`,`in-horizon`,`in-milkd`,`in-milkml`,`in-meald`,`in-feeds`,`in-mlfeed`,`in-intake`])document.getElementById(e).addEventListener(`change`,p9);document.getElementById(`btn-recalc`).addEventListener(`click`,p9),document.getElementById(`in-remember`)?.addEventListener(`change`,e=>{s9=e.target.checked;try{s9?localStorage.setItem(o9,JSON.stringify(Q)):localStorage.removeItem(o9)}catch{}}),N9()}function m9(){let e=t9({sex:Q.sex,ageMonths:Q.age,weightKg:Q.weight,lengthCm:Q.length,tone:Q.tone,mobility:Q.mobility,targetRef:Q.targetRef,customTargetKg:null,horizonWeeks:Q.horizonWeeks,milkDensityKcalPerMl:Q.milkDensity,mealDensityKcalPerG:Q.mealDensity,milkMlPerDay:Q.milkMl,feedsPerDay:Q.feeds,mlPerFeed:Q.mlPerFeed,actualIntakeKcalPerDay:Q.intake,actualIntakeMlPerDay:null},r9);D9=e;let t=document.getElementById(`results`);t.setAttribute(`aria-live`,`polite`);let n=``;{let e=null;if(Q.length!==null&&Number.isFinite(Q.length)){let t=nte(r9.whs,Q.sex,Q.length);t!==null&&(e=n9(r9.whs,Q.sex,t,Q.weight))}e===null&&(e=n9(r9.whs,Q.sex,Q.age,Q.weight)),e!==null&&e<=-3&&(n=`<p class="banner crit">${$(`calc.refeeding_banner`)}</p>`)}let r=(e,t,n=[],r=[],i={})=>`
-    <div class="card"><h3${i.tip?` title="${i.tip}"`:``}>${e} ${i.grade?`<span class="badge grade${i.grade}" title="${$(`calc.grade_${i.grade.toLowerCase()}`)}">${i.grade}</span>`:``}</h3>
+    <div class="card"><h3${i.tip?` data-tip="${i.tip}"`:``}>${e} ${i.grade?`<span class="badge grade${i.grade}" data-tip="${$(`calc.grade_${i.grade.toLowerCase()}`)}">${i.grade}<span class="sr-only"> (${$(`calc.grade_${i.grade.toLowerCase()}`)})</span></span>`:``}</h3>
       ${i.sub?`<p class="small sub">${i.sub}</p>`:``}
       <p><strong>${d9(t)}</strong></p>
       ${i.band?`<p class="small band-note">${i.band}</p>`:``}
@@ -157,7 +157,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     ${r($(`calc.method_b_t`),e.B.kcalPerDay,e.B.notes,e.B.sourceIds,{grade:`A`,sub:$(`calc.method_b_sub`).replace(`{wa}`,i===null?`—`:i9===`pl`?i.toFixed(1).replace(`.`,`,`):i.toFixed(1)),tip:$(`calc.method_b_tip`),band:$(`calc.band_b`)})}
     ${r($(`calc.method_c_t`),e.C.kcalPerDay,[...e.C.notes??[],{pl:`% A: ${e.percentOfA===null?`—`:e.percentOfA.toFixed(0)}%, % B: ${e.percentOfB===null?`—`:e.percentOfB.toFixed(0)}%`,en:`% A: ${e.percentOfA===null?`—`:e.percentOfA.toFixed(0)}%, % B: ${e.percentOfB===null?`—`:e.percentOfB.toFixed(0)}%`},...e.heightBased.kcalPerDay!==null&&!(e.C.alerts&&e.C.alerts.length)?[{pl:`kcal/cm: ${i9===`pl`?String(e.heightBased.kcalPerCmPerDay).replace(`.`,`,`):e.heightBased.kcalPerCmPerDay} → ${l9(e.heightBased.kcalPerDay)} ${a9}/24h`,en:`kcal/cm: ${e.heightBased.kcalPerCmPerDay} -> ${l9(e.heightBased.kcalPerDay)} ${a9}/24h`}]:[],e.heightBased.note,...e.whsZ.weight===null?[]:[{pl:`Pozycja masy na siatce WHS: ≈ ${e.whsZ.weight.toFixed(1).replace(`.`,`,`)} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`,en:`Weight position on the WHS chart: ≈ ${e.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)`}]],e.C.sourceIds,{grade:`D`,extrap:!0,alerts:e.C.alerts,sub:$(`calc.method_c_sub`),tip:$(`calc.method_c_tip`),band:$(`calc.band_c`)})}
     ${r($(`calc.method_d_t`),e.D.kcalPerDay,e.D.notes,e.D.sourceIds,{grade:`D`,extrap:!0,sub:$(`calc.method_d_sub`),tip:$(`calc.method_d_tip`),band:$(`calc.band_d`),alerts:[...(e.D.guardrails??[]).filter(e=>!(e.pl.includes(`D-2`)||e.en.includes(`D-2`))),...a]})}
-    <div class="card"><h3 title="${$(`calc.method_d2_tip`)}">${$(`calc.method_d2_t`)} <span class="badge gradeD" title="${$(`calc.grade_d`)}">D</span></h3>
+    <div class="card"><h3 data-tip="${$(`calc.method_d2_tip`)}">${$(`calc.method_d2_t`)} <span class="badge gradeD" data-tip="${$(`calc.grade_d`)}">D<span class="sr-only"> (${$(`calc.grade_d`)})</span></span></h3>
       <p class="small sub">${$(`calc.method_d2_sub`)}</p>
       <p class="small">${$(`calc.extrapolation_note`)}</p>
       ${e.D.method2.notes&&e.D.method2.notes.length?`<p class="small">${C9(e.D.method2.notes[0])}</p>`:``}
@@ -202,7 +202,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <p class="small">${$(`table.hint`)} <button class="primary" type="button" id="csv-btn">${$(`table.export`)}</button></p>
     <div style="max-height:420px;overflow:auto" class="card" id="table-wrap">
     <table><thead><tr>
-      ${[`w`,`A`,`B`,`C`,`D`,`fluid`].map(e=>`<th scope="col" aria-sort="${b9===e?x9===1?`ascending`:`descending`:`none`}"><button type="button" class="th-sort" data-key="${e}" title="${$(`a11y.sort_hint`)}">${$(e===`w`?`table.col_weight`:e===`fluid`?`table.col_fluid`:`table.col_${e.toLowerCase()}`)}${b9===e?x9===1?` ▲`:` ▼`:``}</button></th>`).join(``)}
+      ${[`w`,`A`,`B`,`C`,`D`,`fluid`].map(e=>`<th scope="col" aria-sort="${b9===e?x9===1?`ascending`:`descending`:`none`}"><button type="button" class="th-sort tip-below" data-key="${e}" data-tip="${$(`a11y.sort_hint`)}">${$(e===`w`?`table.col_weight`:e===`fluid`?`table.col_fluid`:`table.col_${e.toLowerCase()}`)}<span class="sr-only"> — ${$(`a11y.sort_hint`)}</span>${b9===e?x9===1?` ▲`:` ▼`:``}</button></th>`).join(``)}
       <th scope="col">${$(`table.col_milk`)}</th><th scope="col">${$(`table.col_meals`)}</th>
     </tr></thead><tbody>
     ${e.map(e=>{let t=e.C!==null&&Number.isFinite(Number(e.C))?Number(e.C):null,n=t===null?null:t/Q.milkDensity,a=t===null?null:Math.max(0,t-Q.milkMl*Q.milkDensity)/Q.mealDensity;return`<tr${e===i?` class="hl"`:``} data-w="${e.w}" tabindex="0"><td>${i9===`pl`?Number(e.w).toFixed(2).replace(`.`,`,`):Number(e.w).toFixed(2)}</td><td>${r(e.A)}</td><td>${r(e.B)}</td><td>${r(e.C)}</td><td>${r(e.D)}</td><td>${r(e.fluid)}</td><td>${n===null?`—`:n.toFixed(0)}</td><td>${a===null?`—`:a.toFixed(0)}</td></tr>`}).join(``)}
@@ -214,8 +214,8 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <div class="card"><ol>
     ${e.map(e=>{let t=String(e.evidence_class??`D`),n=[];return e.doi&&n.push(`<a href="https://doi.org/${e.doi}" rel="noopener">doi:${e.doi}</a>`),e.pmid&&n.push(`<a href="https://pubmed.ncbi.nlm.nih.gov/${e.pmid}/" rel="noopener">PMID ${e.pmid}</a>`),e.url&&!e.doi&&n.push(`<a href="${e.url}" rel="noopener">link</a>`),`<li>${T9(t)} ${e.citation??e.title} ${n.join(` · `)}
         <span class="small">[${e.verified?$(`sources.verified`):`UNVERIFIED`} · ${$(`sources.accessed`)}: ${e.accessed}]</span>
-        ${e.notes?`<div class="small" lang="en" title="nota źródłowa (j. angielski)">${e.notes}</div>`:``}</li>`}).join(``)}
-    </ol></div>`}var C9=e=>e?e[i9]:``;function w9(e){return e.map(e=>`<a href="#sources">${e}</a>`).join(`, `)}function T9(e){let t=(e||`D`).trim()[0]?.toUpperCase()??`D`,n=[`A`,`B`,`C`,`D`].includes(t)?t:`D`;return`<span class="badge grade${n}" title="${$(`calc.grade_${n.toLowerCase()}`)}">${e}</span>`}function Ste(){let e=C7,t=[`<p class="card small">${C9(e.intro)}</p>`];for(let n of e.groups){let r=n.items.map((t,r)=>`
+        ${e.notes?`<div class="small" lang="en" data-tip="nota źródłowa (j. angielski)">${e.notes}</div>`:``}</li>`}).join(``)}
+    </ol></div>`}var C9=e=>e?e[i9]:``;function w9(e){return e.map(e=>`<a href="#sources">${e}</a>`).join(`, `)}function T9(e){let t=(e||`D`).trim()[0]?.toUpperCase()??`D`,n=[`A`,`B`,`C`,`D`].includes(t)?t:`D`;return`<span class="badge grade${n}" data-tip="${$(`calc.grade_${n.toLowerCase()}`)}">${e}<span class="sr-only"> (${$(`calc.grade_${n.toLowerCase()}`)})</span></span>`}function Ste(){let e=C7,t=[`<p class="card small">${C9(e.intro)}</p>`];for(let n of e.groups){let r=n.items.map((t,r)=>`
       <div id="why-${n.id}-i${r}" style="margin:.7rem 0;padding-top:.5rem;border-top:1px solid var(--line)">
         <p>${C9(t.text)} ${t.wspecific?`<span class="badge">WHS</span>`:``} ${T9(t.grade)}</p>
         ${t.check?`<p class="small">${i9===`pl`?`Jak sprawdzić`:`How to check`}: ${C9(t.check)}</p>`:``}

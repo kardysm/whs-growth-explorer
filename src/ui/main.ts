@@ -136,7 +136,7 @@ function renderShell(): void {
       <button type="button" data-lang="en" aria-pressed="${lang === "en"}">EN</button>
     </div>
     <button type="button" class="hdr-btn" id="search-open" aria-label="${t("search.open")}">🔍 ${t("search.open")} <span class="small">Ctrl+K</span></button>
-    <button type="button" class="hdr-btn" id="theme-toggle" aria-label="${t("theme.toggle")}" title="${t("theme.toggle")}" aria-pressed="${effectiveTheme() === "dark"}">🌓</button>
+    <button type="button" class="hdr-btn" id="theme-toggle" aria-label="${t("theme.toggle")}" data-tip="${t("theme.toggle")}" aria-pressed="${effectiveTheme() === "dark"}">🌓</button>
   </header>
   <main id="main" tabindex="-1">
     <p class="banner" id="disclaimer">${t("disclaimer_short")}</p>
@@ -382,7 +382,7 @@ function recalc(): void {
   }
 
   const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean; sub?: string; tip?: string; band?: string } = {}) => `
-    <div class="card"><h3${opts.tip ? ` title="${opts.tip}"` : ""}>${title} ${opts.grade ? `<span class="badge grade${opts.grade}" title="${t(`calc.grade_${opts.grade.toLowerCase()}`)}">${opts.grade}</span>` : ""}</h3>
+    <div class="card"><h3${opts.tip ? ` data-tip="${opts.tip}"` : ""}>${title} ${opts.grade ? `<span class="badge grade${opts.grade}" data-tip="${t(`calc.grade_${opts.grade.toLowerCase()}`)}">${opts.grade}<span class="sr-only"> (${t(`calc.grade_${opts.grade.toLowerCase()}`)})</span></span>` : ""}</h3>
       ${opts.sub ? `<p class="small sub">${opts.sub}</p>` : ""}
       <p><strong>${bandStr(b)}</strong></p>
       ${opts.band ? `<p class="small band-note">${opts.band}</p>` : ""}
@@ -409,7 +409,7 @@ function recalc(): void {
       ...(r.whsZ.weight !== null ? [{ pl: `Pozycja masy na siatce WHS: ≈ ${r.whsZ.weight.toFixed(1).replace(".", ",")} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`, en: `Weight position on the WHS chart: ≈ ${r.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)` }] : []),
     ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts, sub: t("calc.method_c_sub"), tip: t("calc.method_c_tip"), band: t("calc.band_c") })}
     ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, sub: t("calc.method_d_sub"), tip: t("calc.method_d_tip"), band: t("calc.band_d"), alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}
-    <div class="card"><h3 title="${t("calc.method_d2_tip")}">${t("calc.method_d2_t")} <span class="badge gradeD" title="${t("calc.grade_d")}">D</span></h3>
+    <div class="card"><h3 data-tip="${t("calc.method_d2_tip")}">${t("calc.method_d2_t")} <span class="badge gradeD" data-tip="${t("calc.grade_d")}">D<span class="sr-only"> (${t("calc.grade_d")})</span></span></h3>
       <p class="small sub">${t("calc.method_d2_sub")}</p>
       <p class="small">${t("calc.extrapolation_note")}</p>
       ${r.D.method2.notes && r.D.method2.notes.length ? `<p class="small">${B(r.D.method2.notes[0])}</p>` : ""}
@@ -716,7 +716,7 @@ function renderTable(): void {
     <div style="max-height:420px;overflow:auto" class="card" id="table-wrap">
     <table><thead><tr>
       ${(["w", "A", "B", "C", "D", "fluid"] as const).map((k) =>
-        `<th scope="col" aria-sort="${sortKey === k ? (sortDir === 1 ? "ascending" : "descending") : "none"}"><button type="button" class="th-sort" data-key="${k}" title="${t("a11y.sort_hint")}">${t(k === "w" ? "table.col_weight" : k === "fluid" ? "table.col_fluid" : `table.col_${k.toLowerCase()}`)}${sortKey === k ? (sortDir === 1 ? " ▲" : " ▼") : ""}</button></th>`).join("")}
+        `<th scope="col" aria-sort="${sortKey === k ? (sortDir === 1 ? "ascending" : "descending") : "none"}"><button type="button" class="th-sort tip-below" data-key="${k}" data-tip="${t("a11y.sort_hint")}">${t(k === "w" ? "table.col_weight" : k === "fluid" ? "table.col_fluid" : `table.col_${k.toLowerCase()}`)}<span class="sr-only"> — ${t("a11y.sort_hint")}</span>${sortKey === k ? (sortDir === 1 ? " ▲" : " ▼") : ""}</button></th>`).join("")}
       <th scope="col">${t("table.col_milk")}</th><th scope="col">${t("table.col_meals")}</th>
     </tr></thead><tbody>
     ${rows.map((r) => {
@@ -788,7 +788,7 @@ function renderSources(): void {
       if (s.url && !s.doi) links.push(`<a href="${s.url}" rel="noopener">link</a>`);
       return `<li>${gradeBadge(g)} ${s.citation ?? s.title} ${links.join(" · ")}
         <span class="small">[${s.verified ? t("sources.verified") : "UNVERIFIED"} · ${t("sources.accessed")}: ${s.accessed}]</span>
-        ${s.notes ? `<div class="small" lang="en" title="nota źródłowa (j. angielski)">${s.notes}</div>` : ""}</li>`;
+        ${s.notes ? `<div class="small" lang="en" data-tip="nota źródłowa (j. angielski)">${s.notes}</div>` : ""}</li>`;
     }).join("")}
     </ol></div>`;
 }
@@ -805,7 +805,7 @@ function srcLinks(ids: string[]): string {
 function gradeBadge(g: string): string {
   const letter = (g || "D").trim()[0]?.toUpperCase() ?? "D";
   const known = ["A", "B", "C", "D"].includes(letter) ? letter : "D";
-  return `<span class="badge grade${known}" title="${t(`calc.grade_${known.toLowerCase()}`)}">${g}</span>`;
+  return `<span class="badge grade${known}" data-tip="${t(`calc.grade_${known.toLowerCase()}`)}">${g}<span class="sr-only"> (${t(`calc.grade_${known.toLowerCase()}`)})</span></span>`;
 }
 
 function renderWhy(): void {
