@@ -209,9 +209,25 @@
       "pl": "Horyzont doganiania (tygodnie)",
       "en": "Catch-up horizon (weeks)"
     },
-    "density": {
-      "pl": "Gęstość energetyczna pokarmu (kcal/ml)",
-      "en": "Feed energy density (kcal/ml)"
+    "milk_density": {
+      "pl": "Gęstość energetyczna mleka (kcal/ml)",
+      "en": "Milk energy density (kcal/ml)"
+    },
+    "milk_density_hint": {
+      "pl": "np. mleko standardowe 0,66–0,67; mleka wysokoenergetyczne (FSMP) 1,0–1,5. Wybór produktu w karcie „Bilans: samo mleko” podstawia gęstość automatycznie.",
+      "en": "e.g. standard formula 0.66–0.67; energy-enriched milks (FSMP) 1.0–1.5. Picking a product in the milk-balance card auto-fills the density."
+    },
+    "milk_ml": {
+      "pl": "Mleko na dobę (ml)",
+      "en": "Milk per day (ml)"
+    },
+    "meal_density": {
+      "pl": "Gęstość energetyczna pozostałych posiłków (kcal/g)",
+      "en": "Other meals energy density (kcal/g)"
+    },
+    "meal_density_hint": {
+      "pl": "typowo ok. 0,7–1,5 kcal/g; dla purée i kaszek 1 g ≈ 1 ml.",
+      "en": "typically about 0.7–1.5 kcal/g; for purées 1 g ≈ 1 ml."
     },
     "feeds": {
       "pl": "Posiłków na dobę (opcjonalnie)",
@@ -282,12 +298,12 @@
       "en": "Method D: maintenance (C) + energy cost of tissue gain"
     },
     "method_e_t": {
-      "pl": "E. Objętości",
-      "en": "E. Volumes"
+      "pl": "E. Objętości i podział (mleko / posiłki)",
+      "en": "E. Volumes & split (milk / meals)"
     },
     "method_e_sub": {
-      "pl": "ile ml pokarmu potrzeba przy różnych gęstościach",
-      "en": "how many ml of feed are needed at different densities"
+      "pl": "ile mleka i ile pozostałych posiłków potrzeba przy Twoich gęstościach — dla C i D",
+      "en": "how much milk and how much other food is needed at your densities — for C and D"
     },
     "method_f_t": {
       "pl": "F. Porównanie ze spożyciem",
@@ -310,12 +326,44 @@
       "en": "D — extrapolation from neurological-impairment / CP populations; no WHS energy-expenditure studies exist."
     },
     "infant_density_caution": {
-      "pl": "NIEMOWLĘ: nie zagęszczaj mleka modyfikowanego ponad instrukcję producenta i nie dodawaj modułów energetycznych/białkowych bez nadzoru klinicznego. Objętości przy gęstości >1 kcal/ml zakładają produkt specjalistyczny zalecony przez lekarza lub dietetyka.",
-      "en": "INFANT: never concentrate infant formula beyond the manufacturer's instructions and never add energy/protein modules without clinical supervision. Volumes above 1 kcal/ml assume a prescribed specialist product."
+      "pl": "NIEMOWLĘ: nie zagęszczaj mleka modyfikowanego ponad instrukcję producenta i nie dodawaj modułów energetycznych/białkowych bez nadzoru klinicznego. Wartości przy gęstości mleka >1 kcal/ml zakładają produkt specjalistyczny zalecony przez lekarza lub dietetyka.",
+      "en": "INFANT: never concentrate infant formula beyond the manufacturer's instructions and never add energy/protein modules without clinical supervision. Values above a milk density of 1 kcal/ml assume a prescribed specialist product."
     },
     "density_col": {
-      "pl": "gęstość (kcal/ml)",
-      "en": "density (kcal/ml)"
+      "pl": "gęstość mleka (kcal/ml)",
+      "en": "milk density (kcal/ml)"
+    },
+    "split_col_row": {
+      "pl": "Metoda",
+      "en": "Method"
+    },
+    "split_col_need": {
+      "pl": "Potrzeba",
+      "en": "Need"
+    },
+    "split_col_milk": {
+      "pl": "Z mleka ({ml} ml × {md} kcal/ml)",
+      "en": "From milk ({ml} ml × {md} kcal/ml)"
+    },
+    "split_col_meals": {
+      "pl": "Pozostałe posiłki ({gd} kcal/g)",
+      "en": "Other meals ({gd} kcal/g)"
+    },
+    "split_none": {
+      "pl": "0 g — mleko pokrywa całość",
+      "en": "0 g — milk covers it all"
+    },
+    "split_densities": {
+      "pl": "Twoje gęstości: mleko {md} kcal/ml ({ml} ml/dobę) · pozostałe posiłki {gd} kcal/g.",
+      "en": "Your densities: milk {md} kcal/ml ({ml} ml/day) · other meals {gd} kcal/g."
+    },
+    "sweep_caption": {
+      "pl": "Wariant kontrolny: całość jako mleko (ml/24h)",
+      "en": "Reference variant: all energy as milk (ml/24h)"
+    },
+    "tip_c_split": {
+      "pl": "C: mleko {ml} ml (całość) · posiłki {g} g (dopełnienie)",
+      "en": "C: milk {ml} ml (all-milk) · meals {g} g (top-up)"
     },
     "fluid_label": {
       "pl": "płyny podtrzymujące (Holliday–Segar)",
@@ -324,10 +372,6 @@
     "protein_label": {
       "pl": "białko",
       "en": "protein"
-    },
-    "ml_at_density": {
-      "pl": "objętość przy gęstości {d} kcal/ml",
-      "en": "volume at {d} kcal/ml"
     },
     "method_d2_t": {
       "pl": "D-2. Scenariusz: masa do długości",
@@ -342,8 +386,8 @@
       "en": "Method D-2: kcal/kg at weight-age × ideal weight for length (WHO median)"
     },
     "density_caution": {
-      "pl": "Gęstość >1 kcal/ml wymaga nadzoru klinicznego (produkt specjalistyczny zalecony przez lekarza/dietetyka).",
-      "en": "Density above 1 kcal/ml requires clinical supervision (a prescribed specialist product)."
+      "pl": "Gęstość mleka >1 kcal/ml wymaga nadzoru klinicznego (produkt specjalistyczny zalecony przez lekarza/dietetyka).",
+      "en": "Milk density above 1 kcal/ml requires clinical supervision (a prescribed specialist product)."
     },
     "volume_density_note": {
       "pl": "Przy 0,67 kcal/ml objętość przekracza płyny podtrzymujące — rozważ wyższą gęstość (pod nadzorem klinicznym).",
@@ -386,8 +430,8 @@
       "en": "Low–high: energy cost of gain 4.1–6.0 kcal/g. Central: 5 kcal/g (FAO/WHO/UNU)."
     },
     "band_e": {
-      "pl": "Dolna–górna: skrajne kombinacje pasm C i D. Środkowa: C+D przy wartościach środkowych.",
-      "en": "Low–high: extreme combinations of the C and D bands. Central: C+D at central values."
+      "pl": "Podział liczony z wartości centralnych C i D: „z mleka” = objętość × gęstość mleka, resztę pokrywają posiłki. Dla płynnych posiłków 1 g ≈ 1 ml.",
+      "en": "Split computed from the central C and D values: “from milk” = volume × milk density; the rest is covered by meals. For liquid meals 1 g ≈ 1 ml."
     },
     "remember": {
       "pl": "Zapamiętaj wartości na tym urządzeniu",
@@ -444,12 +488,24 @@
       "en": "Green lines (2025 p25/p50/p75): quartiles from Calhoun et al. 2025 (digitized; months 0–24 from the infant model, months 30–48 from the 2+ model; extreme percentiles do not join at the 2-y seam). Caveats — Methods."
     },
     "chart3_title": {
-      "pl": "Objętość pokarmu vs płyny podtrzymujące",
-      "en": "Feed volume vs maintenance fluid"
+      "pl": "Objętość diety: mleko i posiłki vs płyny podtrzymujące",
+      "en": "Diet volume: milk & meals vs maintenance fluid"
     },
     "chart3_hint": {
-      "pl": "Objętość pokarmu potrzebna przy gęstości {density} kcal/ml oraz przy 0,67/1,0/1,5 kcal/ml, na tle płynów podtrzymujących (Holliday–Segar). Dla niemowląt gęstości >1 kcal/ml tylko pod nadzorem klinicznym — patrz sekcja E. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
-      "en": "Feed volume needed at {density} kcal/ml and at 0.67/1.0/1.5 kcal/ml, against maintenance fluid (Holliday–Segar). For infants, densities above 1 kcal/ml only under clinical supervision — see section E. Click a series name in the legend to hide or show it."
+      "pl": "Mleko (linia ciągła): ile ml potrzeba, gdyby cała energia pochodziła z mleka przy {milkd} kcal/ml. Posiłki (linie C i D): ile gramów musi dopełnić dietę po {ml} ml mleka, przy gęstości posiłków {meald} kcal/g. Tło: płyny podtrzymujące (Holliday–Segar). Dla niemowląt gęstości mleka >1 kcal/ml tylko pod nadzorem klinicznym — patrz sekcja E. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
+      "en": "Milk (solid line): ml needed if all energy came from milk at {milkd} kcal/ml. Meals (C and D series): grams that must top up the diet after {ml} ml of milk, at a meals density of {meald} kcal/g. Reference: maintenance fluid (Holliday–Segar). For infants, milk densities above 1 kcal/ml only under clinical supervision — see section E. Click a series name in the legend to hide or show it."
+    },
+    "c3_milk": {
+      "pl": "ml mleka @ {d} (całość C)",
+      "en": "milk ml @ {d} (all-milk C)"
+    },
+    "c3_meals_c": {
+      "pl": "g posiłków @ {g} (dopełnienie C)",
+      "en": "meal g @ {g} (top-up C)"
+    },
+    "c3_meals_d": {
+      "pl": "g posiłków @ {g} (dopełnienie D)",
+      "en": "meal g @ {g} (top-up D)"
     }
   },
   "table": {
@@ -458,8 +514,8 @@
       "en": "Table (weight → kcal/day)"
     },
     "hint": {
-      "pl": "Wiersze: masy 2–20 kg; wiek i płeć jak w kalkulatorze; kolumny C/D liczone są dla wpisanej długości, a bez niej — ze średniej długości WHS dla wieku. Kliknij nagłówek, aby sortować; kliknij wiersz, aby ustawić masę. (Dla wieku <6 mies. C może leżeć poniżej wiarygodnego zakresu — patrz karta C.)",
-      "en": "Rows: weights 2–20 kg; age and sex from the calculator; columns C/D use the entered length, or the WHS mean length for age when none is entered (for ages <6 mo, C may sit below a plausible range — see card C). Click a header to sort; click a row to set the weight."
+      "pl": "Wiersze: masy 2–20 kg; wiek i płeć jak w kalkulatorze; kolumny C/D liczone są dla wpisanej długości, a bez niej — ze średniej długości WHS dla wieku. Kolumny „Mleko”/„Posiłki”: ml mleka, gdyby całość pochodziła z mleka (przy Twojej gęstości), oraz gramy posiłków dopełniające dietę po wpisanej objętości mleka. Kliknij nagłówek, aby sortować; kliknij wiersz, aby ustawić masę. (Dla wieku <6 mies. C może leżeć poniżej wiarygodnego zakresu — patrz karta C.)",
+      "en": "Rows: weights 2–20 kg; age and sex from the calculator; columns C/D use the entered length, or the WHS mean length for age when none is entered (for ages <6 mo, C may sit below a plausible range — see card C). The Milk/Meals columns: milk ml if all energy came from milk (at your density), and the grams of meals topping up the diet after the entered milk volume. Click a header to sort; click a row to set the weight."
     },
     "export": {
       "pl": "Pobierz CSV",
@@ -488,6 +544,14 @@
     "col_fluid": {
       "pl": "Płyny (ml)",
       "en": "Fluid (ml)"
+    },
+    "col_milk": {
+      "pl": "Mleko (ml)",
+      "en": "Milk (ml)"
+    },
+    "col_meals": {
+      "pl": "Posiłki (g)",
+      "en": "Meals (g)"
     }
   },
   "sources": {
@@ -726,8 +790,8 @@
       "en": "Line chart: weight from 0-48 months; WHS chart lines (mean and ±1/±2 SD), WHO median and −2 SD, 2025 quartiles p25/p50/p75 and a marker for your child."
     },
     "chart3_desc": {
-      "pl": "Wykres liniowy: objętość pokarmu (ml/dobę) w funkcji masy ciała przy wybranej gęstości oraz 0,67/1,0/1,5 kcal/ml, na tle płynów podtrzymujących Hollidaya–Segara.",
-      "en": "Line chart: feed volume (ml/day) versus body weight at the chosen density and at 0.67/1.0/1.5 kcal/ml, against Holliday-Segar maintenance fluid."
+      "pl": "Wykres liniowy: objętość mleka (ml/dobę — całość przy gęstości {milkd} kcal/ml) oraz masa posiłków dopełniających (g/dobę — po {ml} ml mleka, przy {meald} kcal/g) w funkcji masy ciała, na tle płynów podtrzymujących Hollidaya–Segara.",
+      "en": "Line chart: milk volume (ml/day — all-milk at {milkd} kcal/ml) and top-up meal mass (g/day — after {ml} ml of milk, at {meald} kcal/g) versus body weight, against Holliday-Segar maintenance fluid."
     }
   },
   "search": {
@@ -836,6 +900,10 @@
     "ml_label": {
       "pl": "Objętość na dobę (ml)",
       "en": "Daily volume (ml)"
+    },
+    "volume_note": {
+      "pl": "Objętość: {ml} ml/dobę (pole „Mleko na dobę” w kalkulatorze); ten produkt ≈ {d} kcal/ml — wybór produktu podstawia gęstość do formularza.",
+      "en": "Volume: {ml} ml/day (the “Milk per day” field in the calculator); this product ≈ {d} kcal/ml — picking a product fills the density into the form."
     },
     "col_component": {
       "pl": "Składnik",

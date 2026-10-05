@@ -41,7 +41,10 @@ export interface CalcInput {
   /** Custom target weight in kg overrides targetRef when set. */
   customTargetKg: number | null;
   horizonWeeks: number;
-  feedDensityKcalPerMl: number;
+  /** Energy densities for the milk / meals split (user request 2026-10-05). */
+  milkDensityKcalPerMl: number;
+  mealDensityKcalPerG: number;
+  milkMlPerDay: number;
   feedsPerDay: number | null;
   mlPerFeed: number | null;
   actualIntakeKcalPerDay: number | null;

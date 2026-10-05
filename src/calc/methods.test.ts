@@ -16,7 +16,9 @@ const base: CalcInput = {
   targetRef: "whs_mean",
   customTargetKg: null,
   horizonWeeks: 12,
-  feedDensityKcalPerMl: 1.0,
+  milkDensityKcalPerMl: 0.67,
+  mealDensityKcalPerG: 1.0,
+  milkMlPerDay: 500,
   feedsPerDay: null,
   mlPerFeed: null,
   actualIntakeKcalPerDay: null,
@@ -57,6 +59,24 @@ describe("full pipeline (representative case)", () => {
     expect(mlFor(0.67)).toBeGreaterThan(mlFor(1.0));
     expect(mlFor(1.0)).toBeGreaterThan(mlFor(1.5));
     expect(r.E.maintenanceFluidMl).toBe(900); // 9 kg -> 900 ml
+  });
+
+  it("E milk/meals split (user request 2026-10-05): milk kcal from ml x density, meals = rest / meals density", () => {
+    const s = r.E.split;
+    const milkKcal = 500 * 0.67;
+    expect(s.milkMlPerDay).toBe(500);
+    expect(s.forC.milkKcal!).toBeCloseTo(Math.min(milkKcal, r.C.kcalPerDay.central!), 6);
+    expect(s.forC.restKcal!).toBeCloseTo(Math.max(0, r.C.kcalPerDay.central! - milkKcal), 6);
+    expect(s.forC.mealsG!).toBeCloseTo(s.forC.restKcal! / 1.0, 6);
+    expect(s.forC.milkPct!).toBeCloseTo((Math.min(milkKcal, r.C.kcalPerDay.central!) / r.C.kcalPerDay.central!) * 100, 6);
+    expect(s.forD.mealsG!).toBeCloseTo(Math.max(0, r.D.kcalPerDay.central! - milkKcal) / 1.0, 6);
+  });
+
+  it("E volume flags: approximate diet volume vs tolerance; milk volume vs maintenance fluid", () => {
+    const rv = computeAll({ ...base, feedsPerDay: 6, mlPerFeed: 100 }, ctx); // tolerated 600 < 500 ml milk + ~188 g meals
+    expect(rv.E.volumeFlags.length).toBeGreaterThan(0);
+    const rm = computeAll({ ...base, milkMlPerDay: 1000, feedsPerDay: 6, mlPerFeed: 200 }, ctx); // 1000 ml > 900 ml maintenance
+    expect(rm.E.volumeFlags.map((f) => f.en).join(" ")).toContain("exceeds Holliday-Segar");
   });
 
   it("F gap analysis with measured intake", () => {

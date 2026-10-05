@@ -115,10 +115,29 @@ export interface CalcResult {
   D: CatchUpResult;
   E: {
     byDensity: { density: number; mlForC: number | null; mlForD: number | null }[];
+    /** Milk / meals split at the entered densities (user request 2026-10-05). */
+    split: {
+      milkMlPerDay: number;
+      milkDensityKcalPerMl: number;
+      mealDensityKcalPerG: number;
+      forC: SplitRow;
+      forD: SplitRow;
+    };
     maintenanceFluidMl: number;
     volumeFlags: CalcNote[];
   };
   F: { percentOfC: number | null; percentOfD: number | null; note: CalcNote } | null;
+}
+
+interface SplitRow {
+  /** Energy the fixed milk volume brings (same value for C and D rows). */
+  milkKcal: number | null;
+  /** Energy still needed from other meals (max(need - milk, 0)). */
+  restKcal: number | null;
+  /** Grams of other meals at the entered meals density. */
+  mealsG: number | null;
+  /** Share of the need covered by milk (%), capped at 100. */
+  milkPct: number | null;
 }
 
 export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
@@ -336,32 +355,51 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     guardrails,
   };
 
-  // --- E: volume ---
+  // --- E: volume & milk/meals split (user request 2026-10-05: separate densities) ---
   const maintenance = hollidaySegar(weightKg);
-  const densities = [0.67, 1.0, 1.5, input.feedDensityKcalPerMl];
+  const densities = [0.67, 1.0, 1.5, input.milkDensityKcalPerMl];
   const byDensity = densities.filter((d2, i) => densities.indexOf(d2) === i).map((density) => ({
     density,
     mlForC: C.kcalPerDay.central !== null ? C.kcalPerDay.central / density : null,
     mlForD: D.kcalPerDay.central !== null ? D.kcalPerDay.central / density : null,
   }));
+  const milkKcal = input.milkMlPerDay * input.milkDensityKcalPerMl;
+  const splitOf = (need: number | null): SplitRow => {
+    if (need === null) return { milkKcal: null, restKcal: null, mealsG: null, milkPct: null };
+    const rest = Math.max(0, need - milkKcal);
+    return {
+      milkKcal: Math.min(milkKcal, need),
+      restKcal: rest,
+      mealsG: rest / input.mealDensityKcalPerG,
+      milkPct: need > 0 ? (Math.min(milkKcal, need) / need) * 100 : null,
+    };
+  };
+  const split = {
+    milkMlPerDay: input.milkMlPerDay,
+    milkDensityKcalPerMl: input.milkDensityKcalPerMl,
+    mealDensityKcalPerG: input.mealDensityKcalPerG,
+    forC: splitOf(C.kcalPerDay.central),
+    forD: splitOf(D.kcalPerDay.central),
+  };
   const volumeFlags: CalcNote[] = [];
   if (input.feedsPerDay !== null && input.mlPerFeed !== null) {
     const tolerated = input.feedsPerDay * input.mlPerFeed;
-    const need = C.kcalPerDay.central !== null ? C.kcalPerDay.central / input.feedDensityKcalPerMl : null;
-    if (need !== null && tolerated > 0 && need > tolerated) {
+    // Approximate total diet volume: milk ml + meals grams (1 g of complementary food ≈ 1 ml; labelled).
+    const volC = split.forC.mealsG !== null ? input.milkMlPerDay + split.forC.mealsG : null;
+    if (volC !== null && tolerated > 0 && volC > tolerated) {
       volumeFlags.push(N(
-        `Ograniczenie objętości przy ${input.feedDensityKcalPerMl} kcal/ml: potrzeba ${need.toFixed(0)} ml/d, tolerowane ${tolerated} ml/d (porcje × ml) — rozważ zagęszczenie energii pod nadzorem klinicznym.`,
-        `Volume-limited at ${input.feedDensityKcalPerMl} kcal/ml: ${need.toFixed(0)} ml/day needed vs ${tolerated} ml/day tolerated (feeds x ml/feed) — consider energy densification with clinician guidance.`,
+        `Ograniczenie objętości: przybliżona objętość diety ~${volC.toFixed(0)} ml/d (mleko ${input.milkMlPerDay} ml + posiłki ~${split.forC.mealsG!.toFixed(0)} g ≈ ml) przekracza tolerowane ${tolerated} ml/d (porcje × ml) — rozważ zagęszczenie energii pod nadzorem klinicznym.`,
+        `Volume-limited: approximate diet volume ~${volC.toFixed(0)} ml/day (milk ${input.milkMlPerDay} ml + meals ~${split.forC.mealsG!.toFixed(0)} g ≈ ml) exceeds the tolerated ${tolerated} ml/day (feeds x ml/feed) — consider energy densification with clinician guidance.`,
       ));
     }
-    if (need !== null && need > maintenance) {
+    if (input.milkMlPerDay > maintenance) {
       volumeFlags.push(N(
-        `Potrzebna objętość (${need.toFixed(0)} ml) przekracza płyny podtrzymujące Hollidaya–Segara (${maintenance.toFixed(0)} ml) przy tej gęstości.`,
-        `Volume needed (${need.toFixed(0)} ml) exceeds Holliday-Segar maintenance fluid (${maintenance.toFixed(0)} ml) at this density.`,
+        `Sama objętość mleka (${input.milkMlPerDay} ml/d) przekracza płyny podtrzymujące Hollidaya–Segara (${maintenance.toFixed(0)} ml/d).`,
+        `The milk volume alone (${input.milkMlPerDay} ml/day) exceeds Holliday-Segar maintenance fluid (${maintenance.toFixed(0)} ml/day).`,
       ));
     }
   }
-  const E = { byDensity, maintenanceFluidMl: maintenance, volumeFlags };
+  const E = { byDensity, split, maintenanceFluidMl: maintenance, volumeFlags };
 
   // --- F: gap analysis ---
   let F: CalcResult["F"] = null;
