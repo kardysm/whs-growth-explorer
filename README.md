@@ -44,8 +44,9 @@ The site is a single static page with **relative** asset paths (`base: "./"`), s
 
 ```
 GOAL.md, DECISIONS.md, REPORT.md           project spec, decision log, findings
+DESIGN-SYSTEM.md                           liquid-glass design system (tokens, palette, components)
 research/                                  evidence base
-  sources.json (47 verified)  search-log.md
+  sources.json (48 verified)  search-log.md
   raw/                                       raw fetch artifacts (accessible provenance)
   data/who_lms/*.json                       WHO LMS tables (0–60 mo, wfl/wfh)
   data/whs_growth/antonius_digitized.csv    WHS reference lines (digitized 2008 charts)
@@ -54,7 +55,7 @@ research/                                  evidence base
   data/parameters.json                      every coefficient used, with source_ids
   qa/crosscheck-report.md                   independent recomputation report
 content/base.json                          PL/EN UI strings
-src/calc/                                  pure TypeScript model + tests (47 green)
+src/calc/                                  pure TypeScript model + tests (61 green)
 src/ui/                                    the site (ECharts, vanilla TS)
 src/data/                                  importable mirrors (grid, reference lines, sources)
 scripts/                                   fetch/verify/convert/crosscheck tooling

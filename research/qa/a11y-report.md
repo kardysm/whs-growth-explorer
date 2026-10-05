@@ -59,3 +59,26 @@ axe-core (4.x, injected from node_modules) on the rebuilt site: **0 violations**
 search-dialog states. Spot checks: text capped at 78ch (754 px at 1280 px viewport); cards 14 px radius;
 h2 accent bar; hamburger hidden >=641 px, nav normal at 800 px; no horizontal overflow at 360 px;
 persistence/hamburger interactions verified in-browser (aria-expanded, Esc close, link close).
+
+## Re-audit 2026-10-05 (liquid-glass restyle, palette, instant tooltips, mobile toggles)
+
+axe-core (4.x, injected into the built site) on the restyled build:
+
+- **light: 0 violations, 32 passes, 2 incomplete** — `#btn-recalc` / `#csv-btn` sit on the violet
+  gradient button; axe cannot resolve gradient fills. Manual check (WCAG formula): white on
+  `#613dc1→#4e148c` ≥ 7.1:1; dark theme: `#2c0735` on `#858ae3→#a49df2` ≥ 5.7:1 — both pass AA.
+- **dark: 0 violations, 2 incomplete** (the same two buttons).
+- **dialog open: 0 violations, 33 passes, 3 incomplete** (same + one gradient-adjacent node).
+
+Notes:
+
+- The palette wash is a fixed `body::before` back layer while `html` keeps a solid `--bg`; without
+  this the gradient made axe's colour-contrast check "incomplete" on ~2,200 text nodes. With the
+  back layer, backgrounds stay resolvable and only gradient-filled buttons remain incomplete.
+- Tooltips moved from `title` to `data-tip` (instant CSS tooltips, D-031); grade badges and sort
+  buttons carry `.sr-only` copies of the tooltip text so nothing is screen-reader-only-lost.
+- Verified states: tooltip glass on hover (rgba .88 + blur 14), banner glass, mobile hamburger
+  sheet with theme/PL-EN toggles, dark wash, print emulation (header/charts hidden, white surfaces,
+  no blur, wash off).
+- Text-pair contrast table for both themes: `DESIGN-SYSTEM.md` §1 (min text pair ≥4.5:1; links
+  ≥10:1; buttons ≥5.7:1).

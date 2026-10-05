@@ -520,10 +520,10 @@ function drawCharts(): void {
   const dark = effectiveTheme() === "dark";
   const num0 = (v: unknown): string => (typeof v === "number" ? v.toLocaleString(lang === "pl" ? "pl-PL" : "en-GB", { maximumFractionDigits: 0 }) : "—");
   const pDen = (x: number): string => String(x).replace(".", lang === "pl" ? "," : ".");
-  // Theme-aware palette (audit F1: dark mode series were near-invisible on the dark card).
+  // Theme-aware palette (D-033: recolored to the 2026-10-05 palette; B stays the yellow line).
   const PAL = dark
-    ? { a: "#8ab4e0", b: "#f0c674", c: "#e58aa8", d: "#8fc5da", who: "#8fc5da", whs2: "#c98ba0", cal: "#7fd0b4", child: "#f5f5f5", fluid: "#bbbbbb" }
-    : { a: "#4e79a7", b: "#c8871b", c: "#7a1f3d", d: "#1f5d7a", who: "#1f5d7a", whs2: "#b06a80", cal: "#1a7a6a", child: "#000000", fluid: "#555555" };
+    ? { a: "#9db1f5", b: "#f0c674", c: "#c99bf0", d: "#7fd0e8", who: "#7fb6ec", whs2: "#c9a3d9", cal: "#6fd0c0", child: "#f3eefc", fluid: "#b9aed2" }
+    : { a: "#4e6ac2", b: "#b0790f", c: "#7d2fa6", d: "#12768f", who: "#2456a8", whs2: "#a05fb4", cal: "#0e7f74", child: "#2c0735", fluid: "#6b5f8a" };
   ch1 = echarts.init(document.getElementById("chart1")!);
   ch1.setOption({
     tooltip: {
@@ -620,7 +620,7 @@ function drawCharts(): void {
       {
         name: lang === "pl" ? "Twoje dziecko" : "Your child", type: "scatter", symbolSize: 12,
         data: input.age <= 48 ? [[input.age, input.weight]] : [], color: PAL.child,
-        itemStyle: { borderColor: dark ? "#1f2124" : "#ffffff", borderWidth: 1 },
+        itemStyle: { borderColor: dark ? "#26062f" : "#ffffff", borderWidth: 1 },
       },
     ],
   });
