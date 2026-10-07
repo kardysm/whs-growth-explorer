@@ -940,7 +940,7 @@ function renderFlags(): void {
 
 function renderRules(): void {
   const RR = rules as unknown as { intro: BiText; blocks: { id: string; title: BiText; items: ItemT[] }[] };
-  const html = [`<p class="card small">${B(RR.intro)}</p>`, `<div class="cards-grid">`];
+  const html = [`<div class="card nut-card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`, `<p class="card small">${B(RR.intro)}</p>`, `<div class="cards-grid">`];
   for (const bl of RR.blocks) {
     const items = bl.items
       .map(
@@ -954,7 +954,6 @@ function renderRules(): void {
     html.push(`<div class="card"><h3>${B(bl.title)}</h3>${items}</div>`);
   }
   html.push("</div>");
-  html.push(`<div class="card nut-card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`);
   document.getElementById("rules-body")!.innerHTML = html.join("");
   renderNutrients();
 }
