@@ -429,10 +429,6 @@
       "pl": "Jak wybrać poziom aktywności",
       "en": "How to choose the activity level"
     },
-    "mob_hint": {
-      "pl": "• <b>Leżące (unieruchomione)</b> — nie zmienia pozycji samodzielnie; obracane i przenoszone przez opiekuna (×1,15).<br>• <b>Zależne od opieki</b> — np. samo obraca się z pleców na brzuch, turla się lub przesuwa o kawałek, siedzi chwilę z podparciem, ale nie raczkuje i nie chodzi; potrzebuje pomocy przy sadzaniu, przenoszeniu i zmianie pozycji (np. z łóżka do fotelika) (×1,2).<br>• <b>Raczkujące / pełzające</b> — samo przemieszcza się po podłodze (raczkowanie, pełzanie, turlanie), jeszcze nie chodzi (×1,25).<br>• <b>Chodzące</b> — chodzi samodzielnie (×1,3).<br>W razie wątpliwości wybierz bliższą opcję — sąsiednie poziomy różnią się o ok. 4% wyniku C (utrzymanie).",
-      "en": "• <b>Bedridden</b> — does not change position on its own; turned and carried by the caregiver (×1.15).<br>• <b>Dependent</b> — e.g. rolls from back to tummy on its own, scoots or rolls a short distance, sits briefly with support, but does not crawl or walk; needs help with sitting up, carrying and changing position (e.g. from bed to a stroller seat) (×1.2).<br>• <b>Crawling</b> — moves around the floor on its own (crawling, creeping, rolling to get around), not yet walking (×1.25).<br>• <b>Ambulatory</b> — walks independently (×1.3).<br>If unsure, pick the closer option — neighbouring levels differ by ~4% of the C result (maintenance)."
-    },
     "band_a": {
       "pl": "Dolna–górna: rozrzut między źródłami (NASEM, EFSA/PZH, FAO) dla tego wieku. Środkowa: źródło priorytetowe dla wieku (przy 6. mies. gładkie przejście NASEM→EFSA).",
       "en": "Low–high: spread across sources (NASEM, EFSA/PZH, FAO) for this age. Central: the priority source for the age (smooth NASEM→EFSA handover at 6 months)."
@@ -462,8 +458,8 @@
       "en": "Stored only in your browser (localStorage; no server). Uncheck to delete."
     },
     "grades_hint": {
-      "pl": "Litery A–D przy kartach to klasy dowodów (nie nazwy metod): A — wytyczne / przeglądy systematyczne; B — badania kohortowe / RCT; C — serie przypadków WHS; D — ekstrapolacja z innej populacji / opinia ekspercka. Pełny opis w sekcji Źródła.",
-      "en": "The A–D letters on the cards are evidence grades (not method names): A — guidelines / systematic reviews; B — cohort studies / RCTs; C — WHS case series; D — extrapolation from another population / expert opinion. Full legend in the Sources section."
+      "pl": "Litery A–D przy kartach to klasy dowodów (nie nazwy metod):",
+      "en": "The A–D letters on the cards are evidence grades (not method names):"
     },
     "grade_a": {
       "pl": "Klasa A — wytyczne / przeglądy systematyczne",
@@ -504,6 +500,42 @@
     "f_pct_d": {
       "pl": "{p}% doganiania (D)",
       "en": "{p}% of catch-up (D)"
+    },
+    "grades_hint_items": {
+      "pl": [
+        "A — wytyczne / przeglądy systematyczne",
+        "B — badania kohortowe / RCT",
+        "C — serie przypadków WHS",
+        "D — ekstrapolacja z innej populacji / opinia ekspercka"
+      ],
+      "en": [
+        "A — guidelines / systematic reviews",
+        "B — cohort studies / RCTs",
+        "C — WHS case series",
+        "D — extrapolation from another population / expert opinion"
+      ]
+    },
+    "grades_hint_note": {
+      "pl": "Pełny opis w sekcji Źródła.",
+      "en": "Full legend in the Sources section."
+    },
+    "mob_hint_items": {
+      "pl": [
+        "<b>Leżące (unieruchomione)</b> — nie zmienia pozycji samodzielnie; obracane i przenoszone przez opiekuna (×1,15).",
+        "<b>Zależne od opieki</b> — np. samo obraca się z pleców na brzuch, turla się lub przesuwa o kawałek, siedzi chwilę z podparciem, ale nie raczkuje i nie chodzi; potrzebuje pomocy przy sadzaniu, przenoszeniu i zmianie pozycji (np. z łóżka do fotelika) (×1,2).",
+        "<b>Raczkujące / pełzające</b> — samo przemieszcza się po podłodze (raczkowanie, pełzanie, turlanie), jeszcze nie chodzi (×1,25).",
+        "<b>Chodzące</b> — chodzi samodzielnie (×1,3)."
+      ],
+      "en": [
+        "<b>Bedridden</b> — does not change position on its own; turned and carried by the caregiver (×1.15).",
+        "<b>Dependent</b> — e.g. rolls from back to tummy on its own, scoots or rolls a short distance, sits briefly with support, but does not crawl or walk; needs help with sitting up, carrying and changing position (e.g. from bed to a stroller seat) (×1.2).",
+        "<b>Crawling</b> — moves around the floor on its own (crawling, creeping, rolling to get around), not yet walking (×1.25).",
+        "<b>Ambulatory</b> — walks independently (×1.3)."
+      ]
+    },
+    "mob_hint_note": {
+      "pl": "W razie wątpliwości wybierz bliższą opcję — sąsiednie poziomy różnią się o ok. 4% wyniku C (utrzymanie).",
+      "en": "If unsure, pick the closer option — neighbouring levels differ by ~4% of the C result (maintenance)."
     }
   },
   "charts": {
@@ -516,16 +548,16 @@
       "en": "Energy vs weight (at {age} months)"
     },
     "chart1_hint": {
-      "pl": "Ten sam wiek (A) — zdrowe dziecko w tym samym wieku; ta sama masa (B) — zdrowe dziecko o tej samej masie; utrzymanie (C) — zapotrzebowanie podtrzymujące z hipotonią (pasmo; dla 0–3 lat proporcjonalne do masy, od 3 lat z wpisaną długością lub średnią długością WHS dla wieku); doganianie (D) — cel z doganianiem wzrostu (pasmo). Kliknij punkt, aby ustawić masę w kalkulatorze. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać. Linie „ten sam wiek” (A) i „ta sama masa” (B) są ciągłe na granicach kategorii wiekowych źródeł (patrz Metodologia).",
-      "en": "Same age (A) — a healthy child of the same age; same weight (B) — a healthy child of the same weight; maintenance (C) — the maintenance requirement with hypotonia (band; weight-proportional below 3 y, from 3 y with the entered length or the WHS mean length for age); catch-up (D) — the catch-up target (band). Click a point to set the calculator weight. Click a series name in the legend to hide or show it. The “same age” (A) and “same weight” (B) lines are continuous across source age-category boundaries (see Methods)."
+      "pl": "Kliknij punkt, aby ustawić masę w kalkulatorze. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać. Linie „ten sam wiek” (A) i „ta sama masa” (B) są ciągłe na granicach kategorii wiekowych źródeł (patrz Metodologia).",
+      "en": "Click a point to set the calculator weight. Click a series name in the legend to hide or show it. The “same age” (A) and “same weight” (B) lines are continuous across source age-category boundaries (see Methods)."
     },
     "chart2_title": {
       "pl": "Masa ciała w czasie — siatka WHS i WHO",
       "en": "Weight for age — WHS chart and WHO"
     },
     "chart2_hint": {
-      "pl": "Linie: WHS — średnia i ±1/±2 SD (siatka WHS 0–4 lata, dane zdigitalizowane); WHO — mediana i −2 SD; Calhoun 2025 — centyle 25/50/75 (linie zielone, szczegóły niżej). Punkt — Twoje dziecko (wiek i masa z kalkulatora). Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
-      "en": "Lines: WHS — mean and ±1/±2 SD (WHS chart 0–4 y, digitized); WHO — median and −2 SD; Calhoun 2025 — 25th/50th/75th centiles (green lines, details below). Marker — your child (age and weight from the calculator). Click a series name in the legend to hide or show it."
+      "pl": "Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
+      "en": "Click a series name in the legend to hide or show it."
     },
     "chart2_note": {
       "pl": "Linie zielone (Calhoun 2025: 25/50/75. centyl): centyle z Calhoun i in. 2025 (zdigitalizowane; 0–24 mies. z modelu niemowlęcego, 30–48 mies. z modelu 2+; skrajne centyle nie łączą się na styku 2. lat). Zastrzeżenia — Metodologia.",
@@ -536,8 +568,8 @@
       "en": "Diet volume: milk & meals vs maintenance fluid"
     },
     "chart3_hint": {
-      "pl": "Mleko (linia ciągła): ile ml potrzeba, gdyby cała energia pochodziła z mleka przy {milkd} kcal/ml. Posiłki (linie C i D — utrzymanie i doganianie): ile gramów musi dopełnić dietę po {ml} ml mleka, przy gęstości posiłków {meald} kcal/g. Tło: płyny podtrzymujące (Holliday–Segar). Linia pionowa: wybrana masa z kalkulatora. Dla niemowląt gęstości mleka >1 kcal/ml tylko pod nadzorem klinicznym — patrz sekcja E. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
-      "en": "Milk (solid line): ml needed if all energy came from milk at {milkd} kcal/ml. Meals (C and D lines — maintenance and catch-up): grams that must top up the diet after {ml} ml of milk, at a meals density of {meald} kcal/g. Reference: maintenance fluid (Holliday–Segar). Vertical line: the selected weight from the calculator. For infants, milk densities above 1 kcal/ml only under clinical supervision — see section E. Click a series name in the legend to hide or show it."
+      "pl": "Dla niemowląt gęstości mleka >1 kcal/ml tylko pod nadzorem klinicznym — patrz sekcja E. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać.",
+      "en": "For infants, milk densities above 1 kcal/ml only under clinical supervision — see section E. Click a series name in the legend to hide or show it."
     },
     "c3_milk": {
       "pl": "ml mleka @ {d} — całość wg utrzymania (C)",
@@ -566,16 +598,54 @@
     "m_d": {
       "pl": "Doganianie",
       "en": "Catch-up"
+    },
+    "chart1_hint_items": {
+      "pl": [
+        "Ten sam wiek (A) — zdrowe dziecko w tym samym wieku",
+        "Ta sama masa (B) — zdrowe dziecko o tej samej masie",
+        "Utrzymanie (C) — zapotrzebowanie podtrzymujące z hipotonią (pasmo; dla 0–3 lat proporcjonalne do masy, od 3 lat z wpisaną długością lub średnią długością WHS dla wieku)",
+        "Doganianie (D) — cel z doganianiem wzrostu (pasmo)"
+      ],
+      "en": [
+        "Same age (A) — a healthy child of the same age",
+        "Same weight (B) — a healthy child of the same weight",
+        "Maintenance (C) — the maintenance requirement with hypotonia (band; weight-proportional below 3 y, from 3 y with the entered length or the WHS mean length for age)",
+        "Catch-up (D) — the catch-up target (band)"
+      ]
+    },
+    "chart2_hint_items": {
+      "pl": [
+        "WHS — średnia i ±1/±2 SD (siatka WHS 0–4 lata, dane zdigitalizowane)",
+        "WHO — mediana i −2 SD",
+        "Calhoun 2025 — centyle 25/50/75 (linie zielone, szczegóły niżej)",
+        "Punkt — Twoje dziecko (wiek i masa z kalkulatora)"
+      ],
+      "en": [
+        "WHS — mean and ±1/±2 SD (WHS chart 0–4 y, digitized)",
+        "WHO — median and −2 SD",
+        "Calhoun 2025 — 25th/50th/75th centiles (green lines, details below)",
+        "Marker — your child (age and weight from the calculator)"
+      ]
+    },
+    "chart3_hint_items": {
+      "pl": [
+        "Mleko (linia ciągła): ile ml potrzeba, gdyby cała energia pochodziła z mleka przy {milkd} kcal/ml",
+        "Posiłki (linie C i D — utrzymanie i doganianie): ile gramów musi dopełnić dietę po {ml} ml mleka, przy gęstości posiłków {meald} kcal/g",
+        "Tło: płyny podtrzymujące (Holliday–Segar)",
+        "Linia pionowa: wybrana masa z kalkulatora"
+      ],
+      "en": [
+        "Milk (solid line): ml needed if all energy came from milk at {milkd} kcal/ml",
+        "Meals (C and D lines — maintenance and catch-up): grams that must top up the diet after {ml} ml of milk, at a meals density of {meald} kcal/g",
+        "Reference: maintenance fluid (Holliday–Segar)",
+        "Vertical line: the selected weight from the calculator"
+      ]
     }
   },
   "table": {
     "title": {
       "pl": "Tabela (masa → kcal/dzień)",
       "en": "Table (weight → kcal/day)"
-    },
-    "hint": {
-      "pl": "Wiersze: masy 2–20 kg; wiek i płeć jak w kalkulatorze; kolumny C/D (utrzymanie/doganianie) liczone są dla wpisanej długości, a bez niej — ze średniej długości WHS dla wieku. Kolumny „Mleko”/„Posiłki”: ml mleka, gdyby całość pochodziła z mleka (przy Twojej gęstości), oraz gramy posiłków dopełniające dietę po wpisanej objętości mleka. Kliknij nagłówek, aby sortować; kliknij wiersz, aby ustawić masę. (Dla wieku <6 mies. C (utrzymanie) może leżeć poniżej wiarygodnego zakresu — patrz karta C.)",
-      "en": "Rows: weights 2–20 kg; age and sex from the calculator; columns C/D (maintenance/catch-up) use the entered length, or the WHS mean length for age when none is entered (for ages <6 mo, C (maintenance) may sit below a plausible range — see card C). The Milk/Meals columns: milk ml if all energy came from milk (at your density), and the grams of meals topping up the diet after the entered milk volume. Click a header to sort; click a row to set the weight."
     },
     "export": {
       "pl": "Pobierz CSV",
@@ -612,6 +682,20 @@
     "col_meals": {
       "pl": "Posiłki (g)",
       "en": "Meals (g)"
+    },
+    "hint_items": {
+      "pl": [
+        "Wiersze: masy 2–20 kg; wiek i płeć jak w kalkulatorze.",
+        "Kolumny C/D (utrzymanie/doganianie): liczone dla wpisanej długości, a bez niej — ze średniej długości WHS dla wieku; dla wieku <6 mies. C może leżeć poniżej wiarygodnego zakresu — patrz karta C.",
+        "Kolumny „Mleko”/„Posiłki”: ml mleka, gdyby całość pochodziła z mleka (przy Twojej gęstości), oraz gramy posiłków dopełniające dietę po wpisanej objętości mleka.",
+        "Kliknij nagłówek, aby sortować; kliknij wiersz, aby ustawić masę."
+      ],
+      "en": [
+        "Rows: weights 2–20 kg; age and sex from the calculator.",
+        "Columns C/D (maintenance/catch-up): computed for the entered length, or the WHS mean length for age when none is entered; for ages <6 mo, C may sit below a plausible range — see card C.",
+        "The Milk/Meals columns: milk ml if all energy came from milk (at your density), and the grams of meals topping up the diet after the entered milk volume.",
+        "Click a header to sort; click a row to set the weight."
+      ]
     }
   },
   "sources": {
@@ -632,8 +716,22 @@
       "en": "accessed"
     },
     "legend": {
-      "pl": "Klasy dowodów: A — wytyczne / przeglądy systematyczne; B — badania kohortowe lub RCT w populacji z niepełnosprawnością; C — serie przypadków WHS; D — opinia ekspercka / ekstrapolacja z innej populacji (oznaczone w treści).",
-      "en": "Evidence grades: A — guidelines / systematic reviews; B — cohort studies or RCTs in disability populations; C — WHS case series; D — expert opinion / extrapolation from another population (flagged inline)."
+      "pl": "Klasy dowodów:",
+      "en": "Evidence grades:"
+    },
+    "legend_items": {
+      "pl": [
+        "A — wytyczne / przeglądy systematyczne",
+        "B — badania kohortowe lub RCT w populacji z niepełnosprawnością",
+        "C — serie przypadków WHS",
+        "D — opinia ekspercka / ekstrapolacja z innej populacji (oznaczone w treści)"
+      ],
+      "en": [
+        "A — guidelines / systematic reviews",
+        "B — cohort studies or RCTs in disability populations",
+        "C — WHS case series",
+        "D — expert opinion / extrapolation from another population (flagged inline)"
+      ]
     }
   },
   "method": {
@@ -732,8 +830,8 @@
       "en": "Herbs and spices („for flavour”) — add small amounts to foods instead of salt and sugar; ESPGHAN: no sugar or salt should be added to complementary foods. Cassia cinnamon contains coumarin — see the warning on its card."
     },
     "allergen_legend": {
-      "pl": "Alergeny (lista 14 UE): 🥛 mleko · 🥚 jaja · 🐟 ryby · 🌾 gluten (zboża) · 🌱 soja · 🌰 orzechy · 🥜 orzeszki ziemne · 🫘 sezam. Produkty specjalistyczne: wg deklaracji składu z etykiety produktu (źródło w podpowiedzi); produkty jednoskładnikowe: wg identyfikacji składnika. Brak ikon = brak alergenów z listy 14. Zawsze sprawdź aktualną etykietę.",
-      "en": "Allergens (EU-14 list): 🥛 milk · 🥚 egg · 🐟 fish · 🌾 gluten (cereals) · 🌱 soy · 🌰 nuts · 🥜 peanuts · 🫘 sesame. Specialist products: per the composition declaration on the product label (source in the tooltip); single-ingredient foods: per ingredient identity. No icons = no EU-14 allergens. Always check the current label."
+      "pl": "Alergeny (lista 14 UE):",
+      "en": "Allergens (EU-14 list):"
     },
     "allergen_label": {
       "pl": "Alergeny:",
@@ -870,6 +968,10 @@
         "thickener": "thickener",
         "flavour": "for flavour"
       }
+    },
+    "allergen_legend_note": {
+      "pl": "Produkty specjalistyczne: wg deklaracji składu z etykiety produktu (źródło w podpowiedzi); produkty jednoskładnikowe: wg identyfikacji składnika. Brak ikon = brak alergenów z listy 14. Zawsze sprawdź aktualną etykietę.",
+      "en": "Specialist products: per the composition declaration on the product label (source in the tooltip); single-ingredient foods: per ingredient identity. No icons = no EU-14 allergens. Always check the current label."
     }
   },
   "a11y": {

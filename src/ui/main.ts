@@ -101,6 +101,26 @@ function t(path: string): string {
   return typeof node === "string" ? node : path;
 }
 
+/** Localized string ARRAY lookup (for list-shaped strings, e.g. converted enumerations). */
+function tl(path: string): string[] {
+  const parts = path.split(".");
+  let node: unknown = base;
+  for (const p of parts) {
+    if (node && typeof node === "object" && p in (node as Record<string, unknown>)) {
+      node = (node as Record<string, unknown>)[p];
+    } else return [];
+  }
+  if (node && typeof node === "object" && lang in (node as Record<string, string[]>)) {
+    return (node as Record<string, string[]>)[lang] ?? [];
+  }
+  return [];
+}
+
+/** Render a localized string array as <li> items for an existing <ul>. */
+function li(path: string): string {
+  return tl(path).map((x) => `<li>${x}</li>`).join("");
+}
+
 function fmt(kcal: number | null | undefined, dec = 0): string {
   if (kcal === null || kcal === undefined || !Number.isFinite(kcal)) return "—";
   const v = unit === "kcal" ? kcal : kcal * 4.184;
@@ -325,7 +345,7 @@ function renderCalcForm(): void {
         <option value="crawling" ${input.mobility === "crawling" ? "selected" : ""}>${t("calc.mob_crawl")}</option>
         <option value="ambulatory" ${input.mobility === "ambulatory" ? "selected" : ""}>${t("calc.mob_amb")}</option>
       </select>
-      <details class="hint-toggle"><summary class="small">${t("calc.mob_hint_title")}</summary><p class="small hint">${t("calc.mob_hint")}</p></details>
+      <details class="hint-toggle"><summary class="small">${t("calc.mob_hint_title")}</summary><ul class="tight small hint">${li("calc.mob_hint_items")}</ul><p class="small hint">${t("calc.mob_hint_note")}</p></details>
       <label for="in-target">${t("calc.target")}</label>
       <select id="in-target">
         <option value="whs_mean" ${input.targetRef === "whs_mean" ? "selected" : ""}>${t("calc.target_whs_mean")}</option>
@@ -359,7 +379,7 @@ function renderCalcForm(): void {
   </div>`;
   document.getElementById("results-body")!.innerHTML = `
     <div id="refeed-slot"></div>
-    <div class="card small" id="grades-card"><p>${t("calc.grades_hint")}</p></div>
+    <div class="card small" id="grades-card"><p>${t("calc.grades_hint")}</p><ul class="tight small">${li("calc.grades_hint_items")}</ul><p class="small">${t("calc.grades_hint_note")}</p></div>
     <div class="cards-flow">
       <div id="results-cards"></div>
       <div id="milk-card"></div>
@@ -504,13 +524,13 @@ function renderChartsShell(): void {
   document.getElementById("charts-body")!.innerHTML = `
     <div class="chart-grid">
     <div class="card"><h3>${t("charts.chart1_title").replace("{age}", String(input.age))}</h3>
-      <p class="small">${t("charts.chart1_hint")}</p><div id="chart1" class="chart"></div>
+      <ul class="tight small">${li("charts.chart1_hint_items")}</ul><p class="small">${t("charts.chart1_hint")}</p><div id="chart1" class="chart"></div>
       <div id="fallback1"></div></div>
     <div class="card"><h3>${t("charts.chart2_title")}</h3>
-      <p class="small">${t("charts.chart2_hint")}</p><div id="chart2" class="chart"></div>
+      <ul class="tight small">${li("charts.chart2_hint_items")}</ul><p class="small">${t("charts.chart2_hint")}</p><div id="chart2" class="chart"></div>
       <p class="small">${t("charts.chart2_note")}</p><div id="fallback2"></div></div>
     <div class="card"><h3>${t("charts.chart3_title")}</h3>
-      <p class="small">${t("charts.chart3_hint").replace("{milkd}", loc(input.milkDensity)).replace("{ml}", String(input.milkMl)).replace("{meald}", loc(input.mealDensity))}</p><div id="chart3" class="chart"></div>
+      <ul class="tight small">${tl("charts.chart3_hint_items").map((x) => `<li>${x.replace("{milkd}", loc(input.milkDensity)).replace("{ml}", String(input.milkMl)).replace("{meald}", loc(input.mealDensity))}</li>`).join("")}</ul><p class="small">${t("charts.chart3_hint").replace("{milkd}", loc(input.milkDensity)).replace("{ml}", String(input.milkMl)).replace("{meald}", loc(input.mealDensity))}</p><div id="chart3" class="chart"></div>
       <div id="fallback3"></div></div>
     </div>`;
 }
@@ -776,7 +796,8 @@ function renderTable(): void {
 
   document.getElementById("table-body")!.innerHTML = `
     ${cNote}
-    <p class="small">${t("table.hint")} <button class="primary" type="button" id="csv-btn">${t("table.export")}</button></p>
+    <ul class="tight small">${li("table.hint_items")}</ul>
+    <p class="small"><button class="primary" type="button" id="csv-btn">${t("table.export")}</button></p>
     <div style="max-height:420px;overflow:auto" class="card" id="table-wrap">
     <table><thead><tr>
       ${(["w", "A", "B", "C", "D", "fluid"] as const).map((k) =>
@@ -842,7 +863,7 @@ function renderSources(): void {
   const src = (sourcesData as { sources: Record<string, unknown>[] }).sources;
   document.getElementById("sources-body")!.innerHTML = `
     <p class="small">${t("sources.intro")}</p>
-    <p class="small">${t("sources.legend")}</p>
+    <p class="small">${t("sources.legend")}</p><ul class="tight small">${li("sources.legend_items")}</ul>
     <div class="card"><ol>
     ${src.map((s) => {
       const g = String((s as Record<string, unknown>).evidence_class ?? "D");
@@ -1232,6 +1253,8 @@ function renderProducts(): void {
     <p class="small">${t("products.foods_note")}</p>
     <p class="small">${t("products.seasonings_note")} ${t("calc.sources_label")} ${srcLinks(["fewtrell2017", "bfr_coumarin"])}</p>
     <p class="small">${t("products.allergen_legend")}</p>
+    <ul class="tight small alg-legend">${Object.keys(ALG_ICONS).map((a) => `<li><span aria-hidden="true">${ALG_ICONS[a]}</span> ${algLabel(a)}</li>`).join("")}</ul>
+    <p class="small">${t("products.allergen_legend_note")}</p>
     <div class="card" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
       <div style="flex:1 1 220px"><label for="p-search">${t("products.search")}</label><input id="p-search" type="search" value="${pSearch.replace(/"/g, "&quot;")}"></div>
       <div><label for="p-cat">${t("products.category")}</label>
