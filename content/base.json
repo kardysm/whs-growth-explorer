@@ -544,8 +544,8 @@
       "en": "Energy vs weight (at {age} months)"
     },
     "chart1_hint": {
-      "pl": "Kliknij punkt, aby ustawić masę w kalkulatorze. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać. Linie „ten sam wiek” (A) i „ta sama masa” (B) są ciągłe na granicach kategorii wiekowych źródeł (patrz Metodologia).",
-      "en": "Click a point to set the calculator weight. Click a series name in the legend to hide or show it. The “same age” (A) and “same weight” (B) lines are continuous across source age-category boundaries (see Methods)."
+      "pl": "Kliknij punkt, aby ustawić masę w kalkulatorze. Kliknij nazwę serii w legendzie, aby ją ukryć lub pokazać. Linia „ta sama masa” (B) jest ciągła na granicach kategorii wiekowych źródeł (patrz Metodologia).",
+      "en": "Click a point to set the calculator weight. Click a series name in the legend to hide or show it. The “same weight” (B) line is continuous across source age-category boundaries (see Methods)."
     },
     "chart2_title": {
       "pl": "Masa ciała w czasie — siatka WHS i WHO",
@@ -597,13 +597,11 @@
     },
     "chart1_hint_items": {
       "pl": [
-        "Ten sam wiek (A) — zdrowe dziecko w tym samym wieku",
         "Ta sama masa (B) — zdrowe dziecko o tej samej masie",
         "Utrzymanie (C) — zapotrzebowanie podtrzymujące z hipotonią (pasmo; forma Schofielda wg wieku masowego: proporcjonalna do masy, dopóki wielkość ciała odpowiada < 3 lat, dalej z długością)",
         "Doganianie (D) — cel z doganianiem wzrostu (pasmo)"
       ],
       "en": [
-        "Same age (A) — a healthy child of the same age",
         "Same weight (B) — a healthy child of the same weight",
         "Maintenance (C) — the maintenance requirement with hypotonia (band; Schofield form by weight-age: weight-proportional while body size corresponds to < 3 y, then with length)",
         "Catch-up (D) — the catch-up target (band)"
@@ -627,15 +625,21 @@
       "pl": [
         "Mleko (linia ciągła): ile ml potrzeba, gdyby cała energia pochodziła z mleka przy {milkd} kcal/ml",
         "Posiłki (linie C i D — utrzymanie i doganianie): ile gramów musi dopełnić dietę po {ml} ml mleka, przy gęstości posiłków {meald} kcal/g",
+        "Posiłki (linia A — zdrowe dziecko w tym samym wieku): ile gramów dopełnia dietę po {ml} ml mleka do poziomu A, przy gęstości posiłków {meald} kcal/g",
         "Tło: płyny podtrzymujące (Holliday–Segar)",
         "Linia pionowa: wybrana masa z kalkulatora"
       ],
       "en": [
         "Milk (solid line): ml needed if all energy came from milk at {milkd} kcal/ml",
         "Meals (C and D lines — maintenance and catch-up): grams that must top up the diet after {ml} ml of milk, at a meals density of {meald} kcal/g",
+        "Meals (line A — a healthy child of the same age): how many grams top up the diet after {ml} ml of milk to level A, at meal density {meald} kcal/g",
         "Reference: maintenance fluid (Holliday–Segar)",
         "Vertical line: the selected weight from the calculator"
       ]
+    },
+    "c3_meals_a": {
+      "pl": "g posiłków @ {g} — dopełnienie do poziomu A (zdrowe dziecko, ten sam wiek)",
+      "en": "meal g @ {g} — top-up to level A (healthy child, same age)"
     }
   },
   "table": {
@@ -692,6 +696,10 @@
         "The Milk/Meals columns: milk ml if all energy came from milk (at your density), and the grams of meals topping up the diet after the entered milk volume.",
         "Click a header to sort; click a row to set the weight."
       ]
+    },
+    "col_meals_a": {
+      "pl": "Posiłki do poziomu A (g)",
+      "en": "Meals to level A (g)"
     }
   },
   "sources": {
@@ -1020,16 +1028,16 @@
       "en": "Sort by column"
     },
     "chart1_desc": {
-      "pl": "Wykres liniowy: energia na dobę (kcal lub kJ) w funkcji masy ciała 2–20 kg; serie: ten sam wiek (A), ta sama masa (B) oraz pasma utrzymania (C−/C/C+) i doganiania (D−/D/D+) dla ustawień z kalkulatora.",
-      "en": "Line chart: daily energy needs versus body weight 2-20 kg; series: same age (A), same weight (B) and the maintenance (C-/C/C+) and catch-up (D-/D/D+) bands for the current calculator settings."
+      "pl": "Wykres liniowy: energia na dobę (kcal lub kJ) w funkcji masy ciała 2–20 kg; serie: ta sama masa (B) oraz pasma utrzymania (C−/C/C+) i doganiania (D−/D/D+) dla ustawień z kalkulatora.",
+      "en": "Line chart: daily energy needs versus body weight 2-20 kg; series: same weight (B) and the maintenance (C-/C/C+) and catch-up (D-/D/D+) bands for the current calculator settings."
     },
     "chart2_desc": {
       "pl": "Wykres liniowy: masa ciała w wieku 0–48 miesięcy; linie siatki WHS (średnia i ±1/±2 SD), mediana i −2 SD WHO, modelowe krzywe p25/50/75 z Calhoun 2025 (nie empiryczne centyle; pasmo p25–p75 obejmuje ≈76% dzieci) oraz punkt oznaczający Twoje dziecko (wiek i masę z kalkulatora).",
       "en": "Line chart: weight from 0-48 months; WHS chart lines (mean and ±1/±2 SD), WHO median and −2 SD, Calhoun 2025 model curves p25/50/75 (not empirical centiles; the p25–p75 band covers ≈76% of children) and a marker for your child (age and weight from the calculator)."
     },
     "chart3_desc": {
-      "pl": "Wykres liniowy: objętość mleka (ml/dobę — całość przy gęstości {milkd} kcal/ml) oraz masa posiłków dopełniających (g/dobę — po {ml} ml mleka, przy {meald} kcal/g) w funkcji masy ciała, z pionową linią wybranej masy, na tle płynów podtrzymujących Hollidaya–Segara.",
-      "en": "Line chart: milk volume (ml/day — all-milk at {milkd} kcal/ml) and top-up meal mass (g/day — after {ml} ml of milk, at {meald} kcal/g) versus body weight, with a vertical line at the selected weight,, against Holliday-Segar maintenance fluid."
+      "pl": "Wykres liniowy: objętość mleka (ml/dobę — całość przy gęstości {milkd} kcal/ml), masa posiłków dopełniających (g/dobę — po {ml} ml mleka, przy {meald} kcal/g) oraz linia A — ile gramów posiłków dopełnia dietę do poziomu zdrowego dziecka w tym samym wieku — w funkcji masy ciała, z pionową linią wybranej masy, na tle płynów podtrzymujących Hollidaya–Segara.",
+      "en": "Line chart: milk volume (ml/day — all-milk at {milkd} kcal/ml), top-up meal mass (g/day — after {ml} ml of milk, at {meald} kcal/g) and line A — how many grams of meals top the diet up to a healthy child of the same age — versus body weight, with a vertical line at the selected weight, against Holliday-Segar maintenance fluid."
     }
   },
   "search": {

@@ -618,7 +618,6 @@ function drawCharts(): void {
     ? { a: "#9db1f5", b: "#f0c674", c: "#c99bf0", d: "#7fd0e8", who: "#7fb6ec", whs2: "#c9a3d9", cal: "#6fd0c0", child: "#f3eefc", fluid: "#b9aed2" }
     : { a: "#4e6ac2", b: "#b0790f", c: "#7d2fa6", d: "#12768f", who: "#2456a8", whs2: "#a05fb4", cal: "#0e7f74", child: "#2c0735", fluid: "#6b5f8a" };
   // Method labels: descriptive name + letter (user request 2026-10-05: no bare A–D as chart labels).
-  const nmA = `${t("charts.m_a")} (A)`;
   const nmB = `${t("charts.m_b")} (B)`;
   const nmC = `${t("charts.m_c")} (C)`;
   const nmD = `${t("charts.m_d")} (D)`;
@@ -650,7 +649,6 @@ function drawCharts(): void {
     xAxis: { type: "value", name: "kg", min: 2, max: 20, axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     yAxis: { type: "value", name: unit === "kcal" ? "kcal/24h" : "kJ/24h", axisLabel: { color: fgVar }, nameTextStyle: { color: fgVar }, axisLine: { lineStyle: { color: fgVar } } },
     series: [
-      line(nmA, Y(rs.map((r) => r.A.kcalPerDay.central)), { color: PAL.a }),
       line(nmB, Y(rs.map((r) => r.B.kcalPerDay.central)), { color: PAL.b }),
       line(nmC, Y(rs.map((r) => r.C.kcalPerDay.central)), { color: PAL.c }),
       line(`${t("charts.m_c")} − (C−)`, Y(rs.map((r) => r.C.kcalPerDay.low)), { color: PAL.c, lineStyle: { type: "dashed", width: 1 } }),
@@ -731,10 +729,14 @@ function drawCharts(): void {
   const milkAllC = rs.map((r) => (r.C.kcalPerDay.central !== null ? r.C.kcalPerDay.central / milkD : null));
   const mealsC = rs.map((r) => (r.C.kcalPerDay.central !== null ? Math.max(0, r.C.kcalPerDay.central - milkKcalFix) / mealD : null));
   const mealsD = rs.map((r) => (r.D.kcalPerDay.central !== null ? Math.max(0, r.D.kcalPerDay.central - milkKcalFix) / mealD : null));
+  // Line A (user request 2026-10-07): non-milk food at the fixed milk volume to reach the healthy
+  // same-age child's level (A) — replaces the flat A energy line, removed from chart 1.
+  const mealsA = rs.map((r) => (r.A.kcalPerDay.central !== null ? Math.max(0, r.A.kcalPerDay.central - milkKcalFix) / mealD : null));
   const c3Names = [
     t("charts.c3_milk").replace("{d}", pDen(milkD)),
     t("charts.c3_meals_c").replace("{g}", pDen(mealD)),
     t("charts.c3_meals_d").replace("{g}", pDen(mealD)),
+    t("charts.c3_meals_a").replace("{g}", pDen(mealD)),
     lang === "pl" ? "płyny podtrzymujące" : "maintenance fluid",
   ];
   const wSel = input.weight;
@@ -753,7 +755,8 @@ function drawCharts(): void {
       { name: c3Names[0], type: "line", showSymbol: false, data: ws.map((w, i) => [w, milkAllC[i]]), color: PAL.a },
       { name: c3Names[1], type: "line", showSymbol: false, data: ws.map((w, i) => [w, mealsC[i]]), color: PAL.c },
       { name: c3Names[2], type: "line", showSymbol: false, data: ws.map((w, i) => [w, mealsD[i]]), color: PAL.d, lineStyle: { type: "dashed", width: 1 } },
-      { name: c3Names[3], type: "line", showSymbol: false, data: ws.map((w) => [w, w <= 10 ? w * 100 : w <= 20 ? 1000 + (w - 10) * 50 : 1500 + (w - 20) * 20]), color: PAL.fluid },
+      { name: c3Names[3], type: "line", showSymbol: false, data: ws.map((w, i) => [w, mealsA[i]]), color: PAL.b },
+      { name: c3Names[4], type: "line", showSymbol: false, data: ws.map((w) => [w, w <= 10 ? w * 100 : w <= 20 ? 1000 + (w - 10) * 50 : 1500 + (w - 20) * 20]), color: PAL.fluid },
       // Vertical marker at the currently selected weight (user request 2026-10-05). Own unnamed
       // series so hiding legend entries never removes the line; excluded from the legend via data.
       {
@@ -779,10 +782,10 @@ function renderChartFallbacks(ws: number[], rs: ReturnType<typeof computeAll>[])
   const open = `<details><summary class="small">${t("a11y.fallback")}</summary><div style="max-height:280px;overflow:auto">`;
   const close = `</div></details>`;
 
-  put("fallback1", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>${t("table.col_a")}</th><th>${t("table.col_b")}</th><th>${t("table.col_c")}</th><th>${t("table.col_d")}</th></tr></thead><tbody>
+  put("fallback1", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>${t("table.col_b")}</th><th>${t("table.col_c")}</th><th>${t("table.col_d")}</th></tr></thead><tbody>
     ${ws.filter((_, i) => i % 4 === 0).map((w, j) => {
       const r = rs[j * 4]!;
-      return `<tr><td>${w}</td><td>${num(r.A.kcalPerDay.central)}</td><td>${num(r.B.kcalPerDay.central)}</td><td>${num(r.C.kcalPerDay.central)}</td><td>${num(r.D.kcalPerDay.central)}</td></tr>`;
+      return `<tr><td>${w}</td><td>${num(r.B.kcalPerDay.central)}</td><td>${num(r.C.kcalPerDay.central)}</td><td>${num(r.D.kcalPerDay.central)}</td></tr>`;
     }).join("")}</tbody></table>${close}`);
 
   const refRows = (refData.bySex as Record<string, Record<string, number | null>[]>)[input.sex]!;
@@ -800,14 +803,16 @@ function renderChartFallbacks(ws: number[], rs: ReturnType<typeof computeAll>[])
   put("fallback2", `${open}<table><thead><tr><th>${t("a11y.age")}</th><th>${t("a11y.whs_mean")}</th><th>${t("a11y.who_med")}</th><th>${lang === "pl" ? "Calhoun 2025: p25 (model)" : "Calhoun 2025: p25 (model)"}</th><th>${lang === "pl" ? "Calhoun 2025: p50 (model)" : "Calhoun 2025: p50 (model)"}</th><th>${lang === "pl" ? "Calhoun 2025: p75 (model)" : "Calhoun 2025: p75 (model)"}</th></tr></thead><tbody>
     ${[0, 6, 12, 18, 24, 30, 36, 42, 48].map((m) => `<tr><td>${m}</td><td>${n2(findRef(m, "w_mean"))}</td><td>${n2(findRef(m, "who_w_med"))}</td><td>${n2(calAt("p25", m))}</td><td>${n2(calAt("p50", m))}</td><td>${n2(calAt("p75", m))}</td></tr>`).join("")}</tbody></table>${close}`);
 
-  put("fallback3", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>${t("table.col_milk")}</th><th>${t("table.col_meals")}</th><th>${lang === "pl" ? "płyny podtrzymujące" : "maintenance fluid"}</th></tr></thead><tbody>
+  put("fallback3", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>${t("table.col_milk")}</th><th>${t("table.col_meals")}</th><th>${t("table.col_meals_a")}</th><th>${lang === "pl" ? "płyny podtrzymujące" : "maintenance fluid"}</th></tr></thead><tbody>
     ${[2, 4, 6, 8, 10, 12, 14, 16, 18, 20].map((w) => {
       const r = rs[(w - 2) / 0.5]!;
       const c = r.C.kcalPerDay.central;
       const fluid = w <= 10 ? w * 100 : 1000 + (w - 10) * 50;
       const milkAll = c !== null ? c / input.milkDensity : null;
       const meals = c !== null ? Math.max(0, c - input.milkMl * input.milkDensity) / input.mealDensity : null;
-      return `<tr><td>${w}</td><td>${milkAll !== null ? milkAll.toFixed(0) : "—"}</td><td>${meals !== null ? meals.toFixed(0) : "—"}</td><td>${fluid}</td></tr>`;
+      const a = r.A.kcalPerDay.central;
+      const mealsA = a !== null ? Math.max(0, a - input.milkMl * input.milkDensity) / input.mealDensity : null;
+      return `<tr><td>${w}</td><td>${milkAll !== null ? milkAll.toFixed(0) : "—"}</td><td>${meals !== null ? meals.toFixed(0) : "—"}</td><td>${mealsA !== null ? mealsA.toFixed(0) : "—"}</td><td>${fluid}</td></tr>`;
     }).join("")}</tbody></table>${close}`);
 }
 
