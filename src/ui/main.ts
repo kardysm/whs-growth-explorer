@@ -1307,7 +1307,7 @@ function renderProducts(): void {
         })()}
         ${x.warning ? `<p class="banner crit small">${B(x.warning)}</p>` : ""}
         <p class="small">${basis}: <b>${pn(n.kcal)} kcal</b> · ${lang === "pl" ? "B" : "P"} ${pn(n.protein)} g · ${lang === "pl" ? "T" : "F"} ${pn(n.fat)} g · ${lang === "pl" ? "W" : "C"} ${pn(n.carbs)} g${n.fibre ? ` · ${tagLabel("fibre")} ${pn(n.fibre)} g` : ""}${n.iron_mg ? ` · Fe ${pn(n.iron_mg)} mg` : ""}${n.zinc_mg ? ` · Zn ${pn(n.zinc_mg)} mg` : ""}${n.calcium_mg ? ` · Ca ${pn(n.calcium_mg)} mg` : ""}${n.vitd_ug ? ` · D ${pn(n.vitd_ug)} µg` : ""}</p>
-        ${(() => { const rest = x.tags.filter((tg) => !ALG_TAGS.has(tg)); return rest.length ? `<p>${rest.map((tg) => `<span class="badge">${tagLabel(tg)}</span>`).join(" ")}</p>` : ""; })()}
+        ${(() => { const rest = x.tags.filter((tg) => !ALG_TAGS.has(tg)); return rest.length ? `<p>${rest.map((tg) => `<span class="badge tg tag-${tg}">${tagLabel(tg)}</span>`).join(" ")}</p>` : ""; })()}
         ${meas}
         <p class="small">${t("products.source")}: <a href="${x.source.url}" rel="noopener">${typeof x.source.label === "string" ? x.source.label : B(x.source.label as BiText)}</a></p>
       </div>`;

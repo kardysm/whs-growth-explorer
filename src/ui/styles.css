@@ -275,6 +275,29 @@ thead th { font-weight: 600; }
 .badge.gradeB { border-color: #1d4ed8; color: #1d4ed8; }
 .badge.gradeC { border-color: #b45309; color: #b45309; }
 .badge.gradeD { border-color: #8e24aa; color: #8e24aa; }
+/* tag badges: colorized by name (user batch card 6, 2026-10-07) — one hue per badge name,
+   light set validated ≥ 5:1 on white; dark overrides at the end of the file (media + attr paths). */
+.badge.tg { --bcol: var(--muted); color: var(--bcol); border-color: color-mix(in srgb, var(--bcol) 50%, transparent); background: color-mix(in srgb, var(--bcol) 9%, transparent); }
+.badge.tg.tag-high-energy { --bcol: #9a3412; }
+.badge.tg.tag-high-protein { --bcol: #9d174d; }
+.badge.tg.tag-vitD { --bcol: #92400e; }
+.badge.tg.tag-Fe { --bcol: #7f1d1d; }
+.badge.tg.tag-Zn { --bcol: #6b21a8; }
+.badge.tg.tag-Ca { --bcol: #1e40af; }
+.badge.tg.tag-fibre { --bcol: #166534; }
+.badge.tg.tag-omega3 { --bcol: #115e59; }
+.badge.tg.tag-oral-ok { --bcol: #334155; }
+.badge.tg.tag-tube-ok { --bcol: #1e293b; }
+.badge.tg.tag-infant { --bcol: #075985; }
+.badge.tg.tag-child { --bcol: #155e75; }
+.badge.tg.tag-lactose-free { --bcol: #065f46; }
+.badge.tg.tag-gluten-free { --bcol: #3f6212; }
+.badge.tg.tag-module { --bcol: #86198f; }
+.badge.tg.tag-age-3plus { --bcol: #713f12; }
+.badge.tg.tag-age-12plus { --bcol: #78350f; }
+.badge.tg.tag-choking { --bcol: #b91c1c; }
+.badge.tg.tag-thickener { --bcol: #44403c; }
+.badge.tg.tag-flavour { --bcol: #5b21b6; }
 /* allergen chips on product cards (user request 2026-10-05) */
 .allergens { margin-top: -0.15rem; }
 .allergens .badge.alg { border-color: var(--warn-line); color: var(--fg); background: var(--warn-bg); }
@@ -397,6 +420,55 @@ section { scroll-margin-top: calc(var(--hdrh, 4rem) + 0.5rem); }
 :root[data-theme="dark"] .badge.gradeB { border-color: #64b5f6; color: #64b5f6; }
 :root[data-theme="dark"] .badge.gradeC { border-color: #ffb74d; color: #ffb74d; }
 :root[data-theme="dark"] .badge.gradeD { border-color: #ce93d8; color: #ce93d8; }
+/* dark tag-badge hues: light 300-level tones (contrast on the dark card glass). The media block covers
+   first-visit system-dark users (no data-theme attribute yet); the attribute block covers explicit dark
+   — the media path is guarded with :not([data-theme="light"]) so it never bleeds into light mode. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .badge.gradeA { border-color: #81c784; color: #81c784; }
+  :root:not([data-theme="light"]) .badge.gradeB { border-color: #64b5f6; color: #64b5f6; }
+  :root:not([data-theme="light"]) .badge.gradeC { border-color: #ffb74d; color: #ffb74d; }
+  :root:not([data-theme="light"]) .badge.gradeD { border-color: #ce93d8; color: #ce93d8; }
+  :root:not([data-theme="light"]) .badge.tg.tag-high-energy { --bcol: #fdba74; }
+  :root:not([data-theme="light"]) .badge.tg.tag-high-protein { --bcol: #f9a8d4; }
+  :root:not([data-theme="light"]) .badge.tg.tag-vitD { --bcol: #fcd34d; }
+  :root:not([data-theme="light"]) .badge.tg.tag-Fe { --bcol: #fca5a5; }
+  :root:not([data-theme="light"]) .badge.tg.tag-Zn { --bcol: #d8b4fe; }
+  :root:not([data-theme="light"]) .badge.tg.tag-Ca { --bcol: #93c5fd; }
+  :root:not([data-theme="light"]) .badge.tg.tag-fibre { --bcol: #86efac; }
+  :root:not([data-theme="light"]) .badge.tg.tag-omega3 { --bcol: #5eead4; }
+  :root:not([data-theme="light"]) .badge.tg.tag-oral-ok { --bcol: #cbd5e1; }
+  :root:not([data-theme="light"]) .badge.tg.tag-tube-ok { --bcol: #e2e8f0; }
+  :root:not([data-theme="light"]) .badge.tg.tag-infant { --bcol: #7dd3fc; }
+  :root:not([data-theme="light"]) .badge.tg.tag-child { --bcol: #67e8f9; }
+  :root:not([data-theme="light"]) .badge.tg.tag-lactose-free { --bcol: #6ee7b7; }
+  :root:not([data-theme="light"]) .badge.tg.tag-gluten-free { --bcol: #bef264; }
+  :root:not([data-theme="light"]) .badge.tg.tag-module { --bcol: #f0abfc; }
+  :root:not([data-theme="light"]) .badge.tg.tag-age-3plus { --bcol: #fde68a; }
+  :root:not([data-theme="light"]) .badge.tg.tag-age-12plus { --bcol: #fbbf24; }
+  :root:not([data-theme="light"]) .badge.tg.tag-choking { --bcol: #fb7185; }
+  :root:not([data-theme="light"]) .badge.tg.tag-thickener { --bcol: #d6d3d1; }
+  :root:not([data-theme="light"]) .badge.tg.tag-flavour { --bcol: #c4b5fd; }
+}
+:root[data-theme="dark"] .badge.tg.tag-high-energy { --bcol: #fdba74; }
+:root[data-theme="dark"] .badge.tg.tag-high-protein { --bcol: #f9a8d4; }
+:root[data-theme="dark"] .badge.tg.tag-vitD { --bcol: #fcd34d; }
+:root[data-theme="dark"] .badge.tg.tag-Fe { --bcol: #fca5a5; }
+:root[data-theme="dark"] .badge.tg.tag-Zn { --bcol: #d8b4fe; }
+:root[data-theme="dark"] .badge.tg.tag-Ca { --bcol: #93c5fd; }
+:root[data-theme="dark"] .badge.tg.tag-fibre { --bcol: #86efac; }
+:root[data-theme="dark"] .badge.tg.tag-omega3 { --bcol: #5eead4; }
+:root[data-theme="dark"] .badge.tg.tag-oral-ok { --bcol: #cbd5e1; }
+:root[data-theme="dark"] .badge.tg.tag-tube-ok { --bcol: #e2e8f0; }
+:root[data-theme="dark"] .badge.tg.tag-infant { --bcol: #7dd3fc; }
+:root[data-theme="dark"] .badge.tg.tag-child { --bcol: #67e8f9; }
+:root[data-theme="dark"] .badge.tg.tag-lactose-free { --bcol: #6ee7b7; }
+:root[data-theme="dark"] .badge.tg.tag-gluten-free { --bcol: #bef264; }
+:root[data-theme="dark"] .badge.tg.tag-module { --bcol: #f0abfc; }
+:root[data-theme="dark"] .badge.tg.tag-age-3plus { --bcol: #fde68a; }
+:root[data-theme="dark"] .badge.tg.tag-age-12plus { --bcol: #fbbf24; }
+:root[data-theme="dark"] .badge.tg.tag-choking { --bcol: #fb7185; }
+:root[data-theme="dark"] .badge.tg.tag-thickener { --bcol: #d6d3d1; }
+:root[data-theme="dark"] .badge.tg.tag-flavour { --bcol: #c4b5fd; }
 
 /* ---------- nutrients / milk / remember ---------- */
 .nut-toggle { display: inline-flex; gap: 0.3rem; margin: 0.4rem 0; }

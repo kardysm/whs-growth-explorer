@@ -73,7 +73,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <section id="method"><h2>${$(`method.title`)}</h2><div id="method-body"></div></section>
   </main>
   <footer><p>${$(`footer`)}</p>
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`62e0b40+`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`57d566b+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
@@ -289,7 +289,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
         ${(()=>{let t=e.allergens;if(!t||!t.length)return``;let n=e.allergen_source?$(`products.allergen_tip`).replace(`{src}`,e.allergen_source.replace(/"/g,`&quot;`)):$(`products.allergen_tip_ident`);return`<p class="small allergens">${$(`products.allergen_label`)} ${t.map(e=>`<span class="badge alg" data-tip="${n}"><span aria-hidden="true">${j9[e]??`⚠️`}</span> ${N9(e)}</span>`).join(` `)}</p>`})()}
         ${e.warning?`<p class="banner crit small">${b9(e.warning)}</p>`:``}
         <p class="small">${n}: <b>${u(t.kcal)} kcal</b> · ${Z7===`pl`?`B`:`P`} ${u(t.protein)} g · ${Z7===`pl`?`T`:`F`} ${u(t.fat)} g · ${Z7===`pl`?`W`:`C`} ${u(t.carbs)} g${t.fibre?` · ${a(`fibre`)} ${u(t.fibre)} g`:``}${t.iron_mg?` · Fe ${u(t.iron_mg)} mg`:``}${t.zinc_mg?` · Zn ${u(t.zinc_mg)} mg`:``}${t.calcium_mg?` · Ca ${u(t.calcium_mg)} mg`:``}${t.vitd_ug?` · D ${u(t.vitd_ug)} µg`:``}</p>
-        ${(()=>{let t=e.tags.filter(e=>!Nte.has(e));return t.length?`<p>${t.map(e=>`<span class="badge">${a(e)}</span>`).join(` `)}</p>`:``})()}
+        ${(()=>{let t=e.tags.filter(e=>!Nte.has(e));return t.length?`<p>${t.map(e=>`<span class="badge tg tag-${e}">${a(e)}</span>`).join(` `)}</p>`:``})()}
         ${r}
         <p class="small">${$(`products.source`)}: <a href="${e.source.url}" rel="noopener">${typeof e.source.label==`string`?e.source.label:b9(e.source.label)}</a></p>
       </div>`}).join(``)+`</div>`}f()}function Fte(){document.getElementById(`method-body`).innerHTML=`
