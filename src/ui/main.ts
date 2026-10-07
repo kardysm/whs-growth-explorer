@@ -162,6 +162,10 @@ function metricDesc(d: string): { text: string; converted: boolean } {
 
 function bandStr(b: { low: number | null; central: number | null; high: number | null }): string {
   if (b.central === null) return "—";
+  // Degenerate band (single scenario value, e.g. D-2): show ONE number, not "x – x – x"
+  // (user report 2026-10-07: the middle value often coincides with an edge — it is the CHOSEN
+  // estimate, not a median; the band notes say so).
+  if (b.low === b.central && b.central === b.high) return `${fmt(b.central)} ${unit === "kcal" ? "kcal" : "kJ"}/24h`;
   return `${fmt(b.low)} – ${fmt(b.central)} – ${fmt(b.high)} ${unit === "kcal" ? "kcal" : "kJ"}/24h`;
 }
 

@@ -430,20 +430,20 @@
       "en": "How to choose the activity level"
     },
     "band_a": {
-      "pl": "Dolna–górna: rozrzut między źródłami (NASEM, EFSA/PZH, FAO) dla tego wieku. Środkowa: źródło priorytetowe dla wieku (przy 6. mies. gładkie przejście NASEM→EFSA).",
-      "en": "Low–high: spread across sources (NASEM, EFSA/PZH, FAO) for this age. Central: the priority source for the age (smooth NASEM→EFSA handover at 6 months)."
+      "pl": "Dolna–górna: rozrzut między źródłami (NASEM, EFSA/PZH, FAO) dla tego wieku. Środkowa: źródło priorytetowe dla wieku (przy 6. mies. gładkie przejście NASEM→EFSA). Wartość środkowa to wybrana estymacja (nie mediana zakresu) — dlatego może być równa dolnej lub górnej granicy.",
+      "en": "Low–high: spread across sources (NASEM, EFSA/PZH, FAO) for this age. Central: the priority source for the age (smooth NASEM→EFSA handover at 6 months). The central value is the chosen estimate (not a range median) — it can therefore equal the lower or upper bound."
     },
     "band_b": {
-      "pl": "Dolna–górna: ten sam rozrzut źródeł przeliczony na aktualną masę. Środkowa: źródło priorytetowe (granice kategorii wygładzone).",
-      "en": "Low–high: the same source spread scaled to the current weight. Central: the priority source (boundaries smoothed)."
+      "pl": "Dolna–górna: ten sam rozrzut źródeł przeliczony na aktualną masę. Środkowa: źródło priorytetowe (granice kategorii wygładzone). Wartość środkowa to wybrana estymacja (nie mediana zakresu) — dlatego może być równa dolnej lub górnej granicy.",
+      "en": "Low–high: the same source spread scaled to the current weight. Central: the priority source (boundaries smoothed). The central value is the chosen estimate (not a range median) — it can therefore equal the lower or upper bound."
     },
     "band_c": {
-      "pl": "Dolna–górna: pasmo napięcia mięśniowego (×0,9–×1,1). Środkowa: wybrane napięcie mięśniowe (domyślnie hipotonia ×0,9) z Twoim czynnikiem aktywności.",
-      "en": "Low–high: muscle-tone band (×0.9–×1.1). Central: your selected muscle tone (hypotonic ×0.9 by default) with your activity factor."
+      "pl": "Dolna–górna: pasmo napięcia mięśniowego (×0,9–×1,1). Środkowa: wybrane napięcie mięśniowe (domyślnie hipotonia ×0,9) z Twoim czynnikiem aktywności. Wartość środkowa to wybrana estymacja (nie mediana zakresu) — dlatego może być równa dolnej lub górnej granicy.",
+      "en": "Low–high: muscle-tone band (×0.9–×1.1). Central: your selected muscle tone (hypotonic ×0.9 by default) with your activity factor. The central value is the chosen estimate (not a range median) — it can therefore equal the lower or upper bound."
     },
     "band_d": {
-      "pl": "Dolna–górna: pasmo napięcia mięśniowego (0,9–1,1 — to samo co w C) ORAZ koszt energetyczny przyrostu 4,1–6,0 kcal/g. Środkowa: 5 kcal/g (FAO/WHO/UNU) przy wybranym napięciu mięśniowym.",
-      "en": "Low–high: the muscle-tone band (0.9–1.1, same as in C) AND the energy cost of gain 4.1–6.0 kcal/g. Central: 5 kcal/g (FAO/WHO/UNU) at the selected muscle tone."
+      "pl": "Dolna–górna: pasmo napięcia mięśniowego (0,9–1,1 — to samo co w C) ORAZ koszt energetyczny przyrostu 4,1–6,0 kcal/g. Środkowa: 5 kcal/g (FAO/WHO/UNU) przy wybranym napięciu mięśniowym. Wartość środkowa to wybrana estymacja (nie mediana zakresu) — dlatego może być równa dolnej lub górnej granicy.",
+      "en": "Low–high: the muscle-tone band (0.9–1.1, same as in C) AND the energy cost of gain 4.1–6.0 kcal/g. Central: 5 kcal/g (FAO/WHO/UNU) at the selected muscle tone. The central value is the chosen estimate (not a range median) — it can therefore equal the lower or upper bound."
     },
     "band_e": {
       "pl": "Podział liczony z wartości centralnych C i D (utrzymanie i doganianie): „z mleka” = objętość × gęstość mleka, resztę pokrywają posiłki. Dla płynnych posiłków 1 g ≈ 1 ml.",
