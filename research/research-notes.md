@@ -17,7 +17,7 @@ Every claim below carries its `source_id` (see `research/sources.json`) and evid
 - Feeding difficulties, GERD, constipation and faltering growth are core features of the NI population (including syndromic hypotonia); multidisciplinary assessment and treatment algorithms are specified in the ESPGHAN guideline. `romano2017` (A)
 - Practical feeding strategies for severe CNS impairment (positioning, texture, feeding intolerance, tube considerations): `feeding_intol_2017` (B/review).
 - Oral/dental and oral-motor issues in WHS can reduce effective intake: `whs_oral_2020` (C).
-- Texture modification framework for dysphagia: IDDSI 2.0 (levels 0–7; thicker liquids have lower energy density per ml — relevant to fortification). `iddsi` (A/framework)
+- Texture modification framework for dysphagia: IDDSI 2.0 (levels 0–7). `iddsi` (A/framework). Thickening ADDS energy rather than lowering it (thickeners are starch/gum/maltodextrin; added starch substantially elevates the caloric content of feeds — `starch_thickening_2026`; Nutilis Clear ≈ 290 kcal/100 g) — corrected 2026-10-07 (audit M7, D-058).
 
 ## 3. Energy estimation methods (verified constants)
 

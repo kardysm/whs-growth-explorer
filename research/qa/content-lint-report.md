@@ -2,7 +2,7 @@
 
 - content files checked: content/reasons.json, flags.json, rules.json (+ base.json strings)
 - citation sources counted: content/*, research/data/parameters.json, src/calc/*.ts, research notes/evidence table
-- distinct source_ids cited: 50 / 50
+- distinct source_ids cited: 51 / 51
 
 ## Errors
 - none

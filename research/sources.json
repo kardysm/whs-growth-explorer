@@ -1,6 +1,6 @@
 {
  "accessed": "2026-10-02",
- "count": 50,
+ "count": 51,
  "sources": [
   {
    "id": "antonius2008",
@@ -914,6 +914,27 @@
    "accessed": "2026-10-07",
    "fetched_file": "research/raw/wittenbrook2011_practical_gastro.pdf",
    "notes": "Narrative review (Practical Gastroenterology nutrition series #92, UVA GI nutrition archive). States: 'one formula used for CP is: 5-11 years old - 14 kcal/cm if ambulatory; 11 kcal/cm if nonambulatory (16)', ref. 16 = Culley & Middleton 1969. Source for the Culley derivation age range (5-11 y) used in the H3 decision (D-054)."
+  },
+  {
+   "id": "starch_thickening_2026",
+   "category": "texture-nutrition",
+   "evidence_class": "B",
+   "citation": "De Smul C, Braekman J, De Wever L, Vanhoorne V, Tommelein E. Starch-based thickening in infant formula: in vitro study of behavior in the bottle and under simulated gastric conditions. Frontiers in Nutrition 2026;13:1803756.",
+   "title": "Starch-based thickening in infant formula: in vitro study of behavior in the bottle and under simulated gastric conditions",
+   "authors": "De Smul C, Braekman J, De Wever L, Vanhoorne V, Tommelein E",
+   "journal": "Frontiers in nutrition",
+   "year": 2026,
+   "volume": 13,
+   "issue": null,
+   "pages": "1803756",
+   "doi": "10.3389/fnut.2026.1803756",
+   "pmid": "42039895",
+   "pmcid": "PMC13106065",
+   "url": "https://doi.org/10.3389/fnut.2026.1803756",
+   "verified": true,
+   "accessed": "2026-10-07",
+   "fetched_file": "research/raw/epmc_ext_starch_thickening_2026.json",
+   "notes": "In vitro rheology study of starch-thickened infant formula; estimates the caloric contribution of added starch-based thickeners. Abstract: 'adding starch-based thickeners substantially elevates the caloric content of infant feeds.' Basis for the corrected texture rule (audit M7, D-058): thickening ADDS energy rather than lowering it."
   }
  ]
 }

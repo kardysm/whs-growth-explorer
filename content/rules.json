@@ -71,9 +71,9 @@
         { "text": { "pl": "Konsystencje oznaczaj i modyfikuj wg IDDSI; każda zmiana przy podejrzeniu dysfagii — po ocenie połykania (VFSS/FEES), nie przed.",
                     "en": "Label and modify textures per IDDSI; any change when dysphagia is suspected comes after a swallow assessment (VFSS/FEES), not before." },
           "sources": ["iddsi", "romano2017"], "grade": "A" },
-        { "text": { "pl": "Zagęszczanie płynów zmniejsza ich kaloryczność w ml — przy diecie płynnej to kompromis; licz objętość i energię razem (kalkulator, sekcja E).",
-                    "en": "Thickening liquids lowers their energy per ml — a trade-off in liquid diets; count volume and energy together (calculator, section E)." },
-          "sources": ["iddsi", "efsa_energy"], "grade": "B" }
+        { "text": { "pl": "Zagęszczanie płynów DODAJE energii, a nie ujmuje: zagęszczacze są na bazie skrobi/gum/maltodekstryny (np. Nutilis Clear ≈ 290 kcal/100 g proszku), a dodatek skrobi istotnie podnosi kaloryczność pokarmu — sprawdź etykietę swojego produktu. Przy diecie płynnej licz objętość i energię razem (kalkulator, sekcja E).",
+                    "en": "Thickening liquids ADDS energy rather than removing it: thickeners are starch/gum/maltodextrin based (e.g. Nutilis Clear ≈ 290 kcal/100 g powder) and added starch substantially elevates the caloric content of feeds — check your product's label. In liquid diets count volume and energy together (calculator, section E)." },
+          "sources": ["starch_thickening_2026", "iddsi"], "grade": "B" }
       ]
     },
     {

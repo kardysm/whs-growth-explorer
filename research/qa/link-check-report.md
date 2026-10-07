@@ -1,6 +1,6 @@
 # Link check report (research/sources.json)
 
-Checked 50 entries; one canonical target per source.
+Checked 51 entries; one canonical target per source.
 Note: publisher bot-walls (403/429) are common for DOI landing pages when fetched by tools;
 sources whose content was originally retrieved via Wayback are marked accordingly.
 
@@ -56,5 +56,6 @@ sources whose content was originally retrieved via Wayback are marked accordingl
 | espghan_espn_pn_energy | https://espen.org/documents/A174-02PaedPNGuidel_ESPGHANESPENPNGuidelines2Energy.pdf | 200 | ok |
 | bfr_coumarin | https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/faq-on-coumarin-in-cinnamon-and-other-foods/ | 200 | ok |
 | wittenbrook2011 | https://med.virginia.edu/ginutrition/wp-content/uploads/sites/199/2014/06/WittenbrookArticle.pdf | 200 | ok |
+| starch_thickening_2026 | https://doi.org/10.3389/fnut.2026.1803756 | 200 | ok |
 
-Total: 50; investigate: 0
+Total: 51; investigate: 0
