@@ -193,6 +193,7 @@ function renderShell(): void {
     <section id="method"><h2>${t("method.title")}</h2><div id="method-body"></div></section>
   </main>
   <footer><p>${t("footer")}</p>
+    <p class="small" id="footer-links">${t("footer_source_label")}: <a href="https://github.com/kardysm/whs-growth-explorer" target="_blank" rel="noopener">github.com/kardysm/whs-growth-explorer</a> · ${t("footer_contact_label")}: <a href="mailto:whs@kardys.dev">whs@kardys.dev</a></p>
     <p class="small" id="build-stamp">${t("meta.stamp").replace("{v}", __BUILD_VERSION__).replace("{date}", __BUILD_DATE__).replace("{commit}", __BUILD_COMMIT__)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${t("search.open")}">

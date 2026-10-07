@@ -1084,6 +1084,14 @@
     "pl": "WHS Feeding & Growth Explorer — wersja robocza (draft). Projekt badawczy; patrz Źródła i Metodologia.",
     "en": "WHS Feeding & Growth Explorer — working draft. Research project; see Sources and Methods."
   },
+  "footer_source_label": {
+    "pl": "Kod źródłowy",
+    "en": "Source code"
+  },
+  "footer_contact_label": {
+    "pl": "Kontakt",
+    "en": "Contact"
+  },
   "nutrients": {
     "title": {
       "pl": "Zapotrzebowanie na makro- i mikroelementy",
