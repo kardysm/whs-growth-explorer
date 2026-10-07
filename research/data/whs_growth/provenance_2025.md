@@ -53,18 +53,24 @@ d. **Cohort**: US volunteer sample (4p− Support Group), n=65; longitudinal abs
    race/ethnicity/SES data; length/height not distinguishable; contractures/scoliosis may depress
    length. See paper's discussion for full limitations.
 
-## Addendum 2026-10-07 (audit M3) — all digitized curves are SITAR prediction curves
+## Addendum 2026-10-07 (audit M3, updated) — all digitized curves are SITAR prediction curves; coverage derived
 
 The paper's own text: "Prediction ellipsoids corresponding to the aforementioned percentiles were generated
 based on these assumptions, and predicted measurement curves were generated" — i.e. ALL digitized curves
-(including the quartiles p25/p50/p75) are model prediction curves, not empirical centiles. The nominal
-"25th–75th" band therefore does not contain exactly 50% of children. Quantifying the true coverage:
+(including the quartiles p25/p50/p75) are model prediction curves, not empirical centiles.
 
-- Review estimate (external audit): ≈76% of children between the p25 and p75 curves.
-- Our own spacing check (vs the model's own 2.5/97.5 curves as the reference SD; weight/length, left panel,
-  ages 0–24 mo): ≈66%. Coverage between the model's own quartile curves, by construction: 50%.
-- The exact figure depends on the SITAR model's variance structure (between-child random effects + residual)
-  and is not recoverable from the digitized curves alone.
+**Coverage derivation (reproduced from the audit's method).** The distances of the digitized curves from p50
+follow the 2-parameter ellipsoid law r(c) = sqrt(−2·ln(1−c)) (central coverage c): theory ratios
+1 : 1.524 : 1.823 : 2.079 for the 50/80/90/95% central regions; digitized left-panel means (ages 3–21 mo):
+weight 1 : 1.579 : 1.921 : 2.222, length 1 : 1.545 : 1.855 : 2.131. Therefore:
 
-UI consequences (D-059): the green lines are now labelled "model prediction curves p25/p50/p75 (not
-empirical centiles)" in the legend, the chart note, the hints, the a11y description and method.p7.
+- the p25–p75 band is the 50% prediction region; its marginal coverage is 2·Phi(1.177) − 1 = **76.1%** of
+  children (not 50%); the p10–p90 band covers **92.7%**;
+- the "25" line sits at −1.177 units ≈ the **12.0th** marginal centile.
+
+The ≥24-month panels are built differently: their ratios (weight 1 : 1.927 : 2.468 : 2.940) are close to the
+univariate normal quantile ratios (1 : 1.90 : 2.44 : 2.91) — chart 2 joins two differently-constructed curve
+sets at 24→30 months. The curves are combined-sex (~2:1 female:male; the paper could not fit separate sexes).
+
+UI consequences (D-059 + D-064): the green lines are labelled "model prediction curves p25/p50/p75 (not
+empirical centiles)"; the note/hints/method now carry the ≈76% / ≈93% coverage and the both-sexes caveat.

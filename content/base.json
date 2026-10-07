@@ -560,8 +560,8 @@
       "en": "Click a series name in the legend to hide or show it."
     },
     "chart2_note": {
-      "pl": "Linie zielone (Calhoun 2025: p25/p50/p75): modelowe krzywe predykcyjne (SITAR) z Calhoun i in. 2025 (zdigitalizowane; 0–24 mies. z modelu niemowlęcego, 30–48 mies. z modelu 2+; skrajne krzywe nie łączą się na styku 2. lat). To nie są empiryczne centyle — pasmo p25–p75 nie zawiera dokładnie połowy dzieci. Zastrzeżenia — Metodologia.",
-      "en": "Green lines (Calhoun 2025: p25/p50/p75): SITAR model prediction curves from Calhoun et al. 2025 (digitized; months 0–24 from the infant model, months 30–48 from the 2+ model; extreme curves do not join at the 2-y seam). These are not empirical centiles — the p25–p75 band does not hold exactly half of children. Caveats — Methods."
+      "pl": "Linie zielone (Calhoun 2025: p25/p50/p75): modelowe krzywe predykcyjne (SITAR) z Calhoun i in. 2025 (zdigitalizowane; 0–24 mies. z modelu niemowlęcego, 30–48 mies. z modelu 2+; skrajne krzywe nie łączą się na styku 2. lat; kohorta obu płci, ~2:1 dziewczynki:chłopcy — nakładana na siatkę dla wybranej płci). To nie są empiryczne centyle: pasmo p25–p75 (region predykcji 50%) obejmuje ≈76% dzieci, a p10–p90 ≈93%. Zastrzeżenia — Metodologia.",
+      "en": "Green lines (Calhoun 2025: p25/p50/p75): SITAR model prediction curves from Calhoun et al. 2025 (digitized; months 0–24 from the infant model, months 30–48 from the 2+ model; extreme curves do not join at the 2-y seam; combined-sex cohort, ~2:1 female:male — drawn on the sex-specific chart). These are not empirical centiles: the p25–p75 band (the 50% prediction region) covers ≈76% of children, p10–p90 ≈93%. Caveats — Methods."
     },
     "chart3_title": {
       "pl": "Objętość diety: mleko i posiłki vs płyny podtrzymujące",
@@ -617,13 +617,13 @@
       "pl": [
         "WHS — średnia i ±1/±2 SD (siatka WHS 0–4 lata, dane zdigitalizowane)",
         "WHO — mediana i −2 SD",
-        "Calhoun 2025 — modelowe krzywe p25/p50/p75 (linie zielone; nie empiryczne centyle — szczegóły niżej)",
+        "Calhoun 2025 — modelowe krzywe p25/p50/p75 (linie zielone; pasmo p25–p75 obejmuje ≈76% dzieci, nie 50% — szczegóły niżej)",
         "Punkt — Twoje dziecko (wiek i masa z kalkulatora)"
       ],
       "en": [
         "WHS — mean and ±1/±2 SD (WHS chart 0–4 y, digitized)",
         "WHO — median and −2 SD",
-        "Calhoun 2025 — model prediction curves p25/p50/p75 (green lines; not empirical centiles — details below)",
+        "Calhoun 2025 — model prediction curves p25/p50/p75 (green lines; the p25–p75 band covers ≈76% of children, not 50% — details below)",
         "Marker — your child (age and weight from the calculator)"
       ]
     },
@@ -768,8 +768,8 @@
       "en": "Extra assumptions: C band = muscle-tone range 0.9–1.1 (central = selected tone × activity); the Schofield form is chosen by weight-age (body size), not calendar age — the C jump at the 3rd birthday is removed (audit H1); when the target cannot be caught up within the horizon (target <= weight), section D shows = C (no catch-up); the WHO scale changes at the 2-year seam (recumbent length vs standing height); apply the NICE criteria (a fall across 1-3 weight centile spaces by birthweight band) to the WHS chart converting spaces to SD: on the UK-WHO charts one centile space ≈ 0.67 SD (e.g. 2 spaces ≈ 1.3 SD; 3 ≈ 2.0 SD) — an approximation; the trend and clinical state decide. From 12 months, EFSA values are yearly, not monthly — infants are computed monthly. Lines A/B are continuous: published-table steps (the NASEM growth addend at 3/6/12 mo and the NASEM→EFSA handover at 6 mo) are bridged linearly across a ±0.5-month window; outside those windows values match the sources exactly. Around 3-4 months of weight-age the B line has a gentle dip that is present in the source tables themselves (FAO/NASEM)."
     },
     "p7": {
-      "pl": "Krzywe wzrostowe 2025 (Calhoun i in., AJMG A 2025) zdigitalizowano na potrzeby projektu (1269 punktów; kontrola pikselowa 100%; mediana długości zgodna z siatką Antonius 2008 w granicach 0,2 cm przy 6/12/24 mies.). Zastrzeżenia: autorzy dopasowali dwa osobne modele (≤24 mies. i ≥24 mies.), więc skrajne krzywe nie łączą się na styku 2. lat; WSZYSTKIE linie (w tym 25/50/75) to modelowe krzywe predykcyjne (prediction ellipsoids) SITAR, a nie empiryczne centyle — pasmo p25–p75 nie zawiera dokładnie 50% dzieci, a skrajne linie (2,5/97,5) odbiegają od wartości empirycznych — czytaj pasma środkowe z tym zastrzeżeniem.",
-      "en": "The 2025 growth charts (Calhoun et al., AJMG A 2025) were digitized for this project (1,269 points; 100% pixel-level audit; median length matches the Antonius 2008 chart within 0.2 cm at 6/12/24 mo). Caveats: the authors fitted two separate models (≤24 mo and ≥24 mo), so extreme curves do not join at the 2-year seam; ALL lines (incl. 25/50/75) are SITAR model prediction curves (prediction ellipsoids), not empirical centiles — the p25–p75 band does not hold exactly half of children, and the extreme curves (2.5/97.5) deviate from empirical values — read the mid bands with that caveat."
+      "pl": "Krzywe wzrostowe 2025 (Calhoun i in., AJMG A 2025) zdigitalizowano na potrzeby projektu (1269 punktów; kontrola pikselowa 100%; mediana długości zgodna z siatką Antonius 2008 w granicach 0,2 cm przy 6/12/24 mies.). Zastrzeżenia: autorzy dopasowali dwa osobne modele (≤24 mies. i ≥24 mies.), więc skrajne krzywe nie łączą się na styku 2. lat; WSZYSTKIE linie (w tym 25/50/75) to modelowe krzywe predykcyjne (prediction ellipsoids) SITAR, a nie empiryczne centyle — odległości krzywych od p50 zgadzają się z prawem elipsoidy 2-parametrowej r(c) = √(−2·ln(1−c)) (1 : 1,52 : 1,82 : 2,08), więc pasmo p25–p75 (region predykcji 50%) obejmuje ≈76% dzieci, p10–p90 ≈93%, a linia „25” odpowiada ≈12. centylowi brzegowemu; skrajne linie (2,5/97,5) odbiegają od wartości empirycznych; panele ≥24 mies. zbudowano inaczej (rozstępy ≈ jednowymiarowe, 1,9/2,45/2,9). Krzywe są łączone dla obu płci (~2:1 dziewczynki:chłopcy).",
+      "en": "The 2025 growth charts (Calhoun et al., AJMG A 2025) were digitized for this project (1,269 points; 100% pixel-level audit; median length matches the Antonius 2008 chart within 0.2 cm at 6/12/24 mo). Caveats: the authors fitted two separate models (≤24 mo and ≥24 mo), so extreme curves do not join at the 2-year seam; ALL lines (incl. 25/50/75) are SITAR model prediction curves (prediction ellipsoids), not empirical centiles — the curve distances from p50 follow the 2-parameter ellipsoid law r(c) = √(−2·ln(1−c)) (1 : 1.52 : 1.82 : 2.08), so the p25–p75 band (the 50% prediction region) covers ≈76% of children, p10–p90 ≈93%, and the „25” line sits at ≈ the 12th marginal centile; the extreme curves (2.5/97.5) deviate from empirical values; the ≥24-mo panels are built differently (spacings ≈ univariate, 1.9/2.45/2.9). The curves are combined-sex (~2:1 female:male)."
     }
   },
   "products": {
@@ -1028,8 +1028,8 @@
       "en": "Line chart: daily energy needs versus body weight 2-20 kg; series: same age (A), same weight (B) and the maintenance (C-/C/C+) and catch-up (D-/D/D+) bands for the current calculator settings."
     },
     "chart2_desc": {
-      "pl": "Wykres liniowy: masa ciała w wieku 0–48 miesięcy; linie siatki WHS (średnia i ±1/±2 SD), mediana i −2 SD WHO, modelowe krzywe p25/50/75 z Calhoun 2025 (nie empiryczne centyle) oraz punkt oznaczający Twoje dziecko (wiek i masę z kalkulatora).",
-      "en": "Line chart: weight from 0-48 months; WHS chart lines (mean and ±1/±2 SD), WHO median and −2 SD, Calhoun 2025 model curves p25/50/75 (not empirical centiles) and a marker for your child (age and weight from the calculator)."
+      "pl": "Wykres liniowy: masa ciała w wieku 0–48 miesięcy; linie siatki WHS (średnia i ±1/±2 SD), mediana i −2 SD WHO, modelowe krzywe p25/50/75 z Calhoun 2025 (nie empiryczne centyle; pasmo p25–p75 obejmuje ≈76% dzieci) oraz punkt oznaczający Twoje dziecko (wiek i masę z kalkulatora).",
+      "en": "Line chart: weight from 0-48 months; WHS chart lines (mean and ±1/±2 SD), WHO median and −2 SD, Calhoun 2025 model curves p25/50/75 (not empirical centiles; the p25–p75 band covers ≈76% of children) and a marker for your child (age and weight from the calculator)."
     },
     "chart3_desc": {
       "pl": "Wykres liniowy: objętość mleka (ml/dobę — całość przy gęstości {milkd} kcal/ml) oraz masa posiłków dopełniających (g/dobę — po {ml} ml mleka, przy {meald} kcal/g) w funkcji masy ciała, z pionową linią wybranej masy, na tle płynów podtrzymujących Hollidaya–Segara.",
