@@ -654,9 +654,9 @@ function drawCharts(): void {
       { name: "WHS: −2 SD", type: "line", showSymbol: false, data: pairs("w_-2SD"), color: PAL.whs2, lineStyle: { type: "dotted", width: 1 } },
       { name: lang === "pl" ? "WHO: mediana" : "WHO: median", type: "line", showSymbol: false, data: pairs("who_w_med"), color: PAL.who, lineStyle: { type: "dashed" } },
       { name: "WHO: −2 SD", type: "line", showSymbol: false, data: pairs("who_w_m2"), color: PAL.who, lineStyle: { type: "dotted" } },
-      { name: lang === "pl" ? "Calhoun 2025: 25. centyl" : "Calhoun 2025: 25th centile", type: "line", showSymbol: false, data: cal2025("p25"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
-      { name: lang === "pl" ? "Calhoun 2025: 50. centyl" : "Calhoun 2025: 50th centile", type: "line", showSymbol: false, data: cal2025("p50"), color: PAL.cal },
-      { name: lang === "pl" ? "Calhoun 2025: 75. centyl" : "Calhoun 2025: 75th centile", type: "line", showSymbol: false, data: cal2025("p75"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
+      { name: lang === "pl" ? "Calhoun 2025: p25 (model)" : "Calhoun 2025: p25 (model)", type: "line", showSymbol: false, data: cal2025("p25"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
+      { name: lang === "pl" ? "Calhoun 2025: p50 (model)" : "Calhoun 2025: p50 (model)", type: "line", showSymbol: false, data: cal2025("p50"), color: PAL.cal },
+      { name: lang === "pl" ? "Calhoun 2025: p75 (model)" : "Calhoun 2025: p75 (model)", type: "line", showSymbol: false, data: cal2025("p75"), color: PAL.cal, lineStyle: { type: "dashed", width: 1 } },
       {
         name: lang === "pl" ? "Twoje dziecko" : "Your child", type: "scatter", symbolSize: 12,
         data: input.age <= 48 ? [[input.age, input.weight]] : [], color: PAL.child,
@@ -739,7 +739,7 @@ function renderChartFallbacks(ws: number[], rs: ReturnType<typeof computeAll>[])
     const hit = src?.find(([a]) => Math.abs(a - age) < 1e-6);
     return hit ? hit[1] : null;
   };
-  put("fallback2", `${open}<table><thead><tr><th>${t("a11y.age")}</th><th>${t("a11y.whs_mean")}</th><th>${t("a11y.who_med")}</th><th>${lang === "pl" ? "Calhoun 2025: 25. centyl" : "Calhoun 2025: 25th centile"}</th><th>${lang === "pl" ? "Calhoun 2025: 50. centyl" : "Calhoun 2025: 50th centile"}</th><th>${lang === "pl" ? "Calhoun 2025: 75. centyl" : "Calhoun 2025: 75th centile"}</th></tr></thead><tbody>
+  put("fallback2", `${open}<table><thead><tr><th>${t("a11y.age")}</th><th>${t("a11y.whs_mean")}</th><th>${t("a11y.who_med")}</th><th>${lang === "pl" ? "Calhoun 2025: p25 (model)" : "Calhoun 2025: p25 (model)"}</th><th>${lang === "pl" ? "Calhoun 2025: p50 (model)" : "Calhoun 2025: p50 (model)"}</th><th>${lang === "pl" ? "Calhoun 2025: p75 (model)" : "Calhoun 2025: p75 (model)"}</th></tr></thead><tbody>
     ${[0, 6, 12, 18, 24, 30, 36, 42, 48].map((m) => `<tr><td>${m}</td><td>${n2(findRef(m, "w_mean"))}</td><td>${n2(findRef(m, "who_w_med"))}</td><td>${n2(calAt("p25", m))}</td><td>${n2(calAt("p50", m))}</td><td>${n2(calAt("p75", m))}</td></tr>`).join("")}</tbody></table>${close}`);
 
   put("fallback3", `${open}<table><thead><tr><th>${t("a11y.weight")}</th><th>${t("table.col_milk")}</th><th>${t("table.col_meals")}</th><th>${lang === "pl" ? "płyny podtrzymujące" : "maintenance fluid"}</th></tr></thead><tbody>

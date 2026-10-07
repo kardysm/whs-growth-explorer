@@ -52,3 +52,19 @@ c. **Precision**: figure-digitization scale ~±0.1–0.2 kg (weight), ~±0.5–1
 d. **Cohort**: US volunteer sample (4p− Support Group), n=65; longitudinal abstraction; no
    race/ethnicity/SES data; length/height not distinguishable; contractures/scoliosis may depress
    length. See paper's discussion for full limitations.
+
+## Addendum 2026-10-07 (audit M3) — all digitized curves are SITAR prediction curves
+
+The paper's own text: "Prediction ellipsoids corresponding to the aforementioned percentiles were generated
+based on these assumptions, and predicted measurement curves were generated" — i.e. ALL digitized curves
+(including the quartiles p25/p50/p75) are model prediction curves, not empirical centiles. The nominal
+"25th–75th" band therefore does not contain exactly 50% of children. Quantifying the true coverage:
+
+- Review estimate (external audit): ≈76% of children between the p25 and p75 curves.
+- Our own spacing check (vs the model's own 2.5/97.5 curves as the reference SD; weight/length, left panel,
+  ages 0–24 mo): ≈66%. Coverage between the model's own quartile curves, by construction: 50%.
+- The exact figure depends on the SITAR model's variance structure (between-child random effects + residual)
+  and is not recoverable from the digitized curves alone.
+
+UI consequences (D-059): the green lines are now labelled "model prediction curves p25/p50/p75 (not
+empirical centiles)" in the legend, the chart note, the hints, the a11y description and method.p7.
