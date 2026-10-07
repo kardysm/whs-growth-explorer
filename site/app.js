@@ -73,7 +73,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <section id="method"><h2>${$(`method.title`)}</h2><div id="method-body"></div></section>
   </main>
   <footer><p>${$(`footer`)}</p>
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`732d071+`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`e1d0b85+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
@@ -92,6 +92,8 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     </div>`}function c9(){Q={sex:document.getElementById(`in-sex`).value,age:Number(document.getElementById(`in-age`).value),weight:Number(document.getElementById(`in-weight`).value),length:document.getElementById(`in-length`).value===``?null:Number(document.getElementById(`in-length`).value),tone:document.getElementById(`in-tone`).value,mobility:document.getElementById(`in-mobility`).value,targetRef:document.getElementById(`in-target`).value,horizonWeeks:Number(document.getElementById(`in-horizon`).value),milkDensity:Number(document.getElementById(`in-milkd`).value),mealDensity:Number(document.getElementById(`in-meald`).value),milkMl:Number(document.getElementById(`in-milkml`).value),feeds:document.getElementById(`in-feeds`).value===``?null:Number(document.getElementById(`in-feeds`).value),milkPortionMl:document.getElementById(`in-milkportion`).value===``?null:Number(document.getElementById(`in-milkportion`).value),mealPortionG:document.getElementById(`in-mealportion`).value===``?null:Number(document.getElementById(`in-mealportion`).value),intake:document.getElementById(`in-intake`).value===``?null:Number(document.getElementById(`in-intake`).value)};try{Z7?localStorage.setItem(X7,JSON.stringify(Q)):localStorage.removeItem(X7)}catch{}l9()}function Mte(){let e=document.getElementById(`calc-body`);e.innerHTML=`
   <div class="cards-grid">
     <form class="card" id="calc-form" aria-label="calculator">
+      <p class="small">${$(`calc.hint`)}</p>
+      <p class="small">${$(`calc.pointer`)}</p>
       <label for="in-sex">${$(`calc.sex`)}</label>
       <select id="in-sex">
         <option value="boys" ${Q.sex===`boys`?`selected`:``}>${$(`calc.boy`)}</option>
@@ -148,7 +150,6 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
       <p class="small">${$(`calc.remember_hint`)}</p>
       <button class="primary" type="button" id="btn-recalc">${$(`calc.compute`)}</button>
     </form>
-    <div class="card small"><p>${$(`calc.hint`)}</p><p>${$(`calc.pointer`)}</p></div>
   </div>`,document.getElementById(`results-body`).innerHTML=`
     <div id="refeed-slot"></div>
     <div class="card small" id="grades-card"><p>${$(`calc.grades_hint`)}</p><ul class="tight small">${e9(`calc.grades_hint_items`)}</ul><p class="small">${$(`calc.grades_hint_note`)}</p></div>

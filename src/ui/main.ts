@@ -322,6 +322,8 @@ function renderCalcForm(): void {
   b.innerHTML = `
   <div class="cards-grid">
     <form class="card" id="calc-form" aria-label="calculator">
+      <p class="small">${t("calc.hint")}</p>
+      <p class="small">${t("calc.pointer")}</p>
       <label for="in-sex">${t("calc.sex")}</label>
       <select id="in-sex">
         <option value="boys" ${input.sex === "boys" ? "selected" : ""}>${t("calc.boy")}</option>
@@ -378,7 +380,6 @@ function renderCalcForm(): void {
       <p class="small">${t("calc.remember_hint")}</p>
       <button class="primary" type="button" id="btn-recalc">${t("calc.compute")}</button>
     </form>
-    <div class="card small"><p>${t("calc.hint")}</p><p>${t("calc.pointer")}</p></div>
   </div>`;
   document.getElementById("results-body")!.innerHTML = `
     <div id="refeed-slot"></div>

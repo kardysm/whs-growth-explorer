@@ -163,6 +163,9 @@ section h2 { border-bottom: 2px solid var(--accent); padding-bottom: 0.25rem; }
    „make cards wider for desktop, max 3 cards per desktop”): the min track size is
    max(<base>px, (100% - 2.5rem)/3), so at most three tracks can ever fit. */
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(360px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; }
+/* Calculator section: ONE left-aligned card (user review 2026-10-07) — the form card keeps a
+   form-sized column instead of stretching to the full grid width as the only child. */
+#calc-body .cards-grid { grid-template-columns: min(100%, 640px); }
 .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(520px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; }
 /* Results flow: one grid holding the method cards A–F AND the milk-balance card (user request
    2026-10-05: „bilans” belongs in the same cards section as A–E); #results-cards dissolves into it.
