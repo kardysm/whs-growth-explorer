@@ -281,6 +281,19 @@ describe("refeeding-risk screen (audit H2)", () => {
     expect(s.flag).toBe(true);
     expect(s.basis).toBe("whs");
   });
+
+  it("with a length, the WHS weight-for-age check still fires (user report 2026-10-07)", () => {
+    // 18-mo boy, 58 cm: WHS wfa z = -2.10 while the length-matched WHS variant (-0.27) and the WHO
+    // wfl criterion stay above their cut-offs — this case used to go unflagged.
+    const s = screen({ ageMonths: 18, lengthCm: 58, weightKg: 4.9 });
+    expect(s.whsAgeZ).not.toBeNull();
+    expect(s.whsAgeZ! <= -2).toBe(true);
+    expect(s.whsZ === null || s.whsZ > -2).toBe(true);
+    expect(s.whoWflZ === null || s.whoWflZ > -3).toBe(true);
+    expect(s.flag).toBe(true);
+    expect(s.basis).toBe("whs");
+    expect(screen({ ageMonths: 18, lengthCm: 58, weightKg: 5.1 }).flag).toBe(false); // wfa z = -1.85
+  });
 });
 
 describe("month-to-month continuity — no cliffs (review request, 2026-10-07)", () => {

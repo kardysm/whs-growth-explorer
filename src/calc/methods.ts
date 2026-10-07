@@ -463,10 +463,15 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
 
 export interface RefeedingScreen {
   flag: boolean;
-  /** Which criterion fired: WHO weight-for-length (<= -3 SD) or the WHS chart (<= -2 SD). */
+  /** Which criterion fired: WHO weight-for-length (<= -3 SD) or the WHS chart (<= -2 SD; weight-for-age
+   *  at the child's age, or the length-matched variant when a length is entered). */
   basis: "who_wfl" | "whs" | null;
   whoWflZ: number | null;
   whsZ: number | null;
+  /** WHS weight-for-age z at the child's ACTUAL age — always evaluated, also when a length is given
+   *  (user report 2026-10-07: a length used to switch the WHS check to the length-matched variant only,
+   *  so a child <= -2 SD on the WHS weight-for-age chart could go unflagged). */
+  whsAgeZ: number | null;
 }
 
 /**
@@ -487,12 +492,17 @@ export function refeedingScreen(input: CalcInput, ctx: CalcContext): RefeedingSc
     whoWflZ = weightForLengthZ(whoTable(ctx.who, `wfl_${sex}`), lengthCm, weightKg);
   }
   if (whsZ === null) whsZ = whsWeightZ(ctx.whs, sex, ageMonths, weightKg);
+  // User report 2026-10-07: the WHS weight-for-age check is ALWAYS evaluated, also when a length is
+  // entered — the banner text promises „≤ −2 SD na siatce WHS", and the length-matched variant alone
+  // could stay above the cut-off for a child at/below -2 SD on the WHS weight-for-age chart.
+  const whsAgeZ = whsWeightZ(ctx.whs, sex, ageMonths, weightKg);
   const whoFires = whoWflZ !== null && whoWflZ <= -3;
-  const whsFires = whsZ !== null && whsZ <= -2;
+  const whsFires = (whsZ !== null && whsZ <= -2) || (whsAgeZ !== null && whsAgeZ <= -2);
   return {
     flag: whoFires || whsFires,
     basis: whoFires ? "who_wfl" : whsFires ? "whs" : null,
     whoWflZ,
     whsZ,
+    whsAgeZ,
   };
 }
