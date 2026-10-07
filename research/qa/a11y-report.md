@@ -132,3 +132,9 @@ gradient-filled `#btn-recalc` / `#csv-btn` class (WCAG math unchanged: white on 
 `#4e148c` = 11.65:1). The chart-2 legend rename to „p25/p50/p75 (model)" and the removed kcal/cm bullet do
 not affect contrast; the a11y chart-2 description now carries the „model curves (not empirical centiles)"
 wording.
+
+### Addendum 2026-10-07 (full-audit follow-up, D-062–D-068)
+
+Re-scan after the follow-up batch (card C gained the WHO weight-for-length z note, D-card notes added,
+banner/flags reworded): axe-core 0 violations in light and dark (same single `color-contrast` incomplete
+for the gradient primary button as before — manual math 7.13:1 / 11.65:1, documented above).

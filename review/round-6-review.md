@@ -40,3 +40,40 @@ first (recomputed numbers quoted below); work tracked as kanban cards 1–9 on `
 - tsc clean; vitest **77/77**; crosscheck full grid **77,420 values, 0 failures, worst 0.000000%**; content
   lint **0 errors** (51/51 cited); links **51/51, 0 investigate**; build clean; axe **light 0 / dark 0**
   violations (2 known incompletes); kanban Next up 0.
+
+## Follow-up (full audit detail, 2026-10-07)
+
+The full audit text (beyond the summary) listed refinements and low-priority items; all were verified
+against code/sources and resolved in a second batch (D-062…D-068):
+
+- **M1 (full detail)** — FAO infant values now anchored at band midpoints (m+0.5) too, not only the child
+  mid-years: boys 12 mo 775 → 788.3; month steps ≤ ~1 kcal across the 11.5→18 mo bridge (D-062).
+- **L8** — NASEM 0–2.99y → 3–13.99y child-equation switch bridged across 35.5–36.5 mo (D-029 rationale):
+  the A/B low-edge steps (boys −5%, girls −10%) are gone; continuity tests added (D-062).
+- **Continuity tests** — new property test: A/B edges, C and D change ≤10% between adjacent months for
+  ages 3–48 (measured max 7.5%); C alone ≤2% at any age (measured max 0.34%). Infancy (0–3 mo) exempt by
+  design: the reference child's own growth legitimately steps A by ~24% (0→1 mo) (D-062).
+- **M2 (full detail)** — D-band text now names the tone band as well as the energy-cost band (D-063).
+- **L4** — method.p1 now describes the EFSA linear interpolation between birthdays and notes PZH 2024
+  agreement within ~1% (D-063).
+- **L5** — grade fixes: „no weight gain 3–4 weeks (practice)" A→D; micronutrient testing A→D; faltering-on-
+  WHS-chart application A→D (extrapolation, not source) (D-063).
+- **L6** — espghan_espn_pn_energy (source of the 0–3y W coefficients) added to card C's source list (D-063).
+- **M3 (full detail)** — the audit's derivation was reproduced independently: curve distances from p50
+  follow the 2-parameter ellipsoid law (1 : 1.52–1.58 : 1.82–1.92 : 2.08–2.22 vs theory 1 : 1.524 : 1.823 :
+  2.079); displayed numbers added: p25–p75 band ≈76% of children, p10–p90 ≈93%, „25" line ≈12th marginal
+  centile; combined-sex caveat (2:1 girls:boys; no separate curves — paper) and the two-model seam note
+  (≥24-mo panels ≈ univariate ratios 1.9/2.45/2.9) (D-064).
+- **L7** — Antonius month-0 means pinned to the paper text (boys 2.10 kg / 41.5 cm; girls 1.90 kg /
+  43.0 cm; SD widths preserved; rows marked `digitized+pinned`); the existing interpolation tapers into the
+  digitized curve by month 3 (month-3 values unchanged) (D-065).
+- **H2/M5/L9 (detail)** — card C shows the WHO weight-for-length z when a length is entered; D-card notes
+  say the WHS target is descriptive (not prescriptive) and the 48-mo clamp note explains the fade; banner
+  reworded around thinness + refeeding caution; faltering flag names the WHO ≤−2 z thinness link (D-066).
+- **L1/L3** — RJ 55 g measure 257 kcal (≈1,0 kcal/ml); Nutridrink bottle measure 125 ml = 300 kcal + label
+  caution (600 mOsm/l, fluid monitoring, >4 bottles) (D-067).
+- **L10** — grid generation moved behind GEN_GRID=1; `npm test` is read-only and fails on stale grid (D-068).
+- **L11** — REPORT draft line refreshed (rounds 1–6, 84 items); test counts bumped to 81 (D-068).
+
+Not adopted (recorded): „show D, not C, as the headline under 12 months" (audit: context only; UX decision
+for the owner) — see DECISIONS D-068.

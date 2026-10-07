@@ -1,12 +1,13 @@
 /**
- * Grid generator (run via vitest): precomputes A/B/C/(C+D) and volumes for the
- * chart/table, per sex, age 0-48 months (step 1), weight 2-20 kg (step 0.25).
- * Also emits WHS + WHO reference lines for the growth chart.
- *
- * Run: npx vitest run src/grid/generate.test.ts
+ * Grid generator (run via vitest).
+ * READ-ONLY by default (audit L10): compares the freshly computed grid/reference lines against the
+ * committed files and fails if they differ, so `npm test` never rewrites committed data.
+ * To regenerate (after model/data changes): GEN_GRID=1 npx vitest run src/grid/generate.test.ts
+ * Precomputes A/B/C/(C+D) and volumes for the chart/table, per sex, age 0-48 months (step 1),
+ * weight 2-20 kg (step 0.25). Also emits WHS + WHO reference lines for the growth chart.
  */
-import { describe, it } from "vitest";
-import { writeFileSync, mkdirSync } from "node:fs";
+import { describe, expect, it } from "vitest";
+import { writeFileSync, readFileSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import { loadContext } from "../calc/load.js";
 import { computeAll } from "../calc/methods.js";
@@ -37,7 +38,7 @@ const baseInput: Omit<CalcInput, "sex" | "ageMonths" | "weightKg" | "lengthCm"> 
 };
 
 describe("grid generation", () => {
-  it("writes grid.json and reference_lines.json", () => {
+  it("generates grid.json and reference_lines.json (writes only with GEN_GRID=1)", () => {
     const { dataset, whs } = loadContext();
     const ctx = { who: dataset.who, whs };
 
@@ -60,8 +61,7 @@ describe("grid generation", () => {
         }
       }
     }
-    ensureDir(OUT_GRID);
-    writeFileSync(OUT_GRID, JSON.stringify({
+    const gridStr = JSON.stringify({
       meta: {
         generated: "2026-10-02",
         defaults: { tone: "hypotonic", mobility: "dependent", horizonWeeks: 12, targetRef: "whs_mean", energyCostKcalPerG: 5, lengthDefault: "whs_mean" },
@@ -69,8 +69,7 @@ describe("grid generation", () => {
         note: "kcal/day; A/B healthy reference; C Krick-type maintenance; D catch-up (C + 5 kcal/g x 12-week gain toward WHS mean); fluid = Holliday-Segar ml/day; length when not provided = WHS mean length for age (digitized Antonius 2008)",
       },
       rows,
-    }));
-    console.log("grid rows:", rows.length);
+    });
 
     // reference lines (per month 0..48)
     const ref: Record<string, unknown[]> = {};
@@ -95,8 +94,21 @@ describe("grid generation", () => {
       }
       ref[sex] = lines;
     }
-    ensureDir(OUT_REF);
-    writeFileSync(OUT_REF, JSON.stringify({ note: "WHS digitized lines (0-48 mo) and WHO medians/±2SD", bySex: ref }));
-    console.log("reference lines written");
+    const refStr = JSON.stringify({ note: "WHS digitized lines (0-48 mo) and WHO medians/±2SD", bySex: ref });
+
+    if (process.env.GEN_GRID === "1") {
+      ensureDir(OUT_GRID);
+      writeFileSync(OUT_GRID, gridStr);
+      ensureDir(OUT_REF);
+      writeFileSync(OUT_REF, refStr);
+      console.log(`[gen-grid] wrote ${OUT_GRID} (${rows.length} rows) and ${OUT_REF}`);
+    } else {
+      // Read-only by default (audit L10): `npm test` must not rewrite committed data; a mismatch means
+      // the committed grid is stale — regenerate explicitly with GEN_GRID=1.
+      const hint = "regenerate with: GEN_GRID=1 npx vitest run src/grid/generate.test.ts";
+      expect(readFileSync(OUT_GRID, "utf8"), `grid.json is stale — ${hint}`).toBe(gridStr);
+      expect(readFileSync(OUT_REF, "utf8"), `reference_lines.json is stale — ${hint}`).toBe(refStr);
+      console.log(`[gen-grid] verified ${OUT_GRID} (${rows.length} rows) and ${OUT_REF} — read-only`);
+    }
   }, 120_000);
 });

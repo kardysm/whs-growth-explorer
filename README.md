@@ -17,7 +17,7 @@ Data regeneration / QA:
 
 ```
 .venv/bin/python scripts/convert_data.py          # research/data -> src/data
-npx vitest run src/grid/generate.test.ts          # rebuild src/data/grid.json + reference_lines.json
+GEN_GRID=1 npx vitest run src/grid/generate.test.ts   # rebuild src/data/grid.json + reference_lines.json (read-only check by default)
 .venv/bin/python scripts/crosscheck.py            # independent Python recheck: full grid, all band fields (<=0.5%; hash-pinned)
 ```
 
@@ -55,7 +55,7 @@ research/                                  evidence base
   data/parameters.json                      every coefficient used, with source_ids
   qa/crosscheck-report.md                   independent recomputation report
 content/base.json                          PL/EN UI strings
-src/calc/                                  pure TypeScript model + tests (77 green)
+src/calc/                                  pure TypeScript model + tests (81 green)
 src/ui/                                    the site (ECharts, vanilla TS)
 src/data/                                  importable mirrors (grid, reference lines, sources)
 scripts/                                   fetch/verify/convert/crosscheck tooling
