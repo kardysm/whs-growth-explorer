@@ -777,6 +777,26 @@
       "pl": "Szukaj produktu…",
       "en": "Search product…"
     },
+    "search_chip_hint": {
+      "pl": "Wpisz nazwę i naciśnij Enter lub przecinek, aby dodać odznakę; ✕ usuwa filtr. Kilka odznak zawęża wynik (AND).",
+      "en": "Type a name and press Enter or comma to add a badge; ✕ removes the filter. Multiple badges narrow the result (AND)."
+    },
+    "badge_tag": {
+      "pl": "cecha",
+      "en": "tag"
+    },
+    "badge_cat": {
+      "pl": "kategoria",
+      "en": "category"
+    },
+    "badge_alg": {
+      "pl": "alergen",
+      "en": "allergen"
+    },
+    "chip_remove": {
+      "pl": "Usuń filtr: {x}",
+      "en": "Remove filter: {x}"
+    },
     "category": {
       "pl": "Kategoria",
       "en": "Category"

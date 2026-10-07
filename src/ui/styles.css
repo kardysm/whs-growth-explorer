@@ -301,6 +301,27 @@ thead th { font-weight: 600; }
 /* allergen chips on product cards (user request 2026-10-05) */
 .allergens { margin-top: -0.15rem; }
 .allergens .badge.alg { border-color: var(--warn-line); color: var(--fg); background: var(--warn-bg); }
+
+/* ---------- food-search chips + badge suggestions (user batch card 7, 2026-10-07) ---------- */
+.p-searchbox { position: relative; }
+.p-search { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; min-height: 2.35rem; padding: 0.15rem 0.35rem; border: 1px solid var(--line); border-radius: 10px; background: var(--glass-strong); }
+.p-search:focus-within { outline: 3px solid var(--accent2); outline-offset: 1px; }
+.p-search input { flex: 1 1 90px; min-width: 80px; width: auto; padding: 0.2rem 0.25rem; border: none; background: transparent; backdrop-filter: none; color: var(--fg); font-size: 0.9rem; }
+.p-search input:focus, .p-search input:focus-visible { outline: none; }
+.p-chips { display: contents; }
+.p-search .badge { margin-left: 0; }
+.p-chip { display: inline-flex; align-items: center; }
+.p-chip .chip-x { border: none; background: transparent; color: inherit; cursor: pointer; padding: 0 0.1rem 0 0.25rem; font-size: 0.8rem; line-height: 1; border-radius: 6px; }
+.p-chip .chip-x:hover { background: color-mix(in srgb, currentColor 18%, transparent); }
+.p-chip.badge.alg { border-color: var(--warn-line); color: var(--fg); background: var(--warn-bg); }
+.badge.p-free { border-style: dashed; }
+.badge.p-cat { border-style: dotted; }
+#p-suggest { position: absolute; z-index: 60; left: 0; right: 0; margin: 0.3rem 0 0; padding: 0.25rem; list-style: none; background: var(--glass-strong); border: 1px solid var(--glass-line); border-radius: 12px; box-shadow: var(--shadow-card); backdrop-filter: blur(14px) saturate(160%); max-height: 280px; overflow: auto; }
+#p-suggest[hidden] { display: none; }
+#p-suggest li { display: flex; gap: 0.45rem; align-items: center; padding: 0.3rem 0.45rem; border-radius: 8px; cursor: pointer; }
+#p-suggest li.active { background: color-mix(in srgb, var(--pal-periwinkle) 16%, transparent); outline: 1px solid var(--accent2); }
+#p-suggest li .badge { margin-left: 0; }
+#p-suggest li .hint { margin-left: auto; color: var(--muted); font-size: 0.72rem; }
 ul.tight li { margin: 0.2rem 0; }
 footer { padding: 2rem 1rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); }
 main a, footer a { color: var(--accent2); }

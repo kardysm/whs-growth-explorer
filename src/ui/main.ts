@@ -129,6 +129,9 @@ function fmt(kcal: number | null | undefined, dec = 0): string {
 
 const loc = (v: number): string => fmt(v, 2);
 
+/** Minimal HTML-escape for user-typed strings (search chips). */
+const esc = (s: string): string => s.replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[m] as string);
+
 // US customary -> metric in portion descriptions (user request, 2026-10-03: no "oz" shown in the UI).
 // The `\.\d+` alternative handles USDA's dot-leading decimals (".5 oz"), which used to convert as "5 oz".
 function metricDesc(d: string): { text: string; converted: boolean } {
@@ -1191,7 +1194,10 @@ const ALG_KEYS: Record<string, string> = { milk: "allergen_milk", egg: "allergen
 const ALG_TAGS = new Set(["dairy", "egg", "fish", "soy", "gluten", "nuts", "sesame"]);
 const algLabel = (a: string): string => (ALG_KEYS[a] ? t(`products.${ALG_KEYS[a]}`) : a);
 
+/** Food-list search state: live text + committed badge chips (user batch card 7, 2026-10-07). */
 let pSearch = "";
+interface PChip { kind: "tag" | "cat" | "alg" | "free"; key?: string; text?: string; }
+let pChips: PChip[] = [];
 let pCat = "all";
 let pSort = "kcal";
 
@@ -1249,6 +1255,15 @@ function renderProducts(): void {
   const catLabel = (c: string): string => catsNode[lang]?.[c] ?? c;
   const tagLabel = (tag: string): string => tagNode[lang]?.[tag] ?? tag;
 
+  // Suggestion vocabulary for the search field: product tags (allergen-carrying tag codes are represented
+  // by the allergen entries instead), categories and allergens — labels in the CURRENT language.
+  interface Vocab { kind: "tag" | "cat" | "alg"; key: string; label: string; }
+  const vocab: Vocab[] = [
+    ...Array.from(new Set(all.flatMap((x) => x.tags))).filter((tg) => !ALG_TAGS.has(tg)).map((k) => ({ kind: "tag" as const, key: k, label: tagLabel(k) })),
+    ...cats.map((k) => ({ kind: "cat" as const, key: k, label: catLabel(k) })),
+    ...Array.from(new Set(all.flatMap((x) => x.allergens ?? []))).map((k) => ({ kind: "alg" as const, key: k, label: algLabel(k) })),
+  ];
+
   document.getElementById("products-body")!.innerHTML = `
     <p class="small">${t("products.foods_note")}</p>
     <p class="small">${t("products.seasonings_note")} ${t("calc.sources_label")} ${srcLinks(["fewtrell2017", "bfr_coumarin"])}</p>
@@ -1256,7 +1271,14 @@ function renderProducts(): void {
     <ul class="tight small alg-legend">${Object.keys(ALG_ICONS).map((a) => `<li><span aria-hidden="true">${ALG_ICONS[a]}</span> ${algLabel(a)}</li>`).join("")}</ul>
     <p class="small">${t("products.allergen_legend_note")}</p>
     <div class="card" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
-      <div style="flex:1 1 220px"><label for="p-search">${t("products.search")}</label><input id="p-search" type="search" value="${pSearch.replace(/"/g, "&quot;")}"></div>
+      <div class="p-searchbox" style="flex:0 1 340px;min-width:220px">
+        <label for="p-search" id="p-search-label">${t("products.search")}</label>
+        <div class="p-search">
+          <span id="p-chips" class="p-chips"></span>
+          <input id="p-search" type="search" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="p-suggest" aria-labelledby="p-search-label" autocomplete="off" value="${esc(pSearch)}" />
+        </div>
+        <ul id="p-suggest" role="listbox" aria-label="${t("products.search")}" hidden></ul>
+      </div>
       <div><label for="p-cat">${t("products.category")}</label>
         <select id="p-cat"><option value="all">${t("products.all")}</option>${cats.map((c) => `<option value="${c}"${pCat === c ? " selected" : ""}>${catLabel(c)}</option>`).join("")}</select></div>
       <div><label for="p-sort">${t("products.sort")}</label>
@@ -1267,23 +1289,126 @@ function renderProducts(): void {
         </select></div>
       <div class="small" id="p-count"></div>
     </div>
+    <p class="small" id="p-search-hint">${t("products.search_chip_hint")}</p>
     <div id="p-list"></div>`;
-
-  const search = document.getElementById("p-search") as HTMLInputElement;
-  const cat = document.getElementById("p-cat") as HTMLSelectElement;
-  const sort = document.getElementById("p-sort") as HTMLSelectElement;
-  search.addEventListener("input", () => { pSearch = search.value; paint(); });
-  cat.addEventListener("change", () => { pCat = cat.value; paint(); });
-  sort.addEventListener("change", () => { pSort = sort.value; paint(); });
 
   const strip = (s: string): string => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLowerCase();
   const pn = (v: number | null | undefined): string => (v === null || v === undefined ? "—" : v.toLocaleString(lang === "pl" ? "pl-PL" : "en-GB", { maximumFractionDigits: 2 }));
   const plural = (n: number): string => (n === 1 ? t("products.count1") : n % 10 >= 2 && n % 10 <= 4 && !(n % 100 >= 12 && n % 100 <= 14) ? t("products.count2") : t("products.count"));
 
+  const search = document.getElementById("p-search") as HTMLInputElement;
+  const cat = document.getElementById("p-cat") as HTMLSelectElement;
+  const sort = document.getElementById("p-sort") as HTMLSelectElement;
+  const sug = document.getElementById("p-suggest") as HTMLUListElement;
+  const chipsEl = document.getElementById("p-chips")!;
+
+  const hay = (x: PItem): string => `${x.name.pl} ${x.name.en} ${x.tags.join(" ")} ${x.tags.map(tagLabel).join(" ")} ${(x.allergens ?? []).map(algLabel).join(" ")} ${catLabel(x.category)} ${x.form ? x.form.pl + " " + x.form.en : ""}`;
+  const chipMatch = (x: PItem, c: PChip): boolean =>
+    c.kind === "tag" ? x.tags.includes(c.key!) :
+    c.kind === "cat" ? x.category === c.key :
+    c.kind === "alg" ? (x.allergens ?? []).includes(c.key!) :
+    strip(hay(x)).includes(strip(c.text ?? ""));
+  const chipLabel = (c: PChip): string => (c.kind === "tag" ? tagLabel(c.key!) : c.kind === "alg" ? algLabel(c.key!) : c.kind === "cat" ? catLabel(c.key!) : c.text ?? "");
+
+  let sugItems: Vocab[] = [];
+  let sugActive = -1;
+
+  function renderChips(): void {
+    chipsEl.innerHTML = pChips.map((c, i) => {
+      const cls = c.kind === "alg" ? "badge alg p-chip" : c.kind === "free" ? "badge p-free p-chip" : c.kind === "tag" ? `badge tg tag-${c.key} p-chip` : "badge tg p-cat p-chip";
+      const inner = c.kind === "alg" ? `<span aria-hidden="true">${ALG_ICONS[c.key!]}</span> ${algLabel(c.key!)}` : esc(chipLabel(c));
+      return `<span class="${cls}">${inner}<button type="button" class="chip-x" data-i="${i}" aria-label="${esc(t("products.chip_remove").replace("{x}", chipLabel(c)))}">✕</button></span>`;
+    }).join("");
+  }
+
+  function renderSuggest(): void {
+    const nq = strip(search.value.trim());
+    sugItems = vocab.filter((v) => !nq || strip(v.label).includes(nq) || v.key.toLowerCase().includes(nq));
+    if (nq) sugItems.sort((a, b) => (strip(a.label).startsWith(nq) ? 0 : 1) - (strip(b.label).startsWith(nq) ? 0 : 1));
+    if (sugActive >= sugItems.length) sugActive = sugItems.length - 1;
+    if (sugActive < 0 && sugItems.length) sugActive = 0;
+    sug.innerHTML = sugItems.map((v, i) => {
+      const sel = pChips.some((c) => c.kind === v.kind && c.key === v.key);
+      const badge = v.kind === "alg"
+        ? `<span class="badge alg"><span aria-hidden="true">${ALG_ICONS[v.key]}</span> ${v.label}</span>`
+        : `<span class="badge tg ${v.kind === "tag" ? `tag-${v.key}` : "p-cat"}">${v.label}</span>`;
+      const kindT = t(v.kind === "tag" ? "products.badge_tag" : v.kind === "cat" ? "products.badge_cat" : "products.badge_alg");
+      return `<li id="p-sug-${i}" role="option" aria-selected="${i === sugActive}" class="${i === sugActive ? "active" : ""}" data-i="${i}">${badge}<span class="hint">${kindT}${sel ? " ✓" : ""}</span></li>`;
+    }).join("");
+    sug.hidden = sugItems.length === 0;
+    search.setAttribute("aria-expanded", String(!sug.hidden));
+    if (!sug.hidden) search.setAttribute("aria-activedescendant", `p-sug-${sugActive}`);
+    else search.removeAttribute("aria-activedescendant");
+  }
+
+  function removeChip(i: number): void {
+    pChips.splice(i, 1);
+    renderChips(); renderSuggest(); paint();
+  }
+
+  /** Select a suggestion: add as chip, or remove it again when it is already active (toggle). */
+  function selectVocab(v: Vocab): void {
+    const idx = pChips.findIndex((c) => c.kind === v.kind && c.key === v.key);
+    if (idx >= 0) { removeChip(idx); return; }
+    pChips.push({ kind: v.kind, key: v.key });
+    search.value = ""; pSearch = "";
+    renderChips(); renderSuggest(); paint();
+    search.focus();
+  }
+
+  /** Commit the typed text: exact label/key match → that badge; single suggestion → that badge; else free chip. */
+  function commitText(): void {
+    const raw = search.value.trim();
+    if (!raw) return;
+    const nq = strip(raw);
+    let pick = vocab.find((v) => strip(v.label) === nq || v.key.toLowerCase() === nq);
+    if (!pick && sugItems.length === 1) pick = sugItems[0];
+    if (pick) {
+      if (!pChips.some((c) => c.kind === pick!.kind && c.key === pick!.key)) pChips.push({ kind: pick.kind, key: pick.key });
+    } else {
+      pChips.push({ kind: "free", text: raw });
+    }
+    search.value = ""; pSearch = "";
+    renderChips(); renderSuggest(); paint();
+  }
+
+  chipsEl.addEventListener("mousedown", (e) => e.preventDefault());
+  chipsEl.addEventListener("click", (e) => {
+    const b = (e.target as HTMLElement).closest("button.chip-x");
+    if (b) removeChip(Number((b as HTMLElement).dataset.i));
+  });
+  sug.addEventListener("mousedown", (e) => e.preventDefault());
+  sug.addEventListener("click", (e) => {
+    const li = (e.target as HTMLElement).closest("li[data-i]");
+    if (!li) return;
+    const v = sugItems[Number(li.getAttribute("data-i"))];
+    if (v) selectVocab(v);
+  });
+  search.addEventListener("input", () => { pSearch = search.value; renderSuggest(); paint(); });
+  search.addEventListener("focus", () => { sugActive = 0; renderSuggest(); });
+  search.addEventListener("blur", () => {
+    if (search.value.trim()) commitText();
+    sug.hidden = true;
+    search.setAttribute("aria-expanded", "false");
+    search.removeAttribute("aria-activedescendant");
+  });
+  search.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); if (sugItems.length) { sugActive = (sugActive + 1) % sugItems.length; renderSuggest(); } }
+    else if (e.key === "ArrowUp") { e.preventDefault(); if (sugItems.length) { sugActive = (sugActive - 1 + sugItems.length) % sugItems.length; renderSuggest(); } }
+    else if (e.key === "Enter") { e.preventDefault(); if (!sug.hidden && sugItems[sugActive]) selectVocab(sugItems[sugActive]!); else commitText(); }
+    else if (e.key === ",") { e.preventDefault(); commitText(); }
+    else if (e.key === "Backspace" && search.value === "" && pChips.length) { e.preventDefault(); removeChip(pChips.length - 1); }
+    else if (e.key === "Escape") { sug.hidden = true; search.setAttribute("aria-expanded", "false"); }
+  });
+  cat.addEventListener("change", () => { pCat = cat.value; paint(); });
+  sort.addEventListener("change", () => { pSort = sort.value; paint(); });
+  renderChips();
+
   function paint(): void {
     let list = all.filter((x) => (pCat === "all" ? true : x.category === pCat));
+    for (const c of pChips) list = list.filter((x) => chipMatch(x, c));
     const q = strip(pSearch.trim());
-    if (q) list = list.filter((x) => strip(`${x.name.pl} ${x.name.en} ${x.tags.join(" ")} ${x.tags.map(tagLabel).join(" ")} ${(x.allergens ?? []).map(algLabel).join(" ")} ${catLabel(x.category)} ${x.form ? x.form.pl + " " + x.form.en : ""}`).includes(q));
+    if (q) list = list.filter((x) => strip(hay(x)).includes(q));
     list.sort((a, b) => {
       if (pSort === "name") return a.name[lang].localeCompare(b.name[lang]);
       const key = pSort === "kcal" ? "kcal" : "protein";
