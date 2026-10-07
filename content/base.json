@@ -414,8 +414,8 @@
       "en": "Enter a measured length if you have it — without it, C/D (maintenance/catch-up) assume the WHS mean length for age and the risk screen falls back to weight-for-age."
     },
     "refeeding_banner": {
-      "pl": "UWAGA: masa ciała jest bardzo niska względem długości/wieku (poniżej ok. −3 SD siatki WHO waga-do-długości lub ≤ −2 SD na siatce WHS — ocena przybliżona; dzieci z WHS są konstytucyjnie mniejsze niż w siatkach WHO). Rozpoczynanie żywienia w takim stanie wymaga szczególnej ostrożności (ryzyko zespołu ponownego odżywienia: kontrola elektrolitów, stopniowe zwiększanie). Skontaktuj się z zespołem prowadzącym przed zmianami.",
-      "en": "CAUTION: body weight is very low for length/age (below approx. −3 SD on the WHO weight-for-length chart, or ≤ −2 SD on the WHS chart — approximate screening; WHS children are constitutionally smaller than on WHO charts). Starting feeding in this state requires particular caution (refeeding-syndrome risk: electrolyte monitoring, gradual increases). Contact the care team before changes."
+      "pl": "UWAGA: bardzo niska masa ciała (sygnał wychudzenia): poniżej ok. −3 SD siatki WHO waga-do-długości (gdy podano długość) lub ≤ −2 SD na siatce WHS — ocena przybliżona; dzieci z WHS są konstytucyjnie mniejsze niż w siatkach WHO. Rozpoczynanie żywienia w takim stanie wymaga szczególnej ostrożności (ryzyko zespołu ponownego odżywienia: kontrola elektrolitów, stopniowe zwiększanie). Skontaktuj się z zespołem prowadzącym przed zmianami.",
+      "en": "CAUTION: very low body weight (a thinness signal): below approx. −3 SD on the WHO weight-for-length chart (when a length is entered) or ≤ −2 SD on the WHS chart — approximate screening; WHS children are constitutionally smaller than WHO charts. Starting feeding in this state requires particular caution (refeeding-syndrome risk: electrolyte monitoring, gradual increases). Contact the care team before changes."
     },
     "note_estimate": {
       "pl": "To szacunek startowy. Ostateczne dawki ustala dietetyk na podstawie trendu masy ciała (min. 3–4 tygodnie obserwacji).",

@@ -232,7 +232,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
   } else if (line) {
     targetKg = ctx.whs.get(sex, "weight", line, Math.min(targetMonth, 48));
     if (targetKg === null) targetNote = N("siatka WHS jest zdigitalizowana tylko dla 0–48 mies.", "the WHS chart is digitized for 0-48 months only");
-    if (targetMonth > 48 && targetKg !== null) targetNote = N("cel ograniczono do 48. mies. (zakres digitalizacji)", "target clamped to 48 months (digitized range)");
+    if (targetMonth > 48 && targetKg !== null) targetNote = N("cel ograniczono do 48. mies. (zakres digitalizacji) — przy końcu zakresu doganianie zanika (cel ≈ bieżąca masa)", "target clamped to 48 months (digitized range) — catch-up fades near the range end (target ≈ current weight)");
   } else {
     // WHO weight-for-length median ideal weight (method 2 uses it directly)
     const len = input.lengthCm;
@@ -342,6 +342,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
       N(`cel: ${targetKg !== null ? targetKg.toFixed(2).replace(".", ",") + " kg" : "n/d"} w ${input.horizonWeeks} tygodni (${gainPerDay !== null ? gainPerDay.toFixed(1).replace(".", ",") + " g/dzień" : "n/d"})`, `target: ${targetKg !== null ? targetKg.toFixed(2) + " kg" : "n/a"} over ${input.horizonWeeks} weeks (${gainPerDay !== null ? gainPerDay.toFixed(1) + " g/day" : "n/a"})`),
       N("koszt energetyczny przyrostu tkanek: 4,1 / 5,0 / 6,0 kcal/g (dolne = brutto typowe wg TRS 935, środkowe = zalecenie FAO, górne = brutto wysokotłuszczowe wg TRS 935)", "energy cost of tissue gain: 4.1 / 5.0 / 6.0 kcal/g (low = TRS 935 gross typical, central = FAO recommendation, high = TRS 935 gross high-fat)"),
       ...(targetNote ? [targetNote] : []),
+      ...(line && targetKg !== null ? [N("Cel z siatki WHS (średnia / −1 SD) opisuje, jak rośnie populacja WHS — wartość opisowa, nie zalecenie tempa dla Twojego dziecka.", "The WHS-chart target (mean / −1 SD) describes how the WHS population grows — descriptive, not a prescribed rate for your child.")] : []),
     ],
     targetKg, gainPerDayGrams: gainPerDay, targetNote, method2,
     proteinGPerKgPerDay: proteinPerKg,

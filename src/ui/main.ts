@@ -18,6 +18,7 @@ import nutrientsContent from "../../content/nutrients.json";
 import foodsData from "../data/products_foods.json";
 import { computeAll, refeedingScreen } from "../calc/methods.js";
 import { loadContext } from "../calc/load.js";
+import { whoTable, weightForLengthZ } from "../calc/who.js";
 import { descPl } from "./desc-pl.js";
 import type { CalcInput } from "../calc/types.js";
 
@@ -460,6 +461,12 @@ function recalc(): void {
       ...(r.C.notes ?? []),
       { pl: `Ten sam wiek (A): ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}% · Ta sama masa (B): ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%`, en: `Same age (A): ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}% · Same weight (B): ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%` },
       ...(r.whsZ.weight !== null ? [{ pl: `Pozycja masy na siatce WHS: ≈ ${r.whsZ.weight.toFixed(1).replace(".", ",")} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`, en: `Weight position on the WHS chart: ≈ ${r.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)` }] : []),
+      ...(input.length !== null && Number.isFinite(input.length)
+        ? (() => {
+          const wz = weightForLengthZ(whoTable(ctx.who, `wfl_${input.sex}`), input.length, input.weight);
+          return wz === null ? [] : [{ pl: `WHO waga-do-długości: z = ${wz.toFixed(1).replace(".", ",")} (kontekst przesiewowy — dzieci z WHS są konstytucyjnie mniejsze niż w siatkach WHO; patrz też banner ryzyka powyżej)`, en: `WHO weight-for-length: z = ${wz.toFixed(1)} (screening context — WHS children are constitutionally smaller than WHO charts; see also the risk banner above)` }];
+        })()
+        : []),
     ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts, sub: t("calc.method_c_sub"), tip: t("calc.method_c_tip"), band: t("calc.band_c") })}
     ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, sub: t("calc.method_d_sub"), tip: t("calc.method_d_tip"), band: t("calc.band_d"), alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}
     <div class="card"><h3 data-tip="${t("calc.method_d2_tip")}">${t("calc.method_d2_t")} <span class="badge gradeD" data-tip="${t("calc.grade_d")}">D<span class="sr-only"> (${t("calc.grade_d")})</span></span></h3>
