@@ -16,7 +16,7 @@ import rules from "../../content/rules.json";
 import productsContent from "../../content/products.json";
 import nutrientsContent from "../../content/nutrients.json";
 import foodsData from "../data/products_foods.json";
-import { computeAll, refeedingScreen } from "../calc/methods.js";
+import { computeAll } from "../calc/methods.js";
 import { loadContext } from "../calc/load.js";
 import { whoTable, weightForLengthZ } from "../calc/who.js";
 import { descPl } from "./desc-pl.js";
@@ -421,7 +421,6 @@ function renderCalcForm(): void {
     </form>
   </div>`;
   document.getElementById("results-body")!.innerHTML = `
-    <div id="refeed-slot"></div>
     <div class="card small" id="grades-card"><p>${t("calc.grades_hint")}</p><ul class="tight small">${li("calc.grades_hint_items")}</ul><p class="small">${t("calc.grades_hint_note")}</p></div>
     <div class="cards-flow">
       <div id="results-cards"></div>
@@ -460,14 +459,8 @@ function recalc(): void {
   const res = document.getElementById("results-cards")!;
   res.setAttribute("aria-live", "polite");
 
-  // Refeeding-risk screen (audit H2, 2026-10-07): WHO weight-for-length <= -3 SD OR WHS z <= -2 SD
-  // (without a length: WHS weight-for-age <= -2 SD). The old WHS-only "< -3 SD" screen almost never
-  // fired (12-mo boy of 66.5 cm: only below 3.25 kg; the WHO wfl -3 SD cut-off there is 6.0 kg).
-  let refeeding = "";
-  {
-    const screen = refeedingScreen(calcInput, ctx);
-    if (screen.flag) refeeding = `<p class="banner crit">${t("calc.refeeding_banner")}</p>`;
-  }
+  // (Refeeding-risk banner removed per user request, D-088 — the screen logic is retained in
+  // methods.ts as `refeedingScreen`, covered by tests, for reference / possible re-enablement.)
 
   const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean; sub?: string; tip?: string; band?: string } = {}) => `
     <div class="card"><h3${opts.tip ? ` data-tip="${opts.tip}"` : ""}>${title} ${opts.grade ? `<span class="badge grade${opts.grade}" data-tip="${t(`calc.grade_${opts.grade.toLowerCase()}`)}">${opts.grade}<span class="sr-only"> (${t(`calc.grade_${opts.grade.toLowerCase()}`)})</span></span>` : ""}</h3>
@@ -485,13 +478,6 @@ function recalc(): void {
   const wa = r.weightAgeMonths;
   // Round-4 audit R4-3: carry-over caution for flagged (not suppressed) C values.
   const cCarry = (r.C.alerts ?? []).filter(() => r.C.kcalPerDay.central !== null);
-  const refSlot = document.getElementById("refeed-slot");
-  if (refSlot) {
-    refSlot.innerHTML = refeeding;
-    const hasBanner = refeeding !== "";
-    if (hasBanner && !refeedShown) refSlot.querySelector(".banner")?.classList.add("anim-pop");
-    refeedShown = hasBanner;
-  }
   res.innerHTML = `
     ${card(t("calc.method_a_t"), r.A.kcalPerDay, r.A.notes, r.A.sourceIds, { grade: "A", sub: t("calc.method_a_sub"), tip: t("calc.method_a_tip"), band: t("calc.band_a") })}
     ${card(t("calc.method_b_t"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A", sub: t("calc.method_b_sub").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), tip: t("calc.method_b_tip"), band: t("calc.band_b") })}
@@ -1031,7 +1017,6 @@ let lastR: ReturnType<typeof computeAll> | null = null;
 // Motion state (user request 2026-10-07)
 let resultsEntered = false;
 let lastRefreshAnim = 0;
-let refeedShown = false;
 
 interface NutCell { lo?: number; hi?: number; num?: number; ai?: boolean; approx?: BiText; }
 interface NutRow { id: string; label: BiText; kind: "perkg" | "percent" | "daily"; unit?: string; src: string[]; b1?: NutCell; b2?: NutCell; b3?: NutCell; }

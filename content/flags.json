@@ -35,16 +35,16 @@
     },
     {
       "level": "now",
-      "text": { "pl": "Po rozpoczęciu „dokarmiania” po niedożywieniu pojawia się splątanie, osłabienie, kołatanie serca lub obrzęki (mogące wskazywać zespół ponownego odżywienia) — pilnie. Banner ryzyka pokazuje się, gdy masa jest bardzo niska względem długości/wieku: WHO waga-do-długości ≤ −3 SD (gdy podano długość) lub ≤ −2 SD na siatce WHS (masa-do-wieku dla wieku dziecka — sprawdzana także przy podanej długości) — ocena przybliżona; o rozpoznaniu decydują stan kliniczny i elektrolity.",
-               "en": "After starting feeding in severe undernutrition: confusion, weakness, palpitations or oedema (possible refeeding syndrome) — urgent. The risk banner appears when weight is very low for length/age: WHO weight-for-length ≤ −3 SD (when a length is entered) or ≤ −2 SD on the WHS chart (weight-for-age at the child's age — checked also when a length is entered) — approximate screening; clinical state and electrolytes decide." },
+      "text": { "pl": "Po rozpoczęciu „dokarmiania” po niedożywieniu pojawia się splątanie, osłabienie, kołatanie serca lub obrzęki (mogące wskazywać zespół ponownego odżywienia) — pilnie; o rozpoznaniu decydują stan kliniczny i elektrolity.",
+               "en": "After starting feeding in severe undernutrition: confusion, weakness, palpitations or oedema (possible refeeding syndrome) — urgent; clinical state and electrolytes decide." },
       "sources": ["da_silva2020", "refeeding_children_2025", "who_sam_2009", "antonius2008"],
       "grade": "A",
       "wspecific": false
     },
     {
       "level": "week",
-      "text": { "pl": "Spełnione kryterium słabego przyrastania: masa/długość < −1,65 z, prędkość masy < −2 z (poniżej 2 lat) albo spadek o ≥1 z — oceń na siatce odniesienia dziecka (dla WHS: siatka WHS; kryteria AAP/WHO opisano na siatkach populacyjnych). Osobno: WHO waga-do-długości ≤ −2 z = sygnał wychudzenia (powiązany z bannerem ryzyka) — wizyta w ciągu tygodnia wg ścieżki wytycznych.",
-               "en": "Faltering-growth criteria met: weight-for-length < −1.65 z, weight velocity < −2 z (under 2 y), or a drop of ≥1 z — evaluate on the child's own reference chart (for WHS: the WHS chart; the AAP/WHO criteria are written for population charts). Separately: WHO weight-for-length ≤ −2 z = a thinness signal (linked to the risk banner) — appointment within a week per the guideline pathway." },
+      "text": { "pl": "Spełnione kryterium słabego przyrastania: masa/długość < −1,65 z, prędkość masy < −2 z (poniżej 2 lat) albo spadek o ≥1 z — oceń na siatce odniesienia dziecka (dla WHS: siatka WHS; kryteria AAP/WHO opisano na siatkach populacyjnych). Osobno: WHO waga-do-długości ≤ −2 z = sygnał wychudzenia — wizyta w ciągu tygodnia wg ścieżki wytycznych.",
+               "en": "Faltering-growth criteria met: weight-for-length < −1.65 z, weight velocity < −2 z (under 2 y), or a drop of ≥1 z — evaluate on the child's own reference chart (for WHS: the WHS chart; the AAP/WHO criteria are written for population charts). Separately: WHO weight-for-length ≤ −2 z = a thinness signal — appointment within a week per the guideline pathway." },
       "sources": ["faltering_2026", "nice_ng75"],
       "grade": "A",
       "wspecific": false

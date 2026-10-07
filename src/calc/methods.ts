@@ -481,6 +481,9 @@ export interface RefeedingScreen {
  * on WHO wfl (the WHS charts included tube-fed children). Per the review: flag when
  * WHO weight-for-length <= -3 SD (length present), OR WHS z <= -2 SD; without a length the screen
  * is WHS weight-for-age <= -2 SD (the WHS weight-for-length-matched z when a length is available).
+ *
+ * NOTE (D-088, user request 2026-10-07): the UI banner rendering this screen was REMOVED. This function
+ * and its tests are retained for reference / possible re-enablement — nothing in the UI calls it now.
  */
 export function refeedingScreen(input: CalcInput, ctx: CalcContext): RefeedingScreen {
   const { sex, ageMonths, weightKg, lengthCm } = input;
