@@ -23,6 +23,10 @@
       "pl": "Kalkulator",
       "en": "Calculator"
     },
+    "results": {
+      "pl": "Wyniki",
+      "en": "Results"
+    },
     "charts": {
       "pl": "Wykresy",
       "en": "Charts"
@@ -128,6 +132,10 @@
     "hint": {
       "pl": "Wartości domyślne dotyczą dziecka z hipotonią; zmień, jeśli dotyczy.",
       "en": "Defaults describe a hypotonic child; change as needed."
+    },
+    "pointer": {
+      "pl": "Wyniki (karty A–F i bilans) znajdziesz w sekcji „Wyniki” poniżej — aktualizują się przy każdej zmianie pól.",
+      "en": "Results (cards A–F and the balance) are in the “Results” section below — they update on every field change."
     },
     "sex": {
       "pl": "Płeć",

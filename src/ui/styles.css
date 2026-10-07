@@ -164,13 +164,12 @@ section h2 { border-bottom: 2px solid var(--accent); padding-bottom: 0.25rem; }
    max(<base>px, (100% - 2.5rem)/3), so at most three tracks can ever fit. */
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(360px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; }
 .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(520px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; }
-.calc-grid { display: grid; grid-template-columns: minmax(min(100%, 340px), 400px) minmax(0, 1fr); gap: 1rem; align-items: start; }
-@media (max-width: 920px) { .calc-grid { grid-template-columns: 1fr; } }
 /* Results flow: one grid holding the method cards A–F AND the milk-balance card (user request
-   2026-10-05: „bilans” belongs in the same cards section as A–E); #results dissolves into it. */
+   2026-10-05: „bilans” belongs in the same cards section as A–E); #results-cards dissolves into it.
+   The calculator section holds the input form only; the result section („Wyniki”) starts at #results. */
 .cards-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(360px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; align-items: start; }
-#results { display: contents; }
-#results > p { grid-column: 1 / -1; order: 1; }
+#results-cards { display: contents; }
+#results-cards > p { grid-column: 1 / -1; order: 1; }
 #milk-card > .card { margin: 0; }
 
 /* ---------- glass surfaces ---------- */
@@ -297,8 +296,8 @@ details.hint-toggle > summary { color: var(--accent2); cursor: pointer; width: f
 details.hint-toggle > summary:hover { text-decoration: underline; }
 details.hint-toggle > p { margin: 0.35rem 0 0; }
 .card, #search-results li, #sources-body li { overflow-wrap: anywhere; }
-.cards-grid > *, .chart-grid > *, .calc-grid > *, .cards-flow > *, #results > * { min-width: 0; }
-.cards-grid > .card, .chart-grid > .card, #results > .card { margin: 0; }
+.cards-grid > *, .chart-grid > *, .cards-flow > *, #results-cards > * { min-width: 0; }
+.cards-grid > .card, .chart-grid > .card, #results-cards > .card { margin: 0; }
 .hdr-btn, .lang-toggle button, .nut-toggle button, button.primary, select, input { transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, filter 0.15s ease; }
 
 /* ---------- accessibility ---------- */
@@ -443,7 +442,7 @@ label.remember input { width: auto; margin: 0; }
     --glass: #fff; --glass-strong: #fff; --glass-line: #999; --glass-hi: transparent;
     --bg-image: none;
   }
-  header.top, nav.main, .lang-toggle, .skip-link, #charts, #products, #calc-form, #search-overlay { display: none !important; }
+  header.top, nav.main, .lang-toggle, .skip-link, #charts, #products, #calc, #search-overlay { display: none !important; }
   body { background: #fff; color: #000; background-image: none; }
   body::before { display: none !important; }
   .card, .banner { backdrop-filter: none; box-shadow: none; background: #fff; }

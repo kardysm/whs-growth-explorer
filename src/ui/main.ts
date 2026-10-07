@@ -138,7 +138,7 @@ function renderShell(): void {
     <h1>WHS Feeding &amp; Growth Explorer</h1>
     <button type="button" class="hdr-btn nav-toggle" id="nav-toggle-btn" aria-expanded="false" aria-controls="main-nav" aria-label="${t("nav.menu")}">☰ <span class="small">${t("nav.menu")}</span></button>
     <nav class="main" id="main-nav" aria-label="${t("nav.aria")}">
-      ${( ["start","calc","charts","table","why","flags","rules","products","sources","method"] as const)
+      ${( ["start","calc","results","charts","table","why","flags","rules","products","sources","method"] as const)
         .map((k) => `<a href="#${k}">${t(`nav.${k}`)}</a>`).join("")}
       <div class="menu-tools">
         <div class="lang-toggle" role="group" aria-label="język / language">
@@ -159,6 +159,7 @@ function renderShell(): void {
     <p class="banner" id="disclaimer">${t("disclaimer_short")}</p>
     <section id="start"><h2>${t("start.title")}</h2><div id="start-body"></div></section>
     <section id="calc"><h2>${t("calc.title")}</h2><div id="calc-body"></div></section>
+    <section id="results"><h2>${t("calc.results_title")}</h2><div id="results-body"></div></section>
     <section id="charts"><h2>${t("charts.title")}</h2><div id="charts-body"></div></section>
     <section id="table"><h2>${t("table.title")}</h2><div id="table-body"></div></section>
     <section id="why"><h2>${t("nav.why")}</h2><div id="why-body"></div></section>
@@ -296,7 +297,7 @@ function readInputs(): void {
 function renderCalcForm(): void {
   const b = document.getElementById("calc-body")!;
   b.innerHTML = `
-  <div class="calc-grid">
+  <div class="cards-grid">
     <form class="card" id="calc-form" aria-label="calculator">
       <label for="in-sex">${t("calc.sex")}</label>
       <select id="in-sex">
@@ -354,14 +355,15 @@ function renderCalcForm(): void {
       <p class="small">${t("calc.remember_hint")}</p>
       <button class="primary" type="button" id="btn-recalc">${t("calc.compute")}</button>
     </form>
-    <div>
-      <div class="card small"><p>${t("calc.hint")}</p><p>${t("calc.grades_hint")}</p></div>
-      <div class="cards-flow">
-        <div id="results"></div>
-        <div id="milk-card"></div>
-      </div>
-    </div>
+    <div class="card small"><p>${t("calc.hint")}</p><p>${t("calc.pointer")}</p></div>
   </div>`;
+  document.getElementById("results-body")!.innerHTML = `
+    <div id="refeed-slot"></div>
+    <div class="card small" id="grades-card"><p>${t("calc.grades_hint")}</p></div>
+    <div class="cards-flow">
+      <div id="results-cards"></div>
+      <div id="milk-card"></div>
+    </div>`;
 
   for (const id of ["in-sex", "in-age", "in-weight", "in-length", "in-tone", "in-mobility", "in-target", "in-horizon", "in-milkd", "in-milkml", "in-meald", "in-feeds", "in-milkportion", "in-mealportion", "in-intake"]) {
     document.getElementById(id)!.addEventListener("change", readInputs);
@@ -399,7 +401,7 @@ function recalc(): void {
   };
   const r = computeAll(calcInput, ctx);
   lastR = r;
-  const res = document.getElementById("results")!;
+  const res = document.getElementById("results-cards")!;
   res.setAttribute("aria-live", "polite");
 
   // Refeeding-risk screen — WHS-chart-relative (user direction, DECISIONS D-023): compares the child
@@ -432,8 +434,9 @@ function recalc(): void {
   const wa = r.weightAgeMonths;
   // Round-4 audit R4-3: carry-over caution for flagged (not suppressed) C values.
   const cCarry = (r.C.alerts ?? []).filter(() => r.C.kcalPerDay.central !== null);
+  const refSlot = document.getElementById("refeed-slot");
+  if (refSlot) refSlot.innerHTML = refeeding;
   res.innerHTML = `
-    ${refeeding}
     ${card(t("calc.method_a_t"), r.A.kcalPerDay, r.A.notes, r.A.sourceIds, { grade: "A", sub: t("calc.method_a_sub"), tip: t("calc.method_a_tip"), band: t("calc.band_a") })}
     ${card(t("calc.method_b_t"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A", sub: t("calc.method_b_sub").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), tip: t("calc.method_b_tip"), band: t("calc.band_b") })}
     ${card(t("calc.method_c_t"), r.C.kcalPerDay, [
@@ -1341,7 +1344,7 @@ function buildSearchIndex(): SItem[] {
   const RR = rules as unknown as { intro: BiText; blocks: { id: string; title: BiText; items: ItemT[] }[] };
   // section-level entries (audit C1: queries like "sygnały" must hit the section)
   const introFor: Record<string, string> = { why: B(R.intro), flags: B(F.intro), rules: B(RR.intro) };
-  (["start", "calc", "charts", "table", "why", "flags", "rules", "products", "sources", "method"] as const).forEach((id) => {
+  (["start", "calc", "results", "charts", "table", "why", "flags", "rules", "products", "sources", "method"] as const).forEach((id) => {
     items.push({ anchor: id, section: t(`nav.${id}`), title: t(`nav.${id}`), text: introFor[id] ?? "" });
   });
   R.groups.forEach((g) => {
