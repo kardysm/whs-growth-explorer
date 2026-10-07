@@ -81,3 +81,8 @@ review/                                    §7 audit rounds (findings + resoluti
 - Claim provenance: every number/claim maps to `source_id`s (see `research/sources.json`); grades A–D per GOAL.md §1.
 - PL is the primary language; EN mirrors it.
 - No backend, no analytics; the site is fully static.
+- **Versioning**: every commit bumps `package.json` version (semver — patch by default; put `#minor` or
+  `#major` in the commit message to raise the level; `[skip version]` skips). Implemented as a
+  `.githooks/commit-msg` hook (git only gives the *current* commit message to commit-msg; pre-commit sees a
+  stale one). Activate once per clone: `git config core.hooksPath .githooks`. The site's build stamp reads
+  the version at build time (`npm run build`).
