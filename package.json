@@ -1,7 +1,7 @@
 {
   "name": "whs-growth-explorer",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "type": "module",
   "description": "WHS Feeding & Growth Explorer - bilingual calculator and evidence site (work in progress)",
   "scripts": {

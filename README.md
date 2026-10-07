@@ -81,8 +81,10 @@ review/                                    §7 audit rounds (findings + resoluti
 - Claim provenance: every number/claim maps to `source_id`s (see `research/sources.json`); grades A–D per GOAL.md §1.
 - PL is the primary language; EN mirrors it.
 - No backend, no analytics; the site is fully static.
-- **Versioning**: every commit bumps `package.json` version (semver — patch by default; put `#minor` or
-  `#major` in the commit message to raise the level; `[skip version]` skips). Implemented as a
-  `.githooks/commit-msg` hook (git only gives the *current* commit message to commit-msg; pre-commit sees a
-  stale one). Activate once per clone: `git config core.hooksPath .githooks`. The site's build stamp reads
-  the version at build time (`npm run build`).
+- **Versioning**: every commit patch-bumps `package.json` (semver) via a `.githooks/pre-commit` hook —
+  pre-commit is the only hook whose staged changes are part of the commit (prepare-commit-msg/commit-msg
+  staging lands in the NEXT commit — verified; and only msg-hooks see the message, so message-based levels
+  are not possible). For a minor/major release run `npm version minor|major` first (the hook skips when
+  `package.json` is already staged); `SKIP_VERSION_BUMP=1` skips for rebases/amends. Activate once per
+  clone: `git config core.hooksPath .githooks`. The site's build stamp reads the version at build time
+  (`npm run build`).

@@ -1,0 +1,20 @@
+#!/bin/sh
+# Patch-bump the version on every commit (semver).
+#
+# Why pre-commit: it is the only hook whose staged changes are part of the commit — prepare-commit-msg /
+# commit-msg run after git snapshots the tree, so their staging is left for the NEXT commit (verified
+# 2026-10-07). pre-commit cannot read the commit message, so the bump is always a patch; for a
+# minor/major release run `npm version minor|major` (stages package.json → the hook skips).
+#
+# Skips: package.json already staged (manual version decision) or SKIP_VERSION_BUMP=1 (rebases/amends).
+# Activate once per clone:  git config core.hooksPath .githooks
+set -e
+cd "$(git rev-parse --show-toplevel)"
+command -v node >/dev/null 2>&1 || { echo "[version] node not found - skipping bump"; exit 0; }
+[ -n "$SKIP_VERSION_BUMP" ] && { echo "[version] SKIP_VERSION_BUMP set - skipping"; exit 0; }
+if git diff --cached --name-only -- package.json | grep -q .; then
+  echo "[version] package.json already staged - keeping the manual version"
+  exit 0
+fi
+node scripts/bump_version.mjs
+git add package.json
