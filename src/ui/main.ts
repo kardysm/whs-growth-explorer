@@ -16,10 +16,9 @@ import rules from "../../content/rules.json";
 import productsContent from "../../content/products.json";
 import nutrientsContent from "../../content/nutrients.json";
 import foodsData from "../data/products_foods.json";
-import { computeAll } from "../calc/methods.js";
+import { computeAll, refeedingScreen } from "../calc/methods.js";
 import { loadContext } from "../calc/load.js";
 import { descPl } from "./desc-pl.js";
-import { whsAgeForLength, whsWeightZ } from "../calc/whs.js";
 import type { CalcInput } from "../calc/types.js";
 
 type Lang = "pl" | "en";
@@ -427,18 +426,13 @@ function recalc(): void {
   const res = document.getElementById("results-cards")!;
   res.setAttribute("aria-live", "polite");
 
-  // Refeeding-risk screen — WHS-chart-relative (user direction, DECISIONS D-023): compares the child
-  // against the digitized WHS charts, not WHO (WHS children are constitutionally smaller; the WHO
-  // threshold over-flagged them). ≈ < −3 SD via the chart's same-side SD model.
+  // Refeeding-risk screen (audit H2, 2026-10-07): WHO weight-for-length <= -3 SD OR WHS z <= -2 SD
+  // (without a length: WHS weight-for-age <= -2 SD). The old WHS-only "< -3 SD" screen almost never
+  // fired (12-mo boy of 66.5 cm: only below 3.25 kg; the WHO wfl -3 SD cut-off there is 6.0 kg).
   let refeeding = "";
   {
-    let z: number | null = null;
-    if (input.length !== null && Number.isFinite(input.length)) {
-      const aStar = whsAgeForLength(ctx.whs, input.sex, input.length);
-      if (aStar !== null) z = whsWeightZ(ctx.whs, input.sex, aStar, input.weight);
-    }
-    if (z === null) z = whsWeightZ(ctx.whs, input.sex, input.age, input.weight);
-    if (z !== null && z <= -3) refeeding = `<p class="banner crit">${t("calc.refeeding_banner")}</p>`;
+    const screen = refeedingScreen(calcInput, ctx);
+    if (screen.flag) refeeding = `<p class="banner crit">${t("calc.refeeding_banner")}</p>`;
   }
 
   const card = (title: string, b: { low: number | null; central: number | null; high: number | null }, notes: BiText[] = [], ids: string[] = [], opts: { alerts?: BiText[]; grade?: string; extrap?: boolean; sub?: string; tip?: string; band?: string } = {}) => `

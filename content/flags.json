@@ -35,8 +35,8 @@
     },
     {
       "level": "now",
-      "text": { "pl": "Po rozpoczęciu „dokarmiania” po niedożywieniu pojawia się splątanie, osłabienie, kołatanie serca lub obrzęki (mogące wskazywać zespół ponownego odżywienia) — pilnie. Narzędzie pokazuje banner ryzyka, gdy masa leży znacznie poniżej siatki WHS (≈ poniżej −3 SD siatki — model przybliżony; bez długości: przesiew wg masy do wieku na tej samej siatce). Progu WHO (SAM) nie stosujemy do przesiewu — dzieci z WHS są konstytucyjnie mniejsze; o rozpoznaniu decydują stan kliniczny i elektrolity.",
-               "en": "After starting feeding in severe undernutrition: confusion, weakness, palpitations or oedema (possible refeeding syndrome) — urgent. The tool shows a risk banner when weight sits far below the WHS chart (approx. below −3 SD on the chart — approximate model; without a length: weight-for-age screen on the same chart). The WHO (SAM) threshold is not used for screening — WHS children are constitutionally smaller; clinical state and electrolytes decide." },
+      "text": { "pl": "Po rozpoczęciu „dokarmiania” po niedożywieniu pojawia się splątanie, osłabienie, kołatanie serca lub obrzęki (mogące wskazywać zespół ponownego odżywienia) — pilnie. Banner ryzyka pokazuje się, gdy masa jest bardzo niska względem długości/wieku: WHO waga-do-długości ≤ −3 SD (gdy podano długość) lub ≤ −2 SD na siatce WHS (bez długości: masa-do-wieku na siatce WHS) — ocena przybliżona; o rozpoznaniu decydują stan kliniczny i elektrolity.",
+               "en": "After starting feeding in severe undernutrition: confusion, weakness, palpitations or oedema (possible refeeding syndrome) — urgent. The risk banner appears when weight is very low for length/age: WHO weight-for-length ≤ −3 SD (when a length is entered) or ≤ −2 SD on the WHS chart (without a length: weight-for-age on the WHS chart) — approximate screening; clinical state and electrolytes decide." },
       "sources": ["da_silva2020", "refeeding_children_2025", "who_sam_2009", "antonius2008"],
       "grade": "A",
       "wspecific": false

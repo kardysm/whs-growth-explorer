@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { loadContext } from "./load.js";
-import { computeAll } from "./methods.js";
+import { computeAll, refeedingScreen } from "./methods.js";
 import type { CalcInput } from "./types.js";
 
 const { dataset, whs } = loadContext();
@@ -245,6 +245,36 @@ describe("C continuity across the Schofield form switch (audit H1)", () => {
         expect(worst).toBeLessThan(0.08);
       }
     }
+  });
+});
+
+describe("refeeding-risk screen (audit H2)", () => {
+  const screen = (over: Partial<CalcInput>) => refeedingScreen({ ...base, ...over }, ctx);
+
+  it("12-mo boy of 66.5 cm: flags below the WHO wfl -3 SD cut-off (~6.0 kg), not above", () => {
+    const low = screen({ ageMonths: 12, lengthCm: 66.5, weightKg: 5.5 });
+    expect(low.flag).toBe(true);
+    expect(low.basis).toBe("who_wfl");
+    expect(screen({ ageMonths: 12, lengthCm: 66.5, weightKg: 6.0 }).flag).toBe(true); // z = -3.04
+    expect(screen({ ageMonths: 12, lengthCm: 66.5, weightKg: 6.5 }).flag).toBe(false); // z = -1.99
+  });
+
+  it("the old screen is gone: 3.3 kg no longer needed for a flag at 66.5 cm", () => {
+    // old WHS-only <= -3 SD crossing was ~3.25 kg; the new WHO criterion fires from ~6.0 kg up
+    expect(screen({ ageMonths: 12, lengthCm: 66.5, weightKg: 5.0 }).flag).toBe(true);
+  });
+
+  it("without a length the WHS weight-for-age screen (<= -2 SD) applies", () => {
+    expect(screen({ ageMonths: 12, lengthCm: null, weightKg: 4.0 }).flag).toBe(true); // WHS z = -2.09
+    expect(screen({ ageMonths: 12, lengthCm: null, weightKg: 4.5 }).flag).toBe(false); // WHS z = -1.48
+    expect(screen({ ageMonths: 12, lengthCm: null, weightKg: 4.0 }).basis).toBe("whs");
+  });
+
+  it("length beyond the WHO wfl table (>110 cm) still screens via the WHS chart", () => {
+    const s = screen({ ageMonths: 48, lengthCm: 115, weightKg: 5.0 });
+    expect(s.whoWflZ).toBeNull();
+    expect(s.flag).toBe(true);
+    expect(s.basis).toBe("whs");
   });
 });
 

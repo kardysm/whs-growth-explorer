@@ -7,8 +7,9 @@ import {
   efsaAr, faoEnergy, hollidaySegar, nasemEer, schofieldBmrBand,
 } from "./energy.js";
 import type { Band, CalcInput, CalcNote, MethodResult, Sex, WhsLine } from "./types.js";
+import { whsAgeForLength, whsWeightZ } from "./whs.js";
 import type { WhsIndex } from "./whs.js";
-import { ageForWeight, medianAt, whoTable } from "./who.js";
+import { ageForWeight, medianAt, weightForLengthZ, whoTable } from "./who.js";
 import type { WhoTable } from "./types.js";
 
 export interface CalcContext {
@@ -476,5 +477,41 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     whsRef: wRef,
     whsZ,
     A, B, C, heightBased, percentOfA, percentOfB, D, E, F,
+  };
+}
+
+export interface RefeedingScreen {
+  flag: boolean;
+  /** Which criterion fired: WHO weight-for-length (<= -3 SD) or the WHS chart (<= -2 SD). */
+  basis: "who_wfl" | "whs" | null;
+  whoWflZ: number | null;
+  whsZ: number | null;
+}
+
+/**
+ * Refeeding-risk screen (audit H2, 2026-10-07). The old WHS-only "< -3 SD" screen almost never
+ * fired: for a 12-mo boy of 66.5 cm it triggered only below 3.25 kg, while the WHO weight-for-length
+ * -3 SD cut-off at that length is 6.0 kg — and the average WHS child already sits at -2.3..-3.7 SD
+ * on WHO wfl (the WHS charts included tube-fed children). Per the review: flag when
+ * WHO weight-for-length <= -3 SD (length present), OR WHS z <= -2 SD; without a length the screen
+ * is WHS weight-for-age <= -2 SD (the WHS weight-for-length-matched z when a length is available).
+ */
+export function refeedingScreen(input: CalcInput, ctx: CalcContext): RefeedingScreen {
+  const { sex, ageMonths, weightKg, lengthCm } = input;
+  let whsZ: number | null = null;
+  let whoWflZ: number | null = null;
+  if (lengthCm !== null && Number.isFinite(lengthCm)) {
+    const aStar = whsAgeForLength(ctx.whs, sex, lengthCm);
+    if (aStar !== null) whsZ = whsWeightZ(ctx.whs, sex, aStar, weightKg);
+    whoWflZ = weightForLengthZ(whoTable(ctx.who, `wfl_${sex}`), lengthCm, weightKg);
+  }
+  if (whsZ === null) whsZ = whsWeightZ(ctx.whs, sex, ageMonths, weightKg);
+  const whoFires = whoWflZ !== null && whoWflZ <= -3;
+  const whsFires = whsZ !== null && whsZ <= -2;
+  return {
+    flag: whoFires || whsFires,
+    basis: whoFires ? "who_wfl" : whsFires ? "whs" : null,
+    whoWflZ,
+    whsZ,
   };
 }

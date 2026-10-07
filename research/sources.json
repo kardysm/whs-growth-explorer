@@ -866,7 +866,7 @@
    "verified": true,
    "accessed": "2026-10-02",
    "fetched_file": "research/raw/who_sam_2009.pdf",
-   "notes": "Box 1: severe wasting = weight-for-height < -3 SD (WHO standards). Basis for the refeeding-risk banner threshold (< -3 SD screening trigger)."
+   "notes": "Box 1: severe wasting = weight-for-height < -3 SD (WHO standards). One of the two screening criteria for the refeeding-risk banner since the audit H2 change (2026-10-07): WHO weight-for-length <= -3 SD OR WHS chart <= -2 SD; without a length the WHS weight-for-age screen applies."
   },
   {
    "id": "espghan_espn_pn_energy",
