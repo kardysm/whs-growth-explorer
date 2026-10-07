@@ -73,7 +73,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <section id="method"><h2>${$(`method.title`)}</h2><div id="method-body"></div></section>
   </main>
   <footer><p>${$(`footer`)}</p>
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`4b0e325+`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`62e0b40+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
@@ -244,7 +244,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
       <div id="rule-${n.id}-i${t}" style="margin:.6rem 0;padding-top:.5rem;border-top:1px solid var(--line)">
         <p>${b9(e.text)} ${S9(e.grade)}</p>
         <p class="small">${Z7===`pl`?`Źródła`:`Sources`}: ${x9(e.sources)}</p>
-      </div>`).join(``);t.push(`<div class="card"><h3>${b9(n.title)}</h3>${e}</div>`)}t.push(`</div>`),t.push(`<div class="card"><h3>${$(`nutrients.title`)}</h3><div id="nutrients"></div></div>`),document.getElementById(`rules-body`).innerHTML=t.join(``),E9()}var C9=`child`,w9=null;function T9(e){return e<6?null:e<12?`b1`:e<36?`b2`:`b3`}function E9(){let e=document.getElementById(`nutrients`);if(!e)return;let t=y7,n=T9(Q.age),r=Q.weight,i=w9?.C.kcalPerDay.central??null,a=(e,t=2)=>{let n=e.toFixed(t).replace(/(\.\d*?)0+$/,`$1`).replace(/\.$/,``);return Z7===`pl`?n.replace(`.`,`,`):n},o=(e,t)=>e[t],s=e=>e&&e.lo!==void 0&&e.hi!==void 0?`${a(e.lo,0)}–${a(e.hi,0)}% E`:`—`,c=e=>e&&e.lo!==void 0&&e.hi!==void 0?`${a(e.lo)}${e.lo===e.hi?``:`–`+a(e.hi)} g/kg`:`—`,l=(e,t)=>e&&e.num!==void 0?`${a(e.num,+(e.num<10))} ${t}${e.ai?` (AI)`:``}`:`—`,u=`
+      </div>`).join(``);t.push(`<div class="card"><h3>${b9(n.title)}</h3>${e}</div>`)}t.push(`</div>`),t.push(`<div class="card nut-card"><h3>${$(`nutrients.title`)}</h3><div id="nutrients"></div></div>`),document.getElementById(`rules-body`).innerHTML=t.join(``),E9()}var C9=`child`,w9=null;function T9(e){return e<6?null:e<12?`b1`:e<36?`b2`:`b3`}function E9(){let e=document.getElementById(`nutrients`);if(!e)return;let t=y7,n=T9(Q.age),r=Q.weight,i=w9?.C.kcalPerDay.central??null,a=(e,t=2)=>{let n=e.toFixed(t).replace(/(\.\d*?)0+$/,`$1`).replace(/\.$/,``);return Z7===`pl`?n.replace(`.`,`,`):n},o=(e,t)=>e[t],s=e=>e&&e.lo!==void 0&&e.hi!==void 0?`${a(e.lo,0)}–${a(e.hi,0)}% E`:`—`,c=e=>e&&e.lo!==void 0&&e.hi!==void 0?`${a(e.lo)}${e.lo===e.hi?``:`–`+a(e.hi)} g/kg`:`—`,l=(e,t)=>e&&e.num!==void 0?`${a(e.num,+(e.num<10))} ${t}${e.ai?` (AI)`:``}`:`—`,u=`
     <div class="nut-toggle" role="group" aria-label="${$(`nutrients.title`)}">
       <button type="button" data-nview="age" aria-pressed="${C9===`age`}">${$(`nutrients.view_age`)}</button>
       <button type="button" data-nview="child" aria-pressed="${C9===`child`}">${$(`nutrients.view_child`).replace(`{w}`,a(r,1))}</button>

@@ -951,7 +951,7 @@ function renderRules(): void {
     html.push(`<div class="card"><h3>${B(bl.title)}</h3>${items}</div>`);
   }
   html.push("</div>");
-  html.push(`<div class="card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`);
+  html.push(`<div class="card nut-card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`);
   document.getElementById("rules-body")!.innerHTML = html.join("");
   renderNutrients();
 }

@@ -262,6 +262,9 @@ thead th { position: sticky; top: 0; background: var(--glass-strong); backdrop-f
 tr.hl { outline: 2px solid var(--accent2); background: color-mix(in srgb, var(--accent2) 12%, transparent); }
 tr.hover { background: color-mix(in srgb, var(--accent2) 18%, transparent); }
 tbody tr:nth-child(even) td, tbody tr:nth-child(even) th { background: color-mix(in srgb, var(--pal-periwinkle) 7%, transparent); }
+/* plain hover tint on every table row (user batch card 5, 2026-10-07) — must sit AFTER the zebra rule
+   so it wins at equal specificity (0,1,3); .nut-hl cells keep their own highlight (higher specificity). */
+tbody tr:hover > td, tbody tr:hover > th { background: color-mix(in srgb, var(--pal-periwinkle) 15%, transparent); }
 thead th { font-weight: 600; }
 
 /* ---------- text & misc ---------- */
@@ -397,6 +400,8 @@ section { scroll-margin-top: calc(var(--hdrh, 4rem) + 0.5rem); }
 
 /* ---------- nutrients / milk / remember ---------- */
 .nut-toggle { display: inline-flex; gap: 0.3rem; margin: 0.4rem 0; }
+/* the macro/micronutrient card doesn't need the full page width (user batch card 5, 2026-10-07) */
+#rules .card.nut-card { max-width: min(100%, 780px); }
 .nut-toggle button { border: 1px solid var(--line); background: var(--glass); color: var(--muted); border-radius: 8px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.85rem; }
 .nut-toggle button[aria-pressed="true"] { color: var(--fg); border-color: var(--accent2); }
 table.nut th.nut-hl, table.nut td.nut-hl { background: color-mix(in srgb, var(--pal-periwinkle) 12%, transparent); }
