@@ -49,23 +49,9 @@ let input: Inputs = {
   intake: null,
 };
 
-// Opt-in persistence (GOAL privacy rule: localStorage only on explicit opt-in).
-const STORE_KEY = "whs-calc-inputs-v1";
-let rememberMe = false;
-try {
-  const raw = localStorage.getItem(STORE_KEY);
-  if (raw) {
-    const parsed = JSON.parse(raw) as Partial<Inputs> & { density?: number; mlPerFeed?: number };
-    // migrate the pre-split single density into the milk density (2026-10-05)
-    if (typeof parsed.density === "number" && typeof parsed.milkDensity !== "number") parsed.milkDensity = parsed.density;
-    delete parsed.density;
-    // migrate the pre-split single tolerated portion into the milk portion (2026-10-05)
-    if (typeof parsed.mlPerFeed === "number" && typeof parsed.milkPortionMl !== "number") parsed.milkPortionMl = parsed.mlPerFeed;
-    delete parsed.mlPerFeed;
-    input = { ...input, ...parsed };
-    rememberMe = true;
-  }
-} catch { /* ignore */ }
+// Persistence (user request 2026-10-07, D-082): the calculator state lives ONLY in the URL —
+// the opt-in localStorage store is removed. Clean up its key if a browser still has it.
+try { localStorage.removeItem("whs-calc-inputs-v1"); } catch { /* ignore */ }
 
 // --- URL state plumbing (2026-10-07) ---------------------------------------
 // Merges updates into the query string; replaces history (no new entries) and
@@ -352,10 +338,6 @@ function readInputs(): void {
     mealPortionG: (document.getElementById("in-mealportion") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-mealportion") as HTMLInputElement).value),
     intake: (document.getElementById("in-intake") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-intake") as HTMLInputElement).value),
   };
-  try {
-    if (rememberMe) localStorage.setItem(STORE_KEY, JSON.stringify(input));
-    else localStorage.removeItem(STORE_KEY);
-  } catch { /* ignore */ }
   // Mirror the state into the URL (shareable/reloadable links) — user request 2026-10-07.
   setUrlParams({ ...calcUrlParams(input), milk: milkProductId });
   recalc();
@@ -430,8 +412,7 @@ function renderCalcForm(): void {
       <p class="small hint">${t("calc.portions_hint")}</p>
       <label for="in-intake">${t("calc.intake")}</label>
       <input id="in-intake" type="number" min="0" max="3000" step="10" value="${input.intake ?? ""}" />
-      <label class="remember"><input type="checkbox" id="in-remember" ${rememberMe ? "checked" : ""}/> ${t("calc.remember")}</label>
-      <p class="small">${t("calc.remember_hint")}</p>
+      <p class="small">${t("calc.url_hint")}</p>
       <button class="primary" type="button" id="btn-recalc">${t("calc.compute")}</button>
     </form>
   </div>`;
@@ -447,13 +428,6 @@ function renderCalcForm(): void {
     document.getElementById(id)!.addEventListener("change", readInputs);
   }
   document.getElementById("btn-recalc")!.addEventListener("click", readInputs);
-  document.getElementById("in-remember")?.addEventListener("change", (e) => {
-    rememberMe = (e.target as HTMLInputElement).checked;
-    try {
-      if (rememberMe) localStorage.setItem(STORE_KEY, JSON.stringify(input));
-      else localStorage.removeItem(STORE_KEY);
-    } catch { /* ignore */ }
-  });
   updateMilkCard();
 }
 

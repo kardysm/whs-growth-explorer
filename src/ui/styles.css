@@ -547,7 +547,7 @@ section.sec-in { animation: secIn 0.5s cubic-bezier(0.2, 0.7, 0.3, 1); }
 :root[data-theme="dark"] .badge.tg.tag-thickener { --bcol: #d6d3d1; }
 :root[data-theme="dark"] .badge.tg.tag-flavour { --bcol: #c4b5fd; }
 
-/* ---------- nutrients / milk / remember ---------- */
+/* ---------- nutrients / milk ---------- */
 .nut-toggle { display: inline-flex; gap: 0.3rem; margin: 0.4rem 0; }
 /* the macro/micronutrient card doesn't need the full page width (user batch card 5, 2026-10-07) */
 #rules .card.nut-card { max-width: min(100%, 780px); }
@@ -555,8 +555,6 @@ section.sec-in { animation: secIn 0.5s cubic-bezier(0.2, 0.7, 0.3, 1); }
 .nut-toggle button[aria-pressed="true"] { color: var(--fg); border-color: var(--accent2); }
 table.nut th.nut-hl, table.nut td.nut-hl { background: color-mix(in srgb, var(--pal-periwinkle) 12%, transparent); }
 table.nut td .small { color: var(--muted); }
-label.remember { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.85rem; font-size: 0.85rem; color: var(--fg); }
-label.remember input { width: auto; margin: 0; }
 
 /* ---------- responsive header (mobile hamburger) ---------- */
 .nav-toggle { display: none; }

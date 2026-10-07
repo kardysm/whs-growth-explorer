@@ -449,13 +449,9 @@
       "pl": "Podział liczony z wartości centralnych C i D (utrzymanie i doganianie): „z mleka” = objętość × gęstość mleka, resztę pokrywają posiłki. Dla płynnych posiłków 1 g ≈ 1 ml.",
       "en": "Split computed from the central C and D values (maintenance and catch-up): “from milk” = volume × milk density; the rest is covered by meals. For liquid meals 1 g ≈ 1 ml."
     },
-    "remember": {
-      "pl": "Zapamiętaj wartości na tym urządzeniu",
-      "en": "Remember these values on this device"
-    },
-    "remember_hint": {
-      "pl": "Dane zostają tylko w Twojej przeglądarce (localStorage; bez serwera). Odznacz, aby usunąć zapis.",
-      "en": "Stored only in your browser (localStorage; no server). Uncheck to delete."
+    "url_hint": {
+      "pl": "Wartości są zapisane w adresie strony. Zapisz ją w zakładkach przeglądarki (Ctrl+D), aby do nich wrócić, albo skopiuj link, aby wysłać go komuś — nic nie jest wysyłane na żaden serwer.",
+      "en": "Your values live in the page address. Bookmark it (Ctrl+D) to come back to them, or copy the link to send it to someone — nothing is ever sent to any server."
     },
     "grades_hint": {
       "pl": "Litery A–D przy kartach to klasy dowodów (nie nazwy metod):",
