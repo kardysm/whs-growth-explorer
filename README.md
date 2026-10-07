@@ -59,6 +59,7 @@ src/data/                                  importable mirrors (grid, reference l
 scripts/                                   fetch/verify/convert/crosscheck tooling
 dist/                                      built static site
 review/                                    §7 audit rounds (findings + resolution logs, rounds 1–5) + the 2026-10-07 user review (round-6 log)
+DESIGN-SYSTEM.md                           liquid-glass design system (tokens, palette, components)
 ```
 
 ## Known limitations (current draft)

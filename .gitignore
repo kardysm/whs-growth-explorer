@@ -18,9 +18,8 @@ research/raw/fdc/sr_legacy/
 .DS_Store
 *.log
 
-# planning/design docs (kept on disk, local-only — not published with the repo)
+# planning docs (kept on disk, local-only — not published with the repo)
 UX-KANBAN.html
 GOAL.md
 REPORT.md
-DESIGN-SYSTEM.md
 DECISIONS.md
