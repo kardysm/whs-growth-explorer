@@ -138,3 +138,9 @@ wording.
 Re-scan after the follow-up batch (card C gained the WHO weight-for-length z note, D-card notes added,
 banner/flags reworded): axe-core 0 violations in light and dark (same single `color-contrast` incomplete
 for the gradient primary button as before — manual math 7.13:1 / 11.65:1, documented above).
+
+### Addendum 2026-10-07 (evening batch, D-070–D-072)
+
+Re-scan after the calc single-card merge, the nutrients-card move and the search-dropdown stacking fix:
+axe-core 0 violations in light and dark (same single `color-contrast` incomplete for the gradient primary
+button as before — manual math 7.13:1 / 11.65:1).
