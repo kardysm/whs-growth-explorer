@@ -156,12 +156,13 @@ let reopenNav = false;
 
 function renderShell(): void {
   app.innerHTML = `
+  <div id="top" aria-hidden="true"></div>
   <a class="skip-link" href="#main">${t("a11y.skip")}</a>
   <header class="top">
-    <h1>WHS Feeding &amp; Growth Explorer</h1>
+    <h1><a href="#top">WHS Feeding &amp; Growth Explorer</a></h1>
     <button type="button" class="hdr-btn nav-toggle" id="nav-toggle-btn" aria-expanded="false" aria-controls="main-nav" aria-label="${t("nav.menu")}">☰ <span class="small">${t("nav.menu")}</span></button>
     <nav class="main" id="main-nav" aria-label="${t("nav.aria")}">
-      ${( ["start","calc","results","charts","table","why","flags","rules","products","sources","method"] as const)
+      ${( ["calc","results","charts","table","why","flags","rules","products","sources","method"] as const)
         .map((k) => `<a href="#${k}">${t(`nav.${k}`)}</a>`).join("")}
       <div class="menu-tools">
         <div class="lang-toggle" role="group" aria-label="język / language">
