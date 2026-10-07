@@ -997,7 +997,9 @@ function renderFlags(): void {
 
 function renderRules(): void {
   const RR = rules as unknown as { intro: BiText; blocks: { id: string; title: BiText; items: ItemT[] }[] };
-  const html = [`<div class="card nut-card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`, `<p class="card small">${B(RR.intro)}</p>`, `<div class="cards-grid">`];
+  // Section order (user request 2026-10-07): the intro paragraph leads the section (same convention as
+  // Reasons/Flags), then the standalone nutrients card, then the rule cards.
+  const html = [`<p class="card small">${B(RR.intro)}</p>`, `<div class="card nut-card"><h3>${t("nutrients.title")}</h3><div id="nutrients"></div></div>`, `<div class="cards-grid">`];
   for (const bl of RR.blocks) {
     const items = bl.items
       .map(

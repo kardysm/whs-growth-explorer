@@ -75,7 +75,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
   </main>
   <footer><p>${$(`footer`)}</p>
     <p class="small" id="footer-links">${$(`footer_source_label`)}: <a href="https://github.com/kardysm/whs-growth-explorer" target="_blank" rel="noopener">github.com/kardysm/whs-growth-explorer</a> · ${$(`footer_contact_label`)}: <a href="mailto:whs@kardys.dev">whs@kardys.dev</a></p>
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.5.9`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`4b7a733+`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.5.10`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`3e90ab4+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
@@ -242,7 +242,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
       <div id="flag-${r}-i${t}" style="margin:.6rem 0;padding-top:.5rem;border-top:1px solid var(--line)">
         <p>${f9(e.text)} ${e.wspecific?`<span class="badge">WHS</span>`:``} ${m9(e.grade)}</p>
         <p class="small">${R7===`pl`?`Źródła`:`Sources`}: ${p9(e.sources)}</p>
-      </div>`).join(``);n.push(`<div class="card ${t[r]}"><h3>${f9(e.levels[r])}</h3>${i}</div>`)}n.push(`</div>`),document.getElementById(`flags-body`).innerHTML=n.join(``)}function rne(){let e=e7,t=[`<div class="card nut-card"><h3>${$(`nutrients.title`)}</h3><div id="nutrients"></div></div>`,`<p class="card small">${f9(e.intro)}</p>`,`<div class="cards-grid">`];for(let n of e.blocks){let e=n.items.map((e,t)=>`
+      </div>`).join(``);n.push(`<div class="card ${t[r]}"><h3>${f9(e.levels[r])}</h3>${i}</div>`)}n.push(`</div>`),document.getElementById(`flags-body`).innerHTML=n.join(``)}function rne(){let e=e7,t=[`<p class="card small">${f9(e.intro)}</p>`,`<div class="card nut-card"><h3>${$(`nutrients.title`)}</h3><div id="nutrients"></div></div>`,`<div class="cards-grid">`];for(let n of e.blocks){let e=n.items.map((e,t)=>`
       <div id="rule-${n.id}-i${t}" style="margin:.6rem 0;padding-top:.5rem;border-top:1px solid var(--line)">
         <p>${f9(e.text)} ${m9(e.grade)}</p>
         <p class="small">${R7===`pl`?`Źródła`:`Sources`}: ${p9(e.sources)}</p>
