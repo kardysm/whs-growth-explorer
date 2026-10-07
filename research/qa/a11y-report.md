@@ -144,3 +144,10 @@ for the gradient primary button as before — manual math 7.13:1 / 11.65:1, docu
 Re-scan after the calc single-card merge, the nutrients-card move and the search-dropdown stacking fix:
 axe-core 0 violations in light and dark (same single `color-contrast` incomplete for the gradient primary
 button as before — manual math 7.13:1 / 11.65:1).
+
+### Addendum 2026-10-07 (motion + footer batch, D-073–D-075)
+
+Re-scan after the motion pass (transitions, entrances, scroll reveal) and the footer links: axe-core
+0 violations in light and dark (same single `color-contrast` incomplete for the gradient primary button).
+The reduced-motion path was verified via CDP emulation (`prefers-reduced-motion: reduce` → all animation/
+transition durations 0.01 ms, `scroll-behavior: auto`).
