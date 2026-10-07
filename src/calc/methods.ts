@@ -167,7 +167,17 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
   const heightSubstituted = input.lengthCm === null;
   const dLen = defaultLengthCm(sex, ageMonths, ctx);
   const height = input.lengthCm ?? dLen.cm ?? 0;
-  const bmr = height > 0 ? schofieldBmrBand(sex, ageMonths, weightKg, height) : 0;
+  // Audit H1 (2026-10-07): the Schofield form is chosen by BODY SIZE (weight-age), not the birthday
+  // — the WH forms were fitted on ~13-35 kg children, so a small-for-age child (e.g. a WHS
+  // 3-year-old at ~8.5 kg) stays on the weight-only form and C keeps ~60 kcal/kg past 36 months.
+  // Weight-age comes from WHO wfa (the same value method B uses); when the weight is outside the
+  // WHO table, fall back on the WHO median weight at 36 months (>= it => the size of a >=3 y child).
+  let weightAgeForBmr: number | null = weightAge;
+  if (weightAgeForBmr === null) {
+    const m36 = medianAt(whoTable(ctx.who, `wfa_${sex}`), 36);
+    if (m36 !== null) weightAgeForBmr = weightKg >= m36 ? 36 : 0;
+  }
+  const bmr = height > 0 ? schofieldBmrBand(sex, ageMonths, weightKg, height, weightAgeForBmr) : 0;
   const tone = TONE[input.tone];
   const act = ACTIVITY[input.mobility];
   // Round-2 audit R2-1: validity guard — the Schofield height form collapses (or can go negative) at
@@ -191,15 +201,18 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     sourceIds: ["ni2009_sullivan", "krick1992", "schofield1985", "efsa_energy"],
     alerts: cAlerts.length ? cAlerts : undefined,
     notes: [
-      N("Typ Krick: BMR (Schofield — forma wagowa dla 0–3 lat, masa+wzrost od 3 lat) × napięcie mięśniowe × aktywność; pierwotny BMR Kricka opierał się na BSA (udokumentowane odstępstwo).", "Krick-type: BMR (Schofield — weight-only form for 0-3 y, weight+height from 3 y) x tone x activity; Krick's original BMR was BSA-based (documented deviation)."),
+      N("Typ Krick: BMR (Schofield — forma wagowa dla wielkości ciała poniżej ~3 lat, masa+wzrost powyżej; formę wybiera wiek masowy, nie urodziny) × napięcie mięśniowe × aktywność; pierwotny BMR Kricka opierał się na BSA (udokumentowane odstępstwo).", "Krick-type: BMR (Schofield — weight-only form below ~3 y of body size, weight+height above; the form is chosen by weight-age, not birthday) x tone x activity; Krick's original BMR was BSA-based (documented deviation)."),
       N(`czynnik napięcia: ${String(tone).replace(".", ",")}; czynnik aktywności: ${String(act).replace(".", ",")}`, `tone factor ${tone}; activity factor ${act}`),
+      ...(ageMonths >= 36 && weightAgeForBmr !== null && weightAgeForBmr < 36
+        ? [N(`≥3 lata kalendarzowo, ale wiek masowy ${weightAgeForBmr.toFixed(1).replace(".", ",")} mies. < 36 — forma wagowa Schofielda obowiązuje dalej (bez skoku C; audyt H1).`, `Calendar age >= 3 y but weight-age ${weightAgeForBmr.toFixed(1)} mo < 36 — the weight-only Schofield form continues (no C jump; audit H1).`)]
+        : []),
       ...(heightSubstituted
         ? [dLen.source === "whs"
             ? N("Nie podano długości — przyjęto średnią długość dla wieku z siatki WHS (zdigitalizowanej, Antonius 2008); ta sama zasada obowiązuje w tabeli i na wykresie.", "Length not provided — WHS mean length for age used (digitized, Antonius 2008); the same assumption applies to the table and chart.")
             : N("Nie podano długości — przyjęto medianę długości WHO dla wieku (siatka WHS niedostępna dla tego wieku).", "Length not provided — WHO median length for age used (WHS chart unavailable for this age).")]
         : []),
       N("Wartości niskie/wysokie obejmują pasmo czynnika napięcia mięśniowego (0,9–1,1).", "Low/high values span the muscle-tone factor range (0.9-1.1)."),
-      N("Dla 0–3 lat forma wagowa Schofielda (W): BMR = 59,48 × masa − 30,33 (chłopcy) / 58,29 × masa − 31,05 (dziewczynki); od 3. roku życia forma masa+wzrost (WH). Źródło: wytyczne ESPGHAN/ESPEN.", "Ages 0-3 y use the Schofield weight-only (W) form: BMR = 59.48 × weight − 30.33 (boys) / 58.29 × weight − 31.05 (girls); from age 3 y the weight+height (WH) form. Source: ESPGHAN/ESPEN guideline."),
+      N("Forma Schofielda wybierana wg wielkości ciała (wieku masowego): dopóki wiek masowy < 36 mies. — forma wagowa (W): BMR = 59,48 × masa − 30,33 (chłopcy) / 58,29 × masa − 31,05 (dziewczynki); od wieku masowego 36 mies. — forma masa+wzrost (WH), dopasowana do dzieci ~13–35 kg. Dzięki temu C nie skacze na 3. urodziny (audyt H1). Źródło: ESPGHAN/ESPEN.", "The Schofield form is chosen by body size (weight-age): while weight-age < 36 mo the weight-only (W) form is used: BMR = 59.48 × weight − 30.33 (boys) / 58.29 × weight − 31.05 (girls); from weight-age 36 mo the weight+height (WH) form, fitted on children ~13-35 kg. This removes the C jump at the 3rd birthday (audit H1). Source: ESPGHAN/ESPEN."),
     ],
   };
 

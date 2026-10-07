@@ -107,12 +107,19 @@ describe("full pipeline (representative case)", () => {
     expect(r6.D.guardrails.some((g) => g.en.includes("D-2"))).toBe(true);
   });
 
-  it("default length follows the WHS chart (audit F1; WH form at >=3y)", () => {
+  it("default length follows the WHS chart (audit F1); form now chosen by weight-age (audit H1)", () => {
     const r7 = computeAll({ ...base, ageMonths: 40, weightKg: 10, lengthCm: null }, ctx);
-    const whsLen = r7.whsRef.length["mean"]!;
-    const bmr = 19.6 * 10 + 130.3 * (whsLen / 100) + 414.9;
+    // weight-age of 10 kg is ~13.6 mo (< 36) -> weight-only form, even at 40 mo calendar age
+    const bmr = 59.48 * 10 - 30.33;
     expect(r7.C.kcalPerDay.central!).toBeCloseTo(bmr * 0.9 * 1.15, 3);
     expect(r7.whsZ.weight).not.toBeNull();
+  });
+
+  it("heavy-for-age child uses the weight+height form once weight-age >= 36 (audit H1)", () => {
+    const r = computeAll({ ...base, ageMonths: 40, weightKg: 15.5, lengthCm: null }, ctx);
+    const len = r.whsRef.length["mean"]!;
+    const bmr = 19.6 * 15.5 + 130.3 * (len / 100) + 414.9;
+    expect(r.C.kcalPerDay.central!).toBeCloseTo(bmr * 0.9 * 1.15, 2);
   });
 
   it("month 0-2: weight-only form gives plausible C, no alerts (flatness fix 2026-10-03)", () => {
@@ -153,9 +160,13 @@ describe("full pipeline (representative case)", () => {
     expect(r15.C.alerts && r15.C.alerts.length).toBeGreaterThan(0);
   });
 
-  it("implausible high C per kg is flagged (audit R3-5)", () => {
+  it("absurd low weight at 48 mo stays in the per-kg range after the H1 switch (weight-only form)", () => {
+    // Before H1 this case hit the >250 kcal/kg branch via the WH form; now the weight-only form is
+    // proportional to weight, so the anomaly shows through the WHS z-position instead (audit H1).
     const r14 = computeAll({ ...base, ageMonths: 48, weightKg: 2, lengthCm: null }, ctx);
-    expect(r14.C.alerts && r14.C.alerts.length).toBeGreaterThan(0);
+    const c = r14.C.kcalPerDay.central!;
+    expect(c / 2).toBeLessThan(250);
+    expect(r14.whsZ.weight!).toBeLessThan(-3);
   });
 
   it("who_wfl_median target uses WHO median at length", () => {
@@ -194,6 +205,46 @@ describe("A/B line continuity (user report 2026-10-05; DECISIONS D-029)", () => 
   it("A blends across the 6-month NASEM->EFSA handover (no step)", () => {
     const a = (age: number): number => computeAll({ ...base, ageMonths: age, weightKg: 7.5 }, ctx).A.kcalPerDay.central!;
     expect(Math.abs(a(6.1) - a(5.9))).toBeLessThan(15);
+  });
+});
+
+describe("C continuity across the Schofield form switch (audit H1)", () => {
+  const cAt = (sex: "boys" | "girls", age: number, w: number): number | null =>
+    computeAll({ ...base, sex, ageMonths: age, weightKg: w }, ctx).C.kcalPerDay.central;
+
+  it("no birthday cliff: C at 35 vs 36 months moves < 1% for WHS-typical weights (was +38-43%)", () => {
+    for (const sex of ["boys", "girls"] as const) {
+      const w = sex === "boys" ? 8.6 : 8.5;
+      const c35 = cAt(sex, 35, w)!;
+      const c36 = cAt(sex, 36, w)!;
+      expect(Math.abs(c36 - c35) / c35).toBeLessThan(0.01);
+    }
+  });
+
+  it("WHS-typical child keeps ~60 kcal/kg up to 48 months (audit H1)", () => {
+    for (const sex of ["boys", "girls"] as const) {
+      for (const [age, w] of [[36, sex === "boys" ? 8.65 : 8.56], [48, sex === "boys" ? 9.64 : 9.73]] as const) {
+        const perKg = cAt(sex, age, w)! / w;
+        expect(perKg).toBeGreaterThan(50);
+        expect(perKg).toBeLessThan(70);
+      }
+    }
+  });
+
+  it("form-switch step at the crossover weight stays small (<= 8% worst case over 24/36/48 mo)", () => {
+    for (const sex of ["boys", "girls"] as const) {
+      for (const age of [24, 36, 48]) {
+        let prev: number | null = null;
+        let worst = 0;
+        for (let i = 0; i <= 80; i++) {
+          const w = Math.round((12 + i * 0.05) * 100) / 100;
+          const c = cAt(sex, age, w);
+          if (c !== null && prev !== null) worst = Math.max(worst, Math.abs(c - prev) / prev);
+          prev = c;
+        }
+        expect(worst).toBeLessThan(0.08);
+      }
+    }
   });
 });
 

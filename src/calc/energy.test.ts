@@ -48,18 +48,27 @@ describe("FAO/WHO/UNU 2004 lookups", () => {
   it("girls 11-12 mo bin -> 712 (audit F5 fix)", () => expect(faoEnergy("girls", 11)).toBe(712));
 });
 
-describe("Schofield BMR (ESPGHAN/ESPEN tables; weight-only 0-3y, weight+height 3-10y)", () => {
-  it("boys 24 mo, 9.65 kg: weight-only (W) form", () => {
+describe("Schofield BMR (ESPGHAN/ESPEN tables; form chosen by weight-age — audit H1)", () => {
+  it("boys 24 mo, 9.65 kg (weight-age ~12): weight-only (W) form", () => {
     // 59.48*9.65 - 30.33
-    const v = schofieldBmrBand("boys", 24, 9.65, 75.7);
+    const v = schofieldBmrBand("boys", 24, 9.65, 75.7, 12);
     expect(v).toBeCloseTo(59.48 * 9.65 - 30.33, 3);
   });
-  it("girls 24 mo, 9.0 kg: weight-only (W) form", () => {
-    const v = schofieldBmrBand("girls", 24, 9.0, 74.0);
+  it("girls 24 mo, 9.0 kg (weight-age ~11): weight-only (W) form", () => {
+    const v = schofieldBmrBand("girls", 24, 9.0, 74.0, 11);
     expect(v).toBeCloseTo(58.29 * 9.0 - 31.05, 3);
   });
-  it("boys 48 mo, 12.0 kg, 90 cm: weight+height (WH) form", () => {
-    const v = schofieldBmrBand("boys", 48, 12.0, 90);
-    expect(v).toBeCloseTo(19.6 * 12.0 + 130.3 * 0.9 + 414.9, 3);
+  it("small-for-age child at 40 mo stays on the W form while weight-age < 36 (audit H1)", () => {
+    // WHS-typical: 40 mo, 8.65 kg -> weight-age ~8.5 mo; the old calendar rule inflated this by ~40%
+    const v = schofieldBmrBand("boys", 40, 8.646, 80.9, 8.5);
+    expect(v).toBeCloseTo(59.48 * 8.646 - 30.33, 3);
+  });
+  it("weight+height (WH) form once weight-age >= 36 (boys 48 mo, 15 kg, 100 cm)", () => {
+    const v = schofieldBmrBand("boys", 48, 15.0, 100, 37);
+    expect(v).toBeCloseTo(19.6 * 15.0 + 130.3 * 1.0 + 414.9, 3);
+  });
+  it("null weight-age (outside the WHO table) falls back to the calendar-age boundary", () => {
+    expect(schofieldBmrBand("boys", 30, 5, 60, null)).toBeCloseTo(59.48 * 5 - 30.33, 3);
+    expect(schofieldBmrBand("boys", 40, 16, 100, null)).toBeCloseTo(19.6 * 16 + 130.3 * 1.0 + 414.9, 3);
   });
 });

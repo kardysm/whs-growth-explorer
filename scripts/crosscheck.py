@@ -166,7 +166,15 @@ def nasem(sex, m, h, w):
 
 def schofield(sex, m, w, h_cm):
     H = h_cm / 100
-    if m < 36:
+    # Audit H1 (2026-10-07): the form is selected by BODY SIZE (weight-age), not the birthday —
+    # mirrors the JS (methods.ts resolves the fallback; energy.ts consumes it).
+    wa = age_for_weight(WHO[f"wfa_{sex}"], w)
+    if wa is None:
+        m36 = median(WHO[f"wfa_{sex}"], 36)
+        if m36 is not None:
+            wa = 36 if w >= m36 else 0
+    use_wh = (m >= 36) if wa is None else (wa >= 36)
+    if not use_wh:
         # Schofield weight-only (W) forms (ESPGHAN/ESPEN PN energy guideline; flat-chart fix 2026-10-03)
         return (59.48 * w - 30.33) if sex == "boys" else (58.29 * w - 31.05)
     if m < 120:

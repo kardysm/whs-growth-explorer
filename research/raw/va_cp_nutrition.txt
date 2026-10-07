@@ -1,0 +1,690 @@
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+16
+Nutritional Assessment and 
+Intervention in Cerebral Palsy
+INTRODUCTION
+I
+ndividuals with cerebral palsy (CP) present unusual
+challenges to dietitians when presenting to an acute
+care setting. Short stature, scoliosis, and oral-motor
+difficulties are some of the unique characteristics to
+consider in nutritional assessment and intervention
+(see Table 1). Children with special health care needs
+(CSHCN) typically have a “Medical Home,” which is
+usually a pediatrician or family practice physician who
+provides routine pediatric care and care coordination
+of the multiple specialists the child sees (3). In adult-
+hood, the family physician or internist usually contin-
+ues this practice, or in some instances, the caregivers
+must coordinate the individual’s specialty care. 
+Caregivers usually have medical records contain-
+ing assessments from an interdisciplinary team, which
+may include follow up recommendations and guide-
+lines for monitoring nutritional status. If a registered
+dietitian has previously followed an individual, it can
+be very helpful to contact them for background infor-
+mation and recommendations. Individuals with CP may
+be unable to communicate; therefore, caregivers pro-
+vide important information for a nutrition assessment. 
+In clinical practice, the Subjective Global Assess-
+ment technique (4) is not a good assessment tool for
+most individuals with disabilities, as the body habitus
+is not considered in this assessment. However, a phys-
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Wendy Wittenbrook, MA, RD, CSP, LD, Clinical 
+Dietitian, Texas Scottish Rite Hospital for Children,
+Dallas, TX.
+Carol Rees Parrish, R.D., M.S., Series Editor
+Advances in medical care have resulted in a longer lifespan of individuals with cerebral
+palsy, with many surviving and thriving through adulthood.  Individuals with cerebral
+palsy can have nutritional issues that may significantly impact their health, growth, and
+development. As children with cerebral palsy “age out” of the pediatric system, adult
+practitioners may be unfamiliar with the nutrition-related problems that can present in
+this challenging population. Medical issues, such as wounds, illness, or surgery, are typ-
+ically the primary focus in the acute care setting. The ultimate goal in nutritional inter-
+vention should be to optimize health, fitness, growth, and function in individuals with
+cerebral palsy.  Nutritional assessment, intervention, and monitoring of individuals with
+cerebral palsy are discussed in this article, along with special considerations.
+(continued on page 21)
+Wendy Wittenbrook
+
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+21
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Nutritional Assessment and Intervention in Cerebral Palsy
+ical assessment is important to identify signs and
+symptoms of dehydration and malnutrition.  Tobin et
+al. (5) have summarized potential feeding and nutrition
+problems for a variety of developmental disorders.
+Although this resource focuses on CSHCN, it also pro-
+vides information regarding oral motor problems typi-
+cally seen in children and adults with special health
+care needs. Please see references 1 and 2 for informa-
+tion on in-depth evaluation and Table 2 for additional
+practitioner resources.  
+NUTRITIONAL ASSESSMENT
+ANTHROPOMETRICS: CLINIC VS ACUTE CARE
+Stature Measurement 
+Short stature can result from an underlying diagnosis
+and/or nutritional stunting in childhood. Changes due
+to scoliosis, spasticity, contractures, and/or limb differ-
+ences may even make the individual appear to “shrink”
+over time. Once maximum adult stature has been
+achieved, increasing energy and protein intake will not
+(continued from page 16)
+Table 1.  
+Common Challenges seen in Individuals with Cerebral
+Palsy and Other Developmental Disabilities1,2
+Parameter
+Challenges 
+Growth
+• Underweight
+• Overweight
+• Short stature
+Mobility
+• Ambulatory
+• Nonambulatory
+• Power/manual wheelchair
+• Assistive devices
+Dysphagia
+• Oropharyngeal
+• Esophageal
+Muscle tone
+• Hypertonia
+• Hypotonia
+Alternative/ 
+• Side effects
+Complementary 
+• Drug-nutrient interactions
+Medicine
+Feeding
+• Oral
+• Enteral
+• Parenteral
+GI
+• Gastroesophageal reflux
+• Dysmotility
+• Dumping syndrome
+• Malrotation
+• Diarrhea/constipation
+Orthopaedic
+• Contactures
+• Scoliosis
+• Dislocated hips
+• Osteopenia
+Medications
+• Drug-nutrient interactions
+• Side effects on muscle tone, 
+bowels, appetite
+Pulmonary status
+• Effects on energy expenditure
+Table 2.  
+Additional Resources for Dietitians
+Professional Organizations
+• American Academy of Cerebral Palsy and Developmen-
+tal Medicine
+• American Dietetic Association
+– Behavioral Health Nutrition Practice Group
+– Pediatric Nutrition Practice Group (Children with
+Special Health Care Needs Special Interest Group)
+Government Organizations
+• National Institute of Child Health and Human Develop-
+ment (NICHD), Division of Services for Children with
+Special Health Needs
+• Department of Health and Human Services (state level)
+Conferences
+• Advances in Pediatric Nutrition
+• American Academy of Cerebral Palsy and 
+Developmental Medicine
+Publications
+(in addition to References at end of article)
+• Cricco K and Holland M. Nutrition Assessment 
+Guidelines for Children with Special Health Care Needs.
+NUTRITION FOCUS Newsletter. 2007; 22(3):1–11.
+• Lucas BL, Feucht SA, Grieger LE, editors. Children with
+Special Health Care Needs: Nutrition Care Handbook.
+American Dietetic Association; 2004.
+
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+22
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Nutritional Assessment and Intervention in Cerebral Palsy
+increase stature. An accurate measurement of stature is
+necessary to determine an appropriate weight for
+height (also known as ideal body weight) and in calcu-
+lating energy and protein needs for individuals with
+CP. Accuracy can be affected by contractures, scolio-
+sis, or abnormally formed body structures. 
+In the clinic setting, practitioners use a variety of
+measurement techniques to assess stature. Canda has
+developed equations to estimate stature through the
+use of body segment lengths that may be used in adults
+with developmental disabilities (6). Knee height (1),
+upper arm length (1), recumbent length (7), or tibial
+length (8) are techniques used to estimate stature.
+Orthopaedic deformities and contractures make arm
+span and sitting height measurements difficult and
+impractical to obtain in individuals with CP. The use of
+a measuring tape to measure along the contours of a
+reclining individual is not accurate and should be
+avoided. Measurement techniques should be used con-
+sistently and follow a facility’s protocol. 
+A stature measurement should be obtained on each
+acute admission for adults with CP, as changes in spas-
+ticity, scoliosis, and contractures may affect measure-
+ments. Children with CP should have a stature
+measurement upon hospital admission and monthly
+thereafter. 
+Weight
+In individuals with CP, weight does not reflect the typ-
+ical distribution of body fat and muscle; therefore, cal-
+culating body mass index (BMI) is not useful for
+estimating appropriate weight for height. Fat stores are
+typically depleted (9–11) and muscle stores are low
+compared to norms (9–10). These alterations in body
+composition should be considered when estimating
+energy needs. For example, if a hypometabolic indi-
+vidual has low muscle stores but high fat stores (as evi-
+denced by skinfold measurements), increasing energy
+intake will not lead to muscle mass, as demonstrated
+by Ohata et al. (12).
+An accurate weight may be difficult to obtain, par-
+ticularly if bed, table, or wheelchair scales are not
+available. Standing scales may be used to weigh indi-
+viduals who are able to bear weight. Here are a few
+considerations to remember when obtaining weights
+and patients with CP:
+• A consistent scale should be used when obtaining
+weights. 
+• Outpatient weights should be obtained at least twice
+a year, and inpatient weights should be measured
+weekly.  
+• Scales must be zeroed out before each measurement. 
+• Individuals should be weighed in light clothing, with
+a dry diaper (if incontinent), and without shoes and
+braces.
+Assessment of Stature and Weight
+The Centers for Disease Control (CDC) growth charts
+(13) should be used for children and adults less than
+five feet tall and the Hamwi method (14) should be
+used for individuals over five feet tall to estimate the
+appropriate weight for height. Some practitioners use
+the 50th percentile BMI/age to determine the ideal
+body weight/appropriate weight for height; however,
+this assumes an accurate height and the typical distrib-
+ution of fat and muscle. Disability-specific growth
+charts are available to assess “typical” growth of vari-
+ous syndromes, but small sample sizes, age ranges,
+and the lack of availability in an acute care setting tend
+to limit their use. When plotting individuals up to age
+20 on the CDC growth charts, the goal is to have
+appropriate growth velocity and for the child to follow
+their growth curve, even when measurements are con-
+sistently below the 5th percentile.
+Skinfold Measurements
+Skinfold measurements are a quick and easy method to
+assess an individual’s body habitus, and these tech-
+niques have been previously described in detail in ref-
+erences 1 and 2. The measurements may be interpreted
+using percentiles published by Frisancho (15),
+although these were based on a Caucasian population
+without disabilities. Although fat stores are usually
+low compared to norms in individuals with CP (9–11),
+severely disabled individuals tend to have more typical
+fat stores similar to nondisabled individuals (11). 
+A single skinfold measurement is not useful to esti-
+mate percentage of body fat in individuals with CP.
+Clinical practice has found serial skin fold measure-
+ments over time using the individual as their own con-
+trol is the best use of these measurements. Triceps skin
+
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+23
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Nutritional Assessment and Intervention in Cerebral Palsy
+fold measurements (TSF) less than 10th percentile have
+been validated as a reliable screening tool for depleted
+fat stores in this population (9), and, for these individ-
+uals, the appropriate (ideal) weight for height should be
+used for calculating energy and protein needs. Actual
+body weight may be used in individuals with TSF
+between the 25th and 90th percentile, and adjusted
+body weight may be used in obese individuals.  
+DETERMINING NUTRITIONAL REQUIREMENTS
+Energy
+Disability specific standards for estimating energy
+needs in children with CP are available, (2); however,
+they are often of limited use due to small sample size,
+limited age ranges studied and the necessity of an accu-
+rate stature measurement. For example, one formula
+used for CP is: 5–11 years old—14 kcal/cm if ambula-
+tory; 11 kcal/cm if nonambulatory (16). Standards for
+adults with disabilities are not available. The typical
+use of prediction equations can overestimate energy
+needs in CSHCN by as much as 20% (17), and Vernon-
+Roberts et al. (18) have shown appropriate growth in
+children with CP with 75% of estimated energy needs
+via enteral feedings.  No two individuals with cerebral
+palsy are alike; some individuals may be hypometabo-
+lic as a result of hypotonia, while others may be hyper-
+metabolic related to increased muscle tone. The DRI
+equation for calculating energy needs (19) may be most
+useful in the acute setting, as it can be adjusted or “tai-
+lored” to meet a patient’s needs by adding in Physical
+Activity Coefficients. Adjustments may be made for
+higher energy needs, such as wound healing or posto-
+perative healing. Energy needs may also be based on
+the energy intake of the typical diet, with adjustments
+made for current medical status. It is not uncommon to
+see a hypometabolic individual with CP who is able to
+maintain their weight on a very low calorie level. If an
+individual with CP is admitted to an acute care facility
+on a nutritional regimen that seems unusually low or
+high in calories based on a facility’s protocol equations,
+clinicians should resist the temptation to change it.
+Most likely, the individual has been followed regularly
+by a dietitian that is quite familiar with them, and this
+regimen may be the one that has worked out of many
+months of trial and error. If the individual is doing well,
+they should remain on their preadmission nutritional
+regimen. The recommended changes based on a faci-
+lity’s protocol may seem like a simple change to the in-
+patient staff; however, this may cause significant upset
+to the individual and family.
+The effect of medications on energy expenditure is
+important to consider. For example, individuals with
+hypertonia that use medications such as Artane®
+(Trihexyphenidyl) or Lioresal® (Baclofen) to reduce
+muscle tone often have a reduction in their energy
+expenditure; therefore, weight should be closely moni-
+tored and energy intake adjusted to prevent undesira-
+ble weight changes. Antipsychotic medications, such
+as Risperdal® (Risperidone) have been noted to result
+in excessive weight gain resulting from the side effect
+of increased appetite.
+Protein
+Protein needs are estimated using the RDA/DRI and
+actual weight or appropriate weight for height (if
+<90% or >125% appropriate weight for height). There
+are no guidelines for estimating protein needs of indi-
+viduals with disabilities under stress such as surgery.
+Protein intake has been increased up to 1.5–2 g/kg/day
+in clinical practice for presurgical/postsurgical plan-
+ning and wound healing with normal renal status.  
+Estimating Fluid Requirements
+Determining fluid needs is an important step in assess-
+ment, as many individuals with CP have fluid loss
+through sialorrhea or sweating, and are unable to con-
+(continued on page 28)
+Table 3.  
+Calculating Fluid Needs20
+Weight
+Calculation
+1–10 kg
+100 mL/kg
+10–20 kg
+1000 mL + 50 mL/kg for each kg
+above 10 kg
+>20 kg
+1500 mL + 20 mL/kg for each kg
+above 20 kg 
+
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+28
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Nutritional Assessment and Intervention in Cerebral Palsy
+sume adequate quantities of fluids and/or communicate
+thirst. Actual body weight is used to estimate fluid needs
+using the Holliday-Segar equation (Table 3). However,
+the calculated fluid needs may not be realistic; therefore,
+in clinical practice, a goal of 90% of “ideal” fluid intake
+is more feasible. The often used rule of thumb of 1 mL
+of fluid per 1 kilocalorie (21) may underestimate the
+fluid needs of individuals who are hypometabolic.
+CONSIDERATION OF SPECIAL ISSUES
+GI Issues
+Gastrointestinal issues are prevalent in individuals
+with CP and should be considered during a nutrition
+assessment. The underlying neurologic impairment in
+cerebral palsy can affect the gastrointestinal system,
+most notably oral-motor function and motility (espe-
+cially colonic, which typically results in constipation).
+The possibility of autoimmune diseases, such as celiac
+disease, food allergy, or eosinophilic esophagitis
+should also be considered.
+Dysphagia/Oral Motor Dysfunction
+Every individual with CP should be screened for dys-
+phagia, for it commonly presents as a sequelae of the
+underlying damage to the central nervous system. Dys-
+phagia in CP typically presents as a history of feeding
+difficulties, extended feeding times, malnutrition, and/or
+a history of aspiration pneumonia (22). More severe
+oral-motor dysfunction is seen with increased severity of
+the disability (23,24). Medications used to reduce mus-
+cle tone can also increase dysphagia risk (23). For exam-
+ple, severe dysphagia has resulted from Botox injections
+of the salivary gland for sialorrhea treatment, as
+observed in clinical practice. See Table 4 for additional
+signs/symptoms of dysphagia in addition to obvious dif-
+ficulty with oral feedings. As the population of individu-
+als with CP ages, dysphagia can worsen or can present as
+a new diagnosis after a stroke or other central nervous
+system damage that occurs with aging (23). Screening
+for dysphagia should be done at each clinic visit, as well
+as when a patient presents to an acute care unit (23,24).
+Constipation
+Dysmotility, hypotonia, medications, and nonambula-
+tion contribute to constipation. Medications commonly
+used in this population that can cause constipation
+include 
+Artane®
+(Trihexyphenidyl), 
+Robinul®
+(Glycopyrrolate), Valium® (Diazepam), or narcotics.
+Veugelers et al. (25) found more than half of children
+with CP in their study had constipation. A higher inci-
+dence was seen in individuals with a more severe dis-
+ability and those who took medications contributing to
+constipation. Despite laxative treatment, one-third of
+individuals were still constipated. Although the authors
+found increasing fluid and fiber intake had no signifi-
+cant effect (25), clinical practice has found increasing
+fluid intake to 90% of fluid needs can help manage con-
+stipation in CP. The DRI for fiber is typically used to
+determine fiber recommendations (19); however, this
+may not be realistic due to food choices in individuals
+with CP, although fiber supplements may be helpful.
+Ensuring adequate fluid intake prior to increasing fiber
+intake can help prevent additional problems with con-
+stipation. Adjusting fluid and/or fiber intake does not
+always improve constipation, and increasing fiber can
+sometimes worsen constipation; therefore, medical
+management is frequently required. Pain from consti-
+pation may be confused with pain in other areas, par-
+ticularly hip pain. A kidney, ureters, and bladder (KUB)
+x-ray can be helpful to assess constipation to assist in
+decision making for medical management of constipa-
+tion. A patient’s normal stool habits should be noted
+and their typical bowel regimen continued while in the
+acute care unit unless contraindicated. 
+Dysmotility
+Issues with dysmotility can present in several forms:
+dysphagia, gastroesophageal reflux disease (GERD),
+(continued from page 23)
+Table 4.  
+Additional “Red Flags” for Dysphagia 
+in Cerebral Palsy24
+• Recurrent respiratory infections
+• Constipation
+• Hiatal hernia
+• Gastroesophageal reflux disease
+• Scoliosis
+• Epilepsy
+
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+29
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Nutritional Assessment and Intervention in Cerebral Palsy
+delayed gastric emptying and dumping syndrome (22).
+The diagnosis and treatment of these issues can make
+feedings more pleasurable and better tolerated in addi-
+tion to promoting positive weight gain. Proton pump
+inhibitors such as Prilosec® and Prevacid® are often
+prescribed for treatment of GERD. Prokinetic drugs
+(Metoclopramide®) and positioning changes can be
+used to improve gastric motility. The feeding regimen
+can be changed by increasing or decreasing the infusion
+rate and/or formula volume to help promote gastric
+emptying and improve feeding tolerance. Sometimes,
+nighttime feedings may need to be changed to daytime
+feedings to assist with motility. Caregivers should
+always be involved in any discussions regarding
+changes in a feeding regimen, as they will be responsi-
+ble for administering the feedings after discharge. A
+Nissen fundoplication or a conversion from gastros-
+tomy to gastrojejunostomy can be done in more severe
+cases of GERD; however, a Nissen fundoplication does
+increase the risk of dumping syndrome. 
+Spinal Abnormalities
+Neuromuscular scoliosis is present in many individuals
+with CP (7). Scoliosis progression can result in dimin-
+ished gastric capacity, GERD, difficulty in positioning
+for feedings, and changes in motility that can cause early
+satiety, nausea, and vomiting. Pulmonary compromise
+related to scoliosis can also increase energy expenditure.
+Clinical practice has found previously undiagnosed mal-
+rotation and/or volvulus when individuals continue to
+have difficulty with feedings and weight gain. Individu-
+als with CP who have postoperative weight loss are at
+risk of developing superior mesenteric artery syndrome
+(SMA) with the loss of the mesenteric fat pads.
+Bone Health
+Sheridan (26) recently reported more than 50% of
+adults with disabilities (including CP) had low bone
+mineral density (BMD). Table 5 lists risk factors for
+low BMD in individuals with CP. Clinicians should
+ensure adequate calcium and vitamin D intake, with
+supplementation as needed to meet the DRI for these
+nutrients (28). Vitamin D supplementation should be
+started when a deficiency is evident by assessing
+serum levels of 25(OH)-D. Shinchuk and Holick (29)
+recommend supplementation if 25(OH)-D levels are
+less than 30 ng/mL; however, the recent Institute of
+Medicine (IOM) report recommends supplementation
+only when 25(OH)-D levels are less than 20 ng/mL
+(28). 25(OH)-D levels should be checked every three
+months until levels are within normal range (30). 
+NUTRITION MANAGEMENT AND MONITORING
+Once a safe feeding route has been decided, feedings
+may be started. The typical feeding pattern or schedule
+can be obtained from either caregivers or medical
+Table 5.  
+Risk factors for Low Bone Mineral Density in CP26,27
+• Feeding difficulties
+• Prolonged immobilization
+• Medications: antiepileptics, birth control medications, 
+• Disordered puberty/growth retardation
+glucocorticoids, magnesium/aluminum antacids
+• Low weight z-scores
+• Motor function/weight bearing status
+• Calcium and vitamin D intake in diet
+• Poor nutritional status
+Table 6.  
+Assessment of Feedings
+I. Usual feeding patterns
+a. PO intake vs. enteral feedings
+II. Assess changes in intake/output
+a. Feeding patterns, food selections, tolerance,
+stooling
+III. Assessment of safety and efficiency of usual 
+feeding patterns/route
+a. Growth trends in pediatrics, weight history in
+adults
+
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+30
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Nutritional Assessment and Intervention in Cerebral Palsy
+records. See Table 6 for feeding assessment questions.
+Adjustments may need to be made based on current
+medical status, such as postoperative status. Individu-
+als that have been chronically undernourished can be
+at a higher risk of refeeding syndrome. In clinical prac-
+tice, clinicians have noted increased energy expendi-
+ture resulting in growth failure or lack of weight gain
+with oral feeding due to the length of time and effort to
+eat. This should be considered when changing to
+enteral or parenteral feedings, which may reduce
+energy expenditure and result in rapid weight gain.
+Adjustments to increase energy intake by 10–15%
+with careful monitoring of weight and refeeding syn-
+drome indicators in underweight or malnourished indi-
+viduals has been well tolerated in clinical practice. 
+Supplementation to meet the DRI for vitamins and
+minerals may be required, particularly for hypometa-
+bolic individuals on low calorie diets or enteral feed-
+ings. Children who receive enteral feedings should be
+on a product that best meets their nutrient needs with
+minimal vitamin and mineral supplementation. This
+may result in a pediatric formula for a teenage individ-
+ual, or a higher protein, 1 kcal/mL formula for a ten
+year old child undergoing complex spinal surgery.
+Table 7 has monitoring guidelines and Table 8 lists
+clinical pearls for use in individuals with developmen-
+tal disabilities.
+CONCLUSION
+The variable nature of CP, in addition to urgent medical
+issues, can present challenges to dietitians unfamiliar
+with this diagnosis. During a nutrition assessment,
+ensure accurate and consistent anthropometric mea-
+surements, appropriately determinate energy, protein,
+fluid and micronutrient needs, and consider dysmotility
+and spinal anomalies. Careful monitoring and adjust-
+ments to ensure optimal nutrient intake can help opti-
+mize health in individuals with CP.
+References
+1. Ekvall SW, Ekvall VK, editors. Pediatric Nutrition in Chronic
+Diseases and Developmental Disorders, 2nd edition. Oxford Uni-
+versity Press; 2005. 
+2. Yang Y, Lucas B, Feucht S, editors. Nutrition Interventions for
+Children with Special Health Care Needs, 3rd edition. Washing-
+ton State Department of Health; 2010.
+(continued on page 32)
+Table 7.
+Monitoring in the Acute Care Setting
+Parameter
+Frequency
+Height
+Upon admission (monthly in pediatrics)
+Weight
+Weekly 
+Skinfold measurements
+Twice monthly
+Laboratory measurements
+Dependent on admission diagnosis, medications, treatment modalities
+Oral intake/Enteral feedings 
+Monitor tolerance daily until stable/well tolerated; then per facility protocol
+Table 8.  
+Nutrition Pearls for Individuals 
+with Developmental Disabilities 
+1. A visual assessment is very important, consider what
+is “typical” for the diagnosis(es).
+2. Consider all possible contributors to energy needs,
+including:  mobility status, respiratory status, and
+muscle tone.
+3. Screen for dysphagia to determine a safe feeding
+route.
+4. Screen for motility issues, including GERD and 
+constipation/diarrhea—“what goes in must come
+out”.
+5. Assess drug/nutrient interactions, such as the effect
+of seizure medications and birth control medications
+on bone health.
+6. Ensure adequate protein and micronutrient intake,
+especially in hypometabolic or hypocalorically-fed
+individuals.
+
+PRACTICAL GASTROENTEROLOGY • FEBRUARY 2011
+32
+3. Council on Children with Disabilities. Care coordination in the
+medical home: Integrating health and related systems of care for
+children with special health care needs. Pediatrics 2005; 116:1238-
+1244.
+4. Detsky AS, McLaughlin JR, Baker JP, et al. What is subjective
+global assessment of nutritional status? J Parent Ent Nutr 1987;
+11:8-13.
+5. Tobin S, Greis SM, Cheng V, et al. The role of an interdisciplinary
+feeding team in the assessment and treatment of feeding problems.
+Building Block for Life Newsletter. 2005; 28(3):1-11. 
+6. Canda A. Stature estimation from body segment lengths in young
+adults. Application to people with physical disabilities. J Physiol
+Anthropol 2009; 28:71-82.
+7. Koop SE. Scoliosis in cerebral palsy. Dev Med Child Neurol 2009;
+51(Suppl. 4):92-98.
+8. Spender QW, Cronk CE, Charney EB, Stallings VA. Assessment of
+linear growth of children with cerebral palsy: Use of alternative mea-
+sures to height or length. Dev Med Child Neurol 1989; 31:206-214.
+9. Samson-Fang LJ, Stevenson RD. Identification of malnutrition in
+children with cerebral palsy: poor performance of weight-for-
+height centiles. Dev Med Child Neurol 2000; 42:162-168.
+10. Stallings VA, Cronk CE, Zemel BS, Charney EB. Body composi-
+tion in children with spastic quadriplegic cerebral palsy. J Pediatr
+1995; 126:833-839.
+11. Kuperminc MN, Gurka MJ, Bennis JA, et al. Anthropometric mea-
+sures:  poor predictors of body fat in children with moderate to
+severe cerebral palsy. Dev Med Child Neurol 2010; 52:824-830.
+12. Ohata K, Tsuboyama T, Haruta T, Ichihashi N, Nakamura T. Lon-
+gitudinal change in muscle and fat thickness in children and ado-
+lescents with cerebral palsy. Dev Med Child Neurol 2009;
+51:943-948.
+13. Centers for Disease Control. 2000 CDC Clinical Growth Charts.
+Available at: http://www.cdc.gov/growthcharts. Accessed Novem-
+ber 3, 2010.
+14. Hamwi, G. Changing dietary concepts. In: Danowski TS, ed. Dia-
+betes Mellitus: Diagnosis and Treatment. New York, NY: Ameri-
+can Diabetes Association, 1964.
+15. Frisancho AR. New norms of upper limb fat and muscle areas for
+assessment of nutritional status. Am J Clin Nutr 1981; 34:2540-2545.
+16. Culley WJ, Middleton TO. Caloric requirements of mentally
+retarded children with and without motor dysfunction. J Pediatr
+1969; 75:380-4.
+17. Dickerson RN, Brown RO, Gervasio JG, et al. Measured energy
+expenditure of tube-fed patients with severe neurodevelopmental
+disabilities. J Am Coll Nutr 1999; 18:61-68.
+18. Vernon-Roberts A, Wells J, Grant H, et al. Gastrostomy feeding in
+cerebral palsy: enough and no more. Dev Med Child Neurol Epub
+2010 Oct 21. 
+19. Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat,
+Fatty Acids, Cholesterol, Protein, and Amino Acids. Washington,
+DC: National Academy Press; 2002/2005.
+20. Holliday MA, Segar WE. The maintenance need for water in par-
+enteral fluid therapy. Pediatrics 1957; 19:823-832.
+21. Adolph EF. The metabolism and distribution of water in body and
+tissues. Physiol Rev 1933; 13:336-363.
+22. Sullivan PB, McIntyre E. Gastrointestinal problems in disabled
+children. Current Pediatrics 2005; 15:347-353.
+23. Fung EB, Samson-Fang L, Stallings VA, et al. Feeding dysfunction
+is associated with poor growth and health status in children with
+cerebral palsy. J Am Diet Assoc 2002; 102:361-368, 373.
+24. Chadwick DD, Joliffe J. A descriptive investigation of dysphagia
+in adults with intellectual disabilities. J Intellect Disabil Res 2009;
+53:29-43.
+25. Veugelers R, Benninga MA, Calis EA, et al. Prevalence and clini-
+cal presentation of constipation in children with severe generalized
+cerebral palsy. Dev Med Child Neurol 2010; 52:e216-e221.
+26. Sheridan KJ. Osteoporosis in adults with cerebral palsy. Dev Med
+Child Neurol 2009; 51(Suppl. 4):38-51.
+27. Cohen M, Lahat E, Bistritzer T, et al. Evidence-based review of
+bone strength in children and youth with cerebral palsy. J Child
+Neurol 2009; 24:959-967.
+28. Dietary Reference Intakes for Calcium and Vitamin D. Washing-
+ton, DC: National Academy Press; 2011.
+29. Shinchuk L, Holick MF. Vitamin D and rehabilitation: improving
+functional outcomes. Nutr Clin Pract 2007; 22:297-304.
+30. Wagner CL, Greer FR; Section on Breastfeeding and Committee on
+Nutrition. Prevention of rickets and vitamin D deficiency in infants,
+children, and adolescents. Pediatrics 2008; 122:1142-1152.
+NUTRITION ISSUES IN GASTROENTEROLOGY, SERIES #92
+Nutritional Assessment and Intervention in Cerebral Palsy
+(continued from page 30)
+CALL FOR PAPERS
+ANNOUNCING AN EXCITING 
+NEW DIRECTION FOR 
+PRACTICAL GASTROENTEROLOGY 
+We are launching a new series on original 
+digestive diseases research. Research can be
+prospective or retrospective as well as clinical in
+nature. Outcomes or population based research is
+also welcome. Please provide a cover letter that
+briefly summarizes the important aspects of the
+manuscript with recommendations for up to three
+reviewers who are qualified in the field as well 
+as three reviewers who may have a conflict of
+interest with your study. Please send manuscripts
+electronically to Dr. Uma Sundaram, attention
+Cristin Murphy (telephone: 304.293.4123) to the
+following e-mail address: camurphy@hsc.wvu.edu
+PRACTICAL GASTROENTEROLOGY
+R E P R I N T S
+R E P R I N T S
+Visit our website at www.practicalgastro.com

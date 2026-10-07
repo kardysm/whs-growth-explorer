@@ -1,0 +1,1 @@
+{"version":"6.9","hitCount":0,"request":{"queryString":"\"Culley\" AND (\"cal/cm\" OR \"11.1 cal\" OR \"14.7 cal\")","resultType":"lite","cursorMark":"*","pageSize":25,"sort":"","synonym":false},"resultList":{"result":[]}}

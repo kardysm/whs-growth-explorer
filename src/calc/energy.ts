@@ -171,10 +171,28 @@ export function hollidaySegar(weightKg: number): number {
   return 1500 + (weightKg - 20) * 20;
 }
 
-/** Schofield (1985) weight+height REE, kcal/day (EFSA Appendix 13; height in cm). */
-export function schofieldBmrBand(sex: Sex, ageMonths: number, weightKg: number, heightCm: number): number {
+/**
+ * Schofield (1985) REE, kcal/day (EFSA Appendix 13; height in cm).
+ *
+ * The equation band is selected by BODY SIZE, not the birthday (audit H1, 2026-10-07): the 3-10 y
+ * weight+height (WH) forms were fitted on children weighing ~13-35 kg, so applying them to a
+ * small-for-age child (e.g. a WHS 3-year-old at ~8.5 kg) inflated BMR by ~40% — C jumped 522->745
+ * kcal/day at the 3rd birthday and D/E and the charts jumped with it. `weightAgeMonths` is the age
+ * at which the WHO median weight equals this child's weight (computed by the caller from the WHO
+ * weight-for-age table; null = weight outside the WHO 0-60 mo table -> calendar-age fallback).
+ * The two forms agree within ~0-2% at the crossover weight for a reference-height child, so the
+ * switch no longer produces a birthday cliff.
+ */
+export function schofieldBmrBand(
+  sex: Sex,
+  ageMonths: number,
+  weightKg: number,
+  heightCm: number,
+  weightAgeMonths: number | null,
+): number {
   const H = heightCm / 100;
-  if (ageMonths < 36) {
+  const useWeightHeight = weightAgeMonths === null ? ageMonths >= 36 : weightAgeMonths >= 36;
+  if (!useWeightHeight) {
     // Schofield WEIGHT-ONLY (W) forms, as tabulated in the ESPGHAN/ESPEN paediatric PN energy
     // guideline (Table 2.1). Switched 2026-10-03 (user report): the weight+height form is nearly
     // weight-independent here (flat C line on the chart). Height intentionally unused in this band.
