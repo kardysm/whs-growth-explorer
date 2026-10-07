@@ -84,7 +84,8 @@ export function parseCalcParams(sp: URLSearchParams): Partial<Inputs> {
     return integer ? Math.round(n) : n;
   };
 
-  const sex = pick("sex", ["boys", "girls"] as const);
+  // Param renamed sex -> gender (user request 2026-10-07); old ?sex= links still parse.
+  const sex = pick("gender", ["boys", "girls"] as const) ?? pick("sex", ["boys", "girls"] as const);
   if (sex) out.sex = sex;
   const age = num("age", 0, 48, true);
   if (age !== null) out.age = age;
@@ -120,7 +121,7 @@ export function parseCalcParams(sp: URLSearchParams): Partial<Inputs> {
 /** Serialises the full calculator state; null (empty) fields are omitted. */
 export function calcUrlParams(input: Inputs): Record<string, string | null> {
   return {
-    sex: input.sex,
+    gender: input.sex,
     age: String(input.age),
     weight: String(input.weight),
     length: input.length === null ? null : String(input.length),

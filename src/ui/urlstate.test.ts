@@ -71,7 +71,7 @@ describe("siteRoot", () => {
 describe("parseCalcParams", () => {
   it("reads every supported parameter", () => {
     const sp = new URLSearchParams(
-      "sex=girls&age=12&weight=6.5&length=66.5&tone=normal&mobility=crawling&target=whs_minus1sd&horizon=8&milkDensity=0.8&mealDensity=1.2&milkMl=420&feeds=6&milkPortion=80&mealPortion=150&intake=590"
+      "gender=girls&age=12&weight=6.5&length=66.5&tone=normal&mobility=crawling&target=whs_minus1sd&horizon=8&milkDensity=0.8&mealDensity=1.2&milkMl=420&feeds=6&milkPortion=80&mealPortion=150&intake=590"
     );
     expect(parseCalcParams(sp)).toEqual({
       sex: "girls",
@@ -101,7 +101,12 @@ describe("parseCalcParams", () => {
   });
 
   it("ignores unknown enum values", () => {
-    expect(parseCalcParams(new URLSearchParams("sex=other&tone=xyz&mobility=flying&target=none"))).toEqual({});
+    expect(parseCalcParams(new URLSearchParams("gender=other&tone=xyz&mobility=flying&target=none"))).toEqual({});
+  });
+
+  it("keeps parsing the old ?sex= param (pre-rename links)", () => {
+    expect(parseCalcParams(new URLSearchParams("sex=girls")).sex).toBe("girls");
+    expect(parseCalcParams(new URLSearchParams("gender=boys&sex=girls")).sex).toBe("boys"); // gender wins
   });
 });
 
