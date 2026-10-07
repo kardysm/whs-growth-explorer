@@ -1,6 +1,6 @@
 # Link check report (research/sources.json)
 
-Checked 48 entries; one canonical target per source.
+Checked 49 entries; one canonical target per source.
 Note: publisher bot-walls (403/429) are common for DOI landing pages when fetched by tools;
 sources whose content was originally retrieved via Wayback are marked accordingly.
 
@@ -54,5 +54,6 @@ sources whose content was originally retrieved via Wayback are marked accordingl
 | aap_botulism | https://www.healthychildren.org/English/health-issues/conditions/infections/Pages/Botulism.aspx | 200 | ok |
 | who_sam_2009 | https://www.who.int/publications/i/item/9789241598163 | 200 | ok |
 | espghan_espn_pn_energy | https://espen.org/documents/A174-02PaedPNGuidel_ESPGHANESPENPNGuidelines2Energy.pdf | 200 | ok |
+| bfr_coumarin | https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/faq-on-coumarin-in-cinnamon-and-other-foods/ | 200 | ok |
 
-Total: 48; investigate: 0
+Total: 49; investigate: 0

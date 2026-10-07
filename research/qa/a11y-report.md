@@ -111,3 +111,14 @@ resolve their contrast (translucent chips were "incomplete" on 10 nodes). Re-run
 light/dark **0 violations**; at rest 2 incompletes (gradient buttons), scrolled ≤9 (sticky
 translucent headers/tables — the known glass class from the D-035 note). Chips carry visible text
 (icon `aria-hidden`) and a tooltip with the source; no duplicate allergen text tags remain.
+
+
+### Addendum 2026-10-07 (UX batch cards 1–7, D-043–D-050)
+
+Full re-run on the rebuilt site after the batch (calc split, equal card heights, seasonings, lists, hover,
+badge colors, multi-badge search): **light 0 violations, dark 0 violations, dialog (Ctrl+K, dark) 0
+violations**, plus a scan with two search chips committed and the badge suggestion list open: 0 violations.
+At-rest incompletes: 2 — the gradient-filled `#btn-recalc` / `#csv-btn` (known class; WCAG math: white on
+`#613dc1` = 7.13:1, on `#4e148c` = 11.65:1). New tag-badge colors were validated by composited contrast
+math in both themes (light ≥ 5.5:1, dark ≥ 6.0:1, see D-048); the search combobox uses aria-expanded /
+aria-activedescendant + a labelled listbox; the field keeps a visible focus ring on its wrapper.
