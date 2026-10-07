@@ -534,6 +534,13 @@ function recalc(): void {
       <p class="small">${t("calc.sweep_caption")}</p>
       <table><thead><tr><th>${t("calc.density_col")}</th><th>${t("calc.sweep_col_c")}</th><th>${t("calc.sweep_col_d")}</th></tr></thead>
       <tbody>${r.E.byDensity.map((d) => `<tr><td>${loc(d.density)} kcal/ml</td><td>${d.mlForC !== null ? d.mlForC.toFixed(0) : "—"}</td><td>${d.mlForD !== null ? d.mlForD.toFixed(0) : "—"}</td></tr>`).join("")}</tbody></table>
+      <p class="small">${(() => {
+        // Counterpart of the reference variant (user request 2026-10-07): milk held constant at the
+        // entered volume — how much non-milk food tops up C and D.
+        const mealStr = (s: { restKcal: number | null; mealsG: number | null }): string =>
+          s.restKcal === null ? "—" : s.restKcal > 0.5 && s.mealsG !== null ? `${fmt(s.mealsG, 0)} g → ${fmt(s.restKcal)} kcal` : t("calc.split_none");
+        return t("calc.sweep_constant").replace("{ml}", String(input.milkMl)).replace("{md}", loc(input.milkDensity)).replace("{gd}", loc(input.mealDensity)).replace("{c}", mealStr(r.E.split.forC)).replace("{d}", mealStr(r.E.split.forD));
+      })()}</p>
       <p class="small">${t("calc.fluid_label")}: ${r.E.maintenanceFluidMl.toFixed(0)} ml/24h</p>
       ${(() => { const d67 = r.E.byDensity.find((d) => d.density === 0.67); return d67 && d67.mlForC !== null && d67.mlForC > r.E.maintenanceFluidMl ? `<p class="small">${t("calc.volume_density_note")}</p>` : ""; })()}
       ${r.E.volumeFlags.map((f) => `<p class="banner warn">${B(f)}</p>`).join("")}

@@ -532,6 +532,10 @@
     "mob_hint_note": {
       "pl": "W razie wątpliwości wybierz bliższą opcję — sąsiednie poziomy różnią się o ok. 4% wyniku C (utrzymanie).",
       "en": "If unsure, pick the closer option — neighbouring levels differ by ~4% of the C result (maintenance)."
+    },
+    "sweep_constant": {
+      "pl": "Wariant ze stałym mlekiem ({ml} ml, {md} kcal/ml): uzupełnienie posiłkami ({gd} kcal/g) — utrzymanie (C): {c} · doganianie (D): {d}.",
+      "en": "Constant-milk variant ({ml} ml, {md} kcal/ml): top-up from other meals ({gd} kcal/g) — maintenance (C): {c} · catch-up (D): {d}."
     }
   },
   "charts": {
