@@ -842,8 +842,8 @@
       "en": "items"
     },
     "foods_note": {
-      "pl": "Skład produktów spożywczych: USDA FoodData Central (SR Legacy) — oznaczone jako dane nie-polskie; opisy miar domowych w jednostkach USDA (j. angielski). Produkty specjalistyczne: strony producentów.",
-      "en": "Food composition: USDA FoodData Central (SR Legacy) — flagged as non-PL data; household-measure descriptions use USDA units (English). Specialist products: manufacturer pages."
+      "pl": "Skład produktów spożywczych: USDA FoodData Central (SR Legacy) — oznaczone jako dane nie-polskie; opisy miar domowych w jednostkach USDA (j. angielski). Wyjątek: twaróg tłusty — dane z tabeli PZH (2014). Produkty zbożowe podano na bazie zgodnej z nazwą („(suche)” / „(gotowana)”) — porównując kcal/100 g, zwróć uwagę na bazę. Produkty specjalistyczne: strony producentów.",
+      "en": "Food composition: USDA FoodData Central (SR Legacy) — flagged as non-PL data; household-measure descriptions use USDA units (English). Exception: twaróg (fat curd cheese) — PZH (2014) table. Grain products are shown on the basis stated in the name (\"(dry)\" / \"(cooked)\") — mind the basis when comparing kcal/100 g. Specialist products: manufacturer pages."
     },
     "seasonings_note": {
       "pl": "Zioła i przyprawy („dla smaku”) dodawaj w małych ilościach do potraw — zamiast soli i cukru; ESPGHAN: do posiłków uzupełniających nie dodaje się soli ani cukru. Cynamon kasja zawiera kumarynę — sprawdź ostrzeżenie na jego karcie.",

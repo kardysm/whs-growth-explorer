@@ -25,11 +25,11 @@ FOODS = [
     ("olive-oil", "Oliwa z oliwek", "Olive oil", "fats", ["oil, olive, salad or cooking"]),
     ("butter", "Masło", "Butter", "fats", ["butter, salted"]),
     ("ghee", "Masło klarowane", "Ghee (clarified butter)", "fats", ["butter, clarified"]),
-    ("cream30", "Śmietanka 30%", "Heavy cream (30%)", "fats", ["cream, fluid, heavy whipping"]),
+    ("cream30", "Śmietanka 30%", "Cream 30% (light whipping)", "fats", ["cream, fluid, light whipping"]),
     ("lard", "Smalec", "Lard", "fats", ["lard"]),
     ("twarog", "Twaróg (tłusty)", "Curd cheese (twaróg)", "dairy", ["cheese, cottage, creamed, large or small curd", "cheese, cottage, creamed"]),
     ("greek-yogurt", "Jogurt grecki", "Greek yogurt", "dairy", ["yogurt, greek, plain, whole milk", "yogurt, greek, plain, lowfat"]),
-    ("milk-32", "Mleko 3,2%", "Whole milk", "dairy", ["milk, whole, 3.25% milkfat, with added vitamin d"]),
+    ("milk-32", "Mleko 3,2%", "Whole milk", "dairy", ["milk, whole, 3.25% milkfat, without added vitamin a and vitamin d"]),
     ("yogurt-plain", "Jogurt naturalny", "Plain yogurt", "dairy", ["yogurt, plain, whole milk"]),
     ("cheddar", "Ser żółty typu cheddar", "Cheddar cheese", "dairy", ["cheese, cheddar"]),
     ("egg", "Jaja kurze (całe)", "Whole eggs", "protein", ["egg, whole, raw, fresh"]),
@@ -44,9 +44,9 @@ FOODS = [
     ("lentils-red", "Soczewica czerwona", "Red lentils", "protein", ["lentils, pink or red, raw"]),
     ("chickpeas", "Ciecierzyca (gotowana)", "Chickpeas (cooked)", "protein", ["chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt", "chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, with salt"]),
     ("white-beans", "Fasola biała (gotowana)", "White beans (cooked)", "protein", ["beans, white, mature seeds, cooked, boiled, without salt", "beans, white, mature seeds, canned"]),
-    ("oats", "Płatki owsiane", "Rolled oats", "carbs", ["cereals, oats, regular and quick, not fortified, dry"]),
-    ("semolina", "Kasza manna", "Semolina", "carbs", ["semolina, enriched"]),
-    ("millet", "Kasza jaglana", "Millet", "carbs", ["millet, raw"]),
+    ("oats", "Płatki owsiane (suche)", "Rolled oats (dry)", "carbs", ["cereals, oats, regular and quick, not fortified, dry"]),
+    ("semolina", "Kasza manna (sucha)", "Semolina (dry)", "carbs", ["semolina, unenriched"]),
+    ("millet", "Kasza jaglana (sucha)", "Millet (dry)", "carbs", ["millet, raw"]),
     ("buckwheat", "Kasza gryczana (gotowana)", "Buckwheat groats (cooked)", "carbs", ["buckwheat groats, roasted, cooked"]),
     ("rice", "Ryż biały (gotowany)", "White rice (cooked)", "carbs", ["rice, white, long-grain, regular, cooked, enriched"]),
     ("pasta", "Makaron (gotowany)", "Pasta (cooked)", "carbs", ["pasta, cooked, enriched, without added salt"]),
@@ -178,6 +178,29 @@ FOOD_ALLERGENS = {
     "peanut-butter": ["peanuts"],
 }
 
+# PL-sourced value overrides (audit M6, 2026-10-07). The USDA SR Legacy pipeline has no Polish twaróg
+# (quark-type curd cheese); "cheese, cottage, creamed" understated it by ~37% (98 vs 156 kcal/100 g).
+# Source: Roczniki PZH — Probl Hig Epidemiol 2014;95(1):115-119, "Znaczenie twarogu w żywieniu
+# człowieka" (research/raw/pzh_twarog_2014.pdf). Table I (manufacturer declarations, tłusty):
+# protein 15.3 g, carbs 3.6 g, fat 9.0 g, 156 kcal /100 g; text: Ca 88 mg, P 216 mg, ~1 mg Zn/100 g.
+# Fe/Na/K/vit A/vit D not given -> null (not invented). US cup/oz portions dropped (wrong product).
+PL_OVERRIDES = {
+    "twarog": {
+        "per100g": {
+            "kcal": 156, "protein": 15.3, "fat": 9.0, "satfat": None, "carbs": 3.6, "fibre": 0,
+            "calcium_mg": 88, "iron_mg": None, "zinc_mg": 1.0, "sodium_mg": None, "potassium_mg": None,
+            "vita_ug": None, "vitd_ug": None,
+        },
+        "portions": [],
+        "source": "NIZP-PZH (Probl Hig Epidemiol 2014;95(1):115-119) — twaróg tłusty, tabela rynku PL + tekst; nie USDA",
+        "source_override": {
+            "label": {"pl": "PZH 2014 — „Znaczenie twarogu w żywieniu człowieka” (PDF)",
+                      "en": "PZH 2014 — twaróg composition review (PDF)"},
+            "url": "http://www.phie.pl/pdf/phe-2014/phe-2014-1-115.pdf",
+        },
+    },
+}
+
 
 def main():
     foods = {}
@@ -240,7 +263,7 @@ def main():
     for key, (fid, desc, pl, en, cat) in chosen.items():
         n = nrows.get(fid, {})
         p = portions.get(fid, [])[:3]
-        out.append({
+        item = {
             "id": f"food-{key}", "kind": "food", "category": cat,
             "name": {"pl": pl, "en": en},
             "tags": (ALLERGENS.get(key, []) + TAG_EXTRA.get(key, [])
@@ -258,7 +281,15 @@ def main():
             "fdc_id": fid, "fdc_desc": desc,
             "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
             "allergens": FOOD_ALLERGENS.get(key, []),
-        })
+        }
+        ov = PL_OVERRIDES.get(key)
+        if ov:
+            item["per100g"].update(ov["per100g"])
+            item["source"] = ov["source"]
+            item["source_override"] = ov["source_override"]
+            if "portions" in ov:
+                item["portions"] = ov["portions"]
+        out.append(item)
 
     (ROOT / "research" / "data").mkdir(parents=True, exist_ok=True)
     (ROOT / "research" / "data" / "products_foods.json").write_text(json.dumps({"items": out, "misses": misses}, ensure_ascii=False, indent=1))

@@ -1186,6 +1186,9 @@ const ALG_KEYS: Record<string, string> = { milk: "allergen_milk", egg: "allergen
 const ALG_TAGS = new Set(["dairy", "egg", "fish", "soy", "gluten", "nuts", "sesame"]);
 const algLabel = (a: string): string => (ALG_KEYS[a] ? t(`products.${ALG_KEYS[a]}`) : a);
 
+/** Dry-basis staples (audit M6): per-100 g density signals refer to the DRY product — no "high-energy". */
+const DRY_STAPLES = new Set(["food-oats", "food-semolina", "food-millet"]);
+
 /** Food-list search state: live text + committed badge chips (user batch card 7, 2026-10-07). */
 let pSearch = "";
 interface PChip { kind: "tag" | "cat" | "alg" | "free"; key?: string; text?: string; }
@@ -1198,14 +1201,17 @@ function buildProducts(): PItem[] {
   interface FoodRow {
     id: string; category: string; name: BiText; tags?: string[]; warning?: BiText; per100g: Record<string, number | null>;
     portions: { desc: string; g: number }[]; fdc_id: string; fdc_desc: string; allergens?: string[];
+    source_override?: { label: BiText; url: string };
   }
   const foods = (foodsData as unknown as { items: FoodRow[] }).items.map((x) => {
     const n = x.per100g;
     const tags: string[] = [...(x.tags ?? [])];
     // Derived tags are per-100 g density signals — meaningless for seasonings (a pinch, not 100 g)
     // and would mislabel cinnamon (247 kcal/100 g) as "energy-dense" (user batch card 3, 2026-10-07).
+    // Dry-basis staples (audit M6, 2026-10-07): per-100 g values refer to the DRY product, so the
+    // density tag would mislead for porridge-like servings — suppressed (the name discloses the basis).
     if (x.category !== "seasonings") {
-      if (x.category === "fats" || (n.kcal ?? 0) >= 200) tags.push("high-energy");
+      if (x.category === "fats" || ((n.kcal ?? 0) >= 200 && !DRY_STAPLES.has(x.id))) tags.push("high-energy");
       if ((n.protein ?? 0) >= 10) tags.push("high-protein");
       if ((n.iron_mg ?? 0) >= 2) tags.push("Fe");
       if ((n.zinc_mg ?? 0) >= 1.5) tags.push("Zn");
@@ -1233,7 +1239,9 @@ function buildProducts(): PItem[] {
         };
       }),
       tags: Array.from(new Set(tags)),
-      source: { label: { pl: "USDA FDC — karta produktu (opis oryginalny w j. angielskim)", en: `${x.fdc_desc} — USDA FDC` }, url: `https://fdc.nal.usda.gov/food-details/${x.fdc_id}/nutrients` },
+      source: x.source_override
+        ? x.source_override
+        : { label: { pl: "USDA FDC — karta produktu (opis oryginalny w j. angielskim)", en: `${x.fdc_desc} — USDA FDC` }, url: `https://fdc.nal.usda.gov/food-details/${x.fdc_id}/nutrients` },
     };
   });
   return [...fsmp, ...foods];
