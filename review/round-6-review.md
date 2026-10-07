@@ -77,3 +77,8 @@ against code/sources and resolved in a second batch (D-062…D-068):
 
 Not adopted (recorded): „show D, not C, as the headline under 12 months" (audit: context only; UX decision
 for the owner) — see DECISIONS D-068.
+
+- **Post-follow-up fix (D-069)**: the L10 read-only check is now tolerance-based (numbers within 1e-9
+  relative) — byte-exact comparison flagged last-ulp `Math.pow` differences between JS engines (node 20 vs
+  node 26) as „stale". Verified on both engines; a negative test still catches real staleness with the
+  exact differing path.

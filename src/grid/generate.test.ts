@@ -37,6 +37,41 @@ const baseInput: Omit<CalcInput, "sex" | "ageMonths" | "weightKg" | "lengthCm"> 
   actualIntakeMlPerDay: null,
 };
 
+/**
+ * Structural diff for the read-only comparison: numbers compare with a small relative tolerance
+ * (1e-9) because Math.pow/log/exp are implementation-defined and differ in the last ulp between JS
+ * engines (reproduced: node 20 vs node 26 disagree on valueForZ outputs — a byte-exact check flags
+ * engine ulp noise as "stale"). Strings/keys/structure stay exact; real data changes move numbers
+ * by ≫1e-9 and still fail.
+ */
+function findDiffs(a: unknown, b: unknown, path: string, out: string[]): void {
+  if (typeof a === "number" && typeof b === "number") {
+    if (a !== b && Math.abs(a - b) > 1e-9 * Math.max(Math.abs(a), Math.abs(b), 1)) {
+      out.push(`${path}: ${a} != ${b}`);
+    }
+    return;
+  }
+  if (Array.isArray(a) || Array.isArray(b)) {
+    if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) {
+      out.push(`${path}: array shape differs`);
+      return;
+    }
+    for (let i = 0; i < a.length; i++) findDiffs(a[i], b[i], `${path}[${i}]`, out);
+    return;
+  }
+  if (a && b && typeof a === "object" && typeof b === "object") {
+    const ka = Object.keys(a as object).sort();
+    const kb = Object.keys(b as object).sort();
+    if (ka.length !== kb.length || ka.some((k, i) => k !== kb[i])) {
+      out.push(`${path}: keys differ [${ka.join(",")}] vs [${kb.join(",")}]`);
+      return;
+    }
+    for (const k of ka) findDiffs((a as Record<string, unknown>)[k], (b as Record<string, unknown>)[k], `${path}.${k}`, out);
+    return;
+  }
+  if (a !== b) out.push(`${path}: ${JSON.stringify(a)} != ${JSON.stringify(b)}`);
+}
+
 describe("grid generation", () => {
   it("generates grid.json and reference_lines.json (writes only with GEN_GRID=1)", () => {
     const { dataset, whs } = loadContext();
@@ -103,12 +138,15 @@ describe("grid generation", () => {
       writeFileSync(OUT_REF, refStr);
       console.log(`[gen-grid] wrote ${OUT_GRID} (${rows.length} rows) and ${OUT_REF}`);
     } else {
-      // Read-only by default (audit L10): `npm test` must not rewrite committed data; a mismatch means
-      // the committed grid is stale — regenerate explicitly with GEN_GRID=1.
+      // Read-only by default (audit L10): `npm test` must not rewrite committed data. Comparison is
+      // TOLERANCE-based (numbers within 1e-9 relative) — byte equality would flag last-ulp differences
+      // between JS engines as stale (see findDiffs). Real staleness still fails with the paths listed.
       const hint = "regenerate with: GEN_GRID=1 npx vitest run src/grid/generate.test.ts";
-      expect(readFileSync(OUT_GRID, "utf8"), `grid.json is stale — ${hint}`).toBe(gridStr);
-      expect(readFileSync(OUT_REF, "utf8"), `reference_lines.json is stale — ${hint}`).toBe(refStr);
-      console.log(`[gen-grid] verified ${OUT_GRID} (${rows.length} rows) and ${OUT_REF} — read-only`);
+      const diffs: string[] = [];
+      findDiffs(JSON.parse(readFileSync(OUT_GRID, "utf8")), JSON.parse(gridStr), "grid", diffs);
+      findDiffs(JSON.parse(readFileSync(OUT_REF, "utf8")), JSON.parse(refStr), "ref", diffs);
+      expect(diffs.slice(0, 20), `grid/reference data is stale or divergent — ${hint} (diffs: ${diffs.length})`).toEqual([]);
+      console.log(`[gen-grid] verified ${OUT_GRID} (${rows.length} rows) and ${OUT_REF} — read-only (tolerance 1e-9)`);
     }
   }, 120_000);
 });
