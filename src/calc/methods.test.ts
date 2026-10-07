@@ -283,6 +283,54 @@ describe("refeeding-risk screen (audit H2)", () => {
   });
 });
 
+describe("month-to-month continuity — no cliffs (review request, 2026-10-07)", () => {
+  const cAt = (sex: "boys" | "girls", age: number, w: number): ReturnType<typeof computeAll> =>
+    computeAll({ ...base, sex, ageMonths: age, weightKg: w }, ctx);
+
+  it("C: adjacent-month steps <= 2% at every age and weight (the H1 class of bug)", () => {
+    for (const sex of ["boys", "girls"] as const) {
+      for (const w of [2, 5, 8.5, 12, 16, 20]) {
+        for (let age = 0; age < 48; age++) {
+          const a = cAt(sex, age, w).C.kcalPerDay.central;
+          const b = cAt(sex, age + 1, w).C.kcalPerDay.central;
+          if (a === null || b === null || a === 0) continue;
+          expect(Math.abs(b - a) / Math.abs(a), `${sex} ${w}kg ${age}->${age + 1} mo C`).toBeLessThan(0.02);
+        }
+      }
+    }
+  });
+
+  it("A/B edges and D: adjacent-month steps <= 10% for ages 3-48 across the weight range", () => {
+    // Ages 0-3 are exempt: A/B track the WHO reference child, whose own early-infancy growth steps the
+    // value up to ~24% in month 0->1 (documented in the test below) — that is physiology, not a seam.
+    for (const sex of ["boys", "girls"] as const) {
+      for (const w of [2, 5, 8.5, 12, 20]) {
+        for (let age = 3; age < 48; age++) {
+          const r0 = cAt(sex, age, w);
+          const r1 = cAt(sex, age + 1, w);
+          const fields: [string, number | null, number | null][] = [
+            ["A", r0.A.kcalPerDay.central, r1.A.kcalPerDay.central],
+            ["Alo", r0.A.kcalPerDay.low, r1.A.kcalPerDay.low],
+            ["Ahi", r0.A.kcalPerDay.high, r1.A.kcalPerDay.high],
+            ["B", r0.B.kcalPerDay.central, r1.B.kcalPerDay.central],
+            ["D", r0.D.kcalPerDay.central, r1.D.kcalPerDay.central],
+          ];
+          for (const [name, a, b] of fields) {
+            if (a === null || b === null || a === 0) continue;
+            expect(Math.abs(b - a) / Math.abs(a), `${sex} ${w}kg ${age}->${age + 1} mo ${name}`).toBeLessThan(0.1);
+          }
+        }
+      }
+    }
+  });
+
+  it("exemption baseline: the reference child's month 0->1 growth steps A by >10% (why ages 0-3 are out of scope)", () => {
+    const a0 = cAt("boys", 0, 8).A.kcalPerDay.central!;
+    const a1 = cAt("boys", 1, 8).A.kcalPerDay.central!;
+    expect((a1 - a0) / a0).toBeGreaterThan(0.1);
+  });
+});
+
 describe("property sweeps", () => {
   it("low <= central <= high and no NaN across a grid", () => {
     for (const sex of ["boys", "girls"] as const) {

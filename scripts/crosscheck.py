@@ -125,22 +125,18 @@ FAO_CH = {"boys": {1: 948, 2: 1129, 3: 1252, 4: 1360}, "girls": {1: 865, 2: 1047
 
 
 def fao(sex, m):
-    if m < 12:
-        return FAO_INF[sex][min(11, int(m))]
     if m >= 60:
         return None
-    # Audit M1 fix (2026-10-07): FAO 2004 §4.4 — child values refer to the MID-YEAR of each band
-    # (midpoints 1.5/2.5/3.5/4.5 y); anchors at 18/30/42/54 mo; 12->18 bridges from the month-12
-    # infant value (mirrors the JS).
-    anchors = [(18, FAO_CH[sex][1]), (30, FAO_CH[sex][2]), (42, FAO_CH[sex][3]), (54, FAO_CH[sex][4])]
-    m12 = FAO_INF[sex][11]
-    if m <= 18:
-        t = (m - 12) / 6
-        return m12 + (anchors[0][1] - m12) * t
-    for (a0, v0), (a1, v1) in zip(anchors, anchors[1:]):
+    # Audit M1 (full detail, 2026-10-07): infant values anchored at band midpoints (m+0.5), child values
+    # at the mid-year (18/30/42/54 mo); piecewise-linear — mirrors the JS.
+    nodes = [(i + 0.5, v) for i, v in enumerate(FAO_INF[sex])]
+    nodes += [(18, FAO_CH[sex][1]), (30, FAO_CH[sex][2]), (42, FAO_CH[sex][3]), (54, FAO_CH[sex][4])]
+    if m <= nodes[0][0]:
+        return nodes[0][1]
+    for (a0, v0), (a1, v1) in zip(nodes, nodes[1:]):
         if m <= a1:
             return v0 + (v1 - v0) * ((m - a0) / (a1 - a0))
-    return anchors[-1][1]
+    return nodes[-1][1]
 
 
 def growth_addend(sex, m, win=0.5):
@@ -157,22 +153,19 @@ def growth_addend(sex, m, win=0.5):
 
 def nasem(sex, m, h, w):
     age = m / 12
-    if m < 3:
-        base = (-716.45 - 1.0 * age + 17.82 * h + 15.06 * w) if sex == "boys" else (-69.15 + 80.0 * age + 2.65 * h + 54.15 * w)
-        return base + growth_addend(sex, m)
+    old_eq = (-716.45 - 1.0 * age + 17.82 * h + 15.06 * w) if sex == "boys" else (-69.15 + 80.0 * age + 2.65 * h + 54.15 * w)
+    new_eq = (19.12 + 3.68 * age + 8.62 * h + 20.28 * w) if sex == "boys" else (-297.54 - 22.25 * age + 12.77 * h + 14.73 * w)
     if m < 6:
-        base = (-716.45 - 1.0 * age + 17.82 * h + 15.06 * w) if sex == "boys" else (-69.15 + 80.0 * age + 2.65 * h + 54.15 * w)
-        return base + growth_addend(sex, m)
-    if m < 36:
-        if sex == "boys":
-            return -716.45 - 1.0 * age + 17.82 * h + 15.06 * w + growth_addend(sex, m)
-        return -69.15 + 80.0 * age + 2.65 * h + 54.15 * w + growth_addend(sex, m)
-    if 36 <= m < 168:  # low-active equations + growth addend (needed for the A band up to 48 mo)
-        if sex == "boys":
-            g = 20 if m < 48 else 15
-            return 19.12 + 3.68 * age + 8.62 * h + 20.28 * w + g
-        g = 15
-        return -297.54 - 22.25 * age + 12.77 * h + 14.73 * w + g
+        return old_eq + growth_addend(sex, m)
+    if m < 35.5:
+        return old_eq + growth_addend(sex, m)
+    if m < 36.5:
+        # Audit L8 (2026-10-07): ±0.5-mo bridge of the child-equation switch — mirrors the JS.
+        t = m - 35.5
+        return old_eq * (1 - t) + new_eq * t + growth_addend(sex, m)
+    if m < 168:  # low-active equations + growth addend (needed for the A band up to 48 mo)
+        g = (20 if m < 48 else 15) if sex == "boys" else 15
+        return new_eq + g
     return None
 
 

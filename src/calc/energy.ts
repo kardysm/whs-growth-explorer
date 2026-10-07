@@ -43,12 +43,11 @@ export function nasemEer(
   const age = ageMonths / 12;
   const growth = (() => {
     if (sex === "boys") {
-      if (ageMonths < 48) return 20; // "3y: 20 kcal/d" for band 3-3.99y; also used for <3y male band
+      if (ageMonths < 48) return 20; // 6mo-2.99y and 3y: 20 kcal/d
       if (ageMonths < 108) return 15;
       return 25;
     }
-    if (ageMonths < 36) return 20;
-    if (ageMonths < 48) return 15; // girls 3y: 15
+    if (ageMonths < 48) return 15; // girls: 12-35.99 mo and 3y both 15 (Table S-2 footnotes a, c)
     if (ageMonths < 108) return 15;
     return 30;
   })();
@@ -65,29 +64,37 @@ export function nasemEer(
       : -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg;
     return { kcal: base + growthAddend(sex, ageMonths), band: "3-5.99mo" };
   }
-  if (inRange(ageMonths, 6, 36)) {
+  if (inRange(ageMonths, 6, 35.5)) {
     if (sex === "boys") {
       return { kcal: -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg + growthAddend(sex, ageMonths), band: "6mo-2.99y" };
     }
     return { kcal: -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg + growthAddend(sex, ageMonths), band: "6mo-2.99y" };
   }
-  if (inRange(ageMonths, 36, 168)) {
-    if (sex === "boys") {
-      const eq = {
-        inactive: -447.51 + 3.68 * age + 13.01 * heightCm + 13.15 * weightKg,
-        low_active: 19.12 + 3.68 * age + 8.62 * heightCm + 20.28 * weightKg,
-        active: -388.19 + 3.68 * age + 12.66 * heightCm + 20.46 * weightKg,
-        very_active: -671.75 + 3.68 * age + 15.38 * heightCm + 23.25 * weightKg,
-      }[activity];
-      return { kcal: eq + growth, band: "3-13.99y" };
-    }
-    const eq = {
+  // Audit L8 (2026-10-07): the 0-2.99y -> 3-13.99y child-equation switch at 36 mo steps the A/B low
+  // edges (boys 1227->1169, girls 1186->1069 kcal/day at the WHO reference child). Bridged linearly
+  // across a ±0.5-month window, same rationale as the growth-addend seams (D-029).
+  const childEqOld = (): number => (sex === "boys"
+    ? -716.45 - 1.0 * age + 17.82 * heightCm + 15.06 * weightKg
+    : -69.15 + 80.0 * age + 2.65 * heightCm + 54.15 * weightKg);
+  const childEqNew = (): number => (sex === "boys"
+    ? {
+      inactive: -447.51 + 3.68 * age + 13.01 * heightCm + 13.15 * weightKg,
+      low_active: 19.12 + 3.68 * age + 8.62 * heightCm + 20.28 * weightKg,
+      active: -388.19 + 3.68 * age + 12.66 * heightCm + 20.46 * weightKg,
+      very_active: -671.75 + 3.68 * age + 15.38 * heightCm + 23.25 * weightKg,
+    }[activity]
+    : {
       inactive: 55.59 - 22.25 * age + 8.43 * heightCm + 17.07 * weightKg,
       low_active: -297.54 - 22.25 * age + 12.77 * heightCm + 14.73 * weightKg,
       active: -189.55 - 22.25 * age + 11.74 * heightCm + 18.34 * weightKg,
       very_active: -709.59 - 22.25 * age + 18.22 * heightCm + 14.25 * weightKg,
-    }[activity];
-    return { kcal: eq + growth, band: "3-13.99y" };
+    }[activity]);
+  if (inRange(ageMonths, 35.5, 36.5)) {
+    const t = ageMonths - 35.5;
+    return { kcal: childEqOld() * (1 - t) + childEqNew() * t + growthAddend(sex, ageMonths), band: "3y-bridge" };
+  }
+  if (inRange(ageMonths, 36.5, 168)) {
+    return { kcal: childEqNew() + growth, band: "3-13.99y" };
   }
   return null;
 }
@@ -147,35 +154,27 @@ const FAO_CHILDREN: Record<Sex, Record<number, number>> = {
 };
 
 export function faoEnergy(sex: Sex, ageMonths: number): number | null {
-  if (ageMonths < 12) {
-    const i = Math.min(11, Math.floor(ageMonths));
-    const v = FAO_INFANTS[sex][i];
-    return Number.isFinite(v as number) ? (v as number) : null;
-  }
   if (ageMonths >= 60) return null;
-  // Audit M1 fix (2026-10-07): FAO/WHO/UNU 2004 §4.4 says the child values refer to the MID-YEAR of each
-  // age band ("the median weight at the midpoint of each year of age was used for the ages of between one
-  // and 17 years (i.e. median weights at 1.5, 2.5 ..., 17.5 years)"; Table 4.2 note: "Body weight at
-  // mid-point of age interval"). Anchors therefore sit at 18/30/42/54 months; the 12-18 month stretch
-  // bridges linearly from the month-12 infant value. Previously each yearly value was placed at the START
-  // of its band, so the A band's upper edge jumped 775 -> 948 kcal at the 1st birthday (+22% too high).
-  const anchors: [number, number][] = [
+  // Audit M1 (full detail, 2026-10-07): BOTH FAO tables refer to band MIDPOINTS — the infant Table 3.2
+  // values are per monthly band ("11-12" = months 11-12, midpoint m+0.5) and the child Table 4.2 values
+  // to the mid-year (§4.4: "median weights at 1.5, 2.5... years"). Nodes: 0.5...11.5 mo (infants) and
+  // 18/30/42/54 mo (children); piecewise-linear between them; below 0.5 mo the first value is held.
+  // (Earlier fix placed the child anchors at mid-year but left the infant values as step functions and
+  // bridged from exactly 12.0 mo, so FAO(12) read 775 instead of ~788.)
+  const nodes: [number, number][] = [
+    ...FAO_INFANTS[sex].map((v, i): [number, number] => [i + 0.5, v]),
     [18, FAO_CHILDREN[sex][1]!], [30, FAO_CHILDREN[sex][2]!],
     [42, FAO_CHILDREN[sex][3]!], [54, FAO_CHILDREN[sex][4]!],
   ];
-  const m12 = FAO_INFANTS[sex][11]!;
-  if (ageMonths <= 18) {
-    const t = (ageMonths - 12) / 6;
-    return m12 + (anchors[0]![1] - m12) * t;
-  }
-  for (let i = 0; i < anchors.length - 1; i++) {
-    const a0 = anchors[i]![0];
-    const v0 = anchors[i]![1];
-    const a1 = anchors[i + 1]![0];
-    const v1 = anchors[i + 1]![1];
+  if (ageMonths <= nodes[0]![0]) return nodes[0]![1];
+  for (let i = 0; i < nodes.length - 1; i++) {
+    const a0 = nodes[i]![0];
+    const v0 = nodes[i]![1];
+    const a1 = nodes[i + 1]![0];
+    const v1 = nodes[i + 1]![1];
     if (ageMonths <= a1) return v0 + (v1 - v0) * ((ageMonths - a0) / (a1 - a0));
   }
-  return anchors[anchors.length - 1]![1];
+  return nodes[nodes.length - 1]![1];
 }
 
 /** Holliday-Segar maintenance fluid (ml/day). */

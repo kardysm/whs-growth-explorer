@@ -40,13 +40,14 @@ describe("EFSA AR table lookups", () => {
   it("null below 6 months", () => expect(efsaAr("boys", 5)).toBeNull());
 });
 
-describe("FAO/WHO/UNU 2004 lookups (child values anchored at mid-year — audit M1)", () => {
-  it("boys 0-1 mo bin -> 518", () => expect(faoEnergy("boys", 0)).toBe(518));
-  it("girls 4-5 mo bin -> 571", () => expect(faoEnergy("girls", 4)).toBe(571));
-  it("girls 5-6 mo bin -> 599", () => expect(faoEnergy("girls", 5)).toBe(599));
-  it("girls 11-12 mo bin -> 712 (audit F5 fix)", () => expect(faoEnergy("girls", 11)).toBe(712));
-  it("boys 12 mo -> 775 (month-12 infant value; no jump at the 1st birthday)", () => {
-    expect(faoEnergy("boys", 12)!).toBeCloseTo(775, 6);
+describe("FAO/WHO/UNU 2004 lookups (values anchored at band midpoints — audit M1, full detail)", () => {
+  it("boys 0 mo -> 518 (held below the first midpoint)", () => expect(faoEnergy("boys", 0)).toBe(518));
+  it("boys 1 mo -> 544 (mid-month interpolation, was a 570 step)", () => expect(faoEnergy("boys", 1)!).toBeCloseTo(544, 6));
+  it("girls 4 mo -> 554 (interpolated between midpoints 3.5/4.5)", () => expect(faoEnergy("girls", 4)!).toBeCloseTo(537 + (571 - 537) * 0.5, 6));
+  it("girls 5 mo -> 585 (interpolated between midpoints 4.5/5.5)", () => expect(faoEnergy("girls", 5)!).toBeCloseTo(571 + (599 - 571) * 0.5, 6));
+  it("boys 11 mo -> 763.5 (interpolated between midpoints 10.5/11.5)", () => expect(faoEnergy("boys", 11)!).toBeCloseTo(763.5, 6));
+  it("boys 12 mo -> 788.3 (mid-month value bridged into the 18-mo child anchor)", () => {
+    expect(faoEnergy("boys", 12)!).toBeCloseTo(775 + (948 - 775) * (0.5 / 6.5), 3);
   });
   it("boys 18 mo -> 948 exactly (FAO mid-year anchor)", () => {
     expect(faoEnergy("boys", 18)!).toBeCloseTo(948, 6);
@@ -57,7 +58,8 @@ describe("FAO/WHO/UNU 2004 lookups (child values anchored at mid-year — audit 
   it("boys 30 mo -> 1129 (next mid-year anchor)", () => {
     expect(faoEnergy("boys", 30)!).toBeCloseTo(1129, 6);
   });
-  it("girls 18 mo -> 865; girls 36 mo -> 1101.5 (mid-way 30->42)", () => {
+  it("girls 12 mo -> 723.8; girls 18 mo -> 865; girls 36 mo -> 1101.5", () => {
+    expect(faoEnergy("girls", 12)!).toBeCloseTo(712 + (865 - 712) * (0.5 / 6.5), 3);
     expect(faoEnergy("girls", 18)!).toBeCloseTo(865, 6);
     expect(faoEnergy("girls", 36)!).toBeCloseTo(1047 + (1156 - 1047) * 0.5, 6);
   });
