@@ -86,7 +86,7 @@
       "text": { "pl": "Brak przyrostu masy mimo prawidłowej podaży energii przez 3–4 tygodnie (typowy okres obserwacji — praktyka) — przeklasyfikuj przyczyny z listy „dlaczego” i zaplanuj wizytę.",
                "en": "No weight gain over 3–4 weeks despite adequate energy intake (typical observation window — practice) — re-check the 'why' checklist and book a visit." },
       "sources": ["faltering_2026", "nice_ng75"],
-      "grade": "A",
+      "grade": "D",
       "wspecific": false
     },
     {
@@ -94,7 +94,7 @@
       "text": { "pl": "Badania mikroskładników: ferrytyna/morfologia i 25(OH)D — omów z pediatrą/dietetykiem terminy (wg norm polskich).",
                "en": "Micronutrient tests: ferritin/blood count and 25(OH)D — agree timing with the paediatrician/dietitian (per Polish norms)." },
       "sources": ["pzh2024", "pludowski2023"],
-      "grade": "A",
+      "grade": "D",
       "wspecific": false
     },
     {

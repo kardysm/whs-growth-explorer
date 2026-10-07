@@ -442,8 +442,8 @@
       "en": "Low–high: muscle-tone band (×0.9–×1.1). Central: your selected muscle tone (hypotonic ×0.9 by default) with your activity factor."
     },
     "band_d": {
-      "pl": "Dolna–górna: koszt energetyczny przyrostu 4,1–6,0 kcal/g. Środkowa: 5 kcal/g (FAO/WHO/UNU).",
-      "en": "Low–high: energy cost of gain 4.1–6.0 kcal/g. Central: 5 kcal/g (FAO/WHO/UNU)."
+      "pl": "Dolna–górna: pasmo napięcia mięśniowego (0,9–1,1 — to samo co w C) ORAZ koszt energetyczny przyrostu 4,1–6,0 kcal/g. Środkowa: 5 kcal/g (FAO/WHO/UNU) przy wybranym napięciu mięśniowym.",
+      "en": "Low–high: the muscle-tone band (0.9–1.1, same as in C) AND the energy cost of gain 4.1–6.0 kcal/g. Central: 5 kcal/g (FAO/WHO/UNU) at the selected muscle tone."
     },
     "band_e": {
       "pl": "Podział liczony z wartości centralnych C i D (utrzymanie i doganianie): „z mleka” = objętość × gęstość mleka, resztę pokrywają posiłki. Dla płynnych posiłków 1 g ≈ 1 ml.",
@@ -740,8 +740,8 @@
       "en": "Methods & limitations"
     },
     "p1": {
-      "pl": "Energia A/B: europejskie wartości EFSA (2013) i polskie Normy 2024 (PZH): niemowlęta — miesiąc 6 wg PZH 2024, miesiące 7–11 wg EFSA z interpolacją dla wieku ułamkowego; dzieci od 1. r.ż. wg roku (PAL 1,4). Kontrola: NASEM (2023), FAO/WHO/UNU (2004). Gdy metody różnią się >5%, pokazujemy oba końce przedziału.",
-      "en": "Energy A/B: EFSA (2013) reference values and Polish PZH Norms 2024 (infants: month 6 from PZH 2024, months 7-11 EFSA with interpolation for fractional ages; children from year 1, yearly values at PAL 1.4), cross-checked with NASEM (2023) and FAO/WHO/UNU (2004). When methods differ by >5%, both ends of the range are shown."
+      "pl": "Energia A/B: europejskie wartości EFSA (2013) i polskie Normy 2024 (PZH): niemowlęta — miesiąc 6 wg PZH 2024, miesiące 7–11 wg EFSA z interpolacją dla wieku ułamkowego; dzieci od 1. r.ż. — wartości roczne EFSA interpolowane liniowo między urodzinami (PZH 2024 zgodne w granicach ~1%, np. 3 lata chłopcy 1163 vs 1174 kcal). Kontrola: NASEM (2023), FAO/WHO/UNU (2004) — FAO kotwiczone na środkach pasm (środek miesiąca / połowa roku). Gdy metody różnią się >5%, pokazujemy oba końce przedziału.",
+      "en": "Energy A/B: EFSA (2013) reference values and Polish PZH Norms 2024 (infants: month 6 from PZH 2024, months 7-11 EFSA with interpolation for fractional ages; children from year 1: EFSA yearly values interpolated linearly between birthdays — PZH 2024 agrees within ~1%, e.g. 3 y boys 1163 vs 1174 kcal), cross-checked with NASEM (2023) and FAO/WHO/UNU (2004), the latter anchored at band midpoints (mid-month / mid-year). When methods differ by >5%, both ends of the range are shown."
     },
     "p2": {
       "pl": "C: metoda typu Krick — BMR wg Schofielda (forma wagowa dla wielkości ciała poniżej ~3 lat; masa+wzrost powyżej — formę wybiera wiek masowy, nie urodziny) × czynnik napięcia mięśniowego (0,9/1,0/1,1) × czynnik aktywności (1,15–1,3). Domyślna długość, gdy jej nie podano: średnia długość dla wieku z siatki WHS (ta sama zasada w kalkulatorze, tabeli i na wykresach) — długość zmienia wynik C tylko wtedy, gdy stosowana jest forma masa+wzrost. Uwaga: oryginalna metoda Kricka używała BMR z powierzchni ciała; wersja ze Schofieldem jest udokumentowanym odstępstwem (patrz DECISIONS.md).",

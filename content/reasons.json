@@ -152,7 +152,7 @@
           "check": { "pl": "Porównaj spadek na siatce WHS ze spadkiem na WHO — kalkulator podaje pozycję WHS (SD) i % odniesienia zdrowego; omów z dietetykiem.",
                      "en": "Compare the drop on the WHS chart with that on WHO — the calculator reports the WHS position (SD) and the % of the healthy reference; discuss with the dietitian." },
           "consult": ["diet"],
-          "grade": "A",
+          "grade": "D",
           "sources": ["faltering_2026", "nice_ng75", "antonius2008"],
           "wspecific": true
         }

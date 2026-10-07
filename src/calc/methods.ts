@@ -198,7 +198,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     id: "C",
     label: "whs_maintenance_krick",
     kcalPerDay: { low: cLow, central: cCentral, high: cHigh },
-    sourceIds: ["cps2009_marchand", "krick1992", "schofield1985", "efsa_energy"],
+    sourceIds: ["cps2009_marchand", "krick1992", "schofield1985", "espghan_espn_pn_energy", "efsa_energy"],
     alerts: cAlerts.length ? cAlerts : undefined,
     notes: [
       N("Typ Krick: BMR (Schofield — forma wagowa dla wielkości ciała poniżej ~3 lat, masa+wzrost powyżej; formę wybiera wiek masowy, nie urodziny) × napięcie mięśniowe × aktywność; pierwotny BMR Kricka opierał się na BSA (udokumentowane odstępstwo).", "Krick-type: BMR (Schofield — weight-only form below ~3 y of body size, weight+height above; the form is chosen by weight-age, not birthday) x tone x activity; Krick's original BMR was BSA-based (documented deviation)."),
