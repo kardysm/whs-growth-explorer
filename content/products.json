@@ -299,7 +299,15 @@
         "vita_ug": 105,
         "vitd_ug": 3.1
       },
-      "measures": [],
+      "measures": [
+        {
+          "label": {
+            "pl": "1 butelka (125 ml)",
+            "en": "1 bottle (125 ml)"
+          },
+          "kcal": 300
+        }
+      ],
       "tags": [
         "high-energy",
         "vitD",
@@ -321,7 +329,11 @@
         "milk",
         "soy"
       ],
-      "allergen_source": "doz.pl — etykieta: mleko, soja"
+      "allergen_source": "doz.pl — etykieta: mleko, soja",
+      "warning": {
+        "pl": "600 mOsm/l; monitoruj płyny; u młodszych dzieci więcej niż 4 butelki na dobę wymaga ostrożności (etykieta).",
+        "en": "600 mOsm/l; monitor fluid intake; in younger children, more than 4 bottles a day needs caution (label)."
+      }
     },
     {
       "id": "fsmp-fantomalt",
@@ -516,10 +528,10 @@
       "measures": [
         {
           "label": {
-            "pl": "55 g → 250 ml (1,0 kcal/ml)",
-            "en": "55 g → 250 ml (1.0 kcal/ml)"
+            "pl": "55 g → 250 ml (≈1,0 kcal/ml)",
+            "en": "55 g → 250 ml (≈1.0 kcal/ml)"
           },
-          "kcal": 250
+          "kcal": 257
         },
         {
           "label": {
