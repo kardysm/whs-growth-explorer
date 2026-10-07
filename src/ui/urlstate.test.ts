@@ -7,6 +7,7 @@ import {
   calcUrlParams,
   langFromPath,
   parseCalcParams,
+  parseMilkProduct,
   parseProductsParams,
   productsUrlParams,
   siteRoot,
@@ -130,6 +131,16 @@ const vocab: ProductsVocab = {
   cats: new Set(["dairy"]),
   algs: new Set(["milk"]),
 };
+
+describe("parseMilkProduct", () => {
+  const ids = new Set(["fsmp-infatrini", "formula-standard-hipp1"]);
+
+  it("accepts a known milk id and rejects unknown or absent ones", () => {
+    expect(parseMilkProduct(new URLSearchParams("milk=fsmp-infatrini"), ids)).toBe("fsmp-infatrini");
+    expect(parseMilkProduct(new URLSearchParams("milk=not-a-milk"), ids)).toBeNull();
+    expect(parseMilkProduct(new URLSearchParams(""), ids)).toBeNull();
+  });
+});
 
 describe("parseProductsParams", () => {
   it("reads text, chips (validated), category and sort", () => {

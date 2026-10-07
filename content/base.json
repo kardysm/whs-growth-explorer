@@ -222,8 +222,8 @@
       "en": "Milk energy density (kcal/ml)"
     },
     "milk_density_hint": {
-      "pl": "np. mleko standardowe 0,66–0,67; mleka wysokoenergetyczne (FSMP) 1,0–1,5. Wybór produktu w karcie „Bilans: samo mleko” podstawia gęstość automatycznie.",
-      "en": "e.g. standard formula 0.66–0.67; energy-enriched milks (FSMP) 1.0–1.5. Picking a product in the milk-balance card auto-fills the density."
+      "pl": "np. mleko standardowe 0,66–0,67; mleka wysokoenergetyczne (FSMP) 1,0–1,5. Wybór produktu z listy podstawia gęstość automatycznie.",
+      "en": "e.g. standard formula 0.66–0.67; energy-enriched milks (FSMP) 1.0–1.5. Picking a product from the list sets the density automatically."
     },
     "milk_ml": {
       "pl": "Mleko na dobę (ml)",
@@ -1140,8 +1140,8 @@
       "en": "Balance: milk only — what food must cover"
     },
     "sub": {
-      "pl": "Wybierz mleko i dzienną objętość. Kalkulacja pokazuje, ile energii, białka i wybranych mikroelementów musi jeszcze wnieść jedzenie (poza mlekiem). Mleko standardowe ma ok. 0,66–0,67 kcal/ml; od 1 kcal/ml wzwyż to mleka wysokoenergetyczne (FSMP).",
-      "en": "Pick the milk and daily volume. The calculation shows how much energy, protein and selected micronutrients food must still provide (beyond milk). Standard formula is about 0.66-0.67 kcal/ml; 1 kcal/ml and above are energy-enriched milks (FSMP)."
+      "pl": "Wybierz mleko w kalkulatorze i dzienną objętość. Kalkulacja pokazuje, ile energii, białka i wybranych mikroelementów musi jeszcze wnieść jedzenie (poza mlekiem). Mleko standardowe ma ok. 0,66–0,67 kcal/ml; od 1 kcal/ml wzwyż to mleka wysokoenergetyczne (FSMP).",
+      "en": "Pick the milk in the calculator and the daily volume. The calculation shows how much energy, protein and selected micronutrients food must still provide (beyond milk). Standard formula is about 0.66-0.67 kcal/ml; 1 kcal/ml and above are energy-enriched milks (FSMP)."
     },
     "product_label": {
       "pl": "Mleko / produkt",
@@ -1152,8 +1152,8 @@
       "en": "Daily volume (ml)"
     },
     "volume_note": {
-      "pl": "Objętość: {ml} ml/dobę (pole „Mleko na dobę” w kalkulatorze); ten produkt ≈ {d} kcal/ml — wybór produktu podstawia gęstość do formularza.",
-      "en": "Volume: {ml} ml/day (the “Milk per day” field in the calculator); this product ≈ {d} kcal/ml — picking a product fills the density into the form."
+      "pl": "Objętość: {ml} ml/dobę (pole „Mleko na dobę” w kalkulatorze); ten produkt ≈ {d} kcal/ml.",
+      "en": "Volume: {ml} ml/day (the “Milk per day” field in the calculator); this product ≈ {d} kcal/ml."
     },
     "col_component": {
       "pl": "Składnik",

@@ -555,8 +555,6 @@ section.sec-in { animation: secIn 0.5s cubic-bezier(0.2, 0.7, 0.3, 1); }
 .nut-toggle button[aria-pressed="true"] { color: var(--fg); border-color: var(--accent2); }
 table.nut th.nut-hl, table.nut td.nut-hl { background: color-mix(in srgb, var(--pal-periwinkle) 12%, transparent); }
 table.nut td .small { color: var(--muted); }
-.milk-inputs { display: grid; grid-template-columns: max-content minmax(140px, 1fr); gap: 0.35rem 0.75rem; align-items: center; margin: 0.5rem 0; max-width: 460px; }
-.milk-inputs label { margin-top: 0; }
 label.remember { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.85rem; font-size: 0.85rem; color: var(--fg); }
 label.remember input { width: auto; margin: 0; }
 

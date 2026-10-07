@@ -140,6 +140,12 @@ export function calcUrlParams(input: Inputs): Record<string, string | null> {
 
 // --- products search params ------------------------------------------------
 
+/** Reads the milk-product id (validated against the milk list; user request 2026-10-07). */
+export function parseMilkProduct(sp: URLSearchParams, validIds: ReadonlySet<string>): string | null {
+  const v = sp.get("milk");
+  return v !== null && validIds.has(v) ? v : null;
+}
+
 /** Reads products-search parameters; unknown chip keys are dropped. */
 export function parseProductsParams(sp: URLSearchParams, vocab: ProductsVocab): Partial<ProductsState> {
   const out: Partial<ProductsState> = {};

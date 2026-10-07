@@ -21,7 +21,7 @@ import { loadContext } from "../calc/load.js";
 import { whoTable, weightForLengthZ } from "../calc/who.js";
 import { descPl } from "./desc-pl.js";
 import type { CalcInput } from "../calc/types.js";
-import { calcUrlParams, langFromPath, parseCalcParams, parseProductsParams, productsUrlParams, siteRoot } from "./urlstate.js";
+import { calcUrlParams, langFromPath, parseCalcParams, parseMilkProduct, parseProductsParams, productsUrlParams, siteRoot } from "./urlstate.js";
 import type { Inputs, Lang } from "./urlstate.js";
 
 const { dataset, whs } = loadContext();
@@ -94,6 +94,27 @@ function scheduleUrlSync(domain: "products" | "search"): void {
   }, 300);
 }
 let overlayQ = "";
+
+// --- milk products (density selector in the form; user request 2026-10-07) --
+// The milk energy density is now a PRODUCT choice: the form's field is a select over these items
+// (same list the balance card used to offer), and the density follows the product everywhere.
+interface MilkItem { id: string; name: BiText; per100: Record<string, number | null | undefined>; }
+function milkItems(): MilkItem[] {
+  const items = (productsContent as unknown as { items: MilkItem[] }).items;
+  return items
+    .filter((x) => x.id !== "fsmp-fantomalt" && x.id !== "fsmp-protifar")
+    .sort((a, b) => (Number(a.per100["kcal"]) || 0) - (Number(b.per100["kcal"]) || 0));
+}
+/** kcal/100 ml -> "0,67" (2 dp, trailing zeros trimmed, locale comma). */
+function fmtDens(kcal100: number): string {
+  const s = (kcal100 / 100).toFixed(2).replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
+  return lang === "pl" ? s.replace(".", ",") : s;
+}
+/** Rounded energy density (kcal/ml) of a milk product, or null when unknown. */
+function milkDensityOf(id: string): number | null {
+  const k = Number(milkItems().find((m) => m.id === id)?.per100["kcal"]);
+  return Number.isFinite(k) && k > 0 ? Math.round(k) / 100 : null;
+}
 
 const app = document.getElementById("app")!;
 
@@ -308,8 +329,12 @@ function renderStart(): void {
 // ---------- calculator ----------
 
 /** Reads every calculator form field into `input`, persists when opted in, and recalcs.
- *  Module-level so the milk card can re-read after auto-filling the milk density. */
+ *  Module-level so the form bindings and the milk card share it. */
 function readInputs(): void {
+  // The milk density follows the selected product (user request 2026-10-07).
+  const milkSel = document.getElementById("in-milkd") as HTMLSelectElement | null;
+  if (milkSel) milkProductId = milkSel.value;
+  const milkDens = milkDensityOf(milkProductId);
   input = {
     sex: (document.getElementById("in-sex") as HTMLSelectElement).value as Inputs["sex"],
     age: Number((document.getElementById("in-age") as HTMLInputElement).value),
@@ -319,7 +344,7 @@ function readInputs(): void {
     mobility: (document.getElementById("in-mobility") as HTMLSelectElement).value as Inputs["mobility"],
     targetRef: (document.getElementById("in-target") as HTMLSelectElement).value as Inputs["targetRef"],
     horizonWeeks: Number((document.getElementById("in-horizon") as HTMLInputElement).value),
-    milkDensity: Number((document.getElementById("in-milkd") as HTMLInputElement).value),
+    milkDensity: milkDens ?? input.milkDensity,
     mealDensity: Number((document.getElementById("in-meald") as HTMLInputElement).value),
     milkMl: Number((document.getElementById("in-milkml") as HTMLInputElement).value),
     feeds: (document.getElementById("in-feeds") as HTMLInputElement).value === "" ? null : Number((document.getElementById("in-feeds") as HTMLInputElement).value),
@@ -332,12 +357,22 @@ function readInputs(): void {
     else localStorage.removeItem(STORE_KEY);
   } catch { /* ignore */ }
   // Mirror the state into the URL (shareable/reloadable links) — user request 2026-10-07.
-  setUrlParams(calcUrlParams(input));
+  setUrlParams({ ...calcUrlParams(input), milk: milkProductId });
   recalc();
 }
 
 function renderCalcForm(): void {
   const b = document.getElementById("calc-body")!;
+  // Milk density selector options (user request 2026-10-07: the field is a product list now).
+  const milks = milkItems();
+  if (!milks.some((m) => m.id === milkProductId)) milkProductId = milks[0]?.id ?? "";
+  const milkOpts = milks
+    .map((m) => {
+      const k = Number(m.per100["kcal"]);
+      const d = Number.isFinite(k) && k > 0 ? ` — ${fmtDens(k)} kcal/ml` : "";
+      return `<option value="${m.id}"${m.id === milkProductId ? " selected" : ""}>${B(m.name)}${d}</option>`;
+    })
+    .join("");
   b.innerHTML = `
   <div class="cards-grid">
     <form class="card" id="calc-form" aria-label="calculator">
@@ -379,7 +414,7 @@ function renderCalcForm(): void {
       <label for="in-horizon">${t("calc.horizon")}</label>
       <input id="in-horizon" type="number" min="4" max="52" step="1" value="${input.horizonWeeks}" />
       <label for="in-milkd">${t("calc.milk_density")}</label>
-      <input id="in-milkd" type="number" min="0.4" max="2" step="0.01" value="${input.milkDensity}" />
+      <select id="in-milkd">${milkOpts}</select>
       <p class="small hint">${t("calc.milk_density_hint")}</p>
       <label for="in-milkml">${t("calc.milk_ml")}</label>
       <input id="in-milkml" type="number" min="0" max="1200" step="10" value="${input.milkMl}" />
@@ -1122,10 +1157,7 @@ function nutCellFor(id: string, band: string): NutCell | undefined {
 function updateMilkCard(): void {
   const host = document.getElementById("milk-card");
   if (!host) return;
-  const items = (productsContent as unknown as { items: { id: string; name: BiText; per100: Record<string, number | null | undefined> }[] }).items;
-  const milks = items
-    .filter((x) => x.id !== "fsmp-fantomalt" && x.id !== "fsmp-protifar")
-    .sort((a, b) => (Number(a.per100["kcal"]) || 0) - (Number(b.per100["kcal"]) || 0));
+  const milks = milkItems();
   if (!milks.some((m) => m.id === milkProductId)) milkProductId = milks[0]?.id ?? "";
   const sel = milks.find((m) => m.id === milkProductId);
   const band = nutrientBandForAge(input.age);
@@ -1185,35 +1217,17 @@ function updateMilkCard(): void {
     rows.push(`<tr><th scope="row">${lbl ? B(lbl.label) : nid}</th><td>${num(got, unit, dec)}</td><td>${num(need, unit, dec)}</td><td>${g === null ? t("milk.na") : num(g, unit, dec)}</td></tr>`);
   }
 
-  const opts = milks
-    .map((m) => {
-      const k = m.per100["kcal"];
-      return `<option value="${m.id}" ${m.id === milkProductId ? "selected" : ""}>${B(m.name)}${typeof k === "number" ? ` — ${fmtN(k, 0)} kcal/100 ml` : ""}</option>`;
-    })
-    .join("");
   const dens = per("kcal") !== null ? fmtN(per("kcal")! / 100, 2) : "—";
   host.innerHTML = `
     <div class="card"><h3>${t("milk.title")}</h3>
       <p class="small sub">${t("milk.sub")}</p>
-      <div class="milk-inputs">
-        <label for="milk-prod">${t("milk.product_label")}</label>
-        <select id="milk-prod">${opts}</select>
-      </div>
+      <p class="small">${t("milk.product_label")}: <b>${sel ? B(sel.name) : "—"}</b> — ${dens} kcal/ml</p>
       <p class="small">${t("milk.volume_note").replace("{ml}", String(ml)).replace("{d}", dens)}</p>
       <table><thead><tr><th>${t("milk.col_component")}</th><th>${t("milk.col_from_milk").replace("{ml}", String(ml))}</th><th>${t("milk.col_need")}</th><th>${t("milk.col_gap")}</th></tr></thead><tbody>${rows.join("")}</tbody></table>
       ${band === null ? `<p class="small">${t("nutrients.note06")}</p>` : ""}
       <p class="small">${t("milk.note")}</p>
       <p class="small">${t("calc.sources_label")}: ${srcLinks(["pzh2024"])} · ${lang === "pl" ? "skład produktu: dane producenta" : "product composition: manufacturer data"}</p>
     </div>`;
-  document.getElementById("milk-prod")?.addEventListener("change", (e) => {
-    milkProductId = (e.target as HTMLSelectElement).value;
-    // Auto-fill the milk density into the calculator form (user request 2026-10-05: separate densities).
-    const m = milks.find((x) => x.id === milkProductId);
-    const k = m ? Number(m.per100["kcal"]) : NaN;
-    const dEl = document.getElementById("in-milkd") as HTMLInputElement | null;
-    if (dEl && Number.isFinite(k) && k > 0) dEl.value = String(Math.round(k) / 100);
-    readInputs(); // re-read the form (incl. the density), persist, recalc — refreshes this card too
-  });
 }
 
 // ---------- products (§8) ----------
@@ -1770,6 +1784,22 @@ if (__st) document.documentElement.dataset.theme = __st;
 // the query string — they win over stored/default values; ?q= opens the search overlay.
 const __sp = new URLSearchParams(location.search);
 Object.assign(input, parseCalcParams(__sp));
+{
+  // Milk product (user request 2026-10-07): a valid ?milk= id wins; otherwise match by the density
+  // (links from before the select existed); the density itself always follows the selected product.
+  const __ids = new Set(milkItems().map((m) => m.id));
+  const __mp = parseMilkProduct(__sp, __ids);
+  if (__mp) milkProductId = __mp;
+  else {
+    const __byDens = milkItems().find((m) => {
+      const k = Number(m.per100["kcal"]);
+      return Number.isFinite(k) && k > 0 && Math.round(k) / 100 === input.milkDensity;
+    });
+    if (__byDens) milkProductId = __byDens.id;
+  }
+  const __md = milkDensityOf(milkProductId);
+  if (__md !== null) input.milkDensity = __md;
+}
 {
   const __all = buildProducts();
   const __vocab = {
