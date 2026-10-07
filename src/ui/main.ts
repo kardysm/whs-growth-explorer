@@ -1277,7 +1277,7 @@ function renderProducts(): void {
     <p class="small">${t("products.allergen_legend")}</p>
     <ul class="tight small alg-legend">${Object.keys(ALG_ICONS).map((a) => `<li><span aria-hidden="true">${ALG_ICONS[a]}</span> ${algLabel(a)}</li>`).join("")}</ul>
     <p class="small">${t("products.allergen_legend_note")}</p>
-    <div class="card" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
+    <div class="card p-controls" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
       <div class="p-searchbox" style="flex:0 1 340px;min-width:220px">
         <label for="p-search" id="p-search-label">${t("products.search")}</label>
         <div class="p-search">

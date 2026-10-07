@@ -73,7 +73,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <section id="method"><h2>${$(`method.title`)}</h2><div id="method-body"></div></section>
   </main>
   <footer><p>${$(`footer`)}</p>
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`720d102+`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.1.0`).replace(`{date}`,`2026-10-07`).replace(`{commit}`,`49284f7+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
@@ -272,7 +272,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <p class="small">${$(`products.allergen_legend`)}</p>
     <ul class="tight small alg-legend">${Object.keys(k9).map(e=>`<li><span aria-hidden="true">${k9[e]}</span> ${M9(e)}</li>`).join(``)}</ul>
     <p class="small">${$(`products.allergen_legend_note`)}</p>
-    <div class="card" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
+    <div class="card p-controls" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
       <div class="p-searchbox" style="flex:0 1 340px;min-width:220px">
         <label for="p-search" id="p-search-label">${$(`products.search`)}</label>
         <div class="p-search">

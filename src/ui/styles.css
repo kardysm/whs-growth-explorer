@@ -306,6 +306,11 @@ thead th { font-weight: 600; }
 .allergens .badge.alg { border-color: var(--warn-line); color: var(--fg); background: var(--warn-bg); }
 
 /* ---------- food-search chips + badge suggestions (user batch card 7, 2026-10-07) ---------- */
+/* The controls card must out-stack the product cards: .card's backdrop-filter makes it a stacking
+   context, which would otherwise trap #p-suggest (z-60) under the later product cards (also backdrop-
+   filtered) — the dropdown was only visible until it crossed the card boundary (user report 2026-10-07).
+   z-5: above product cards (z-auto), below the sticky header (z-10). */
+.p-controls { position: relative; z-index: 5; }
 .p-searchbox { position: relative; }
 .p-search { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; min-height: 2.35rem; padding: 0.15rem 0.35rem; border: 1px solid var(--line); border-radius: 10px; background: var(--glass-strong); }
 .p-search:focus-within { outline: 3px solid var(--accent2); outline-offset: 1px; }
