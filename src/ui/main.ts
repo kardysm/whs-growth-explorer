@@ -1489,7 +1489,7 @@ function renderMethod(): void {
   document.getElementById("method-body")!.innerHTML = `
     <div class="card">
       ${(["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"] as const).map((k) => `<p>${t(`method.${k}`)}</p>`).join("")}
-      <p class="small">research/data/whs_growth/provenance.md · research/data/whs_growth/provenance_2025.md · research/qa/crosscheck-report.md · DECISIONS.md</p>
+      <p class="small">research/data/whs_growth/provenance.md · research/data/whs_growth/provenance_2025.md · research/qa/crosscheck-report.md</p>
     </div>`;
 }
 
