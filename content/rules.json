@@ -89,8 +89,8 @@
       "id": "monitoring",
       "title": { "pl": "Monitorowanie", "en": "Monitoring" },
       "items": [
-        { "text": { "pl": "Wagę kontroluj wg wieku (NICE NG75: <1. mies. — codziennie; 1–6. mies. — co tydzień; 6–12. mies. — co 2 tygodnie; ≥1. r.ż. — co miesiąc). W fazie zmian: dzienniczek przyjęć 3–7 dni (praktyka) i ocena trendu po kilku tygodniach, zanim zmienisz cele.",
-                    "en": "Weigh per age bands (NICE NG75: <1 mo — daily; 1–6 mo — weekly; 6–12 mo — every 2 weeks; ≥1 y — monthly). While changing things: a 3–7 day intake diary (practice) and trend review after several weeks before adjusting targets." },
+        { "text": { "pl": "Gdy są obawy o słabe przyrastanie, NICE NG75 podaje, jak często NAJCZĘŚCIEJ ważyć — to górna granica, nie harmonogram: <1 mies. — nie częściej niż raz dziennie; 1–6 mies. — nie częściej niż raz w tygodniu; 6–12 mies. — nie częściej niż raz na 2 tygodnie; ≥1 r.ż. — nie częściej niż raz w miesiącu (NICE ostrzega, że zbyt częste ważenie wzmaga niepokój rodziców). W fazie zmian: dzienniczek przyjęć 3–7 dni (praktyka) i ocena trendu po kilku tygodniach, zanim zmienisz cele.",
+                    "en": "When faltering growth is a concern, NICE NG75 gives how often to weigh AT MOST — a ceiling, not a schedule: <1 mo — no more often than daily; 1–6 mo — no more often than weekly; 6–12 mo — no more often than fortnightly; ≥1 y — no more often than monthly (NICE warns that weighing more often than needed adds to parental anxiety). While changing things: a 3–7 day intake diary (practice) and trend review after several weeks before adjusting targets." },
           "sources": ["nice_ng75", "faltering_2026"], "grade": "A" },
         { "text": { "pl": "Wykreślaj na siatce WHS jednocześnie z siatką WHO — dwie siatki odpowiadają na dwa różne pytania („czy rośnie jak dziecko z WHS?” i „jak daleko od populacji?”).",
                     "en": "Plot on the WHS chart alongside WHO — the two charts answer different questions ('is he growing like a child with WHS?' and 'how far from the healthy population?')." },

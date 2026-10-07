@@ -147,8 +147,8 @@
           "wspecific": true
         },
         {
-          "text": { "pl": "Definicje słabego przyrastania (np. spadek o ≥1 kanał centylowy, kryteria z-score) trzeba stosować na siatce, która należy do populacji dziecka — w WHS to siatka WHS. Kalkulator pokazuje pozycję dziecka na siatce WHS obok wartości odniesienia ze siatki WHO (dwie różne odpowiedzi na dwa różne pytania).",
-                   "en": "Faltering definitions (e.g. crossing ≥1 centile channel, z-score criteria) must be applied on the child's own reference — for WHS that is the WHS chart. The calculator shows the child's position on the WHS chart next to the WHO reference values (two different questions, two different answers)." },
+          "text": { "pl": "Definicje słabego przyrastania (np. spadek o ≥1 pole centylowe — na siatkach UK-WHO to ≈ 0,67 SD, albo kryteria z-score) trzeba stosować na siatce, która należy do populacji dziecka — w WHS to siatka WHS. Kalkulator pokazuje pozycję dziecka na siatce WHS obok wartości odniesienia ze siatki WHO (dwie różne odpowiedzi na dwa różne pytania).",
+                   "en": "Faltering definitions (e.g. crossing ≥1 centile space — about 0.67 SD on the UK-WHO charts — or z-score criteria) must be applied on the child's own reference — for WHS that is the WHS chart. The calculator shows the child's position on the WHS chart next to the WHO reference values (two different questions, two different answers)." },
           "check": { "pl": "Porównaj spadek na siatce WHS ze spadkiem na WHO — kalkulator podaje pozycję WHS (SD) i % odniesienia zdrowego; omów z dietetykiem.",
                      "en": "Compare the drop on the WHS chart with that on WHO — the calculator reports the WHS position (SD) and the % of the healthy reference; discuss with the dietitian." },
           "consult": ["diet"],

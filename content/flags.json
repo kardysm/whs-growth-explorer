@@ -43,16 +43,16 @@
     },
     {
       "level": "week",
-      "text": { "pl": "Spełnione kryterium słabego przyrastania: masa/długość < −1,65 z, prędkość masy < −2 z (poniżej 2 lat) albo spadek o ≥1 z — wizyta w ciągu tygodnia wg ścieżki wytycznych.",
-               "en": "Faltering-growth criteria met: weight-for-length < −1.65 z, weight velocity < −2 z (under 2 y), or a drop of ≥1 z — appointment within a week per the guideline pathway." },
+      "text": { "pl": "Spełnione kryterium słabego przyrastania: masa/długość < −1,65 z, prędkość masy < −2 z (poniżej 2 lat) albo spadek o ≥1 z — oceń na siatce odniesienia dziecka (dla WHS: siatka WHS; kryteria AAP/WHO opisano na siatkach populacyjnych) — wizyta w ciągu tygodnia wg ścieżki wytycznych.",
+               "en": "Faltering-growth criteria met: weight-for-length < −1.65 z, weight velocity < −2 z (under 2 y), or a drop of ≥1 z — evaluate on the child's own reference chart (for WHS: the WHS chart; the AAP/WHO criteria are written for population charts) — appointment within a week per the guideline pathway." },
       "sources": ["faltering_2026", "nice_ng75"],
       "grade": "A",
       "wspecific": false
     },
     {
       "level": "week",
-      "text": { "pl": "Na siatce WHS masa przecięła kanały centylowe w dół (nie pojedynczy punkt, a trend przez ≥2 pomiary) — nie czekaj do rutynowej kontroli.",
-               "en": "On the WHS chart, weight has crossed centile channels downward (a trend over ≥2 measurements, not one point) — don't wait for the routine visit." },
+      "text": { "pl": "Na siatce WHS masa przecięła pasma SD w dół (nie pojedynczy punkt, a trend przez ≥2 pomiary; przelicznik: 1 pole centylowe UK-WHO ≈ 0,67 SD) — nie czekaj do rutynowej kontroli.",
+               "en": "On the WHS chart, weight has crossed the SD bands downward (a trend over ≥2 measurements, not one point; conversion: 1 UK-WHO centile space ≈ 0.67 SD) — don't wait for the routine visit." },
       "sources": ["antonius2008", "faltering_2026"],
       "grade": "C",
       "wspecific": true
