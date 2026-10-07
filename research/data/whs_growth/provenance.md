@@ -36,3 +36,13 @@ Conclusion: three of four charts agree with the quoted text means within 0.2 kg 
 - The published charts are mean ± SD lines only (no centiles); the website interpolates between the 3-month grid points.
 - These data are read off published figures (allowed by the project's rules; quoted as derivative of the cited figure). No figure image is embedded in the website.
 - The 2025 extended curves (Calhoun et al., CC BY-NC-ND) are retrieved (`research/raw/wb_wiley_64075.pdf`, figures at `research/raw/figs/growth2025_fig*_wb.jpg`) but not yet digitized; extension beyond 48 months is planned with the same pipeline.
+
+## Addendum 2026-10-07 (audit L7) — month-0 means pinned to the paper text
+
+The digitized month-0 means deviated from the means stated in the paper text (weight: boys 2.245 vs 2.1 kg,
+girls 2.306 vs 1.9 kg; length: boys 42.38 vs 41.5 cm, girls 45.13 vs 43.0 cm — see the anchor table above).
+Because these points drive the WHS z, the catch-up targets and the chart at 0–3 months, month 0 is now
+**pinned** to the stated means: all five lines (mean, ±1SD, ±2SD) of each chart were shifted by the mean
+delta (SD widths preserved; the affected rows carry `method=digitized+pinned` in
+`antonius_digitized.csv`). The existing linear interpolation tapers into the digitized curve by month 3
+(month-3 values unchanged). Spot effects: girls 1 mo / 3.0 kg z +0.65 → +0.96; boys 3 mo unchanged.

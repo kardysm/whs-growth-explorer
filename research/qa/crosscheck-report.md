@@ -1,6 +1,6 @@
 # Cross-check report (independent Python recomputation, full-grid sweep)
 
-grid.json sha256: 4d03b0c056019b3b7037a1036bfa51b2c441a46350d34c6da1a779276ae651af
+grid.json sha256: cfb46b964e02135c373a2c34acbae6a8d5c738de66d625973b30caf7e7701f45
 Grid rows: 7154 (0-48 mo; both sexes; weights 2-20 kg, step 0.25)
 Fields compared per row: A, Alo, Ahi, B, C, Clo, Chi, D, Dlo, Dhi, fluid (11 fields)
 Values compared: 77420 (expected >= 71540; B is null by design where the weight is outside the WHO weight-for-age range: 1274 rows)
