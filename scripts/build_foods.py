@@ -4,7 +4,7 @@
 Outputs: research/data/products_foods.json (+ copy to src/data/)
 Each item: key, pl/en names, category, per-100 g values (kcal, protein, fat, satfat,
 carbs, fibre, Ca, Fe, Zn, Na, K, vit A, vit D), FDC id + description, household portions
-(from food_portion.csv), source note.
+(from food_portion.csv), source note, identity-based EU-14 allergen codes (may be empty).
 """
 import csv
 import json
@@ -162,6 +162,22 @@ WARNINGS = {
 CHOKING = {"almonds", "walnuts", "peanut-butter", "raisins", "dates", "carrot", "apple", "blueberry", "sunflower", "pumpkin-seeds"}
 TAG_EXTRA = {"honey": ["age-12plus"]}
 
+# EU-14 display codes for the „Alergeny:” chip row (D-038; user request 2026-10-05). Identity-based flags
+# for single-ingredient foods. This is the field the UI reads (`allergens`), separate from the display tags.
+# NOTE (2026-10-07): these were added to products_foods.json directly in D-038; the seasonings rebuild
+# (D-045) dropped them — they now live here so the pipeline regenerates them.
+FOOD_ALLERGENS = {
+    "butter": ["milk"], "ghee": ["milk"], "cream30": ["milk"], "twarog": ["milk"],
+    "greek-yogurt": ["milk"], "milk-32": ["milk"], "yogurt-plain": ["milk"], "cheddar": ["milk"],
+    "egg": ["egg"],
+    "salmon": ["fish"], "mackerel": ["fish"], "sardines": ["fish"], "cod": ["fish"],
+    "tofu": ["soy"],
+    "oats": ["gluten"], "semolina": ["gluten"], "pasta": ["gluten"], "bread-rye": ["gluten"], "bread-ww": ["gluten"],
+    "almonds": ["nuts"], "walnuts": ["nuts"],
+    "tahini": ["sesame"],
+    "peanut-butter": ["peanuts"],
+}
+
 
 def main():
     foods = {}
@@ -230,7 +246,7 @@ def main():
             "tags": (ALLERGENS.get(key, []) + TAG_EXTRA.get(key, [])
                      + (["choking"] if key in CHOKING else [])
                      + (["flavour"] if cat == "seasonings" else [])),
-            **({"warning": WARNINGS[key]} if key in WARNINGS else {}),
+            **( {"warning": WARNINGS[key]} if key in WARNINGS else {}),
             "per100g": {
                 "kcal": n.get("kcal"), "protein": n.get("protein_g"), "fat": n.get("fat_g"),
                 "satfat": n.get("satfat_g"), "carbs": n.get("carbs_g"), "fibre": n.get("fibre_g"),
@@ -241,6 +257,7 @@ def main():
             "portions": p,
             "fdc_id": fid, "fdc_desc": desc,
             "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+            "allergens": FOOD_ALLERGENS.get(key, []),
         })
 
     (ROOT / "research" / "data").mkdir(parents=True, exist_ok=True)

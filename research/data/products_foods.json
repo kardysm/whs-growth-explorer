@@ -40,7 +40,8 @@
    ],
    "fdc_id": "172336",
    "fdc_desc": "Oil, canola",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-olive-oil",
@@ -82,7 +83,8 @@
    ],
    "fdc_id": "171413",
    "fdc_desc": "Oil, olive, salad or cooking",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-butter",
@@ -124,7 +126,10 @@
    ],
    "fdc_id": "173410",
    "fdc_desc": "Butter, salted",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-ghee",
@@ -153,7 +158,10 @@
    "portions": [],
    "fdc_id": "171314",
    "fdc_desc": "Butter, Clarified butter (ghee)",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-cream30",
@@ -195,7 +203,10 @@
    ],
    "fdc_id": "170859",
    "fdc_desc": "Cream, fluid, heavy whipping",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-lard",
@@ -233,7 +244,8 @@
    ],
    "fdc_id": "171401",
    "fdc_desc": "Lard",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-twarog",
@@ -277,7 +289,10 @@
    ],
    "fdc_id": "172179",
    "fdc_desc": "Cheese, cottage, creamed, large or small curd",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-greek-yogurt",
@@ -308,7 +323,10 @@
    "portions": [],
    "fdc_id": "171304",
    "fdc_desc": "Yogurt, Greek, plain, whole milk",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-milk-32",
@@ -352,7 +370,10 @@
    ],
    "fdc_id": "171265",
    "fdc_desc": "Milk, whole, 3.25% milkfat, with added vitamin D",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-yogurt-plain",
@@ -396,7 +417,10 @@
    ],
    "fdc_id": "171284",
    "fdc_desc": "Yogurt, plain, whole milk",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-cheddar",
@@ -440,7 +464,10 @@
    ],
    "fdc_id": "170899",
    "fdc_desc": "Cheese, cheddar, sharp, sliced",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "milk"
+   ]
   },
   {
    "id": "food-egg",
@@ -484,7 +511,10 @@
    ],
    "fdc_id": "171287",
    "fdc_desc": "Egg, whole, raw, fresh",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "egg"
+   ]
   },
   {
    "id": "food-salmon",
@@ -524,7 +554,10 @@
    ],
    "fdc_id": "175167",
    "fdc_desc": "Fish, salmon, Atlantic, farmed, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "fish"
+   ]
   },
   {
    "id": "food-mackerel",
@@ -564,7 +597,10 @@
    ],
    "fdc_id": "175119",
    "fdc_desc": "Fish, mackerel, Atlantic, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "fish"
+   ]
   },
   {
    "id": "food-sardines",
@@ -608,7 +644,10 @@
    ],
    "fdc_id": "175139",
    "fdc_desc": "Fish, sardine, Atlantic, canned in oil, drained solids with bone",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "fish"
+   ]
   },
   {
    "id": "food-cod",
@@ -648,7 +687,10 @@
    ],
    "fdc_id": "171955",
    "fdc_desc": "Fish, cod, Atlantic, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "fish"
+   ]
   },
   {
    "id": "food-chicken",
@@ -690,7 +732,8 @@
    ],
    "fdc_id": "171450",
    "fdc_desc": "Chicken, broilers or fryers, meat and skin, cooked, roasted",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-beef",
@@ -724,7 +767,8 @@
    ],
    "fdc_id": "171797",
    "fdc_desc": "Beef, ground, 80% lean meat / 20% fat, patty, cooked, broiled",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-pork",
@@ -762,7 +806,8 @@
    ],
    "fdc_id": "167821",
    "fdc_desc": "Pork, fresh, loin, whole, separable lean and fat, cooked, roasted",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-tofu",
@@ -802,7 +847,10 @@
    ],
    "fdc_id": "172475",
    "fdc_desc": "Tofu, raw, firm, prepared with calcium sulfate",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "soy"
+   ]
   },
   {
    "id": "food-lentils-red",
@@ -836,7 +884,8 @@
    ],
    "fdc_id": "174284",
    "fdc_desc": "Lentils, pink or red, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-chickpeas",
@@ -870,7 +919,8 @@
    ],
    "fdc_id": "173757",
    "fdc_desc": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-white-beans",
@@ -908,7 +958,8 @@
    ],
    "fdc_id": "175203",
    "fdc_desc": "Beans, white, mature seeds, cooked, boiled, without salt",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-oats",
@@ -946,7 +997,10 @@
    ],
    "fdc_id": "173904",
    "fdc_desc": "Cereals, oats, regular and quick, not fortified, dry",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "gluten"
+   ]
   },
   {
    "id": "food-semolina",
@@ -982,7 +1036,10 @@
    ],
    "fdc_id": "169715",
    "fdc_desc": "Semolina, enriched",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "gluten"
+   ]
   },
   {
    "id": "food-millet",
@@ -1016,7 +1073,8 @@
    ],
    "fdc_id": "169702",
    "fdc_desc": "Millet, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-buckwheat",
@@ -1050,7 +1108,8 @@
    ],
    "fdc_id": "170686",
    "fdc_desc": "Buckwheat groats, roasted, cooked",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-rice",
@@ -1084,7 +1143,8 @@
    ],
    "fdc_id": "169753",
    "fdc_desc": "Rice, white, long-grain, regular, cooked, enriched, with salt",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-pasta",
@@ -1128,7 +1188,10 @@
    ],
    "fdc_id": "169737",
    "fdc_desc": "Pasta, cooked, enriched, without added salt",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "gluten"
+   ]
   },
   {
    "id": "food-potato",
@@ -1170,7 +1233,8 @@
    ],
    "fdc_id": "170440",
    "fdc_desc": "Potatoes, boiled, cooked without skin, flesh, without salt",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-sweet-potato",
@@ -1208,7 +1272,8 @@
    ],
    "fdc_id": "168482",
    "fdc_desc": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-bread-rye",
@@ -1252,7 +1317,10 @@
    ],
    "fdc_id": "172684",
    "fdc_desc": "Bread, rye",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "gluten"
+   ]
   },
   {
    "id": "food-bread-ww",
@@ -1292,7 +1360,10 @@
    ],
    "fdc_id": "172688",
    "fdc_desc": "Bread, whole-wheat, commercially prepared",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "gluten"
+   ]
   },
   {
    "id": "food-avocado",
@@ -1334,7 +1405,8 @@
    ],
    "fdc_id": "171705",
    "fdc_desc": "Avocados, raw, all commercial varieties",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-banana",
@@ -1376,7 +1448,8 @@
    ],
    "fdc_id": "173944",
    "fdc_desc": "Bananas, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-apple",
@@ -1424,7 +1497,8 @@
    ],
    "fdc_id": "171688",
    "fdc_desc": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-blueberry",
@@ -1468,7 +1542,8 @@
    ],
    "fdc_id": "171711",
    "fdc_desc": "Blueberries, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-orange",
@@ -1510,7 +1585,8 @@
    ],
    "fdc_id": "169097",
    "fdc_desc": "Oranges, raw, all commercial varieties",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-dates",
@@ -1550,7 +1626,8 @@
    ],
    "fdc_id": "168191",
    "fdc_desc": "Dates, medjool",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-raisins",
@@ -1598,7 +1675,8 @@
    ],
    "fdc_id": "168165",
    "fdc_desc": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-tomato",
@@ -1640,7 +1718,8 @@
    ],
    "fdc_id": "170457",
    "fdc_desc": "Tomatoes, red, ripe, raw, year round average",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-carrot",
@@ -1688,7 +1767,8 @@
    ],
    "fdc_id": "170393",
    "fdc_desc": "Carrots, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-broccoli",
@@ -1730,7 +1810,8 @@
    ],
    "fdc_id": "170379",
    "fdc_desc": "Broccoli, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-spinach",
@@ -1772,7 +1853,8 @@
    ],
    "fdc_id": "168462",
    "fdc_desc": "Spinach, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-pumpkin",
@@ -1806,7 +1888,8 @@
    ],
    "fdc_id": "168448",
    "fdc_desc": "Pumpkin, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-almonds",
@@ -1855,7 +1938,10 @@
    ],
    "fdc_id": "170567",
    "fdc_desc": "Nuts, almonds",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "nuts"
+   ]
   },
   {
    "id": "food-walnuts",
@@ -1904,7 +1990,10 @@
    ],
    "fdc_id": "170187",
    "fdc_desc": "Nuts, walnuts, english",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "nuts"
+   ]
   },
   {
    "id": "food-sunflower",
@@ -1948,7 +2037,8 @@
    ],
    "fdc_id": "170562",
    "fdc_desc": "Seeds, sunflower seed kernels, dried",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-pumpkin-seeds",
@@ -1992,7 +2082,8 @@
    ],
    "fdc_id": "170557",
    "fdc_desc": "Seeds, pumpkin and squash seed kernels, roasted, without salt",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-tahini",
@@ -2028,7 +2119,10 @@
    ],
    "fdc_id": "170191",
    "fdc_desc": "Seeds, sesame butter, paste",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "sesame"
+   ]
   },
   {
    "id": "food-flax",
@@ -2070,7 +2164,8 @@
    ],
    "fdc_id": "169414",
    "fdc_desc": "Seeds, flaxseed",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-peanut-butter",
@@ -2115,7 +2210,10 @@
    ],
    "fdc_id": "174266",
    "fdc_desc": "Peanut butter, smooth style, with salt (Includes foods for USDA's Food Distribution Program)",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": [
+    "peanuts"
+   ]
   },
   {
    "id": "food-honey",
@@ -2163,7 +2261,8 @@
    ],
    "fdc_id": "169640",
    "fdc_desc": "Honey",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-dill-fresh",
@@ -2203,7 +2302,8 @@
    ],
    "fdc_id": "172233",
    "fdc_desc": "Dill weed, fresh",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-parsley-fresh",
@@ -2247,7 +2347,8 @@
    ],
    "fdc_id": "170416",
    "fdc_desc": "Parsley, fresh",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-chives",
@@ -2287,7 +2388,8 @@
    ],
    "fdc_id": "169994",
    "fdc_desc": "Chives, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-basil-fresh",
@@ -2331,7 +2433,8 @@
    ],
    "fdc_id": "172232",
    "fdc_desc": "Basil, fresh",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-thyme-fresh",
@@ -2362,7 +2465,8 @@
    "portions": [],
    "fdc_id": "173470",
    "fdc_desc": "Thyme, fresh",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-rosemary-fresh",
@@ -2398,7 +2502,8 @@
    ],
    "fdc_id": "173473",
    "fdc_desc": "Rosemary, fresh",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-coriander-fresh",
@@ -2438,7 +2543,8 @@
    ],
    "fdc_id": "169997",
    "fdc_desc": "Coriander (cilantro) leaves, raw",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-oregano-dried",
@@ -2478,7 +2584,8 @@
    ],
    "fdc_id": "171328",
    "fdc_desc": "Spices, oregano, dried",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-cinnamon",
@@ -2522,7 +2629,8 @@
    ],
    "fdc_id": "171320",
    "fdc_desc": "Spices, cinnamon, ground",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-ginger",
@@ -2562,7 +2670,8 @@
    ],
    "fdc_id": "170926",
    "fdc_desc": "Spices, ginger, ground",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-turmeric",
@@ -2602,7 +2711,8 @@
    ],
    "fdc_id": "172231",
    "fdc_desc": "Spices, turmeric, ground",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-paprika",
@@ -2642,7 +2752,8 @@
    ],
    "fdc_id": "171329",
    "fdc_desc": "Spices, paprika",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   },
   {
    "id": "food-garlic-powder",
@@ -2682,7 +2793,8 @@
    ],
    "fdc_id": "171325",
    "fdc_desc": "Spices, garlic powder",
-   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged",
+   "allergens": []
   }
  ],
  "misses": []
