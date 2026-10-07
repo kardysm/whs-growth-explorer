@@ -13,7 +13,7 @@
     <script type="module" src="/src/ui/main.ts"></script>
     <!-- GitHub Pages branch-mode fallback: when the site is served from the repository root
          (Pages source = "Deploy from a branch"), the raw TypeScript entry above cannot execute
-         (served with a non-JS MIME type), so the prebuilt bundle committed under ./site/ is
+         (served with a non-JS MIME type), so the prebuilt bundle committed under ../site/ is
          loaded instead. The bundle is refreshed automatically by `npm run build`
          (scripts/sync_site.mjs). In dev and in Actions-mode deployments the app mounts
          normally, #app is non-empty, and nothing loads here. -->
@@ -24,11 +24,11 @@
           if (!appEl || appEl.childNodes.length > 0) return;
           var link = document.createElement("link");
           link.rel = "stylesheet";
-          link.href = "./site/app.css";
+          link.href = "../site/app.css";
           document.head.appendChild(link);
           var s = document.createElement("script");
           s.type = "module";
-          s.src = "./site/app.js";
+          s.src = "../site/app.js";
           s.onerror = function () {
             appEl.innerHTML =
               '<p style="font:16px/1.5 system-ui;padding:24px">Nie udało się załadować aplikacji. Odśwież stronę. / Could not load the app. Please reload.</p>';

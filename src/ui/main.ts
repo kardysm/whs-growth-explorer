@@ -21,34 +21,16 @@ import { loadContext } from "../calc/load.js";
 import { whoTable, weightForLengthZ } from "../calc/who.js";
 import { descPl } from "./desc-pl.js";
 import type { CalcInput } from "../calc/types.js";
-
-type Lang = "pl" | "en";
+import { calcUrlParams, langFromPath, parseCalcParams, parseProductsParams, productsUrlParams, siteRoot } from "./urlstate.js";
+import type { Inputs, Lang } from "./urlstate.js";
 
 const { dataset, whs } = loadContext();
 const ctx = { who: dataset.who, whs };
 
-let lang: Lang = "pl";
+// Language lives in the URL path (/pl/ or /en/; root defaults to en) — user request 2026-10-07.
+let lang: Lang = langFromPath(location.pathname) ?? "en";
 let unit: "kcal" | "kJ" = "kcal";
 
-interface Inputs {
-  sex: "boys" | "girls";
-  age: number;
-  weight: number;
-  length: number | null;
-  tone: CalcInput["tone"];
-  mobility: CalcInput["mobility"];
-  targetRef: CalcInput["targetRef"];
-  horizonWeeks: number;
-  /** Milk / meals split (user request 2026-10-05): one density per category. */
-  milkDensity: number;
-  mealDensity: number;
-  milkMl: number;
-  feeds: number | null;
-  /** Tolerated portion per feed, split (user request 2026-10-05): milk ml / other meals g. */
-  milkPortionMl: number | null;
-  mealPortionG: number | null;
-  intake: number | null;
-}
 let input: Inputs = {
   sex: "boys",
   age: 18,
@@ -84,6 +66,34 @@ try {
     rememberMe = true;
   }
 } catch { /* ignore */ }
+
+// --- URL state plumbing (2026-10-07) ---------------------------------------
+// Merges updates into the query string; replaces history (no new entries) and
+// is a no-op when nothing changed. Calc params write immediately (low-frequency
+// change events); products/search are debounced below.
+function setUrlParams(updates: Record<string, string | string[] | null>): void {
+  const u = new URL(location.href);
+  for (const [k, v] of Object.entries(updates)) {
+    u.searchParams.delete(k);
+    if (v === null) continue;
+    if (Array.isArray(v)) for (const x of v) u.searchParams.append(k, x);
+    else u.searchParams.set(k, v);
+  }
+  const next = u.pathname + u.search + u.hash;
+  if (next !== location.pathname + location.search + location.hash) history.replaceState(null, "", next);
+}
+const urlDirty = new Set<"products" | "search">();
+let urlTimer: number | undefined;
+function scheduleUrlSync(domain: "products" | "search"): void {
+  urlDirty.add(domain);
+  window.clearTimeout(urlTimer);
+  urlTimer = window.setTimeout(() => {
+    if (urlDirty.has("products")) setUrlParams(productsUrlParams({ search: pSearch, chips: pChips, cat: pCat, sort: pSort }));
+    if (urlDirty.has("search")) setUrlParams({ q: overlayQ.trim() ? overlayQ : null });
+    urlDirty.clear();
+  }, 300);
+}
+let overlayQ = "";
 
 const app = document.getElementById("app")!;
 
@@ -210,7 +220,12 @@ function renderShell(): void {
 
   app.querySelectorAll<HTMLButtonElement>(".lang-toggle button").forEach((b) => {
     b.addEventListener("click", () => {
-      lang = (b.dataset.lang as Lang) ?? "pl";
+      const next = (b.dataset.lang as Lang) ?? "en";
+      if (next !== lang) {
+        lang = next;
+        // Language = URL path (user request 2026-10-07): push a history entry so Back returns to the other language.
+        history.pushState(null, "", `${siteRoot(location.pathname)}${lang}/${location.search}${location.hash}`);
+      }
       // keep the mobile menu open when the switch happens from inside it (user request 2026-10-05)
       reopenNav = !!document.getElementById("main-nav")?.classList.contains("open");
       renderAll();
@@ -224,7 +239,7 @@ function renderShell(): void {
   ovEl?.addEventListener("click", (e) => { if (e.target === ovEl) closeSearch(); });
   ovEl?.addEventListener("keydown", (e) => trapTab(e as KeyboardEvent));
   const si = document.getElementById("search-input") as HTMLInputElement | null;
-  si?.addEventListener("input", () => runSearch(si.value));
+  si?.addEventListener("input", () => { overlayQ = si.value; runSearch(si.value); scheduleUrlSync("search"); });
   si?.addEventListener("keydown", (e) => searchKey(e as KeyboardEvent));
   document.getElementById("search-results")?.addEventListener("click", (e) => {
     const li = (e.target as HTMLElement).closest("li[data-a]");
@@ -316,6 +331,8 @@ function readInputs(): void {
     if (rememberMe) localStorage.setItem(STORE_KEY, JSON.stringify(input));
     else localStorage.removeItem(STORE_KEY);
   } catch { /* ignore */ }
+  // Mirror the state into the URL (shareable/reloadable links) — user request 2026-10-07.
+  setUrlParams(calcUrlParams(input));
   recalc();
 }
 
@@ -1482,6 +1499,7 @@ function renderProducts(): void {
         <p class="small">${t("products.source")}: <a href="${x.source.url}" rel="noopener">${typeof x.source.label === "string" ? x.source.label : B(x.source.label as BiText)}</a></p>
       </div>`;
     }).join("") + `</div>`;
+    scheduleUrlSync("products");
   }
   paint();
 }
@@ -1595,11 +1613,16 @@ function openSearch(): void {
   ov.hidden = false;
   const inp = document.getElementById("search-input") as HTMLInputElement | null;
   if (inp) { inp.value = ""; runSearch(""); inp.focus(); }
+  overlayQ = "";
+  setUrlParams({ q: null });
 }
 
 function closeSearch(): void {
   const ov = document.getElementById("search-overlay") as HTMLElement | null;
   if (ov) ov.hidden = true;
+  overlayQ = "";
+  urlDirty.delete("search");
+  setUrlParams({ q: null });
   const rf = searchReturnFocus;
   searchReturnFocus = null;
   if (rf && document.contains(rf) && typeof rf.focus === "function") rf.focus();
@@ -1742,4 +1765,37 @@ function renderAll(): void {
 
 const __st = storedTheme();
 if (__st) document.documentElement.dataset.theme = __st;
+
+// URL state (user request 2026-10-07): calculator inputs and the products search come from
+// the query string — they win over stored/default values; ?q= opens the search overlay.
+const __sp = new URLSearchParams(location.search);
+Object.assign(input, parseCalcParams(__sp));
+{
+  const __all = buildProducts();
+  const __vocab = {
+    tags: new Set(__all.flatMap((x) => x.tags)),
+    cats: new Set(__all.map((x) => x.category)),
+    algs: new Set(__all.flatMap((x) => x.allergens ?? [])),
+  };
+  const __ps = parseProductsParams(__sp, __vocab);
+  if (__ps.search !== undefined) pSearch = __ps.search;
+  if (__ps.chips !== undefined) pChips = __ps.chips;
+  if (__ps.cat !== undefined) pCat = __ps.cat;
+  if (__ps.sort !== undefined) pSort = __ps.sort;
+}
 renderAll();
+const __q = __sp.get("q");
+if (__q && __q.trim()) {
+  openSearch();
+  const __si = document.getElementById("search-input") as HTMLInputElement | null;
+  if (__si) __si.value = __q;
+  overlayQ = __q;
+  runSearch(__q);
+  setUrlParams({ q: __q });
+}
+
+// Back/forward across language switches (pushState entries from the toggle).
+window.addEventListener("popstate", () => {
+  const l = langFromPath(location.pathname) ?? "en";
+  if (l !== lang) { lang = l; renderAll(); }
+});
