@@ -281,8 +281,8 @@
         "en": "Nutridrink for children (liquid, 2.4 kcal/ml)"
       },
       "form": {
-        "pl": "dzieci; smaki: czekoladowo-karmelowy, neutralny, truskawkowy",
-        "en": "children; flavours: chocolate-caramel, neutral, strawberry"
+        "pl": "dzieci powyżej 1. roku życia (etykieta); smaki: czekoladowo-karmelowy, neutralny, truskawkowy",
+        "en": "children over 1 year of age (label); flavours: chocolate-caramel, neutral, strawberry"
       },
       "basis": "ml",
       "per100": {
@@ -527,6 +527,13 @@
             "en": "80 g → 250 ml (1.5 kcal/ml)"
           },
           "kcal": 375
+        },
+        {
+          "label": {
+            "pl": "1 miarka (7,8 g)",
+            "en": "1 scoop (7.8 g)"
+          },
+          "kcal": 37
         }
       ],
       "tags": [
@@ -857,8 +864,8 @@
         "en": "Nutilis Clear (thickener, powder)"
       },
       "form": {
-        "pl": "proszek do zagęszczania płynów i pokarmów (dysfagia); bez smaku i zapachu",
-        "en": "powder for thickening fluids and foods (dysphagia); tasteless"
+        "pl": "proszek do zagęszczania płynów i pokarmów (dysfagia); bez smaku i zapachu; miarka 3 g — w rynkach z nową miarką 1,25 g (np. UK) sprawdź opakowanie; etykieta: nie stosować u dzieci poniżej 3. roku życia",
+        "en": "powder for thickening fluids and foods (dysphagia); tasteless; 3 g scoop — check the pack in markets with the new 1.25 g scoop (e.g. UK); label: not for children under 3 years of age"
       },
       "basis": "g",
       "per100": {

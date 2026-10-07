@@ -12,6 +12,14 @@ compares against src/data/grid.json. This version (post audit round 1):
   * compares ALL stored fields: A/Alo/Ahi/B/C/Clo/Chi/D/Dlo/Dhi/fluid.
 
 Acceptance: max relative difference <= 0.5% on every compared field.
+
+Scope & limitations (2026-10-07): this script verifies that the shipped code matches the project's own
+parameter file (code<->parameters parity, per-field tolerance, grid hash pinned in the report). It does NOT
+verify parameters against the sources — a value that is faithfully implemented but wrong at the source
+escapes it (this is how audit findings H1/H3/M1 stayed invisible to it). Source-anchored invariants are
+pinned by vitest cases in src/calc (H1 equation-selection continuity, H2 refeeding thresholds, M1 FAO
+mid-year anchors); source-level review of the remaining parameters remains manual.
+
 Report: research/qa/crosscheck-report.md (and stdout).
 """
 import csv

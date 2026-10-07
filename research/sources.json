@@ -614,7 +614,7 @@
   {
    "id": "ni_nutrition_2025",
    "category": "nutrition-review",
-   "evidence_class": "A",
+   "evidence_class": "B",
    "citation": "Oftedal S, McCormack S, Stevenson R, Benfer K, Boyd RN, Bell K. The evolution of nutrition management in children with severe neurological impairment with a focus on cerebral palsy. Journal of human nutrition and dietetics : the official journal of the British Dietetic Association 2025;38(1):e13277.",
    "title": "The evolution of nutrition management in children with severe neurological impairment with a focus on cerebral palsy.",
    "authors": "Oftedal S, McCormack S, Stevenson R, Benfer K, Boyd RN, Bell K.",
@@ -630,7 +630,7 @@
    "verified": true,
    "accessed": "2026-10-02",
    "fetched_file": "research/raw/epmc_ext_ni_nutrition_2025.json",
-   "notes": "Evolution of nutrition management in severe neurological impairment with focus on CP."
+   "notes": "Evolution of nutrition management in severe neurological impairment with focus on CP. [Downgraded A->B 2026-10-07 (audit): self-described narrative review, not a systematic review; graded B consistent with other reviews in the registry (feeding_intol_2017, cp_protein_2026).]"
   },
   {
    "id": "refeeding_children_2025",
@@ -843,7 +843,7 @@
   {
    "id": "aap_botulism",
    "category": "safety-guideline",
-   "evidence_class": "A",
+   "evidence_class": "B",
    "citation": "American Academy of Pediatrics. Botulism. HealthyChildren.org (accessed 2026-10-02).",
    "title": "Botulism — HealthyChildren.org",
    "authors": "AAP",
@@ -852,7 +852,7 @@
    "verified": true,
    "accessed": "2026-10-02",
    "fetched_file": "research/raw/aap_botulism.html",
-   "notes": "\"Honey ... should be avoided in babies under 12 months of age. The AAP recommends that you do not give honey to a baby younger than 12 months.\" Basis for the honey/infant-botulism warning."
+   "notes": "\"Honey ... should be avoided in babies under 12 months of age. The AAP recommends that you do not give honey to a baby younger than 12 months.\" Basis for the honey/infant-botulism warning. [Downgraded A->B 2026-10-07 (audit): the fetched artifact is the HealthyChildren.org consumer page of an AAP recommendation, not a guideline document; the claim itself is AAP policy.]"
   },
   {
    "id": "who_sam_2009",
