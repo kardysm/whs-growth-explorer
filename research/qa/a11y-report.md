@@ -122,3 +122,13 @@ At-rest incompletes: 2 — the gradient-filled `#btn-recalc` / `#csv-btn` (known
 `#613dc1` = 7.13:1, on `#4e148c` = 11.65:1). New tag-badge colors were validated by composited contrast
 math in both themes (light ≥ 5.5:1, dark ≥ 6.0:1, see D-048); the search combobox uses aria-expanded /
 aria-activedescendant + a labelled listbox; the field keeps a visible focus ring on its wrapper.
+
+### Addendum 2026-10-07 (review round 6, D-052–D-060)
+
+Full re-run on the rebuilt site after the review fixes (H1 weight-age C selection, H2 refeeding screen, H3
+Culley removal, M1 FAO mid-year anchors, M2/M4/M5 text fixes, M6 foods, M7 texture rule, M3 Calhoun labels,
+product labels): **light 0 violations, dark 0 violations**; at-rest incompletes: 2 — the known
+gradient-filled `#btn-recalc` / `#csv-btn` class (WCAG math unchanged: white on `#613dc1` = 7.13:1, on
+`#4e148c` = 11.65:1). The chart-2 legend rename to „p25/p50/p75 (model)" and the removed kcal/cm bullet do
+not affect contrast; the a11y chart-2 description now carries the „model curves (not empirical centiles)"
+wording.
