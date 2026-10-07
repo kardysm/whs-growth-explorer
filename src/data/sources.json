@@ -1,6 +1,6 @@
 {
  "accessed": "2026-10-02",
- "count": 48,
+ "count": 50,
  "sources": [
   {
    "id": "antonius2008",
@@ -231,7 +231,7 @@
    "verified": true,
    "accessed": "2026-10-02",
    "fetched_file": "research/raw/epmc_culley1969.json",
-   "notes": "Caloric requirements of mentally retarded children with/without motor dysfunction; height-based kcal/cm origin. | Primary full text not retrieved; the 14.7/13.9/11.1 kcal/cm values are read via Sullivan 2009 Table 1 (research/raw/wb_pmc2735385.html) and Hauer 2017. epmc_culley1969.json is a search artifact (unrelated record capture)."
+   "notes": "Caloric requirements of mentally retarded children with/without motor dysfunction; height-based kcal/cm origin. Primary full text not retrieved; the 14.7/13.9/11.1 kcal/cm values are read via the CPS 2009 statement Table 1 (research/raw/wb_pmc2735385.html) and Hauer 2017; derivation range 5-11 y (Wittenbrook 2011). The height-based figure was REMOVED from the calculator 2026-10-07 (audit H3, D-054). epmc_culley1969.json is a search artifact (unrelated record capture)."
   },
   {
    "id": "borsani2023",
@@ -675,16 +675,16 @@
    "notes": "Protein intake in children with CP (narrative review)."
   },
   {
-   "id": "ni2009_sullivan",
+   "id": "cps2009_marchand",
    "category": "energy-method",
    "evidence_class": "B",
-   "citation": "Nutrition in neurologically impaired children. Paediatrics & child health 2009;14(6):395-401.",
-   "title": "Nutrition in neurologically impaired children.",
-   "authors": null,
+   "citation": "Canadian Paediatric Society, Nutrition and Gastroenterology Committee (principal author Marchand V). Nutrition in neurologically impaired children. Paediatrics & Child Health 2009;14(6):395-401.",
+   "title": "Nutrition in neurologically impaired children",
+   "authors": "Canadian Paediatric Society, Nutrition and Gastroenterology Committee; Marchand V (principal author)",
    "journal": "Paediatrics & child health",
    "year": 2009,
-   "volume": "14",
-   "issue": "6",
+   "volume": 14,
+   "issue": 6,
    "pages": "395-401",
    "doi": null,
    "pmid": "20592978",
@@ -693,7 +693,7 @@
    "verified": true,
    "accessed": "2026-10-02",
    "fetched_file": "research/raw/wb_pmc2735385.html",
-   "notes": "Nutrition in neurologically impaired children (Sullivan 2009); Table 1 tabulates the Krick method factors and Culley height-based kcal/cm values; verified via Wayback (PMC2735385)."
+   "notes": "CPS statement, principal author V. Marchand (fetched Wayback copy states 'Principal author: Dr Valerie Marchand'). CORRECTED 2026-10-07 (audit H3): previously miscredited to 'Sullivan 2009' - the saved document is the Canadian Paediatric Society statement, not a Sullivan paper. Table 1 tabulates the Krick method factors and the Culley height-based kcal/cm values (citing Culley & Middleton 1969)."
   },
   {
    "id": "feeding_intol_2017",
@@ -866,7 +866,7 @@
    "verified": true,
    "accessed": "2026-10-02",
    "fetched_file": "research/raw/who_sam_2009.pdf",
-   "notes": "Box 1: severe wasting = weight-for-height < -3 SD (WHO standards). Basis for the refeeding-risk banner threshold (< -3 SD screening trigger)."
+   "notes": "Box 1: severe wasting = weight-for-height < -3 SD (WHO standards). One of the two screening criteria for the refeeding-risk banner since the audit H2 change (2026-10-07): WHO weight-for-length <= -3 SD OR WHS chart <= -2 SD; without a length the WHS weight-for-age screen applies."
   },
   {
    "id": "espghan_espn_pn_energy",
@@ -879,6 +879,41 @@
    "accessed": "2026-10-03",
    "fetched_file": "research/raw/espghan_espn_pn_energy.pdf",
    "notes": "Tables 2.1-2.2: REE/BMR equations (WHO, Schofield (W), Schofield (WH), Harris-Benedict) for 0-3y and 3-10y. The Schofield weight-only (W) forms for 0-3y are used by the calculator's C (flat-chart fix 2026-10-03)."
+  },
+  {
+   "id": "bfr_coumarin",
+   "category": "risk-assessment",
+   "evidence_class": "B",
+   "citation": "BfR (German Federal Institute for Risk Assessment). FAQ on coumarin in cinnamon and other foods. bfr.bund.de (FAQ category 27/09/2012; accessed 2026-10-07).",
+   "title": "FAQ on coumarin in cinnamon and other foods",
+   "authors": "BfR",
+   "year": 2012,
+   "url": "https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/faq-on-coumarin-in-cinnamon-and-other-foods/",
+   "verified": true,
+   "accessed": "2026-10-07",
+   "fetched_file": "research/raw/bfr_coumarin_faq.html",
+   "notes": "\"The TDI is 0.1 mg of coumarin per kg of bodyweight and day and it also applies to especially sensitive consumers.\"; cassia cinnamon on average ~3000 mg coumarin/kg (highest measured 10000); \"A small child with a body weight of 15 kg reaches its TDI by ingesting about 0.5 g of Cassia cinnamon\"; short-run exceedance poses no health risk; frequent users should choose Ceylon cinnamon. Basis for the coumarin warning on the seasonings card (user batch card 3, 2026-10-07)."
+  },
+  {
+   "id": "wittenbrook2011",
+   "category": "energy-method",
+   "evidence_class": "B",
+   "citation": "Wittenbrook W. Nutritional Assessment and Intervention in Cerebral Palsy. Practical Gastroenterology 2011 Feb;16-23 (Nutrition Issues in Gastroenterology, Series #92).",
+   "title": "Nutritional Assessment and Intervention in Cerebral Palsy",
+   "authors": "Wittenbrook W",
+   "journal": "Practical Gastroenterology",
+   "year": 2011,
+   "volume": null,
+   "issue": null,
+   "pages": "16-23",
+   "doi": null,
+   "pmid": null,
+   "pmcid": null,
+   "url": "https://med.virginia.edu/ginutrition/wp-content/uploads/sites/199/2014/06/WittenbrookArticle.pdf",
+   "verified": true,
+   "accessed": "2026-10-07",
+   "fetched_file": "research/raw/wittenbrook2011_practical_gastro.pdf",
+   "notes": "Narrative review (Practical Gastroenterology nutrition series #92, UVA GI nutrition archive). States: 'one formula used for CP is: 5-11 years old - 14 kcal/cm if ambulatory; 11 kcal/cm if nonambulatory (16)', ref. 16 = Culley & Middleton 1969. Source for the Culley derivation age range (5-11 y) used in the H3 decision (D-054)."
   }
  ]
 }

@@ -460,7 +460,7 @@
   },
   "krick_method": {
     "source_ids": [
-      "ni2009_sullivan",
+      "cps2009_marchand",
       "krick1992"
     ],
     "formula": "kcal/day = (BMR x muscle_tone_factor x activity_factor) + growth_factor",
@@ -476,13 +476,14 @@
       "ambulatory": 1.3
     },
     "growth_factor_kcal_per_g": 5,
-    "note": "Factors as tabulated in Sullivan 2009 Table 1 (citing Krick et al. 1992). Original Krick BMR = BSA(m2) x standard metabolic rate (kcal/m2/h) x 24h; our calculator substitutes Schofield BMR (weight-only 0-3y; weight+height 3-10y - documented deviation)."
+    "note": "Factors as tabulated in the CPS 2009 statement (Marchand; Paediatr Child Health 2009) Table 1 (citing Krick et al. 1992). Original Krick BMR = BSA(m2) x standard metabolic rate (kcal/m2/h) x 24h; our calculator substitutes Schofield BMR (weight-only 0-3y; weight+height 3-10y - documented deviation)."
   },
   "height_based_kcal_per_cm": {
     "source_ids": [
-      "ni2009_sullivan",
+      "cps2009_marchand",
       "culley1969",
-      "feeding_intol_2017"
+      "feeding_intol_2017",
+      "wittenbrook2011"
     ],
     "culley_values_kcal_per_cm_per_day": {
       "no_motor_dysfunction": 14.7,
@@ -503,7 +504,7 @@
         9
       ]
     },
-    "gate": "expose only for age >= 12 months; derivation in infants unclear. Mapping of motor categories to Culley values is assumption-grade: primary text not retrieved; values read via Sullivan 2009 Table 1 / Hauer 2017 (labelled in the UI)."
+    "status": "REMOVED from the calculator 2026-10-07 (audit H3): the Culley height-based kcal/cm values were derived in children aged 5-11 y (Wittenbrook 2011, 'one formula used for CP is: 5-11 years old - 14 kcal/cm if ambulatory; 11 kcal/cm if nonambulatory', citing Culley & Middleton 1969); this tool covers 0-48 months, so the figure has no valid display window. It also showed ~2x C at 12 mo (738 vs 334 kcal) and its old '>= 12 months' gate did not match the derivation range. Values kept below for traceability; see DECISIONS D-054."
   },
   "fluids": {
     "source_ids": [

@@ -15,8 +15,8 @@ Format: claim | source_id(s) | grade | notes. Grades per GOAL.md §1. All listed
 | 9 | Antibody deficiency in WHS | hanley1998 | C | infections → energy/losses |
 | 10 | No WHS energy-expenditure studies exist | (search-log) | — | null result; 10 protocol queries |
 | 11 | ESPGHAN guideline: GI/nutrition in NI | romano2017 | A | multidisciplinary care |
-| 12 | Krick factors (tone 0.9/1.0/1.1; activity 1.15–1.3; growth 5 kcal/g) | ni2009_sullivan; krick1992 | B | values as tabulated; original BSA method noted |
-| 13 | Culley-type kcal/cm: 14.7 / 13.9 / 11.1 | ni2009_sullivan; culley1969 | B | wider ranges 12–15/10–11/6–9 from feeding_intol_2017 |
+| 12 | Krick factors (tone 0.9/1.0/1.1; activity 1.15–1.3; growth 5 kcal/g) | cps2009_marchand; krick1992 | B | values as tabulated; original BSA method noted; source attribution corrected 2026-10-07 (CPS statement, not Sullivan) |
+| 13 | Culley-type kcal/cm: 14.7 / 13.9 / 11.1 | cps2009_marchand; culley1969; wittenbrook2011 | B | derivation 5–11 y; figure removed from the calculator (audit H3, D-054); wider ranges 12–15/10–11/6–9 from feeding_intol_2017 |
 | 14 | Schofield 1985 child REE equations (weight+height) | schofield1985; efsa_energy | B | verbatim from EFSA Appendix 13 |
 | 15 | Henry 2005 alternative REE equations | efsa_energy | B | same appendix; alternate method |
 | 16 | EFSA ARs: infants 7–11 mo monthly; children yearly | efsa_energy | A | kcal values as published |

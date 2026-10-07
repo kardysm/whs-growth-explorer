@@ -78,8 +78,8 @@ ROWS = [
      "Identification and management of refeeding syndrome in severely malnourished children 6-59 mo (MDPI, open access)."),
     ("cp_protein_2026", "protein", "B", "epmc_ext_cp_protein_2026.json", "42238674",
      "Protein intake in children with CP (narrative review)."),
-    ("ni2009_sullivan", "energy-method", "B", "epmc_ni2009_sullivan.json", "20592978",
-     "Nutrition in neurologically impaired children (Sullivan 2009); Table 1 tabulates the Krick method factors and Culley height-based kcal/cm values; verified via Wayback (PMC2735385)."),
+    ("cps2009_marchand", "energy-method", "B", "epmc_cps2009_marchand.json", "20592978",
+     "Nutrition in neurologically impaired children (CPS statement, principal author Marchand; previously miscredited to Sullivan - corrected 2026-10-07, D-054); Table 1 tabulates the Krick method factors and Culley height-based kcal/cm values; verified via Wayback (PMC2735385)."),
     ("feeding_intol_2017", "energy-method", "B", "epmc_feeding_intol_2017.json", "29271904",
      "Feeding intolerance in children with severe CNS impairment (Hauer 2017); kcal/cm ranges 12-15/10-11/6-9."),
 ]

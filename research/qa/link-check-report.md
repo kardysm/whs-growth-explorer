@@ -1,6 +1,6 @@
 # Link check report (research/sources.json)
 
-Checked 49 entries; one canonical target per source.
+Checked 50 entries; one canonical target per source.
 Note: publisher bot-walls (403/429) are common for DOI landing pages when fetched by tools;
 sources whose content was originally retrieved via Wayback are marked accordingly.
 
@@ -38,7 +38,7 @@ sources whose content was originally retrieved via Wayback are marked accordingl
 | ni_nutrition_2025 | https://doi.org/10.1111/jhn.13277 | 403 | blocked-informational (publisher bot-wall/paywall) |
 | refeeding_children_2025 | https://doi.org/10.3390/children12091223 | 403 | blocked-informational (publisher bot-wall/paywall) |
 | cp_protein_2026 | https://doi.org/10.17712/1658-3183.2788 | 200 | ok |
-| ni2009_sullivan | https://europepmc.org/article/MED/20592978 | 403 | blocked-expected (Wayback route documented) |
+| cps2009_marchand | https://europepmc.org/article/MED/20592978 | 403 | blocked-expected (Wayback route documented) |
 | feeding_intol_2017 | https://doi.org/10.3390/children5010001 | 403 | blocked-informational (publisher bot-wall/paywall) |
 | orphanet280 | https://www.orpha.net/en/disease/detail/280 | 200 | ok |
 | nice_ng75 | https://www.nice.org.uk/guidance/ng75 | 200 | ok |
@@ -55,5 +55,6 @@ sources whose content was originally retrieved via Wayback are marked accordingl
 | who_sam_2009 | https://www.who.int/publications/i/item/9789241598163 | 200 | ok |
 | espghan_espn_pn_energy | https://espen.org/documents/A174-02PaedPNGuidel_ESPGHANESPENPNGuidelines2Energy.pdf | 200 | ok |
 | bfr_coumarin | https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/faq-on-coumarin-in-cinnamon-and-other-foods/ | 200 | ok |
+| wittenbrook2011 | https://med.virginia.edu/ginutrition/wp-content/uploads/sites/199/2014/06/WittenbrookArticle.pdf | 200 | ok |
 
-Total: 49; investigate: 0
+Total: 50; investigate: 0

@@ -459,8 +459,6 @@ function recalc(): void {
     ${card(t("calc.method_c_t"), r.C.kcalPerDay, [
       ...(r.C.notes ?? []),
       { pl: `Ten sam wiek (A): ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}% · Ta sama masa (B): ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%`, en: `Same age (A): ${r.percentOfA !== null ? r.percentOfA.toFixed(0) : "—"}% · Same weight (B): ${r.percentOfB !== null ? r.percentOfB.toFixed(0) : "—"}%` },
-      ...((r.heightBased.kcalPerDay !== null && !(r.C.alerts && r.C.alerts.length)) ? [{ pl: `kcal/cm: ${lang === "pl" ? String(r.heightBased.kcalPerCmPerDay).replace(".", ",") : r.heightBased.kcalPerCmPerDay} → ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h`, en: `kcal/cm: ${r.heightBased.kcalPerCmPerDay} -> ${fmt(r.heightBased.kcalPerDay)} ${unit}/24h` }] : []),
-      r.heightBased.note,
       ...(r.whsZ.weight !== null ? [{ pl: `Pozycja masy na siatce WHS: ≈ ${r.whsZ.weight.toFixed(1).replace(".", ",")} SD (0 = średnia WHS dla wieku; siatka zdigitalizowana 0–48 mies.)`, en: `Weight position on the WHS chart: ≈ ${r.whsZ.weight.toFixed(1)} SD (0 = WHS mean for age; digitized chart 0-48 mo)` }] : []),
     ], r.C.sourceIds, { grade: "D", extrap: true, alerts: r.C.alerts, sub: t("calc.method_c_sub"), tip: t("calc.method_c_tip"), band: t("calc.band_c") })}
     ${card(t("calc.method_d_t"), r.D.kcalPerDay, r.D.notes, r.D.sourceIds, { grade: "D", extrap: true, sub: t("calc.method_d_sub"), tip: t("calc.method_d_tip"), band: t("calc.band_d"), alerts: [...(r.D.guardrails ?? []).filter((g) => !(g.pl.includes("D-2") || g.en.includes("D-2"))), ...cCarry] })}

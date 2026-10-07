@@ -110,7 +110,6 @@ export interface CalcResult {
   A: MethodResult;
   B: MethodResult;
   C: MethodResult;
-  heightBased: { kcalPerDay: number | null; kcalPerCmPerDay: number | null; note: CalcNote };
   percentOfA: number | null;
   percentOfB: number | null;
   D: CatchUpResult;
@@ -199,7 +198,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     id: "C",
     label: "whs_maintenance_krick",
     kcalPerDay: { low: cLow, central: cCentral, high: cHigh },
-    sourceIds: ["ni2009_sullivan", "krick1992", "schofield1985", "efsa_energy"],
+    sourceIds: ["cps2009_marchand", "krick1992", "schofield1985", "efsa_energy"],
     alerts: cAlerts.length ? cAlerts : undefined,
     notes: [
       N("Typ Krick: BMR (Schofield — forma wagowa dla wielkości ciała poniżej ~3 lat, masa+wzrost powyżej; formę wybiera wiek masowy, nie urodziny) × napięcie mięśniowe × aktywność; pierwotny BMR Kricka opierał się na BSA (udokumentowane odstępstwo).", "Krick-type: BMR (Schofield — weight-only form below ~3 y of body size, weight+height above; the form is chosen by weight-age, not birthday) x tone x activity; Krick's original BMR was BSA-based (documented deviation)."),
@@ -216,25 +215,6 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
       N("Forma Schofielda wybierana wg wielkości ciała (wieku masowego): dopóki wiek masowy < 36 mies. — forma wagowa (W): BMR = 59,48 × masa − 30,33 (chłopcy) / 58,29 × masa − 31,05 (dziewczynki); od wieku masowego 36 mies. — forma masa+wzrost (WH), dopasowana do dzieci ~13–35 kg. Dzięki temu C nie skacze na 3. urodziny (audyt H1). Źródło: ESPGHAN/ESPEN.", "The Schofield form is chosen by body size (weight-age): while weight-age < 36 mo the weight-only (W) form is used: BMR = 59.48 × weight − 30.33 (boys) / 58.29 × weight − 31.05 (girls); from weight-age 36 mo the weight+height (WH) form, fitted on children ~13-35 kg. This removes the C jump at the 3rd birthday (audit H1). Source: ESPGHAN/ESPEN."),
     ],
   };
-
-  // height-based (Culley) - gated to age >= 12 months
-  let heightBased: CalcResult["heightBased"];
-  if (ageMonths >= 12) {
-    const kcalPerCm = (input.mobility === "bedridden" || input.mobility === "dependent") ? 11.1 : 13.9;
-    heightBased = {
-      kcalPerDay: kcalPerCm * height,
-      kcalPerCmPerDay: kcalPerCm,
-      note: N(
-        "Typ Culley (wartość wg wzrostu, jak w Sullivan 2009; tekst pierwotny niedostępny). Zakres w literaturze pediatrycznej NI: ok. 6–15 kcal/cm zależnie od funkcji motorycznej. Mapowanie: leżące/zależne → 11,1; raczkujące/samodzielne → 13,9 kcal/cm.",
-        "Culley-type height-based value (as tabulated in Sullivan 2009; primary text inaccessible). Range across paediatric NI literature: approx 6-15 kcal/cm depending on motor function. Mapping: bedridden/dependent -> 11.1; crawling/ambulatory -> 13.9 kcal/cm.",
-      ),
-    };
-  } else {
-    heightBased = {
-      kcalPerDay: null, kcalPerCmPerDay: null,
-      note: N("Nie pokazywane poniżej 12. mies.: zakres wieku pochodzenia tej metody jest niejasny dla niemowląt.", "Hidden below 12 months: the derivation age range of this method is unclear for infants."),
-    };
-  }
 
   const cForPct = cCentral !== null && cCentral > 0 ? cCentral : null;
   const percentOfA = cForPct !== null && A.kcalPerDay.central ? (cForPct / A.kcalPerDay.central) * 100 : null;
@@ -357,7 +337,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
 
   const D: CatchUpResult = {
     id: "D", label: "catchup_tissue_deposition",
-    kcalPerDay: dBand, sourceIds: ["fao2004", "who_protein2007", "ni2009_sullivan"],
+    kcalPerDay: dBand, sourceIds: ["fao2004", "who_protein2007", "cps2009_marchand"],
     notes: [
       N(`cel: ${targetKg !== null ? targetKg.toFixed(2).replace(".", ",") + " kg" : "n/d"} w ${input.horizonWeeks} tygodni (${gainPerDay !== null ? gainPerDay.toFixed(1).replace(".", ",") + " g/dzień" : "n/d"})`, `target: ${targetKg !== null ? targetKg.toFixed(2) + " kg" : "n/a"} over ${input.horizonWeeks} weeks (${gainPerDay !== null ? gainPerDay.toFixed(1) + " g/day" : "n/a"})`),
       N("koszt energetyczny przyrostu tkanek: 4,1 / 5,0 / 6,0 kcal/g (dolne = brutto typowe wg TRS 935, środkowe = zalecenie FAO, górne = brutto wysokotłuszczowe wg TRS 935)", "energy cost of tissue gain: 4.1 / 5.0 / 6.0 kcal/g (low = TRS 935 gross typical, central = FAO recommendation, high = TRS 935 gross high-fat)"),
@@ -476,7 +456,7 @@ export function computeAll(input: CalcInput, ctx: CalcContext): CalcResult {
     weightAgeMonths: weightAge,
     whsRef: wRef,
     whsZ,
-    A, B, C, heightBased, percentOfA, percentOfB, D, E, F,
+    A, B, C, percentOfA, percentOfB, D, E, F,
   };
 }
 

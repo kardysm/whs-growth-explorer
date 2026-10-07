@@ -97,7 +97,7 @@
                      "en": "Do not increase intake for this reason alone — decide from the weight trend; discuss with the neurologist and dietitian." },
           "consult": ["neuro", "diet"],
           "grade": "D",
-          "sources": ["ni2009_sullivan"],
+          "sources": ["cps2009_marchand"],
           "wspecific": false
         },
         {

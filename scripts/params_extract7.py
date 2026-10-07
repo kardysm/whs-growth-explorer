@@ -35,7 +35,7 @@ if dest.exists() and dest.stat().st_size > 10000:
             print(f"[{pat}]", seg.replace("\n", " ")[:520], "\n")
 
 print("### extra source records ###")
-for tag, pmid in [("ni2009_sullivan", "20592978"), ("feeding_intol_2017", "29271904")]:
+for tag, pmid in [("cps2009_marchand", "20592978"), ("feeding_intol_2017", "29271904")]:
     q = "EXT_ID:%s AND SRC:MED" % pmid
     url = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + urllib.parse.urlencode(
         {"query": q, "format": "json", "resultType": "core", "pageSize": "2"})
