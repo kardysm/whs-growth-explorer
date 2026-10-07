@@ -206,6 +206,11 @@ describe("A/B line continuity (user report 2026-10-05; DECISIONS D-029)", () => 
     const a = (age: number): number => computeAll({ ...base, ageMonths: age, weightKg: 7.5 }, ctx).A.kcalPerDay.central!;
     expect(Math.abs(a(6.1) - a(5.9))).toBeLessThan(15);
   });
+
+  it("A band edge: no 1st-birthday step from FAO (audit M1)", () => {
+    const aHigh = (age: number): number => computeAll({ ...base, ageMonths: age, weightKg: 9.65 }, ctx).A.kcalPerDay.high!;
+    expect(Math.abs(aHigh(12.1) - aHigh(11.9))).toBeLessThan(30);
+  });
 });
 
 describe("C continuity across the Schofield form switch (audit H1)", () => {

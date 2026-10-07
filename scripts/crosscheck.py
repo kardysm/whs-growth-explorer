@@ -121,14 +121,18 @@ def fao(sex, m):
         return FAO_INF[sex][min(11, int(m))]
     if m >= 60:
         return None
-    y = m / 12
-    lo = int(y)
-    hi = min(4, lo + 1)
-    a = FAO_CH[sex][lo]
-    b = FAO_CH[sex][hi]
-    if hi == lo:
-        return a
-    return a + (b - a) * (y - lo)
+    # Audit M1 fix (2026-10-07): FAO 2004 §4.4 — child values refer to the MID-YEAR of each band
+    # (midpoints 1.5/2.5/3.5/4.5 y); anchors at 18/30/42/54 mo; 12->18 bridges from the month-12
+    # infant value (mirrors the JS).
+    anchors = [(18, FAO_CH[sex][1]), (30, FAO_CH[sex][2]), (42, FAO_CH[sex][3]), (54, FAO_CH[sex][4])]
+    m12 = FAO_INF[sex][11]
+    if m <= 18:
+        t = (m - 12) / 6
+        return m12 + (anchors[0][1] - m12) * t
+    for (a0, v0), (a1, v1) in zip(anchors, anchors[1:]):
+        if m <= a1:
+            return v0 + (v1 - v0) * ((m - a0) / (a1 - a0))
+    return anchors[-1][1]
 
 
 def growth_addend(sex, m, win=0.5):

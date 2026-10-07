@@ -152,16 +152,30 @@ export function faoEnergy(sex: Sex, ageMonths: number): number | null {
     const v = FAO_INFANTS[sex][i];
     return Number.isFinite(v as number) ? (v as number) : null;
   }
-  if (ageMonths < 12 || ageMonths >= 60) return null;
-  const year = ageMonths / 12;
-  const lo = Math.floor(year);
-  const hi = Math.min(4, lo + 1);
-  const a = FAO_CHILDREN[sex][lo];
-  const b = FAO_CHILDREN[sex][hi];
-  if (a === undefined) return null;
-  if (b === undefined || hi === lo) return a;
-  const t = year - lo;
-  return a + (b - a) * t;
+  if (ageMonths >= 60) return null;
+  // Audit M1 fix (2026-10-07): FAO/WHO/UNU 2004 §4.4 says the child values refer to the MID-YEAR of each
+  // age band ("the median weight at the midpoint of each year of age was used for the ages of between one
+  // and 17 years (i.e. median weights at 1.5, 2.5 ..., 17.5 years)"; Table 4.2 note: "Body weight at
+  // mid-point of age interval"). Anchors therefore sit at 18/30/42/54 months; the 12-18 month stretch
+  // bridges linearly from the month-12 infant value. Previously each yearly value was placed at the START
+  // of its band, so the A band's upper edge jumped 775 -> 948 kcal at the 1st birthday (+22% too high).
+  const anchors: [number, number][] = [
+    [18, FAO_CHILDREN[sex][1]!], [30, FAO_CHILDREN[sex][2]!],
+    [42, FAO_CHILDREN[sex][3]!], [54, FAO_CHILDREN[sex][4]!],
+  ];
+  const m12 = FAO_INFANTS[sex][11]!;
+  if (ageMonths <= 18) {
+    const t = (ageMonths - 12) / 6;
+    return m12 + (anchors[0]![1] - m12) * t;
+  }
+  for (let i = 0; i < anchors.length - 1; i++) {
+    const a0 = anchors[i]![0];
+    const v0 = anchors[i]![1];
+    const a1 = anchors[i + 1]![0];
+    const v1 = anchors[i + 1]![1];
+    if (ageMonths <= a1) return v0 + (v1 - v0) * ((ageMonths - a0) / (a1 - a0));
+  }
+  return anchors[anchors.length - 1]![1];
 }
 
 /** Holliday-Segar maintenance fluid (ml/day). */

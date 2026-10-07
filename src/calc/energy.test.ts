@@ -40,12 +40,30 @@ describe("EFSA AR table lookups", () => {
   it("null below 6 months", () => expect(efsaAr("boys", 5)).toBeNull());
 });
 
-describe("FAO/WHO/UNU 2004 lookups", () => {
+describe("FAO/WHO/UNU 2004 lookups (child values anchored at mid-year — audit M1)", () => {
   it("boys 0-1 mo bin -> 518", () => expect(faoEnergy("boys", 0)).toBe(518));
   it("girls 4-5 mo bin -> 571", () => expect(faoEnergy("girls", 4)).toBe(571));
   it("girls 5-6 mo bin -> 599", () => expect(faoEnergy("girls", 5)).toBe(599));
-  it("boys 18 mo interpolates 948..1129 -> 1038.5", () => expect(faoEnergy("boys", 18)!).toBeCloseTo(1038.5, 1));
   it("girls 11-12 mo bin -> 712 (audit F5 fix)", () => expect(faoEnergy("girls", 11)).toBe(712));
+  it("boys 12 mo -> 775 (month-12 infant value; no jump at the 1st birthday)", () => {
+    expect(faoEnergy("boys", 12)!).toBeCloseTo(775, 6);
+  });
+  it("boys 18 mo -> 948 exactly (FAO mid-year anchor)", () => {
+    expect(faoEnergy("boys", 18)!).toBeCloseTo(948, 6);
+  });
+  it("boys 24 mo -> 1038.5 (mid-way 18->30)", () => {
+    expect(faoEnergy("boys", 24)!).toBeCloseTo(1038.5, 1);
+  });
+  it("boys 30 mo -> 1129 (next mid-year anchor)", () => {
+    expect(faoEnergy("boys", 30)!).toBeCloseTo(1129, 6);
+  });
+  it("girls 18 mo -> 865; girls 36 mo -> 1101.5 (mid-way 30->42)", () => {
+    expect(faoEnergy("girls", 18)!).toBeCloseTo(865, 6);
+    expect(faoEnergy("girls", 36)!).toBeCloseTo(1047 + (1156 - 1047) * 0.5, 6);
+  });
+  it("continuity at 12 mo: |fao(11.99) - fao(12.01)| < 6 kcal (was a 173 kcal step)", () => {
+    expect(Math.abs(faoEnergy("boys", 11.99)! - faoEnergy("boys", 12.01)!)).toBeLessThan(6);
+  });
 });
 
 describe("Schofield BMR (ESPGHAN/ESPEN tables; form chosen by weight-age — audit H1)", () => {
