@@ -74,6 +74,21 @@ FOODS = [
     ("flax", "Siemię lniane", "Flaxseed", "nuts-seeds", ["seeds, flaxseed"]),
     ("peanut-butter", "Masło orzechowe (gładkie)", "Peanut butter (smooth)", "nuts-seeds", ["peanut butter, smooth style, with salt", "peanut butter, smooth style, without salt"]),
     ("honey", "Miód", "Honey", "sweets", ["honey"]),
+    # Seasonings & herbs (2026-10-07 user batch card 3): flavour boosters for children's meals,
+    # warned where needed (cinnamon/coumarin). Same USDA SR Legacy pipeline as the other foods.
+    ("dill-fresh", "Koperek (świeży)", "Dill (fresh)", "seasonings", ["dill weed, fresh"]),
+    ("parsley-fresh", "Natka pietruszki", "Parsley (fresh)", "seasonings", ["parsley, fresh"]),
+    ("chives", "Szczypiorek", "Chives", "seasonings", ["chives, raw"]),
+    ("basil-fresh", "Bazylia (świeża)", "Basil (fresh)", "seasonings", ["basil, fresh"]),
+    ("thyme-fresh", "Tymianek (świeży)", "Thyme (fresh)", "seasonings", ["thyme, fresh"]),
+    ("rosemary-fresh", "Rozmaryn (świeży)", "Rosemary (fresh)", "seasonings", ["rosemary, fresh"]),
+    ("coriander-fresh", "Kolendra (świeże liście)", "Coriander (fresh leaves)", "seasonings", ["coriander (cilantro) leaves, raw"]),
+    ("oregano-dried", "Oregano (suszone)", "Oregano (dried)", "seasonings", ["spices, oregano, dried"]),
+    ("cinnamon", "Cynamon mielony", "Cinnamon (ground)", "seasonings", ["spices, cinnamon, ground"]),
+    ("ginger", "Imbir mielony", "Ginger (ground)", "seasonings", ["spices, ginger, ground"]),
+    ("turmeric", "Kurkuma mielona", "Turmeric (ground)", "seasonings", ["spices, turmeric, ground"]),
+    ("paprika", "Papryka słodka mielona", "Paprika (sweet, ground)", "seasonings", ["spices, paprika"]),
+    ("garlic-powder", "Czosnek granulowany", "Garlic powder", "seasonings", ["spices, garlic powder"]),
 ]
 
 # Allergen/age tags rendered on the cards and indexed by the search (audit CS-3).
@@ -134,7 +149,18 @@ WARNINGS = {
         "pl": "Ryzyko zadławienia: nasiona — mielone, nie całe (małe dzieci).",
         "en": "Choking risk: seeds — ground, not whole (young children).",
     },
+    # Seasonings (card 3, 2026-10-07): coumarin caution for cassia cinnamon — numbers verbatim from
+    # the fetched BfR FAQ (TDI 0.1 mg/kg bw/d; small child ~15 kg reaches it with ~0.5 g cassia/day).
+    "cinnamon": {
+        "pl": "Cynamon kasja (typowy w sklepach) zawiera kumarynę: wg BfR małe dziecko (~15 kg) osiąga tolerowaną dawkę dzienną przy ok. 0,5 g kasji dziennie; krótkotrwałe przekroczenie nie zagraża zdrowiu, ale przy częstym stosowaniu wybieraj cynamon cejloński (znacznie mniej kumaryny).",
+        "en": "Cassia cinnamon (the common shop variety) contains coumarin: per BfR, a small child (~15 kg) reaches the tolerable daily intake with about 0.5 g of cassia per day; short-term exceedance poses no health risk, but for frequent use choose Ceylon cinnamon (much less coumarin).",
+    },
 }
+
+
+# Tag helpers: choking-hazard set (all warned items except honey) + per-key extras.
+CHOKING = {"almonds", "walnuts", "peanut-butter", "raisins", "dates", "carrot", "apple", "blueberry", "sunflower", "pumpkin-seeds"}
+TAG_EXTRA = {"honey": ["age-12plus"]}
 
 
 def main():
@@ -201,8 +227,9 @@ def main():
         out.append({
             "id": f"food-{key}", "kind": "food", "category": cat,
             "name": {"pl": pl, "en": en},
-            "tags": (ALLERGENS.get(key, []) + (["age-12plus"] if key == "honey" else [])
-                     + (["choking"] if key in WARNINGS and key != "honey" else [])),
+            "tags": (ALLERGENS.get(key, []) + TAG_EXTRA.get(key, [])
+                     + (["choking"] if key in CHOKING else [])
+                     + (["flavour"] if cat == "seasonings" else [])),
             **({"warning": WARNINGS[key]} if key in WARNINGS else {}),
             "per100g": {
                 "kcal": n.get("kcal"), "protein": n.get("protein_g"), "fat": n.get("fat_g"),

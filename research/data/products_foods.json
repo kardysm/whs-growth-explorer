@@ -2164,6 +2164,525 @@
    "fdc_id": "169640",
    "fdc_desc": "Honey",
    "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-dill-fresh",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Koperek (świeży)",
+    "en": "Dill (fresh)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 43.0,
+    "protein": 3.46,
+    "fat": 1.12,
+    "satfat": 0.06,
+    "carbs": 7.02,
+    "fibre": 2.1,
+    "calcium_mg": 208.0,
+    "iron_mg": 6.59,
+    "zinc_mg": 0.91,
+    "sodium_mg": 61.0,
+    "potassium_mg": null,
+    "vita_ug": 386.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "5 sprigs",
+     "g": 1.0
+    },
+    {
+     "desc": "1 cup sprigs",
+     "g": 8.9
+    }
+   ],
+   "fdc_id": "172233",
+   "fdc_desc": "Dill weed, fresh",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-parsley-fresh",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Natka pietruszki",
+    "en": "Parsley (fresh)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 36.0,
+    "protein": 2.97,
+    "fat": 0.79,
+    "satfat": 0.132,
+    "carbs": 6.33,
+    "fibre": 3.3,
+    "calcium_mg": 138.0,
+    "iron_mg": 6.2,
+    "zinc_mg": 1.07,
+    "sodium_mg": 56.0,
+    "potassium_mg": null,
+    "vita_ug": 421.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 cup chopped",
+     "g": 60.0
+    },
+    {
+     "desc": "1 tbsp",
+     "g": 3.8
+    },
+    {
+     "desc": "10 sprigs",
+     "g": 10.0
+    }
+   ],
+   "fdc_id": "170416",
+   "fdc_desc": "Parsley, fresh",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-chives",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Szczypiorek",
+    "en": "Chives"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 30.0,
+    "protein": 3.27,
+    "fat": 0.73,
+    "satfat": 0.146,
+    "carbs": 4.35,
+    "fibre": 2.5,
+    "calcium_mg": 92.0,
+    "iron_mg": 1.6,
+    "zinc_mg": 0.56,
+    "sodium_mg": 3.0,
+    "potassium_mg": null,
+    "vita_ug": 218.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tbsp chopped",
+     "g": 3.0
+    },
+    {
+     "desc": "1 tsp chopped",
+     "g": 1.0
+    }
+   ],
+   "fdc_id": "169994",
+   "fdc_desc": "Chives, raw",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-basil-fresh",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Bazylia (świeża)",
+    "en": "Basil (fresh)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 23.0,
+    "protein": 3.15,
+    "fat": 0.64,
+    "satfat": 0.041,
+    "carbs": 2.65,
+    "fibre": 1.6,
+    "calcium_mg": 177.0,
+    "iron_mg": 3.17,
+    "zinc_mg": 0.81,
+    "sodium_mg": 4.0,
+    "potassium_mg": null,
+    "vita_ug": 264.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "5 leaves",
+     "g": 2.5
+    },
+    {
+     "desc": "2 tbsp, chopped",
+     "g": 5.3
+    },
+    {
+     "desc": "0.25 cup leaves, whole",
+     "g": 6.0
+    }
+   ],
+   "fdc_id": "172232",
+   "fdc_desc": "Basil, fresh",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-thyme-fresh",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Tymianek (świeży)",
+    "en": "Thyme (fresh)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 101.0,
+    "protein": 5.56,
+    "fat": 1.68,
+    "satfat": 0.467,
+    "carbs": 24.45,
+    "fibre": 14.0,
+    "calcium_mg": 405.0,
+    "iron_mg": 17.45,
+    "zinc_mg": 1.81,
+    "sodium_mg": 9.0,
+    "potassium_mg": null,
+    "vita_ug": 238.0,
+    "vitd_ug": null
+   },
+   "portions": [],
+   "fdc_id": "173470",
+   "fdc_desc": "Thyme, fresh",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-rosemary-fresh",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Rozmaryn (świeży)",
+    "en": "Rosemary (fresh)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 131.0,
+    "protein": 3.31,
+    "fat": 5.86,
+    "satfat": 2.838,
+    "carbs": 20.7,
+    "fibre": 14.1,
+    "calcium_mg": 317.0,
+    "iron_mg": 6.65,
+    "zinc_mg": 0.93,
+    "sodium_mg": 26.0,
+    "potassium_mg": null,
+    "vita_ug": 146.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tbsp",
+     "g": 1.7
+    }
+   ],
+   "fdc_id": "173473",
+   "fdc_desc": "Rosemary, fresh",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-coriander-fresh",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Kolendra (świeże liście)",
+    "en": "Coriander (fresh leaves)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 23.0,
+    "protein": 2.13,
+    "fat": 0.52,
+    "satfat": 0.014,
+    "carbs": 3.67,
+    "fibre": 2.8,
+    "calcium_mg": 67.0,
+    "iron_mg": 1.77,
+    "zinc_mg": 0.5,
+    "sodium_mg": 46.0,
+    "potassium_mg": null,
+    "vita_ug": 337.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "0.25 cup",
+     "g": 4.0
+    },
+    {
+     "desc": "9 sprigs",
+     "g": 20.0
+    }
+   ],
+   "fdc_id": "169997",
+   "fdc_desc": "Coriander (cilantro) leaves, raw",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-oregano-dried",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Oregano (suszone)",
+    "en": "Oregano (dried)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 265.0,
+    "protein": 9.0,
+    "fat": 4.28,
+    "satfat": 1.551,
+    "carbs": 68.92,
+    "fibre": 42.5,
+    "calcium_mg": 1597.0,
+    "iron_mg": 36.8,
+    "zinc_mg": 2.69,
+    "sodium_mg": 25.0,
+    "potassium_mg": null,
+    "vita_ug": 85.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tsp, leaves",
+     "g": 1.0
+    },
+    {
+     "desc": "1 tsp, ground",
+     "g": 1.8
+    }
+   ],
+   "fdc_id": "171328",
+   "fdc_desc": "Spices, oregano, dried",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-cinnamon",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Cynamon mielony",
+    "en": "Cinnamon (ground)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "warning": {
+    "pl": "Cynamon kasja (typowy w sklepach) zawiera kumarynę: wg BfR małe dziecko (~15 kg) osiąga tolerowaną dawkę dzienną przy ok. 0,5 g kasji dziennie; krótkotrwałe przekroczenie nie zagraża zdrowiu, ale przy częstym stosowaniu wybieraj cynamon cejloński (znacznie mniej kumaryny).",
+    "en": "Cassia cinnamon (the common shop variety) contains coumarin: per BfR, a small child (~15 kg) reaches the tolerable daily intake with about 0.5 g of cassia per day; short-term exceedance poses no health risk, but for frequent use choose Ceylon cinnamon (much less coumarin)."
+   },
+   "per100g": {
+    "kcal": 247.0,
+    "protein": 3.99,
+    "fat": 1.24,
+    "satfat": 0.345,
+    "carbs": 80.59,
+    "fibre": 53.1,
+    "calcium_mg": 1002.0,
+    "iron_mg": 8.32,
+    "zinc_mg": 1.83,
+    "sodium_mg": 10.0,
+    "potassium_mg": null,
+    "vita_ug": 15.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tsp",
+     "g": 2.6
+    },
+    {
+     "desc": "1 tbsp",
+     "g": 7.8
+    }
+   ],
+   "fdc_id": "171320",
+   "fdc_desc": "Spices, cinnamon, ground",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-ginger",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Imbir mielony",
+    "en": "Ginger (ground)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 335.0,
+    "protein": 8.98,
+    "fat": 4.24,
+    "satfat": 2.599,
+    "carbs": 71.62,
+    "fibre": 14.1,
+    "calcium_mg": 114.0,
+    "iron_mg": 19.8,
+    "zinc_mg": 3.64,
+    "sodium_mg": 27.0,
+    "potassium_mg": null,
+    "vita_ug": 2.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tsp",
+     "g": 1.8
+    },
+    {
+     "desc": "1 tbsp",
+     "g": 5.2
+    }
+   ],
+   "fdc_id": "170926",
+   "fdc_desc": "Spices, ginger, ground",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-turmeric",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Kurkuma mielona",
+    "en": "Turmeric (ground)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 312.0,
+    "protein": 9.68,
+    "fat": 3.25,
+    "satfat": 1.838,
+    "carbs": 67.14,
+    "fibre": 22.7,
+    "calcium_mg": 168.0,
+    "iron_mg": 55.0,
+    "zinc_mg": 4.5,
+    "sodium_mg": 27.0,
+    "potassium_mg": null,
+    "vita_ug": 0.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tsp",
+     "g": 3.0
+    },
+    {
+     "desc": "1 tbsp",
+     "g": 9.4
+    }
+   ],
+   "fdc_id": "172231",
+   "fdc_desc": "Spices, turmeric, ground",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-paprika",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Papryka słodka mielona",
+    "en": "Paprika (sweet, ground)"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 282.0,
+    "protein": 14.14,
+    "fat": 12.89,
+    "satfat": 2.14,
+    "carbs": 53.99,
+    "fibre": 34.9,
+    "calcium_mg": 229.0,
+    "iron_mg": 21.14,
+    "zinc_mg": 4.33,
+    "sodium_mg": 68.0,
+    "potassium_mg": null,
+    "vita_ug": 2463.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tsp",
+     "g": 2.3
+    },
+    {
+     "desc": "1 tbsp",
+     "g": 6.8
+    }
+   ],
+   "fdc_id": "171329",
+   "fdc_desc": "Spices, paprika",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
+  },
+  {
+   "id": "food-garlic-powder",
+   "kind": "food",
+   "category": "seasonings",
+   "name": {
+    "pl": "Czosnek granulowany",
+    "en": "Garlic powder"
+   },
+   "tags": [
+    "flavour"
+   ],
+   "per100g": {
+    "kcal": 331.0,
+    "protein": 16.55,
+    "fat": 0.73,
+    "satfat": 0.249,
+    "carbs": 72.73,
+    "fibre": 9.0,
+    "calcium_mg": 79.0,
+    "iron_mg": 5.65,
+    "zinc_mg": 2.99,
+    "sodium_mg": 60.0,
+    "potassium_mg": null,
+    "vita_ug": 0.0,
+    "vitd_ug": null
+   },
+   "portions": [
+    {
+     "desc": "1 tsp",
+     "g": 3.1
+    },
+    {
+     "desc": "1 tbsp",
+     "g": 9.7
+    }
+   ],
+   "fdc_id": "171325",
+   "fdc_desc": "Spices, garlic powder",
+   "source": "USDA FoodData Central, SR Legacy (fdc.nal.usda.gov) — non-PL fallback, flagged"
   }
  ],
  "misses": []

@@ -1,6 +1,6 @@
 {
  "accessed": "2026-10-02",
- "count": 48,
+ "count": 49,
  "sources": [
   {
    "id": "antonius2008",
@@ -879,6 +879,20 @@
    "accessed": "2026-10-03",
    "fetched_file": "research/raw/espghan_espn_pn_energy.pdf",
    "notes": "Tables 2.1-2.2: REE/BMR equations (WHO, Schofield (W), Schofield (WH), Harris-Benedict) for 0-3y and 3-10y. The Schofield weight-only (W) forms for 0-3y are used by the calculator's C (flat-chart fix 2026-10-03)."
+  },
+  {
+   "id": "bfr_coumarin",
+   "category": "risk-assessment",
+   "evidence_class": "B",
+   "citation": "BfR (German Federal Institute for Risk Assessment). FAQ on coumarin in cinnamon and other foods. bfr.bund.de (FAQ category 27/09/2012; accessed 2026-10-07).",
+   "title": "FAQ on coumarin in cinnamon and other foods",
+   "authors": "BfR",
+   "year": 2012,
+   "url": "https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/faq-on-coumarin-in-cinnamon-and-other-foods/",
+   "verified": true,
+   "accessed": "2026-10-07",
+   "fetched_file": "research/raw/bfr_coumarin_faq.html",
+   "notes": "\"The TDI is 0.1 mg of coumarin per kg of bodyweight and day and it also applies to especially sensitive consumers.\"; cassia cinnamon on average ~3000 mg coumarin/kg (highest measured 10000); \"A small child with a body weight of 15 kg reaches its TDI by ingesting about 0.5 g of Cassia cinnamon\"; short-run exceedance poses no health risk; frequent users should choose Ceylon cinnamon. Basis for the coumarin warning on the seasonings card (user batch card 3, 2026-10-07)."
   }
  ]
 }

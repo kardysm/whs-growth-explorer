@@ -9,6 +9,8 @@
  */
 export const DESC_PL: Record<string, string> = {
   "0.25 block": "0,25 bloku",
+  "0.25 cup": "0,25 szklanki",
+  "0.25 cup leaves, whole": "0,25 szklanki liści (całych)",
   "0.33 cup": "0,33 szklanki",
   "0.5 container (4 oz)": "0,5 opakowania (4 oz)",
   "0.5 cup": "0,5 szklanki",
@@ -28,6 +30,7 @@ export const DESC_PL: Record<string, string> = {
   "1 cup elbows not packed": "1 szklanka makaronu „łokcie” (luźno)",
   "1 cup grated": "1 szklanka, starte",
   "1 cup slices": "1 szklanka, plasterki",
+  "1 cup sprigs": "1 szklanka gałązek",
   "1 cup spaghetti not packed": "1 szklanka spaghetti (luźno)",
   "1 cup spaghetti packed": "1 szklanka spaghetti (ciasno)",
   "1 cup strips or slices": "1 szklanka, paski lub plasterki",
@@ -79,8 +82,17 @@ export const DESC_PL: Record<string, string> = {
   "1 tbsp": "1 łyżka",
   "1 tbsp, ground": "1 łyżka, mielone",
   "1 tbsp, whole": "1 łyżka, całe",
+  "1 tbsp chopped": "1 łyżka, posiekane",
   "1 tsp": "1 łyżeczka",
+  "1 tsp, leaves": "1 łyżeczka, liście",
+  "1 tsp, ground": "1 łyżeczka, mielone",
+  "1 tsp chopped": "1 łyżeczka, posiekane",
   "2 tbsp": "2 łyżki",
+  "2 tbsp, chopped": "2 łyżki, posiekane",
+  "5 leaves": "5 listków",
+  "5 sprigs": "5 gałązek",
+  "9 sprigs": "9 gałązek",
+  "10 sprigs": "10 gałązek",
   "50 berries": "50 jagód",
 };
 

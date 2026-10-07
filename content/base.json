@@ -727,6 +727,10 @@
       "pl": "Skład produktów spożywczych: USDA FoodData Central (SR Legacy) — oznaczone jako dane nie-polskie; opisy miar domowych w jednostkach USDA (j. angielski). Produkty specjalistyczne: strony producentów.",
       "en": "Food composition: USDA FoodData Central (SR Legacy) — flagged as non-PL data; household-measure descriptions use USDA units (English). Specialist products: manufacturer pages."
     },
+    "seasonings_note": {
+      "pl": "Zioła i przyprawy („dla smaku”) dodawaj w małych ilościach do potraw — zamiast soli i cukru; ESPGHAN: do posiłków uzupełniających nie dodaje się soli ani cukru. Cynamon kasja zawiera kumarynę — sprawdź ostrzeżenie na jego karcie.",
+      "en": "Herbs and spices („for flavour”) — add small amounts to foods instead of salt and sugar; ESPGHAN: no sugar or salt should be added to complementary foods. Cassia cinnamon contains coumarin — see the warning on its card."
+    },
     "allergen_legend": {
       "pl": "Alergeny (lista 14 UE): 🥛 mleko · 🥚 jaja · 🐟 ryby · 🌾 gluten (zboża) · 🌱 soja · 🌰 orzechy · 🥜 orzeszki ziemne · 🫘 sezam. Produkty specjalistyczne: wg deklaracji składu z etykiety produktu (źródło w podpowiedzi); produkty jednoskładnikowe: wg identyfikacji składnika. Brak ikon = brak alergenów z listy 14. Zawsze sprawdź aktualną etykietę.",
       "en": "Allergens (EU-14 list): 🥛 milk · 🥚 egg · 🐟 fish · 🌾 gluten (cereals) · 🌱 soy · 🌰 nuts · 🥜 peanuts · 🫘 sesame. Specialist products: per the composition declaration on the product label (source in the tooltip); single-ingredient foods: per ingredient identity. No icons = no EU-14 allergens. Always check the current label."
@@ -784,6 +788,7 @@
         "produce": "warzywa i owoce",
         "nuts-seeds": "orzechy i nasiona",
         "sweets": "słodycze",
+        "seasonings": "przyprawy i zioła",
         "fsmp-infant": "FSMP niemowlęcy",
         "fsmp-child": "FSMP dla dzieci",
         "module": "moduły",
@@ -798,6 +803,7 @@
         "produce": "fruit & vegetables",
         "nuts-seeds": "nuts & seeds",
         "sweets": "sweets",
+        "seasonings": "herbs & spices",
         "fsmp-infant": "infant FSMP",
         "fsmp-child": "child FSMP",
         "module": "modules",
@@ -832,7 +838,8 @@
         "sesame": "sezam",
         "soy": "soja",
         "choking": "ryzyko zadławienia",
-        "thickener": "zagęszczacz"
+        "thickener": "zagęszczacz",
+        "flavour": "dla smaku"
       },
       "en": {
         "high-energy": "energy-dense",
@@ -860,7 +867,8 @@
         "sesame": "sesame",
         "soy": "soy",
         "choking": "choking risk",
-        "thickener": "thickener"
+        "thickener": "thickener",
+        "flavour": "for flavour"
       }
     }
   },

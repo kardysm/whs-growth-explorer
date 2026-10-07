@@ -47,6 +47,7 @@ Every claim below carries its `source_id` (see `research/sources.json`) and evid
 - Iron: EAR/RDA 7/11 mg/day (6–11 mo) and 3/7 mg/day (1–3 y) — `pzh2024` (A).
 - Zinc: EAR/RDA 2.5/3 mg/day (6–11 mo and 1–3 y) — `pzh2024` (A).
 - Complementary feeding principles (when/how to introduce solids; texture progression): `fewtrell2017` (A).
+- Seasonings/herbs for children's meals (flavour with warnings where needed): coumarin TDI 0.1 mg/kg bw/day; cassia cinnamon ~3000 mg coumarin/kg; a 15-kg child reaches the TDI with ~0.5 g cassia/day (`bfr_coumarin`, B); no added sugar/salt in complementary foods (`fewtrell2017`, A). Basis for the seasonings block in the products list (user batch 2026-10-07).
 
 ## 7. Interpretation notes used by the calculator
 

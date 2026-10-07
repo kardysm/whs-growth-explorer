@@ -1183,15 +1183,19 @@ function buildProducts(): PItem[] {
   const foods = (foodsData as unknown as { items: FoodRow[] }).items.map((x) => {
     const n = x.per100g;
     const tags: string[] = [...(x.tags ?? [])];
-    if (x.category === "fats" || (n.kcal ?? 0) >= 200) tags.push("high-energy");
-    if ((n.protein ?? 0) >= 10) tags.push("high-protein");
-    if ((n.iron_mg ?? 0) >= 2) tags.push("Fe");
-    if ((n.zinc_mg ?? 0) >= 1.5) tags.push("Zn");
-    if ((n.calcium_mg ?? 0) >= 100) tags.push("Ca");
-    if ((n.vitd_ug ?? 0) >= 1) tags.push("vitD");
-    if ((n.fibre ?? 0) >= 4) tags.push("fibre");
-    if (["food-salmon", "food-mackerel", "food-sardines", "food-flax"].includes(x.id)) tags.push("omega3");
-    if (x.category === "dairy") tags.push("dairy");
+    // Derived tags are per-100 g density signals — meaningless for seasonings (a pinch, not 100 g)
+    // and would mislabel cinnamon (247 kcal/100 g) as "energy-dense" (user batch card 3, 2026-10-07).
+    if (x.category !== "seasonings") {
+      if (x.category === "fats" || (n.kcal ?? 0) >= 200) tags.push("high-energy");
+      if ((n.protein ?? 0) >= 10) tags.push("high-protein");
+      if ((n.iron_mg ?? 0) >= 2) tags.push("Fe");
+      if ((n.zinc_mg ?? 0) >= 1.5) tags.push("Zn");
+      if ((n.calcium_mg ?? 0) >= 100) tags.push("Ca");
+      if ((n.vitd_ug ?? 0) >= 1) tags.push("vitD");
+      if ((n.fibre ?? 0) >= 4) tags.push("fibre");
+      if (["food-salmon", "food-mackerel", "food-sardines", "food-flax"].includes(x.id)) tags.push("omega3");
+      if (x.category === "dairy") tags.push("dairy");
+    }
     return {
       id: x.id, kind: "food", category: x.category, name: x.name, basis: "g" as const,
       per100: n,
@@ -1226,6 +1230,7 @@ function renderProducts(): void {
 
   document.getElementById("products-body")!.innerHTML = `
     <p class="small">${t("products.foods_note")}</p>
+    <p class="small">${t("products.seasonings_note")} ${t("calc.sources_label")} ${srcLinks(["fewtrell2017", "bfr_coumarin"])}</p>
     <p class="small">${t("products.allergen_legend")}</p>
     <div class="card" style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:end">
       <div style="flex:1 1 220px"><label for="p-search">${t("products.search")}</label><input id="p-search" type="search" value="${pSearch.replace(/"/g, "&quot;")}"></div>
