@@ -454,7 +454,12 @@ function recalc(): void {
   // Round-4 audit R4-3: carry-over caution for flagged (not suppressed) C values.
   const cCarry = (r.C.alerts ?? []).filter(() => r.C.kcalPerDay.central !== null);
   const refSlot = document.getElementById("refeed-slot");
-  if (refSlot) refSlot.innerHTML = refeeding;
+  if (refSlot) {
+    refSlot.innerHTML = refeeding;
+    const hasBanner = refeeding !== "";
+    if (hasBanner && !refeedShown) refSlot.querySelector(".banner")?.classList.add("anim-pop");
+    refeedShown = hasBanner;
+  }
   res.innerHTML = `
     ${card(t("calc.method_a_t"), r.A.kcalPerDay, r.A.notes, r.A.sourceIds, { grade: "A", sub: t("calc.method_a_sub"), tip: t("calc.method_a_tip"), band: t("calc.band_a") })}
     ${card(t("calc.method_b_t"), r.B.kcalPerDay, r.B.notes, r.B.sourceIds, { grade: "A", sub: t("calc.method_b_sub").replace("{wa}", wa !== null ? (lang === "pl" ? wa.toFixed(1).replace(".", ",") : wa.toFixed(1)) : "—"), tip: t("calc.method_b_tip"), band: t("calc.band_b") })}
@@ -515,6 +520,26 @@ function recalc(): void {
   }
   renderNutrients();
   updateMilkCard();
+
+  // Motion (user request 2026-10-07): first render = staggered entrance; later recalcs = a quick soft
+  // refresh, debounced (350 ms) so continuous typing does not flicker.
+  const rbody = document.getElementById("results-body");
+  if (rbody) {
+    if (!resultsEntered) {
+      resultsEntered = true;
+      rbody.classList.add("anim-enter");
+      window.setTimeout(() => rbody.classList.remove("anim-enter"), 1100);
+    } else {
+      const now = performance.now();
+      if (now - lastRefreshAnim > 350) {
+        lastRefreshAnim = now;
+        rbody.classList.remove("anim-refresh");
+        void rbody.offsetWidth; // restart the animation
+        rbody.classList.add("anim-refresh");
+        window.setTimeout(() => rbody.classList.remove("anim-refresh"), 320);
+      }
+    }
+  }
 }
 
 // ---------- charts ----------
@@ -962,6 +987,10 @@ function renderRules(): void {
 
 let nutrientView: "age" | "child" = "child";
 let lastR: ReturnType<typeof computeAll> | null = null;
+// Motion state (user request 2026-10-07)
+let resultsEntered = false;
+let lastRefreshAnim = 0;
+let refeedShown = false;
 
 interface NutCell { lo?: number; hi?: number; num?: number; ai?: boolean; approx?: BiText; }
 interface NutRow { id: string; label: BiText; kind: "perkg" | "percent" | "daily"; unit?: string; src: string[]; b1?: NutCell; b2?: NutCell; b3?: NutCell; }
@@ -1342,7 +1371,14 @@ function renderProducts(): void {
       const kindT = t(v.kind === "tag" ? "products.badge_tag" : v.kind === "cat" ? "products.badge_cat" : "products.badge_alg");
       return `<li id="p-sug-${i}" role="option" aria-selected="${i === sugActive}" class="${i === sugActive ? "active" : ""}" data-i="${i}">${badge}<span class="hint">${kindT}${sel ? " ✓" : ""}</span></li>`;
     }).join("");
+    const wasHidden = sug.hidden;
     sug.hidden = sugItems.length === 0;
+    if (!sug.hidden && wasHidden) {
+      // Motion (user request 2026-10-07): fade/slide the dropdown in on each open.
+      sug.classList.remove("sug-open");
+      void sug.offsetWidth;
+      sug.classList.add("sug-open");
+    }
     search.setAttribute("aria-expanded", String(!sug.hidden));
     if (!sug.hidden) search.setAttribute("aria-activedescendant", `p-sug-${sugActive}`);
     else search.removeAttribute("aria-activedescendant");
@@ -1657,6 +1693,25 @@ document.addEventListener("keydown", (e) => {
 
 let resizeBound = false;
 
+// ---------- scroll reveal (user request 2026-10-07) ----------
+let revealObserver: IntersectionObserver | null = null;
+function setupReveals(): void {
+  if (!("IntersectionObserver" in window)) return;
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entries) => {
+      for (const en of entries) {
+        if (en.isIntersecting) {
+          en.target.classList.add("sec-in");
+          revealObserver!.unobserve(en.target);
+        }
+      }
+    }, { threshold: 0.01, rootMargin: "0px 0px -6% 0px" });
+  }
+  for (const s of document.querySelectorAll("main section")) {
+    if (!s.classList.contains("sec-in")) revealObserver.observe(s);
+  }
+}
+
 function renderAll(): void {
   document.documentElement.lang = lang;
   const md = document.querySelector('meta[name="description"]');
@@ -1676,6 +1731,7 @@ function renderAll(): void {
   recalc();
   drawCharts();
   updateScrollPad();
+  setupReveals();
   if (!resizeBound) {
     resizeBound = true;
     window.addEventListener("resize", () => { ch1?.resize(); ch2?.resize(); ch3?.resize(); updateScrollPad(); }, { passive: true });

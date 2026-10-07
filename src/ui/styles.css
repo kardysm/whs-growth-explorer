@@ -353,7 +353,8 @@ details.hint-toggle > p { margin: 0.35rem 0 0; }
 .card, #search-results li, #sources-body li { overflow-wrap: anywhere; }
 .cards-grid > *, .chart-grid > *, .cards-flow > *, #results-cards > * { min-width: 0; }
 .cards-grid > .card, .chart-grid > .card, #results-cards > .card { margin: 0; }
-.hdr-btn, .lang-toggle button, .nut-toggle button, button.primary, select, input { transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, filter 0.15s ease; }
+.hdr-btn, .lang-toggle button, .nut-toggle button, button.primary, select, input { transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, filter 0.15s ease, transform 0.12s ease; }
+.hdr-btn:active, .lang-toggle button:active, .nut-toggle button:active, button.primary:active { transform: translateY(1px); }
 
 /* ---------- accessibility ---------- */
 .skip-link { position: absolute; left: -9999px; top: 0; background: #fff; color: #2c0735; padding: .5rem 1rem; z-index: 100; border: 2px solid var(--accent2); border-radius: 10px; }
@@ -430,6 +431,51 @@ section { scroll-margin-top: calc(var(--hdrh, 4rem) + 0.5rem); }
   .hl-flash, :root[data-theme="dark"] .hl-flash { animation: none; outline: 3px solid var(--accent2); }
   html { scroll-behavior: auto; }
   [data-tip]::after, [data-tip]::before { transition: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- motion (user request 2026-10-07): transitions + entrances, all reduced-motion-safe ---------- */
+
+/* theme crossfade on the main surfaces (background/border/ink change with the palette) */
+body, header.top, .banner, nav.main, #table-body thead th { transition: background-color 0.25s ease, border-color 0.2s ease, color 0.25s ease; }
+.card { transition: background-color 0.25s ease, border-color 0.2s ease, color 0.25s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+.card:hover { border-color: color-mix(in srgb, var(--accent2) 38%, var(--glass-line)); transform: translateY(-1px); }
+
+/* links, badges, table rows, summaries */
+a, nav.main a { transition: color 0.15s ease, background-color 0.15s ease; }
+.badge { transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease; }
+.badge:hover { transform: translateY(-1px); }
+#table-body tbody tr { transition: background-color 0.12s ease; }
+summary { transition: color 0.15s ease; }
+
+/* entrances — JS adds the trigger classes at the right moments */
+@keyframes cardIn { from { opacity: 0; transform: translateY(8px); } }
+@keyframes softRefresh { from { opacity: 0.55; } }
+@keyframes bannerIn { from { opacity: 0; transform: translateY(-6px); } }
+@keyframes sugIn { from { opacity: 0; transform: translateY(-4px); } }
+@keyframes contentIn { from { opacity: 0; } }
+@keyframes menuIn { from { opacity: 0; transform: translateY(-4px); } }
+@keyframes secIn { from { opacity: 0; transform: translateY(10px); } }
+
+#results-body.anim-enter #results-cards > .card { animation: cardIn 0.4s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+#results-body.anim-enter #results-cards > .card:nth-child(2) { animation-delay: 0.04s; }
+#results-body.anim-enter #results-cards > .card:nth-child(3) { animation-delay: 0.08s; }
+#results-body.anim-enter #results-cards > .card:nth-child(4) { animation-delay: 0.12s; }
+#results-body.anim-enter #results-cards > .card:nth-child(5) { animation-delay: 0.16s; }
+#results-body.anim-enter #results-cards > .card:nth-child(6) { animation-delay: 0.2s; }
+#results-body.anim-enter #results-cards > .card:nth-child(7) { animation-delay: 0.24s; }
+#results-body.anim-enter #milk-card .card { animation: cardIn 0.4s cubic-bezier(0.2, 0.7, 0.3, 1) both; animation-delay: 0.28s; }
+#results-body.anim-refresh #results-cards, #results-body.anim-refresh #milk-card { animation: softRefresh 0.28s ease; }
+.banner.anim-pop { animation: bannerIn 0.3s ease-out; }
+#p-suggest.sug-open { animation: sugIn 0.16s ease-out; }
+details[open] > :not(summary) { animation: contentIn 0.2s ease-out; }
+nav.main.open { animation: menuIn 0.18s ease-out; }
+/* scroll reveal: no fill-mode — the transform must not persist (would break position: sticky inside) */
+section.sec-in { animation: secIn 0.5s cubic-bezier(0.2, 0.7, 0.3, 1); }
+
+/* smooth anchor scrolling (nav links); reduced-motion block above resets it */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 /* ---------- global search overlay (Ctrl+K) ---------- */
