@@ -167,10 +167,10 @@ section h2 { border-bottom: 2px solid var(--accent); padding-bottom: 0.25rem; }
 /* Results flow: one grid holding the method cards A–F AND the milk-balance card (user request
    2026-10-05: „bilans” belongs in the same cards section as A–E); #results-cards dissolves into it.
    The calculator section holds the input form only; the result section („Wyniki”) starts at #results. */
-.cards-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(360px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; align-items: start; }
+.cards-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(max(360px, calc((100% - 2.5rem) / 3)), 100%), 1fr)); gap: 1rem; }
 #results-cards { display: contents; }
 #results-cards > p { grid-column: 1 / -1; order: 1; }
-#milk-card > .card { margin: 0; }
+#milk-card > .card { margin: 0; height: 100%; }
 
 /* ---------- glass surfaces ---------- */
 .card {
