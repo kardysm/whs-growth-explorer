@@ -1096,6 +1096,10 @@
     "pl": "Kontakt",
     "en": "Contact"
   },
+  "footer_report_label": {
+    "pl": "Raport: zaburzenia karmienia i kompensacja kaloryczna (synteza i metaanaliza)",
+    "en": "Report: feeding disorders and caloric compensation (synthesis and meta-analysis)"
+  },
   "nutrients": {
     "title": {
       "pl": "Zapotrzebowanie na makro- i mikroelementy",
