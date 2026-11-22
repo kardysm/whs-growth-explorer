@@ -77,7 +77,7 @@ var e=Object.defineProperty,t=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],en
     <p class="small" id="footer-links">${$(`footer_source_label`)}: <a href="https://github.com/kardysm/whs-growth-explorer" target="_blank" rel="noopener">github.com/kardysm/whs-growth-explorer</a> · ${$(`footer_contact_label`)}: <a href="mailto:whs@kardys.dev">whs@kardys.dev</a></p>
     <p class="small" id="footer-report"><a href="${L7(location.pathname)}reports/feeding-disorders/feeding-disorders-synthesis${z7===`pl`?`-PL`:``}.html">${$(`footer_report_label`)}</a> · <a href="${L7(location.pathname)}reports/feeding-disorders/caloric-steering-metaanalysis${z7===`pl`?`-PL`:``}.html">${$(`footer_steering_label`)}</a></p>
     <p class="small" id="footer-eg-report"><a href="${L7(location.pathname)}reports/eating-genetics/eating-genetics-synthesis${z7===`pl`?`-PL`:``}.html">${$(`footer_eg_report_label`)}</a></p>
-    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.5.19`).replace(`{date}`,`2026-11-22`).replace(`{commit}`,`2b0c6e2+`)}</p>
+    <p class="small" id="build-stamp">${$(`meta.stamp`).replace(`{v}`,`0.5.20`).replace(`{date}`,`2026-11-22`).replace(`{commit}`,`bad56e1+`)}</p>
   </footer>
   <div id="search-overlay" hidden role="dialog" aria-modal="true" aria-label="${$(`search.open`)}">
     <div class="search-panel card">
