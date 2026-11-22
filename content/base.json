@@ -1100,6 +1100,10 @@
     "pl": "Raport: zaburzenia karmienia i kompensacja kaloryczna (synteza i metaanaliza)",
     "en": "Report: feeding disorders and caloric compensation (synthesis and meta-analysis)"
   },
+  "footer_steering_label": {
+    "pl": "Metaanaliza: ile dodanych kalorii dziecko naprawdę zjada (sterowanie spożyciem)",
+    "en": "Meta-analysis: how much added energy children actually eat (caloric intake steering)"
+  },
   "footer_eg_report_label": {
     "pl": "Przegląd żywy: geny, jedzenie i dźwignie kaloryczne (wersja wstępna)",
     "en": "Living review: genes, eating and caloric levers (interim version)"
