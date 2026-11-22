@@ -1,0 +1,74 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Metaanaliza metaanaliz: zatrzymanie dodanej energii</title><style>
+:root{--ink:#1f2933;--muted:#52606d;--line:#d9e2ec;--bg:#f7f9fb;--accent:#1f5f8b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:34px 20px 70px;background:#fff}h1{font-size:30px;line-height:1.2;margin:0 0 8px}
+h2{margin:34px 0 10px;font-size:21px}p{margin:10px 0}.lede{color:var(--muted);font-size:18px}.small{font-size:13px;color:var(--muted)}
+.box{border:1px solid var(--line);border-left:5px solid var(--accent);background:#f2f7fa;padding:14px 18px;margin:18px 0;border-radius:6px}
+.key{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}.key div{flex:1 1 220px;border:1px solid var(--line);border-radius:8px;padding:12px}
+.key b{display:block;font-size:25px}.key span{font-size:12px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:12px 0}th,td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+th{background:#eef3f7}caption{text-align:left;font-weight:700;padding:8px 0;font-size:14px}.tablewrap{overflow-x:auto}
+a{color:var(--accent)}svg{max-width:100%;height:auto;border:1px solid var(--line);background:#fff}ul,ol{margin:8px 0 8px 22px}li{margin:6px 0}
+</style></head><body><main>
+<p class="small"><a href="meta-meta-analysis.html" hreflang="en">English version</a></p>
+<h1>Metaanaliza metaanaliz: zatrzymanie dodanej energii</h1><p class="lede">Druga warstwa syntezy trzech podgrup dźwigni z metaanalizy sterowania — 14 badań stałej objętości, 7 wolnej objętości i 1 badania porcji, te same 22 wiersze. To nie jest synteza niezależnych metaanaliz.</p>
+<p class="small">Wersja 1.0 · 22 listopada 2026 · dane: analizy projektu feeding-disorders v1.2.0</p>
+<div class="box">Trzy podgrupy dźwigni dają <strong>45,7% (95% CI 20,7–70,6)</strong> zatrzymania, I² 68,5%, τ² 80,2. Wariant całodzienny daje <strong>39,0% (16,0–62,1)</strong>; bez pojedynczego badania porcji dwie pozostałe podgrupy dają <strong>52,2% (35,1–69,4)</strong>. Przedział predykcyjny jest bardzo szeroki (-93,5% do 184,8%), więc to oszacowanie planistyczne, nie przewidywanie.</div>
+<div class="key">
+<div><b>45,7%</b><span>zbiorcze zatrzymanie, 3 podgrupy</span></div>
+<div><b>39,0%</b><span>wariant całodzienny</span></div>
+<div><b>52,2%</b><span>bez badania porcji</span></div>
+</div>
+<h2>1. Co tu jest łączone</h2>
+<p>Trzy wejścia to dokładnie podgrupy dźwigni w <code>results_steering.json</code>: 14 badań stałej objętości, 7 wolnej objętości i 1 badania porcji (14+7+1 = 22 wiersze). Metaanaliza sterowania (22 badania, 51,4%) jest pulą tych samych wierszy na poziomie badań; nie jest niezależnym składnikiem i nie jest wykluczona z powodu innego zbioru badań. Stymulanty apetytu i odzwyczajanie od sondy są poza pulą, bo mają inne jednostki.</p>
+<ul>
+<li>Gęstość przy stałej objętości: COMPX, k=14, zatrzymanie 51,3% (37,7–64,8).</li>
+<li>Gęstość przy wolnej objętości: ED, k=7, zatrzymanie 54,1% (32,7–75,6).</li>
+<li>Wielkość porcji: jedno badanie 5-dniowe, 36,0% (28,2–43,8); waga 41,4% puli.</li>
+<li>Zatrzymanie całodzienne: k=3, 32,9% (14,3–51,5); używane w analizie wrażliwości, bo dzieli badania z gęstością przy wolnej objętości.</li>
+</ul>
+<p>Nie łączymy stymulantów apetytu (kg) ani odzwyczajania od sondy (odsetek), bo są to inne jednostki. Metaanaliza sterowania nie jest „dodatkowym” składnikiem: to ta sama pula 22 badań.</p>
+<h2>2. Wynik drugiego rzędu</h2>
+<p>Trzy podgrupy dają <strong>45,7% (95% CI 20,7–70,6)</strong>, I² 68,5%. Wariant całodzienny daje 39,0% (16,0–62,1).</p>
+<figure><svg xmlns="http://www.w3.org/2000/svg" width="900" height="228" viewBox="0 0 900 228" role="img" aria-label="Meta-of-meta forest plot">
+<text x="12" y="24" font-family="sans-serif" font-size="15" font-weight="700">Metaanaliza metaanaliz: zatrzymanie dodanej energii</text>
+<text x="12" y="62" font-family="sans-serif" font-size="11">Gęstość przy stałej objętości (COMPX) (k=14)</text>
+<line x1="496.5" y1="58" x2="687.4" y2="58" stroke="#666"/>
+<rect x="587.9" y="54" width="8" height="8" fill="#1f5f8b"/>
+<text x="693.4" y="62" font-family="sans-serif" font-size="10">51,3%</text>
+<text x="12" y="98" font-family="sans-serif" font-size="11">Gęstość przy wolnej objętości (ED) (k=7)</text>
+<line x1="460.7" y1="94" x2="763.5" y2="94" stroke="#666"/>
+<rect x="608.1" y="90" width="8" height="8" fill="#1f5f8b"/>
+<text x="769.5" y="98" font-family="sans-serif" font-size="10">54,1%</text>
+<text x="12" y="134" font-family="sans-serif" font-size="11">Wielkość porcji (k=1)</text>
+<line x1="428.9" y1="130" x2="539.5" y2="130" stroke="#666"/>
+<rect x="480.2" y="126" width="8" height="8" fill="#1f5f8b"/>
+<text x="545.5" y="134" font-family="sans-serif" font-size="10">36,0%</text>
+<polygon points="544.4999941436345,182 560.4999941436345,182 552.4999941436345,172" fill="#b03a2e"/>
+<line x1="376.5" y1="178" x2="728.5" y2="178" stroke="#b03a2e" stroke-width="2"/>
+<text x="12" y="186" font-family="sans-serif" font-size="12" font-weight="700">Zbiorcze zatrzymanie drugiego rzędu (k=3)</text>
+<text x="734.5" y="186" font-family="sans-serif" font-size="11">45,7%</text>
+<text x="320" y="218" font-family="sans-serif" font-size="10">Zatrzymanie (%) — 100% = cała dodana energia zatrzymana</text></svg><figcaption class="small">Rycina 1. Podgrupy dźwigni i wynik drugiego rzędu. Kwadraty to podsumowania podgrup; romb łączy trzy podgrupy.</figcaption></figure>
+<div class="tablewrap"><table><caption>Tabela 1. Składowe metaanalizy metaanaliz</caption>
+<thead><tr><th>Składnik</th><th>k</th><th>Zatrzymanie (%)</th><th>95% CI</th><th>I²</th><th>Waga</th><th>Rola</th></tr></thead><tbody>
+<tr><td>Gęstość przy stałej objętości (COMPX)</td><td>14</td><td>51,3</td><td>37,7–64,8</td><td>72,4%</td><td>33,3%</td><td>podstawowa</td></tr>
+<tr><td>Gęstość przy wolnej objętości (ED)</td><td>7</td><td>54,1</td><td>32,7–75,6</td><td>92,2%</td><td>25,3%</td><td>podstawowa</td></tr>
+<tr><td>Zatrzymanie całodzienne</td><td>3</td><td>32,9</td><td>14,3–51,5</td><td>19,5%</td><td>—</td><td>wrażliwość</td></tr>
+<tr><td>Wielkość porcji</td><td>1</td><td>36,0</td><td>28,2–43,8</td><td>0,0%</td><td>41,4%</td><td>podstawowa</td></tr>
+</tbody></table></div>
+<p>Bez pojedynczego badania porcji dwie pozostałe podgrupy dają <strong>52,2% (35,1–69,4)</strong>, I² 0,0%. Badanie porcji wnosi 41,4% wagi; spadek z 51,3% do 45,7% pochodzi z tego jednego badania.</p>
+<h2>3. Co to zmienia</h2>
+<p>Wynik 45,7% jest o 5,6 punktu niższy od podsumowania COMPX (51,3%) i o 5,7 punktu niższy od puli sterowania (51,4%); przedziały się nakładają. Bez badania porcji dwie podgrupy dają 52,2% (35,1–69,4), więc różnica nie jest nowym, precyzyjniejszym efektem: to wrażliwość średniej na jedno małe badanie o dużej wadze. Kierunek — około połowy dodanej energii pozostaje — się utrzymuje.</p>
+<p>Przedział predykcyjny (-93,5% do 184,8%) obejmuje zero i wartości powyżej 100%. W nowym otoczeniu możliwa jest zarówno pełna kompensacja, jak i zatrzymanie całej dodanej energii; planowanie musi opierać się na pomiarze, nie na średniej.</p>
+<h2>4. Ograniczenia</h2>
+<ul>
+<li>Trzy podgrupy to nie trzy niezależne populacje; COMPX i ED badają głównie zdrowe dzieci, a porcja to jedno badanie przedszkolne.</li>
+<li>Podsumowania są już obciążone niepewnością; ich wariancje nie uwzględniają niepewności estymacji τ² ani wyboru modelu.</li>
+<li>Nie ma tu danych indywidualnych ani wspólnego mechanizmu; wynik jest opisowy, nie przyczynowy.</li>
+<li>Nie stosowano testu Eggera: k=3 na poziomie drugiego rzędu.</li>
+</ul>
+<h2>5. Odtwarzalność</h2>
+<p>Dane: <code>analysis/results_meta_meta.json</code>. Skrypt: <code>analysis/meta_meta.py</code>. Wykres: <code>analysis/forest_meta_meta.svg</code>. Skrypt czyta istniejące JSON-y projektu; nie modyfikuje raportu głównego.</p>
+<p class="small">To podsumowanie badań, nie indywidualna porada medyczna.</p>
+</main></body></html>

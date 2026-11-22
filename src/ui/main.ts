@@ -216,7 +216,7 @@ function renderShell(): void {
   </main>
   <footer><p>${t("footer")}</p>
     <p class="small" id="footer-links">${t("footer_source_label")}: <a href="https://github.com/kardysm/whs-growth-explorer" target="_blank" rel="noopener">github.com/kardysm/whs-growth-explorer</a> · ${t("footer_contact_label")}: <a href="mailto:whs@kardys.dev">whs@kardys.dev</a></p>
-    <p class="small" id="footer-report"><a href="${siteRoot(location.pathname)}reports/feeding-disorders/feeding-disorders-synthesis${lang === "pl" ? "-PL" : ""}.html">${t("footer_report_label")}</a> · <a href="${siteRoot(location.pathname)}reports/feeding-disorders/caloric-steering-metaanalysis${lang === "pl" ? "-PL" : ""}.html">${t("footer_steering_label")}</a></p>
+    <p class="small" id="footer-report"><a href="${siteRoot(location.pathname)}reports/feeding-disorders/feeding-disorders-synthesis${lang === "pl" ? "-PL" : ""}.html">${t("footer_report_label")}</a> · <a href="${siteRoot(location.pathname)}reports/feeding-disorders/caloric-steering-metaanalysis${lang === "pl" ? "-PL" : ""}.html">${t("footer_steering_label")}</a> · <a href="${siteRoot(location.pathname)}reports/feeding-disorders/meta-meta-analysis${lang === "pl" ? "-PL" : ""}.html">${t("footer_metameta_label")}</a></p>
     <p class="small" id="footer-eg-report"><a href="${siteRoot(location.pathname)}reports/eating-genetics/eating-genetics-synthesis${lang === "pl" ? "-PL" : ""}.html">${t("footer_eg_report_label")}</a></p>
     <p class="small" id="build-stamp">${t("meta.stamp").replace("{v}", __BUILD_VERSION__).replace("{date}", __BUILD_DATE__).replace("{commit}", __BUILD_COMMIT__)}</p>
   </footer>

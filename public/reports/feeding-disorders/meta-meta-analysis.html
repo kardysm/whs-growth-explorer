@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A meta-analysis of meta-analyses: retention of added energy</title><style>
+:root{--ink:#1f2933;--muted:#52606d;--line:#d9e2ec;--bg:#f7f9fb;--accent:#1f5f8b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:34px 20px 70px;background:#fff}h1{font-size:30px;line-height:1.2;margin:0 0 8px}
+h2{margin:34px 0 10px;font-size:21px}p{margin:10px 0}.lede{color:var(--muted);font-size:18px}.small{font-size:13px;color:var(--muted)}
+.box{border:1px solid var(--line);border-left:5px solid var(--accent);background:#f2f7fa;padding:14px 18px;margin:18px 0;border-radius:6px}
+.key{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}.key div{flex:1 1 220px;border:1px solid var(--line);border-radius:8px;padding:12px}
+.key b{display:block;font-size:25px}.key span{font-size:12px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:12px 0}th,td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+th{background:#eef3f7}caption{text-align:left;font-weight:700;padding:8px 0;font-size:14px}.tablewrap{overflow-x:auto}
+a{color:var(--accent)}svg{max-width:100%;height:auto;border:1px solid var(--line);background:#fff}ul,ol{margin:8px 0 8px 22px}li{margin:6px 0}
+</style></head><body><main>
+<p class="small"><a href="meta-meta-analysis-PL.html" hreflang="pl" lang="pl">Wersja polska</a></p>
+<h1>A meta-analysis of meta-analyses: retention of added energy</h1><p class="lede">A second-order summary of the three lever subgroups of the steering meta-analysis — 14 fixed-volume, 7 free-volume and 1 portion studies, the same 22 rows. It is not a synthesis of independent meta-analyses.</p>
+<p class="small">Version 1.0 · 22 November 2026 · data: feeding-disorders project analyses v1.2.0</p>
+<div class="box">Three lever subgroups pool to <strong>45.7% (95% CI 20.7–70.6)</strong> retention, I² 68.5%, τ² 80.2. The whole-day variant gives <strong>39.0% (16.0–62.1)</strong>; without the single portion trial the other two subgroups give <strong>52.2% (35.1–69.4)</strong>. The prediction interval is very wide (-93.5% to 184.8%), so this is a planning estimate, not a prediction.</div>
+<div class="key">
+<div><b>45.7%</b><span>pooled retention, 3 subgroups</span></div>
+<div><b>39.0%</b><span>whole-day variant</span></div>
+<div><b>52.2%</b><span>without portion trial</span></div>
+</div>
+<h2>1. What is being combined</h2>
+<p>The three inputs are exactly the lever subgroups in <code>results_steering.json</code>: 14 fixed-volume, 7 free-volume and 1 portion study (14+7+1 = 22 rows). The steering meta-analysis (22 studies, 51.4%) is the study-level pool of those same rows; it is not an independent component and is not excluded for having a different study set. Appetite stimulants and tube weaning are outside the pool because their units differ.</p>
+<ul>
+<li>Fixed-volume density: COMPX, k=14, retention 51.3% (37.7–64.8).</li>
+<li>Free-volume density: ED, k=7, retention 54.1% (32.7–75.6).</li>
+<li>Portion size: one five-day trial, 36.0% (28.2–43.8); it carries 41.4% of the pool weight.</li>
+<li>Whole-day retention: k=3, 32.9% (14.3–51.5); used in sensitivity because it shares studies with free-volume density.</li>
+</ul>
+<p>Appetite stimulants (kg) and tube weaning (proportion) are not pooled because their units differ. The steering meta-analysis is not an additional component: it is the same 22-study pool.</p>
+<h2>2. Second-order result</h2>
+<p>The three subgroups give <strong>45.7% (95% CI 20.7–70.6)</strong>, I² 68.5%. The whole-day variant gives 39.0% (16.0–62.1).</p>
+<figure><svg xmlns="http://www.w3.org/2000/svg" width="900" height="228" viewBox="0 0 900 228" role="img" aria-label="Meta-of-meta forest plot">
+<text x="12" y="24" font-family="sans-serif" font-size="15" font-weight="700">Meta-analysis of meta-analyses: retention of added energy</text>
+<text x="12" y="62" font-family="sans-serif" font-size="11">Fixed-volume density (COMPX) (k=14)</text>
+<line x1="496.5" y1="58" x2="687.4" y2="58" stroke="#666"/>
+<rect x="587.9" y="54" width="8" height="8" fill="#1f5f8b"/>
+<text x="693.4" y="62" font-family="sans-serif" font-size="10">51.3%</text>
+<text x="12" y="98" font-family="sans-serif" font-size="11">Free-volume density (ED) (k=7)</text>
+<line x1="460.7" y1="94" x2="763.5" y2="94" stroke="#666"/>
+<rect x="608.1" y="90" width="8" height="8" fill="#1f5f8b"/>
+<text x="769.5" y="98" font-family="sans-serif" font-size="10">54.1%</text>
+<text x="12" y="134" font-family="sans-serif" font-size="11">Portion size (k=1)</text>
+<line x1="428.9" y1="130" x2="539.5" y2="130" stroke="#666"/>
+<rect x="480.2" y="126" width="8" height="8" fill="#1f5f8b"/>
+<text x="545.5" y="134" font-family="sans-serif" font-size="10">36.0%</text>
+<polygon points="544.4999941436345,182 560.4999941436345,182 552.4999941436345,172" fill="#b03a2e"/>
+<line x1="376.5" y1="178" x2="728.5" y2="178" stroke="#b03a2e" stroke-width="2"/>
+<text x="12" y="186" font-family="sans-serif" font-size="12" font-weight="700">Second-order pooled retention (k=3)</text>
+<text x="734.5" y="186" font-family="sans-serif" font-size="11">45.7%</text>
+<text x="320" y="218" font-family="sans-serif" font-size="10">Retention (%) — 100% = all added energy retained</text></svg><figcaption class="small">Figure 1. Lever subgroups and the second-order estimate. Squares are subgroup summaries; the diamond pools the three subgroups.</figcaption></figure>
+<div class="tablewrap"><table><caption>Table 1. Components of the meta-analysis of meta-analyses</caption>
+<thead><tr><th>Component</th><th>k</th><th>Retention (%)</th><th>95% CI</th><th>I²</th><th>Weight</th><th>Role</th></tr></thead><tbody>
+<tr><td>Fixed-volume density (COMPX)</td><td>14</td><td>51.3</td><td>37.7–64.8</td><td>72.4%</td><td>33.3%</td><td>primary</td></tr>
+<tr><td>Free-volume density (ED)</td><td>7</td><td>54.1</td><td>32.7–75.6</td><td>92.2%</td><td>25.3%</td><td>primary</td></tr>
+<tr><td>Whole-day retention</td><td>3</td><td>32.9</td><td>14.3–51.5</td><td>19.5%</td><td>—</td><td>sensitivity</td></tr>
+<tr><td>Portion size</td><td>1</td><td>36.0</td><td>28.2–43.8</td><td>0.0%</td><td>41.4%</td><td>primary</td></tr>
+</tbody></table></div>
+<p>Without the single portion trial, the other two subgroups give <strong>52.2% (35.1–69.4)</strong>, I² 0.0%. The portion trial carries 41.4% of the weight; the drop from 51.3% to 45.7% comes from that one trial.</p>
+<h2>3. What this changes</h2>
+<p>The 45.7% estimate is 5.6 points below the COMPX summary (51.3%) and 5.7 points below the steering pool (51.4%); the intervals overlap. Without the portion trial the two subgroups give 52.2% (35.1–69.4), so the difference is not a new, more precise effect: it is the sensitivity of the average to one small trial with high weight. The direction — about half of added energy remains — holds.</p>
+<p>The prediction interval (-93.5% to 184.8%) spans zero and values above 100%. In a new setting, full compensation and full retention are both compatible with the evidence; planning must rest on measurement, not the mean.</p>
+<h2>4. Limitations</h2>
+<ul>
+<li>Three subgroups are not three independent populations; COMPX and ED are mostly healthy children, and portion is one preschool trial.</li>
+<li>The summaries already carry uncertainty; their variances do not include uncertainty in τ² or model choice.</li>
+<li>There are no individual data and no shared mechanism; the result is descriptive, not causal.</li>
+<li>No Egger test was used: k=3 at the second order.</li>
+</ul>
+<h2>5. Reproducibility</h2>
+<p>Data: <code>analysis/results_meta_meta.json</code>. Script: <code>analysis/meta_meta.py</code>. Forest: <code>analysis/forest_meta_meta.svg</code>. The script reads the project’s existing JSON outputs and does not modify the main report.</p>
+<p class="small">This is a research summary, not individual medical advice.</p>
+</main></body></html>

@@ -1104,6 +1104,10 @@
     "pl": "Metaanaliza: ile dodanych kalorii dziecko naprawdę zjada (sterowanie spożyciem)",
     "en": "Meta-analysis: how much added energy children actually eat (caloric intake steering)"
   },
+  "footer_metameta_label": {
+    "pl": "Metaanaliza metaanaliz: ile dodanej energii zostaje (podsumowanie drugiego rzędu)",
+    "en": "Meta-analysis of meta-analyses: how much added energy is retained (second-order summary)"
+  },
   "footer_eg_report_label": {
     "pl": "Przegląd żywy: geny, jedzenie i dźwignie kaloryczne (wersja wstępna)",
     "en": "Living review: genes, eating and caloric levers (interim version)"
